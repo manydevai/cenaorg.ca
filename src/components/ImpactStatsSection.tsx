@@ -60,15 +60,21 @@ export function ImpactStatsSection() {
                 </div>
             </div>
 
-            {/* The "Cinematic Transit" Team Photo Below the Wall (Parallax) */}
+            {/* The "Cinematic Transit" Team Photo - Re-optimized Parallax Illustration */}
             <div
-                className="relative z-0 w-full h-[450px] lg:h-[70vh] bg-no-repeat bg-cover border-t border-b border-white/5"
-                style={{
-                    backgroundImage: `url(${TEAM.teamPhoto})`,
-                    backgroundPosition: 'center 20%' // Aligns top of image to top of viewport to prevent face cropping
-                }}
+                className="relative z-0 w-full h-[450px] lg:h-[70vh] border-t border-b border-white/5 overflow-hidden"
             >
-                <div className="absolute inset-0 bg-gradient-to-b from-[#121212]/10 via-transparent to-[#121212]/10"></div>
+                {/* Static Background Layer using bg-fixed for the visual illusion */}
+                <div
+                    className="absolute inset-0 w-full h-full bg-no-repeat bg-cover bg-fixed"
+                    style={{
+                        backgroundImage: `url(${TEAM.teamPhoto})`,
+                        backgroundPosition: 'center 20%'
+                    }}
+                />
+
+                {/* Subtle Cinematic Fades at top/bottom for the transition illusion */}
+                <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-white/10 pointer-events-none"></div>
             </div>
         </section>
     );
