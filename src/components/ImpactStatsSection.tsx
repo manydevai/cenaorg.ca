@@ -62,7 +62,7 @@ export function ImpactStatsSection() {
 
             {/* The "Cinematic Transit" Team Photo Below the Wall (Parallax) */}
             <div
-                className="relative z-0 w-full h-[450px] lg:h-[70vh] bg-no-repeat bg-cover bg-fixed border-t border-b border-white/5"
+                className="relative z-0 w-full h-[450px] lg:h-[70vh] bg-no-repeat bg-cover border-t border-b border-white/5"
                 style={{
                     backgroundImage: `url(${TEAM.teamPhoto})`,
                     backgroundPosition: 'center 20%' // Aligns top of image to top of viewport to prevent face cropping
