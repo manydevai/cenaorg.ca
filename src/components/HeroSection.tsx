@@ -1,124 +1,112 @@
 import { Button } from './ui/button';
-import { Users, BookOpen, Briefcase } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
-import { AnimatedCounter } from './AnimatedCounter';
-import { TypingEffect } from './TypingEffect';
-import { BRAND } from '../assets/images';
 import { useState, useEffect } from 'react';
+import { BRAND } from '../assets/images';
 
 export function HeroSection() {
   const { t } = useLanguage();
-  const [isZoomed, setIsZoomed] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const [currentBg, setCurrentBg] = useState(0);
+
+  const backgrounds = [
+    BRAND.teamShot,
+    BRAND.heroBackground
+  ];
 
   useEffect(() => {
-    const handleScroll = () => {
-      const heroSection = document.getElementById('home');
-      if (heroSection) {
-        const rect = heroSection.getBoundingClientRect();
-        const isInView = rect.top < window.innerHeight && rect.bottom > 0;
-        setIsZoomed(isInView);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Check initial state
-    
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    setIsVisible(true);
+    const interval = setInterval(() => {
+      setCurrentBg((prev: number) => (prev + 1) % backgrounds.length);
+    }, 8000);
+    return () => clearInterval(interval);
+  }, [backgrounds.length]);
 
   return (
-    <section 
-      id="home" 
-      className="relative bg-gradient-to-br from-[#A32020] via-[#8B1B1B] to-[#000000] text-white group"
-      onMouseEnter={() => setIsZoomed(true)}
-      onMouseLeave={() => setIsZoomed(false)}
+    <section
+      id="home"
+      className="relative min-h-[90vh] lg:min-h-screen flex flex-col justify-center overflow-hidden border-b border-white/5"
     >
-      {/* Background Image with Overlay */}
-      <div className="absolute inset-0 overflow-hidden">
-        <img 
-          src={BRAND.heroBackground}
-          alt="CENA Community Leadership"
-          className={`w-full h-full object-cover opacity-20 transition-transform duration-[3000ms] ease-out ${
-            isZoomed ? 'scale-110' : 'scale-100'
-          }`}
-        />
-      </div>
-      <div className="absolute inset-0 bg-gradient-to-br from-[#A32020]/60 via-[#8B1B1B]/60 to-[#000000]/60"></div>
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 lg:py-32">
-        <div className="max-w-4xl">
-          <div className="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-2 mb-6">
-            <div className="bg-[#FDB913] text-black px-3 py-1 rounded-full text-xs sm:text-sm font-medium w-fit">
-              Community Organization
-            </div>
-            <span className="text-white/90 text-sm sm:text-base">Canada - Empowering the Lusophone Diaspora</span>
-          </div>
-          
-          <TypingEffect 
-            text={t('hero.title')}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-4 sm:mb-6 leading-tight"
-            typingSpeed={100}
-            deletingSpeed={50}
-            pauseDuration={3000}
-            magicText="CENA"
-            magicTransitionDuration={5000}
+      {/* Dynamic Full-Bleed Background - Entire Section */}
+      <div className="absolute inset-0 z-0">
+        {backgrounds.map((bg, index) => (
+          <div
+            key={`full-bg-${index}`}
+            className={`absolute inset-0 bg-cover bg-center lg:bg-[right_center] transition-opacity duration-[3000ms] ease-in-out ${index === currentBg ? 'opacity-100' : 'opacity-0'}`}
+            style={{
+              backgroundImage: `url(${bg})`,
+              transform: 'scale(1)'
+            }}
           />
-          
-          <p className="text-base sm:text-lg md:text-xl text-white/90 mb-3 sm:mb-4">
-            {t('hero.subtitle')}
-          </p>
-          
-          <p className="text-sm sm:text-base md:text-lg text-white/90 mb-6 sm:mb-8 max-w-3xl">
-            {t('hero.description')}
-          </p>
+        ))}
+      </div>
 
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-8 sm:mb-12">
-            <Button 
-              size="lg" 
-              className="bg-[#FDB913] hover:bg-[#E5A50D] text-black px-6 sm:px-8 py-2.5 sm:py-3 font-medium text-sm sm:text-base"
+      {/* Very subtle protection for text legibility - NOT a black band */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-transparent z-10"></div>
+
+      {/* Structural Decoration: Architectural Lines */}
+      <div className="absolute inset-0 z-10 pointer-events-none opacity-20 hidden lg:block">
+        <div className="absolute left-[5%] top-0 w-px h-full bg-white/20"></div>
+        <div className="absolute right-[10%] top-0 w-px h-full bg-white/10"></div>
+        <div className="absolute top-[30%] left-0 w-full h-px bg-white/10"></div>
+      </div>
+
+      <div className="relative z-20 w-full h-full flex items-start lg:items-center px-6 sm:px-12 lg:pl-12 lg:pr-10 pt-0 lg:pt-40 pb-24 lg:pb-0">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 w-full">
+
+          {/* Typographic Column - Pushed Completely Left */}
+          <div className={`lg:col-span-10 xl:col-span-8 transition-all duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'}`}>
+            <div className="flex items-center space-x-3 mb-3 lg:mb-16 lg:-mt-12 lg:relative lg:-top-44">
+              <span className="h-px w-12 bg-[#C5A059]"></span>
+              <span className="text-[#C5A059] font-sans text-[10px] sm:text-xs tracking-[0.4em] uppercase font-bold">
+                {t('hero.subtitle')}
+              </span>
+            </div>
+
+            <h1 className="text-white font-serif text-4xl sm:text-6xl lg:text-5xl uppercase mb-14 lg:mb-12 leading-[1.1] drop-shadow-2xl">
+              {t('hero.title').split(/[,&]+/).map((part, i) => (
+                <span key={i} className="block">
+                  <span className={i === 1 ? "text-[#C5A059]" : "text-white"}>
+                    {part.trim()}
+                  </span>
+                </span>
+              ))}
+            </h1>
+
+            <div className="max-w-xl">
+              <p className="text-gray-100 text-lg sm:text-xl font-sans mb-12 leading-relaxed drop-shadow-md">
+                {t('hero.description')}
+              </p>
+
+              <div className="hidden lg:flex flex-wrap gap-6 pt-4">
+                <button
+                  className="bg-[#8B0000] hover:bg-[#A30000] text-white px-5 py-2.5 rounded-none text-xs tracking-[0.2em] font-bold uppercase transition-all duration-300 group flex items-center shadow-[0px_10px_30px_rgba(0,0,0,0.3)]"
+                  onClick={() => document.getElementById('support')?.scrollIntoView({ behavior: 'smooth' })}
+                >
+                  {t('hero.cta_primary')}
+                  <ArrowRight className="ml-3 h-4 w-4 transition-transform group-hover:translate-x-2" />
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Mobile Centered CTA Button - Pushed further down */}
+          <div className="lg:hidden absolute -bottom-10 left-0 w-full flex justify-center px-6 z-30">
+            <button
+              className="bg-[#8B0000] text-white w-full max-w-[220px] py-3.5 rounded-none text-[10px] tracking-[0.2em] font-bold uppercase flex items-center justify-center shadow-2xl"
               onClick={() => document.getElementById('support')?.scrollIntoView({ behavior: 'smooth' })}
             >
               {t('hero.cta_primary')}
-            </Button>
-            <Button 
-              size="lg" 
-              variant="outline" 
-              className="border-2 border-white bg-transparent text-white hover:bg-white/10 px-6 sm:px-8 py-2.5 sm:py-3 font-medium text-sm sm:text-base"
-              onClick={() => document.getElementById('programs')?.scrollIntoView({ behavior: 'smooth' })}
-            >
-              {t('hero.cta_secondary')}
-            </Button>
+              <ArrowRight className="ml-2 h-3.5 w-3.5" />
+            </button>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-            <div className="flex items-center space-x-3 rounded-lg p-3 cursor-pointer group/card">
-              <div className="bg-[#000000] p-2.5 sm:p-3 rounded-full flex-shrink-0">
-                <Users className="h-5 w-5 sm:h-6 sm:w-6 text-[#FDB913]" />
-              </div>
-              <div className="min-w-0">
-                <AnimatedCounter end={10} suffix="+" className="text-xl sm:text-2xl" enableScrollSpy={true} repeat={true} repeatDelay={2000} />
-                <div className="text-white/90 text-xs sm:text-sm leading-tight">{t('hero.members_connected')}</div>
-              </div>
-            </div>
-            <div className="flex items-center space-x-3 rounded-lg p-3 cursor-pointer group/card">
-              <div className="bg-[#000000] p-2.5 sm:p-3 rounded-full flex-shrink-0">
-                <BookOpen className="h-5 w-5 sm:h-6 sm:w-6 text-[#FDB913]" />
-              </div>
-              <div className="min-w-0">
-                <AnimatedCounter end={12} suffix="+" className="text-xl sm:text-2xl" enableScrollSpy={true} repeat={true} repeatDelay={2000} />
-                <div className="text-white/90 text-xs sm:text-sm leading-tight">{t('hero.active_programs')}</div>
-              </div>
-            </div>
-            <div className="flex items-center space-x-3 rounded-lg p-3 cursor-pointer group/card">
-              <div className="bg-[#000000] p-2.5 sm:p-3 rounded-full flex-shrink-0">
-                <Briefcase className="h-5 w-5 sm:h-6 sm:w-6 text-[#FDB913]" />
-              </div>
-              <div className="min-w-0">
-                <AnimatedCounter end={7} suffix="+" className="text-xl sm:text-2xl" enableScrollSpy={true} repeat={true} repeatDelay={2000} />
-                <div className="text-white/90 text-xs sm:text-sm leading-tight">{t('hero.partners')}</div>
-              </div>
-            </div>
-          </div>
         </div>
+      </div>
+
+      {/* Brand Watermark */}
+      <div className="absolute left-[5%] bottom-[5%] text-[8rem] sm:text-[15rem] font-serif text-white/[0.05] select-none pointer-events-none uppercase tracking-tighter hidden lg:block">
+        Cena
       </div>
     </section>
   );

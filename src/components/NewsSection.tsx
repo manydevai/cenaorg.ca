@@ -5,13 +5,13 @@ import { Button } from './ui/button';
 import { Quote, Calendar, User, ChevronDown, ChevronUp } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import { useLanguage } from '../contexts/LanguageContext';
-import africaEducationImg from 'figma:asset/394031ef422e46ed0ebf9f947855b02d81f05355.png';
-import schoolPartnershipImg from 'figma:asset/3bca116aac05c5359e2ce73e84ab4c14dedc64f1.png';
-import culturalFestivalNewsImg from 'figma:asset/b7a470e41e2449933b30ffa4e761fceb5d23f9f1.png';
-import testimonial1Image from 'figma:asset/4c2e3d1bc195f9ecc6d79b1df2639e8b961bd16e.png';
-import testimonial2Image from 'figma:asset/5d3e4f2cd2a6g0fdd7e80c2ef3740f9c072ce27f.png';
-import testimonial3Image from 'figma:asset/6e4f5g3de3b7h1gee8f91d3fg4851g0d183df38g.png';
-import testimonial4Image from 'figma:asset/7f5g6h4ef4c8i2hff9g02e4gh5962h1e294eg49h.png';
+import africaEducationImg from '../assets/sections/community-team.jpg';
+import schoolPartnershipImg from '../assets/sections/educational-partnerships.jpg';
+import culturalFestivalNewsImg from '../assets/sections/cultural-celebration.png';
+import testimonial1Image from '../assets/sections/networking-evening.jpg';
+import testimonial2Image from '../assets/sections/networking-evening.jpg';
+import testimonial3Image from '../assets/sections/networking-evening.jpg';
+import testimonial4Image from '../assets/sections/networking-evening.jpg';
 import {
   Collapsible,
   CollapsibleContent,
@@ -23,13 +23,13 @@ export function NewsSection() {
   const [expandedArticles, setExpandedArticles] = useState<number[]>([]);
 
   const toggleArticle = (index: number) => {
-    setExpandedArticles(prev => 
-      prev.includes(index) 
+    setExpandedArticles(prev =>
+      prev.includes(index)
         ? prev.filter(i => i !== index)
         : [...prev, index]
     );
   };
-  
+
   const newsArticles = [
     {
       date: '2025-03-10',
@@ -95,10 +95,10 @@ export function NewsSection() {
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', { 
-      year: 'numeric', 
-      month: 'long', 
-      day: 'numeric' 
+    return date.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
     });
   };
 
@@ -124,17 +124,16 @@ export function NewsSection() {
                 <Collapsible key={index} open={isExpanded} onOpenChange={() => toggleArticle(index)}>
                   <Card className="group hover:shadow-xl transition-all duration-300 overflow-hidden">
                     <div className="relative h-48 overflow-hidden">
-                      <ImageWithFallback 
+                      <ImageWithFallback
                         src={article.image}
                         alt={t(article.titleKey)}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                       <div className="absolute top-4 left-4">
-                        <Badge className={`${
-                          article.categoryKey === 'news.article1_category' ? 'bg-[#A32020]' :
-                          article.categoryKey === 'news.article2_category' ? 'bg-[#FDB913] text-black' : 'bg-[#000000]'
-                        } text-white`}>
+                        <Badge className={`${article.categoryKey === 'news.article1_category' ? 'bg-[#A32020]' :
+                            article.categoryKey === 'news.article2_category' ? 'bg-[#FDB913] text-black' : 'bg-[#000000]'
+                          } text-white`}>
                           {t(article.categoryKey)}
                         </Badge>
                       </div>
@@ -156,7 +155,7 @@ export function NewsSection() {
                       <p className="text-gray-600 mb-4 text-sm line-clamp-3">
                         {t(article.excerptKey)}
                       </p>
-                      
+
                       <CollapsibleContent className="mb-4">
                         <div className="pt-4 border-t border-gray-200 text-gray-600 text-sm space-y-3">
                           {t(article.fullContentKey)}
@@ -167,7 +166,7 @@ export function NewsSection() {
                         <span className="text-sm text-gray-500">{t(article.readTimeKey)}</span>
                         <CollapsibleTrigger asChild>
                           <Button variant="ghost" className="text-[#A32020] hover:text-[#8B1B1B] p-0">
-                            {isExpanded ? t('common.show_less') : t('common.read_more')} 
+                            {isExpanded ? t('common.show_less') : t('common.read_more')}
                             {isExpanded ? <ChevronUp className="h-4 w-4 ml-1" /> : <ChevronDown className="h-4 w-4 ml-1" />}
                           </Button>
                         </CollapsibleTrigger>
@@ -185,32 +184,32 @@ export function NewsSection() {
           <h3 className="text-2xl mb-8 text-gray-900 text-center">
             {t('news.community_voices')}
           </h3>
-          
+
           {/* Infinite Carousel Container */}
           <div className="relative">
             {/* Gradient Overlays for fade effect */}
             <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
             <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
-            
+
             {/* Scrolling Track */}
             <div className="overflow-hidden">
-              <div 
+              <div
                 className="flex gap-6 animate-testimonial-scroll hover:pause-animation"
                 style={{ width: 'fit-content' }}
               >
                 {duplicatedTestimonials.map((testimonial, index) => (
-                  <Card 
-                    key={index} 
+                  <Card
+                    key={index}
                     className="border-l-4 border-l-[#FDB913] flex-shrink-0 w-[400px] hover:shadow-xl transition-shadow duration-300"
                   >
                     <CardContent className="p-6">
                       {/* Quote Icon */}
                       <div className="text-[#FDB913] text-5xl mb-3 leading-none">"</div>
-                      
+
                       <blockquote className="text-gray-700 mb-4 italic min-h-[80px]">
                         {t(testimonial.quoteKey)}
                       </blockquote>
-                      
+
                       <div className="flex items-center space-x-3 mt-4">
                         {/* Profile Image */}
                         <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-[#FDB913]">

@@ -17,6 +17,12 @@ const Toaster = ({ ...props }: ToasterProps) => {
           "--normal-border": "var(--border)",
         } as React.CSSProperties
       }
+      toastOptions={{
+        className: "rounded-none border-gray-100 shadow-2xl",
+        style: {
+          borderRadius: "0px",
+        }
+      }}
       {...props}
     />
   );

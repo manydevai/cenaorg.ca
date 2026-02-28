@@ -4,6 +4,7 @@ import { HeroSection } from './components/HeroSection';
 import { LogoWall } from './components/LogoWall';
 import { AboutSection } from './components/AboutSection';
 import { MissionSection } from './components/MissionSection';
+import { ImpactStatsSection } from './components/ImpactStatsSection';
 import { VisionSection } from './components/VisionSection';
 import { ProgramsSection } from './components/ProgramsSection';
 import { PartnersSection } from './components/PartnersSection';
@@ -48,12 +49,13 @@ export default function App() {
 
   return (
     <LanguageProvider>
-      <div className="min-h-screen bg-white">
+      <div className="min-h-screen bg-white overflow-x-hidden relative">
         <Header />
         <main>
           <HeroSection />
           <LogoWall />
           <AboutSection />
+          <ImpactStatsSection />
           <MissionSection />
           <VisionSection />
           <ProgramsSection />

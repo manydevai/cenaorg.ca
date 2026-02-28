@@ -9,15 +9,20 @@
  * - Track all visual assets
  */
 
+import teamPhotoImg from './cena-new-team.jpg';
+import teamShotImg from './cena-new-team-shot.jpg';
+import logoImg from './cena-logo-slogan.png';
+
 // ==================== BRAND ASSETS ====================
 export const BRAND = {
-  logo: 'https://i.ibb.co/Kx6wrjkr/CENA-logo.png',
+  logo: logoImg,
   heroBackground: 'https://i.ibb.co/HpkVWCd3/Hero-Background.png',
+  teamShot: teamShotImg,
 };
 
 // ==================== TEAM PHOTOS ====================
 export const TEAM = {
-  teamPhoto: 'https://i.ibb.co/9kWnSL1c/CENA-TEAM.jpg',
+  teamPhoto: teamPhotoImg,
   members: {
     cristinaManuel: 'https://i.ibb.co/99ScsZZj/Cristina-Manuel-CEO.jpg',
     marilenyAntonio: 'https://i.ibb.co/SXZJk2bC/Marileny-Fernando-Antonio-Vice-president.jpg',

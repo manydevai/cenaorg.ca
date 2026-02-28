@@ -18,16 +18,20 @@ export function GetInvolvedSection() {
   const generatePayPalURL = (amount: string) => {
     const baseURL = 'https://www.paypal.com/donate';
     const hostedButtonId = '7JF9ZTEN7WVJQ';
-    
+
     return `${baseURL}/?hosted_button_id=${hostedButtonId}&amount=${amount}&currency_code=EUR`;
   };
 
   const handleDonation = () => {
     const amount = customAmount || selectedAmount || '25';
+    // PayPal donation link disabled as requested
+    /*
     const paypalURL = generatePayPalURL(amount);
     
     // Open PayPal in a new window/tab
     window.open(paypalURL, '_blank', 'width=600,height=700,scrollbars=yes,resizable=yes');
+    */
+    console.log(`Donation of €${amount} link currently disabled`);
   };
 
   const ways = [
@@ -79,7 +83,7 @@ export function GetInvolvedSection() {
                   <Heart className="h-6 w-6 text-[#A32020] transition-all duration-300 hover:drop-shadow-[0_0_8px_rgba(163,32,32,0.8)] hover:scale-110" />
                   <h3 className="text-2xl text-gray-900">{t('get_involved.donate_title')}</h3>
                 </div>
-                
+
                 <div className="space-y-6">
                   <div>
                     <label className="block text-sm text-gray-700 mb-3">{t('get_involved.choose_amount')}</label>
@@ -88,11 +92,10 @@ export function GetInvolvedSection() {
                         <Button
                           key={amount}
                           variant={selectedAmount === amount ? "default" : "outline"}
-                          className={`${
-                            selectedAmount === amount 
-                              ? 'bg-[#A32020] hover:bg-[#8B1B1B] text-white' 
+                          className={`${selectedAmount === amount
+                              ? 'bg-[#A32020] hover:bg-[#8B1B1B] text-white'
                               : 'border-[#A32020] text-[#A32020] hover:bg-[#A32020] hover:text-white'
-                          }`}
+                            }`}
                           onClick={() => {
                             setSelectedAmount(amount);
                             setCustomAmount('');
@@ -129,7 +132,7 @@ export function GetInvolvedSection() {
                     </p>
                   </div>
 
-                  <Button 
+                  <Button
                     className="w-full bg-[#A32020] hover:bg-[#8B1B1B] text-white"
                     onClick={handleDonation}
                   >
@@ -147,19 +150,20 @@ export function GetInvolvedSection() {
           {/* Other Ways to Help */}
           <div className="space-y-6">
             <h3 className="text-2xl text-gray-900 mb-6">{t('get_involved.other_ways')}</h3>
-            
+
             {ways.map((way, index) => {
               const Icon = way.icon;
               const handleClick = () => {
                 if (index === 0) {
-                  // Donate - open PayPal
-                  window.open('https://www.paypal.com/donate/?hosted_button_id=7JF9ZTEN7WVJQ', '_blank');
+                  // Donate - PayPal disabled
+                  // window.open('https://www.paypal.com/donate/?hosted_button_id=7JF9ZTEN7WVJQ', '_blank');
+                  console.log('Donation link currently disabled');
                 } else {
                   // Volunteer or Membership - scroll to contact
                   document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
                 }
               };
-              
+
               return (
                 <Card key={index} className={`border-2 ${way.borderColor}/20 hover:shadow-lg transition-all duration-300 group`}>
                   <CardContent className="p-6">
@@ -174,8 +178,8 @@ export function GetInvolvedSection() {
                         <p className="text-gray-600 mb-4">
                           {way.description}
                         </p>
-                        <Button 
-                          variant="outline" 
+                        <Button
+                          variant="outline"
                           className={`${way.borderColor} text-gray-700 hover:bg-gray-50`}
                           onClick={handleClick}
                         >

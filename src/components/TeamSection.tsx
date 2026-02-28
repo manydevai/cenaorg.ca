@@ -1,134 +1,89 @@
-import { Card, CardContent } from './ui/card';
-import { Badge } from './ui/badge';
-import { useLanguage } from '../contexts/LanguageContext';
-import { ImageWithFallback } from './figma/ImageWithFallback';
 import { TEAM } from '../assets/images';
+import { useLanguage } from '../contexts/LanguageContext';
 
 export function TeamSection() {
   const { t } = useLanguage();
 
   const teamMembers = [
-    {
-      name: 'Cristina Indira Manuel',
-      roleKey: 'team.role_president',
-      image: TEAM.members.cristinaManuel
-    },
-    {
-      name: 'Marileny Fernando António',
-      roleKey: 'team.role_vp_operations',
-      image: TEAM.members.marilenyAntonio
-    },
-    {
-      name: 'Sebastião Sala',
-      roleKey: 'team.role_finance',
-      image: TEAM.members.sebastiaoSala
-    },
-    {
-      name: 'Iolanda Maria Mendes',
-      roleKey: 'team.role_international',
-      image: TEAM.members.iolandaMendes
-    },
-    {
-      name: 'Daniel Love Fernando António',
-      roleKey: 'team.role_youth',
-      image: TEAM.members.danielLove
-    },
-    {
-      name: 'Dulce Angelina Figueiredo',
-      roleKey: 'team.role_hr',
-      image: TEAM.members.dulceFigueiredo
-    }
+    { name: 'Cristina Indira Manuel', roleKey: 'team.role_president', image: TEAM.members.cristinaManuel },
+    { name: 'Marileny Fernando António', roleKey: 'team.role_vp_operations', image: TEAM.members.marilenyAntonio },
+    { name: 'Sebastião Sala', roleKey: 'team.role_finance', image: TEAM.members.sebastiaoSala },
+    { name: 'Iolanda Maria Mendes', roleKey: 'team.role_international', image: TEAM.members.iolandaMendes },
+    { name: 'Daniel Love Fernando António', roleKey: 'team.role_youth', image: TEAM.members.danielLove },
+    { name: 'Dulce Angelina Figueiredo', roleKey: 'team.role_hr', image: TEAM.members.dulceFigueiredo }
   ];
 
-  // Duplicate the array for infinite scroll effect
-  const duplicatedMembers = [...teamMembers, ...teamMembers, ...teamMembers];
-
   return (
-    <section id="team" className="py-12 sm:py-16 lg:py-20 bg-white overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12 sm:mb-16">
-          <Badge className="bg-[#A32020] text-white mb-4">{t('team.badge')}</Badge>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl mb-4 sm:mb-6 text-gray-900">
-            {t('team.title')}
-          </h2>
-          <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
-            {t('team.description')}
-          </p>
-        </div>
+    <section id="team" className="py-24 sm:py-32 bg-white overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-16">
 
-        {/* Infinite Carousel Container */}
-        <div className="relative mb-16">
-          {/* Gradient Overlays for fade effect */}
-          <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
-          <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
-          
-          {/* Scrolling Track */}
-          <div className="overflow-hidden">
-            <div 
-              className="flex gap-8 animate-scroll-infinite hover:pause-animation"
-              style={{
-                width: 'fit-content',
-              }}
-            >
-              {duplicatedMembers.map((member, index) => (
-                <div 
-                  key={index} 
-                  className="group flex flex-col items-center flex-shrink-0"
-                >
-                  {/* Circular Image with Gradient Border */}
-                  <div className="relative">
-                    {/* Gradient Border Ring */}
-                    <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#A32020] via-[#FDB913] to-[#000000] p-[3px]">
-                      <div className="w-full h-full rounded-full bg-white"></div>
-                    </div>
-                    {/* Image Container */}
-                    <div className="relative w-32 h-32 sm:w-36 sm:h-36 rounded-full overflow-hidden p-[3px]">
-                      <ImageWithFallback
-                        src={member.image}
-                        alt={member.name}
-                        className="w-full h-full object-cover rounded-full group-hover:scale-110 transition-transform duration-500"
-                        style={{ objectPosition: '50% 35%' }}
-                      />
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 mb-24 items-center">
+          <div className="lg:col-span-6">
+            <span className="inline-block text-[#8B0000] font-sans text-[10px] tracking-[0.4em] uppercase font-bold mb-6">
+              {t('team.badge')}
+            </span>
+            <h2 className="text-4xl sm:text-6xl font-serif text-[#121212] leading-tight tracking-tight">
+              {t('team.title')}
+            </h2>
+          </div>
+          <div className="lg:col-span-6 border-l border-gray-100 pl-8">
+            <p className="text-gray-500 text-lg leading-relaxed italic">
+              {t('team.description')}
+            </p>
           </div>
         </div>
 
-        {/* Leadership Message */}
-        <div className="mt-16 bg-gradient-to-r from-[#A32020] to-[#000000] rounded-2xl p-8 md:p-12 text-white">
-          <div className="max-w-3xl mx-auto text-center">
-            <h3 className="text-2xl md:text-3xl mb-4">
+        {/* Industrial Grid Profile Layout */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0 border border-gray-100">
+          {teamMembers.map((member, index) => (
+            <div
+              key={index}
+              className="group relative h-[500px] overflow-hidden border-b lg:border-r border-gray-100 last:border-r-0 cursor-default"
+            >
+              {/* Background Profile Image */}
+              <img
+                src={member.image}
+                alt={member.name}
+                className="absolute inset-0 w-full h-full object-cover transition-all duration-1000 group-hover:scale-105"
+                style={{ objectPosition: '50% 15%' }}
+              />
+
+              {/* Architectural Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#121212] via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-700"></div>
+
+              {/* Content Box */}
+              <div className="absolute bottom-0 left-0 p-12 w-full transform group-hover:-translate-y-4 transition-transform duration-700">
+                <span className="block text-[9px] tracking-[0.4em] uppercase font-bold text-[#C5A059] mb-4">
+                  {t(member.roleKey)}
+                </span>
+                <h4 className="text-2xl font-serif text-white tracking-tight uppercase leading-none">
+                  {member.name}
+                </h4>
+
+                <div className="h-px w-0 group-hover:w-full bg-[#C5A059]/40 mt-8 transition-all duration-1000"></div>
+              </div>
+
+              {/* Hidden Hover Badge */}
+              <div className="absolute top-12 left-12 p-3 border border-white/20 text-white/40 text-[8px] tracking-[0.5em] uppercase font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                {t('team.council_member')}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Leadership Vision Bar */}
+        <div className="mt-32 p-12 lg:p-20 bg-[#121212] relative overflow-hidden text-center group">
+          <div className="absolute top-0 right-0 w-48 h-1 bg-[#8B0000]"></div>
+          <div className="relative z-10 max-w-3xl mx-auto">
+            <h3 className="text-2xl lg:text-3xl font-serif text-white mb-8 tracking-tight uppercase">
               {t('team.leadership_title')}
             </h3>
-            <p className="text-white/90 text-lg leading-relaxed">
-              {t('team.leadership_message')}
+            <p className="text-gray-400 text-lg leading-relaxed italic border-l-2 border-[#C5A059]/30 pl-12 mx-auto inline-block text-left">
+              "{t('team.leadership_message')}"
             </p>
           </div>
         </div>
       </div>
-
-      {/* Inline Keyframe Animation */}
-      <style>{`
-        @keyframes scroll-infinite {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(calc(-100% / 3));
-          }
-        }
-        
-        .animate-scroll-infinite {
-          animation: scroll-infinite 30s linear infinite;
-        }
-        
-        .pause-animation:hover {
-          animation-play-state: paused;
-        }
-      `}</style>
     </section>
   );
 }
