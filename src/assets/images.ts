@@ -9,7 +9,7 @@
  * - Track all visual assets
  */
 
-import teamPhotoImg from './cena-new-team.jpg';
+import teamPhotoImg from './cena-new-team.1.jpg';
 import teamShotImg from './cena-new-team-shot.jpg';
 import logoImg from './cena-logo-slogan.png';
 

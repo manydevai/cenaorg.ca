@@ -18,6 +18,7 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
 
   body {
@@ -139,4 +140,112 @@
 
 .animate-fade-in-down {
   animation: fade-in-down 0.5s ease-out forwards;
+}
+
+@keyframes fade-in-down {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   MOBILE SCROLL-TRIGGERED EFFECTS
+   On touch devices, hover doesn't work.
+   Elements with data-inview animate in when
+   they scroll into the viewport.
+   ============================================ */
+
+/* Base state: hidden, slightly below */
+[data-inview] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Activated state: visible, in place */
+[data-inview="true"] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Scale-up effect for icons/badges when in view */
+[data-inview="true"] .inview-scale {
+  transform: scale(1.1);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
+}
+
+.inview-scale {
+  transform: scale(1);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Border highlight when in view */
+[data-inview="true"] .inview-border {
+  border-color: #C5A059;
+  transition: border-color 0.5s ease 0.3s;
+}
+
+/* Corner decoration reveal */
+[data-inview="true"] .inview-corner {
+  opacity: 1;
+  transition: opacity 0.5s ease 0.2s;
+}
+
+.inview-corner {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Dot reveal */
+[data-inview="true"] .inview-dot {
+  opacity: 1;
+  transition: opacity 0.5s ease 0.4s;
+}
+
+.inview-dot {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Text color shift when in view */
+[data-inview="true"] .inview-text-heritage {
+  color: #8B0000;
+  transition: color 0.5s ease 0.3s;
+}
+
+/* "Read Objective" link reveal */
+[data-inview="true"] .inview-reveal {
+  opacity: 1;
+  transition: opacity 0.5s ease 0.5s;
+}
+
+.inview-reveal {
+  opacity: 0.4;
+  transition: opacity 0.3s ease;
+}
+
+/* Checkbox fill effect */
+[data-inview="true"] .inview-check {
+  background-color: #C5A059;
+  transition: background-color 0.4s ease 0.2s;
+}
+
+[data-inview="true"] .inview-check-icon {
+  color: white;
+  transition: color 0.4s ease 0.2s;
+}
+
+/* On desktop (lg+), disable the data-inview hiding so hover still works normally */
+@media (min-width: 1024px) {
+  [data-inview] {
+    opacity: 1;
+    transform: none;
+  }
 }

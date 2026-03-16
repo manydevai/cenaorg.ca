@@ -17,44 +17,66 @@ export function ProgramsSection() {
       descriptionKey: 'programs.academy_description',
       detailsKey: 'programs.academy_details',
       image: cenaAcademyImage,
-      id: "01"
+      id: "01",
+      value: "CENA Academy"
     },
     {
       titleKey: 'programs.women_title',
       descriptionKey: 'programs.women_description',
       detailsKey: 'programs.women_details',
       image: womenLeadershipImage,
-      id: "02"
+      id: "02",
+      value: "Elite Women"
     },
     {
       titleKey: 'programs.youth_title',
       descriptionKey: 'programs.youth_description',
       detailsKey: 'programs.youth_details',
       image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800&auto=format&fit=crop',
-      id: "03"
+      id: "03",
+      value: "Innovation Generation"
     },
     {
       titleKey: 'programs.mentorship_title',
       descriptionKey: 'programs.mentorship_description',
       detailsKey: 'programs.mentorship_details',
       image: mentorshipImage,
-      id: "04"
+      id: "04",
+      value: "Mentoring Circle"
     },
     {
       titleKey: 'programs.entrepreneurship_title',
       descriptionKey: 'programs.entrepreneurship_description',
       detailsKey: 'programs.entrepreneurship_details',
       image: 'https://images.unsplash.com/photo-1709715357519-2a84f9765e57?w=800&h=600&fit=crop',
-      id: "05"
+      id: "05",
+      value: "Entrepreneur Hub"
     },
     {
       titleKey: 'programs.volunteer_title',
       descriptionKey: 'programs.volunteer_description',
       detailsKey: 'programs.volunteer_details',
       image: volunteerImage,
-      id: "06"
+      id: "06",
+      value: "Volunteer Program"
     }
   ];
+
+  const handleJoinProgram = (programValue: string) => {
+    // Update URL without reload
+    const url = new URL(window.location.href);
+    url.searchParams.set('program', programValue);
+    window.history.pushState({}, '', url);
+
+    // Smooth scroll to strategic liaison form
+    const contactSection = document.getElementById('strategic-liaison-form');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Dispatch custom event to notify Footer component
+    window.dispatchEvent(new CustomEvent('program-selected', { detail: programValue }));
+  };
 
   return (
     <section id="programs" className="py-24 sm:py-32 bg-[#121212] text-white overflow-hidden">
@@ -133,7 +155,10 @@ export function ProgramsSection() {
                         <p className="text-white text-base font-serif leading-relaxed mb-8 italic">
                           "{t(program.detailsKey)}"
                         </p>
-                        <Button className="bg-[#8B0000] hover:bg-[#A30000] text-white rounded-none px-10 py-6 text-[9px] uppercase tracking-[0.2em] font-bold transition-all duration-500">
+                        <Button 
+                          onClick={() => handleJoinProgram(program.value)}
+                          className="bg-[#8B0000] hover:bg-[#A30000] text-white rounded-none px-10 py-6 text-[9px] uppercase tracking-[0.2em] font-bold transition-all duration-500"
+                        >
                           Join Program
                         </Button>
                       </div>
@@ -165,7 +190,10 @@ export function ProgramsSection() {
                 <p className="text-white text-lg lg:text-xl font-serif leading-relaxed mb-10 italic">
                   "{t(programs[activeTab].detailsKey)}"
                 </p>
-                <Button className="bg-[#8B0000] hover:bg-[#A30000] text-white rounded-none px-12 py-8 text-[10px] uppercase tracking-[0.2em] font-bold shadow-2xl transition-all duration-500 hover:tracking-[0.3em]">
+                <Button 
+                  onClick={() => handleJoinProgram(programs[activeTab].value)}
+                  className="bg-[#8B0000] hover:bg-[#A30000] text-white rounded-none px-12 py-8 text-[10px] uppercase tracking-[0.2em] font-bold shadow-2xl transition-all duration-500 hover:tracking-[0.3em]"
+                >
                   Join Program
                 </Button>
               </div>

@@ -51,7 +51,11 @@ export function EventsSection() {
             </h2>
           </div>
           <div className="lg:col-span-4 lg:text-right">
-            <Button variant="link" className="text-[#121212] font-bold text-xs tracking-widest uppercase p-0 h-auto hover:text-[#C5A059] transition-colors">
+            <Button 
+              variant="link" 
+              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+              className="text-[#121212] font-bold text-xs tracking-widest uppercase p-0 h-auto hover:text-[#C5A059] transition-colors"
+            >
               {t('events.explore_calendar')} <ArrowUpRight className="ml-2 h-4 w-4" />
             </Button>
           </div>

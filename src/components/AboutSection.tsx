@@ -1,8 +1,12 @@
+import { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 import image_team from '../assets/sections/community-team.jpg';
 import { useLanguage } from '../contexts/LanguageContext';
 
 export function AboutSection() {
   const { t } = useLanguage();
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const isInView = useInView(titleRef, { once: true, margin: '-100px' });
 
   return (
     <section id="about" className="pt-24 sm:pt-32 pb-8 sm:pb-10 bg-white">
@@ -11,7 +15,14 @@ export function AboutSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
 
           {/* Visual Side: Overlapping Editorial Layers */}
-          <div className="lg:col-span-6 relative overflow-hidden lg:overflow-visible">
+          <div
+            className="lg:col-span-6 relative overflow-hidden lg:overflow-visible"
+            data-aos="fade-right"
+            data-aos-duration="1000"
+            data-aos-easing="ease-in-out"
+            data-aos-offset="20"
+            data-aos-mirror="true"
+          >
             <div className="relative z-10 border border-[#121212] p-2 bg-white transform -rotate-3 lg:-rotate-2 transition-transform duration-700 hover:rotate-0">
               <img
                 src={image_team}
@@ -40,9 +51,20 @@ export function AboutSection() {
               <span className="h-px flex-1 bg-gray-100"></span>
             </div>
 
-            <h2 className="text-4xl sm:text-5xl lg:text-5xl font-serif text-[#121212] leading-[1.1] mb-8 tracking-tight">
+            <motion.h2
+              ref={titleRef}
+              className="text-4xl sm:text-5xl lg:text-5xl font-serif text-[#121212] leading-[1.1] mb-8 tracking-tight"
+              initial={{ opacity: 0, x: 80 }}
+              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 80 }}
+              transition={{
+                type: 'spring',
+                stiffness: 80,
+                damping: 14,
+                mass: 1,
+              }}
+            >
               {t('about.title')}
-            </h2>
+            </motion.h2>
 
             <p className="text-xl text-gray-500 font-sans mb-12 leading-relaxed border-l-2 border-[#C5A059] pl-8 italic">
               {t('about.description')}

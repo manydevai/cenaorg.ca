@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import { Heart, Users, Briefcase, ArrowRight } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { Button } from './ui/button';
@@ -6,26 +7,20 @@ export function SupportSection() {
   const { t } = useLanguage();
 
   const handleDonation = () => {
-    // PayPal donation link disabled as requested
-    /*
-    const hostedButtonId = '7JF9ZTEN7WVJQ';
-    const paypalURL = `https://www.paypal.com/donate/?hosted_button_id=${hostedButtonId}&currency_code=CAD`;
-    window.open(paypalURL, '_blank', 'width=600,height=700,scrollbars=yes,resizable=yes');
-    */
-    console.log('Donation link currently disabled');
+    window.open('https://buy.stripe.com/bJe9AU5JO8p764W882eAg00', '_blank', 'noopener,noreferrer');
   };
 
   const supportTypes = [
     { icon: Heart, title: t('support.donation_title'), description: t('support.donation_description'), color: '#8B0000' },
     { icon: Users, title: t('support.volunteer_title'), description: t('support.volunteer_description'), color: '#C5A059' },
-    { icon: Briefcase, title: t('support.sponsor_title'), description: t('support.sponsor_description'), color: '#8B0000' }
+    { icon: Briefcase, title: t('support.sponsor_title'), description: t('support.sponsor_description'), color: '#8B0000' },
   ];
 
   const impactLevels = [
     { amount: '$50', impact: t('support.impact_50'), color: '#C5A059' },
     { amount: '$100', impact: t('support.impact_100'), color: '#121212' },
     { amount: '$250', impact: t('support.impact_250'), color: '#8B0000' },
-    { amount: '$500', impact: t('support.impact_500'), color: '#8B0000' }
+    { amount: '$500', impact: t('support.impact_500'), color: '#8B0000' },
   ];
 
   return (
@@ -36,12 +31,24 @@ export function SupportSection() {
 
           {/* Main Donation Impact: Editorial Column */}
           <div className="lg:col-span-7">
-            <span className="inline-block text-[#8B0000] font-sans text-[10px] tracking-[0.4em] uppercase font-bold mb-8">
+            <motion.span
+              initial={{ opacity: 0, x: 60 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6, ease: 'easeOut' }}
+              className="inline-block text-[#8B0000] font-sans text-[10px] tracking-[0.4em] uppercase font-bold mb-8"
+            >
               {t('support.badge')}
-            </span>
-            <h2 className="text-4xl sm:text-6xl font-serif text-[#121212] leading-tight mb-12 tracking-tight">
+            </motion.span>
+            <motion.h2
+              initial={{ opacity: 0, x: -100 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.9, ease: 'easeOut' }}
+              className="text-4xl sm:text-6xl font-serif text-[#121212] leading-tight mb-12 tracking-tight"
+            >
               {t('support.title')}
-            </h2>
+            </motion.h2>
             <p className="text-xl text-gray-500 font-sans mb-16 leading-relaxed italic border-l-2 border-[#C5A059] pl-8">
               {t('support.description')}
             </p>
@@ -50,10 +57,26 @@ export function SupportSection() {
               <h4 className="text-[10px] tracking-[0.3em] font-bold text-gray-400 uppercase mb-8">{t('support.financial_scaling')}</h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {impactLevels.map((level, index) => (
-                  <div key={index} className="p-8 border border-gray-100 flex flex-col justify-between group hover:border-[#C5A059] transition-all duration-500 cursor-default">
-                    <span className="block text-4xl font-serif mb-4 group-hover:text-[#8B0000] transition-colors" style={{ color: level.color }}>{level.amount}</span>
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, amount: 0.15 }}
+                    transition={{
+                      duration: 0.7,
+                      delay: index * 0.2,
+                      ease: 'easeOut',
+                    }}
+                    className="p-8 border border-gray-100 flex flex-col justify-between group hover:border-[#C5A059] transition-colors duration-500 cursor-default"
+                  >
+                    <span
+                      className="block text-4xl font-serif mb-4 group-hover:text-[#8B0000] transition-colors duration-500"
+                      style={{ color: level.color }}
+                    >
+                      {level.amount}
+                    </span>
                     <p className="text-xs text-gray-500 leading-relaxed uppercase tracking-wider font-bold">{level.impact}</p>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             </div>

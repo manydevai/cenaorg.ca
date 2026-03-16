@@ -1,9 +1,11 @@
 import { Check, ArrowRight } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { Button } from './ui/button';
+import { useStaggeredInView } from '../hooks/useInView';
 
 export function MembersSection() {
   const { t } = useLanguage();
+  const benefitsRef = useStaggeredInView({ staggerDelay: 120 });
 
   const benefits = [
     t('members.benefit1'),
@@ -29,11 +31,11 @@ export function MembersSection() {
               {t('members.title')}
             </h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10 border-t border-gray-100 pt-16">
+            <div ref={benefitsRef} className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10 border-t border-gray-100 pt-16">
               {benefits.map((benefit, index) => (
-                <div key={index} className="flex items-start space-x-6 group">
-                  <div className="h-6 w-6 border border-[#C5A059] flex items-center justify-center flex-shrink-0 group-hover:bg-[#C5A059] transition-all duration-500">
-                    <Check className="h-3 w-3 text-[#C5A059] group-hover:text-white transition-colors" />
+                <div key={index} data-inview className="flex items-start space-x-6 group">
+                  <div className="h-6 w-6 border border-[#C5A059] flex items-center justify-center flex-shrink-0 group-hover:bg-[#C5A059] inview-check transition-all duration-500">
+                    <Check className="h-3 w-3 text-[#C5A059] group-hover:text-white inview-check-icon transition-colors" />
                   </div>
                   <span className="text-sm text-gray-500 leading-relaxed font-sans">{benefit}</span>
                 </div>

@@ -7,11 +7,14 @@ import { ProgramsSection } from '../components/ProgramsSection';
 import { PartnersSection } from '../components/PartnersSection';
 import { MembersSection } from '../components/MembersSection';
 import { EventsSection } from '../components/EventsSection';
+import { FeaturedEventSection } from '../components/FeaturedEventSection';
 import { TeamSection } from '../components/TeamSection';
 import { SupportSection } from '../components/SupportSection';
 import { ChristmasGallerySection } from '../components/ChristmasGallerySection';
+import { RecentEventsLinkSection } from '../components/RecentEventsLinkSection';
 import { BlogSection } from '../components/BlogSection';
 
+// HomePage - CENA Main Landing Page
 export function HomePage() {
     return (
         <>
@@ -24,8 +27,10 @@ export function HomePage() {
             <PartnersSection />
             <MembersSection />
             <EventsSection />
+            <RecentEventsLinkSection />
             <TeamSection />
             <SupportSection />
+            <FeaturedEventSection />
             <ChristmasGallerySection />
             <BlogSection />
         </>

@@ -1,176 +1,28 @@
 ---
-description: Deployment command for production releases. Pre-flight checks and deployment execution.
+description: Deploy the CENA.ORG site to Surge.sh hosting after any code change or update
 ---
 
-# /deploy - Production Deployment
+# Deploy to Surge.sh
 
-$ARGUMENTS
+// turbo-all
 
----
+This workflow builds the project and deploys it to `cena-org.surge.sh`.
 
-## Purpose
+## Steps
 
-This command handles production deployment with pre-flight checks, deployment execution, and verification.
-
----
-
-## Sub-commands
-
-```
-/deploy            - Interactive deployment wizard
-/deploy check      - Run pre-deployment checks only
-/deploy preview    - Deploy to preview/staging
-/deploy production - Deploy to production
-/deploy rollback   - Rollback to previous version
+1. Build the production bundle:
+```powershell
+npm run build
 ```
 
----
-
-## Pre-Deployment Checklist
-
-Before any deployment:
-
-```markdown
-## 🚀 Pre-Deploy Checklist
-
-### Code Quality
-- [ ] No TypeScript errors (`npx tsc --noEmit`)
-- [ ] ESLint passing (`npx eslint .`)
-- [ ] All tests passing (`npm test`)
-
-### Security
-- [ ] No hardcoded secrets
-- [ ] Environment variables documented
-- [ ] Dependencies audited (`npm audit`)
-
-### Performance
-- [ ] Bundle size acceptable
-- [ ] No console.log statements
-- [ ] Images optimized
-
-### Documentation
-- [ ] README updated
-- [ ] CHANGELOG updated
-- [ ] API docs current
-
-### Ready to deploy? (y/n)
+2. Copy index.html to 200.html for SPA client-side routing support:
+```powershell
+Copy-Item "c:\Users\manym\Downloads\CENA-Projet\cena.org.dev\Cenaorg\build\index.html" "c:\Users\manym\Downloads\CENA-Projet\cena.org.dev\Cenaorg\build\200.html"
 ```
 
----
-
-## Deployment Flow
-
-```
-┌─────────────────┐
-│  /deploy        │
-└────────┬────────┘
-         │
-         ▼
-┌─────────────────┐
-│  Pre-flight     │
-│  checks         │
-└────────┬────────┘
-         │
-    Pass? ──No──► Fix issues
-         │
-        Yes
-         │
-         ▼
-┌─────────────────┐
-│  Build          │
-│  application    │
-└────────┬────────┘
-         │
-         ▼
-┌─────────────────┐
-│  Deploy to      │
-│  platform       │
-└────────┬────────┘
-         │
-         ▼
-┌─────────────────┐
-│  Health check   │
-│  & verify       │
-└────────┬────────┘
-         │
-         ▼
-┌─────────────────┐
-│  ✅ Complete    │
-└─────────────────┘
+3. Deploy the build folder to Surge:
+```powershell
+npx surge ./build cena-org.surge.sh
 ```
 
----
-
-## Output Format
-
-### Successful Deploy
-
-```markdown
-## 🚀 Deployment Complete
-
-### Summary
-- **Version:** v1.2.3
-- **Environment:** production
-- **Duration:** 47 seconds
-- **Platform:** Vercel
-
-### URLs
-- 🌐 Production: https://app.example.com
-- 📊 Dashboard: https://vercel.com/project
-
-### What Changed
-- Added user profile feature
-- Fixed login bug
-- Updated dependencies
-
-### Health Check
-✅ API responding (200 OK)
-✅ Database connected
-✅ All services healthy
-```
-
-### Failed Deploy
-
-```markdown
-## ❌ Deployment Failed
-
-### Error
-Build failed at step: TypeScript compilation
-
-### Details
-```
-error TS2345: Argument of type 'string' is not assignable...
-```
-
-### Resolution
-1. Fix TypeScript error in `src/services/user.ts:45`
-2. Run `npm run build` locally to verify
-3. Try `/deploy` again
-
-### Rollback Available
-Previous version (v1.2.2) is still active.
-Run `/deploy rollback` if needed.
-```
-
----
-
-## Platform Support
-
-| Platform | Command | Notes |
-|----------|---------|-------|
-| Vercel | `vercel --prod` | Auto-detected for Next.js |
-| Railway | `railway up` | Needs Railway CLI |
-| Fly.io | `fly deploy` | Needs flyctl |
-| Docker | `docker compose up -d` | For self-hosted |
-
----
-
-## Examples
-
-```
-/deploy
-/deploy check
-/deploy preview
-/deploy production --skip-tests
-/deploy rollback
-```
+4. Confirm the site is live at https://cena-org.surge.sh

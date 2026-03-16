@@ -80,11 +80,11 @@ export function HeroSection() {
 
               <div className="hidden lg:flex flex-wrap gap-6 pt-4">
                 <button
-                  className="bg-[#8B0000] hover:bg-[#A30000] text-white px-5 py-2.5 rounded-none text-xs tracking-[0.2em] font-bold uppercase transition-all duration-300 group flex items-center shadow-[0px_10px_30px_rgba(0,0,0,0.3)]"
+                  className="group relative inline-flex items-center gap-3 border border-white/50 hover:border-white bg-white/5 hover:bg-white/15 backdrop-blur-sm text-white px-6 py-2.5 text-[10px] tracking-[0.25em] font-bold uppercase transition-all duration-300"
                   onClick={() => document.getElementById('support')?.scrollIntoView({ behavior: 'smooth' })}
                 >
                   {t('hero.cta_primary')}
-                  <ArrowRight className="ml-3 h-4 w-4 transition-transform group-hover:translate-x-2" />
+                  <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1.5" />
                 </button>
               </div>
             </div>
@@ -93,11 +93,11 @@ export function HeroSection() {
           {/* Mobile Centered CTA Button - Pushed further down */}
           <div className="lg:hidden absolute -bottom-10 left-0 w-full flex justify-center px-6 z-30">
             <button
-              className="bg-[#8B0000] text-white w-full max-w-[220px] py-3.5 rounded-none text-[10px] tracking-[0.2em] font-bold uppercase flex items-center justify-center shadow-2xl"
+              className="group relative inline-flex items-center justify-center gap-2.5 border border-white/50 hover:border-white bg-white/5 hover:bg-white/15 backdrop-blur-sm text-white w-full max-w-[220px] py-3 text-[9px] tracking-[0.25em] font-bold uppercase transition-all duration-300"
               onClick={() => document.getElementById('support')?.scrollIntoView({ behavior: 'smooth' })}
             >
               {t('hero.cta_primary')}
-              <ArrowRight className="ml-2 h-3.5 w-3.5" />
+              <ArrowRight className="h-3 w-3 transition-transform duration-300 group-hover:translate-x-1" />
             </button>
           </div>
 

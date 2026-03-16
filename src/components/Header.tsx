@@ -1,14 +1,19 @@
-import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import { Button } from './ui/button';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { useLanguage } from '../contexts/LanguageContext';
 import { BRAND } from '../assets/images';
+import { Link, useLocation } from 'react-router-dom';
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isEventsOpen, setIsEventsOpen] = useState(false);
+  const [isMobileEventsOpen, setIsMobileEventsOpen] = useState(false);
+  const eventsRef = useRef<HTMLDivElement>(null);
   const { t } = useLanguage();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,23 +31,49 @@ export function Header() {
     }
   }, [isMenuOpen]);
 
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (eventsRef.current && !eventsRef.current.contains(e.target as Node)) {
+        setIsEventsOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
   const handleQuickDonation = () => {
-    // PayPal donation link disabled as requested
-    /*
-    const hostedButtonId = '7JF9ZTEN7WVJQ';
-    const paypalURL = `https://www.paypal.com/donate/?hosted_button_id=${hostedButtonId}&amount=50&currency_code=CAD`;
-    window.open(paypalURL, '_blank', 'width=600,height=700,scrollbars=yes,resizable=yes');
-    */
-    console.log('Donation link currently disabled');
+    window.open('https://buy.stripe.com/bJe9AU5JO8p764W882eAg00', '_blank', 'noopener,noreferrer');
   };
 
   const navigationItems = [
-    { name: t('navigation.home'), href: '#home' },
-    { name: t('navigation.about'), href: '#about' },
-    { name: t('navigation.programs'), href: '#programs' },
-    { name: t('navigation.events'), href: '#events' },
-    { name: t('navigation.contact'), href: '#contact' }
+    { name: t('navigation.home'), href: location.pathname === '/' ? '#home' : '/' },
+    { name: t('navigation.about'), href: '/#about', isAnchor: true },
+    { name: t('navigation.programs'), href: '/#programs', isAnchor: true },
+    { name: t('navigation.gallery'), href: '/gallery/black-consciousness-day' },
+    { name: t('navigation.blog'), href: '/blog' },
+    { name: t('navigation.contact'), href: '/#contact', isAnchor: true }
   ];
+
+  const getLinkClass = (href: string) => {
+    const isActive = location.pathname === href || (href === '/' && location.pathname === '/');
+    return `px-5 h-12 text-[10px] tracking-[0.3em] uppercase font-bold transition-all duration-300 relative group flex items-center ${
+      isScrolled 
+        ? (isActive ? 'text-[#C5A059]' : 'text-gray-600 hover:text-[#121212]') 
+        : (isActive ? 'text-[#C5A059]' : 'text-gray-400 hover:text-white')
+    }`;
+  };
+
+  const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith('/#') && location.pathname === '/') {
+      e.preventDefault();
+      const id = href.replace('/#', '');
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+      setIsMenuOpen(false);
+    }
+  };
 
   return (
     <header className={`fixed top-0 w-full z-50 transition-all duration-500 ${isScrolled ? 'bg-white pt-2 pb-4 border-b border-gray-100 shadow-sm' : 'bg-transparent pt-2 pb-8'}`}>
@@ -51,27 +82,97 @@ export function Header() {
 
           {/* Logo Section */}
           <div className="flex items-center flex-shrink-0">
-            <a href="#home" className="block relative group">
+            <Link to="/" className="block relative group">
               <img
                 src={BRAND.logo}
                 alt="CENA Logo"
                 className={`h-12 w-auto object-contain transition-all duration-500 ${isScrolled ? 'scale-90' : 'scale-110'}`}
               />
               <div className="absolute inset-x-0 -bottom-2 h-0.5 bg-[#C5A059] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
-            </a>
+            </Link>
           </div>
 
           {/* Center Navigation: Built for Focus */}
           <nav className="hidden lg:flex items-center space-x-1">
-            {navigationItems.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className={`px-5 py-2 text-[10px] tracking-[0.3em] uppercase font-bold transition-all duration-300 relative group ${isScrolled ? 'text-gray-600 hover:text-[#121212]' : 'text-gray-400 hover:text-white'}`}
+            {navigationItems.slice(0, 3).map((item) => (
+              item.isAnchor ? (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className={getLinkClass(item.href)}
+                  onClick={(e) => handleAnchorClick(e, item.href)}
+                >
+                  {item.name}
+                  <span className={`absolute bottom-0 left-5 right-5 h-px bg-[#C5A059] transition-transform duration-500 ${location.pathname === item.href ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
+                </a>
+              ) : (
+                <Link
+                  key={item.href}
+                  to={item.href}
+                  className={getLinkClass(item.href)}
+                >
+                  {item.name}
+                  <span className={`absolute bottom-0 left-5 right-5 h-px bg-[#C5A059] transition-transform duration-500 ${location.pathname === item.href ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
+                </Link>
+              )
+            ))}
+
+            {/* Events Dropdown */}
+            <div ref={eventsRef} className="relative h-12 flex items-center">
+              <button
+                onClick={() => setIsEventsOpen(!isEventsOpen)}
+                className={`${getLinkClass('/events')} gap-1 cursor-pointer`}
               >
-                {item.name}
-                <span className={`absolute bottom-0 left-5 right-5 h-px bg-[#C5A059] scale-x-0 group-hover:scale-x-100 transition-transform duration-500`}></span>
-              </a>
+                {t('navigation.events')}
+                <ChevronDown className={`w-3 h-3 transition-transform duration-300 ${isEventsOpen ? 'rotate-180' : ''}`} />
+                <span className="absolute bottom-0 left-5 right-5 h-px bg-[#C5A059] scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></span>
+              </button>
+
+              {isEventsOpen && (
+                <div className="absolute left-1/2 transform -translate-x-1/2 top-full mt-4 w-52 bg-white border border-gray-100 shadow-2xl z-50 animate-fade-in-down">
+                  <a
+                    href="/#events"
+                    onClick={(e) => {
+                      handleAnchorClick(e, '/#events');
+                      setIsEventsOpen(false);
+                    }}
+                    className="flex items-center w-full px-5 py-4 text-[10px] tracking-[0.2em] uppercase font-bold text-gray-600 hover:text-[#121212] hover:bg-gray-50 transition-colors"
+                  >
+                    {t('navigation.events')}
+                  </a>
+                  <div className="h-px bg-gray-100" />
+                  <Link
+                    to="/events/black-consciousness-day"
+                    onClick={() => setIsEventsOpen(false)}
+                    className="flex items-center w-full px-5 py-4 text-[10px] tracking-[0.2em] uppercase font-bold text-gray-600 hover:text-[#C5A059] hover:bg-gray-50 transition-colors"
+                  >
+                    {t('navigation.recent_events')}
+                  </Link>
+                </div>
+              )}
+            </div>
+
+            {navigationItems.slice(3).map((item) => (
+              item.isAnchor ? (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className={getLinkClass(item.href)}
+                  onClick={(e) => handleAnchorClick(e, item.href)}
+                >
+                  {item.name}
+                  <span className={`absolute bottom-0 left-5 right-5 h-px bg-[#C5A059] transition-transform duration-500 ${location.pathname === item.href ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
+                </a>
+              ) : (
+                <Link
+                  key={item.href}
+                  to={item.href}
+                  className={getLinkClass(item.href)}
+                >
+                  {item.name}
+                  <span className={`absolute bottom-0 left-5 right-5 h-px bg-[#C5A059] transition-transform duration-500 ${location.pathname === item.href ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
+                </Link>
+              )
             ))}
           </nav>
 
@@ -79,7 +180,11 @@ export function Header() {
           <div className="hidden lg:flex items-center space-x-8">
             <LanguageSwitcher isScrolled={isScrolled} />
             <Button
-              className="bg-[#8B0000] hover:bg-[#A30000] text-white rounded-none px-8 py-6 text-[10px] tracking-[0.2em] font-bold uppercase transition-all duration-500 shadow-[4px_4px_0px_0px_#C5A05933]"
+              className={`rounded-none px-6 h-10 text-[10px] tracking-[0.2em] font-bold uppercase transition-all duration-300 border backdrop-blur-sm ${
+                isScrolled 
+                  ? 'bg-transparent border-[#8B0000] text-[#8B0000] hover:bg-[#8B0000] hover:text-white shadow-[2px_2px_0px_0px_#8B000020]' 
+                  : 'bg-transparent border-white/50 text-white hover:border-white hover:bg-white/10 shadow-[2px_2px_0px_0px_#ffffff20]'
+              }`}
               onClick={handleQuickDonation}
             >
               {t('common.donate_now')}
@@ -101,20 +206,35 @@ export function Header() {
         {/* Mobile Navigation Panel */}
         {isMenuOpen && (
           <div className={`fixed inset-0 bg-white lg:hidden animate-fade-in-down z-[60] transition-all duration-500 ${isScrolled ? 'top-[64px]' : 'top-[80px]'}`}>
-            <nav className="flex flex-col items-center justify-center h-full space-y-8 px-6">
+            <nav className="flex flex-col items-center justify-center h-full space-y-8 px-6 overflow-y-auto pt-20 pb-10">
               {navigationItems.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  className="text-2xl font-serif text-[#121212] uppercase tracking-widest hover:text-[#C5A059] transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item.name}
-                </a>
+                item.isAnchor ? (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    className="text-2xl font-serif text-[#121212] uppercase tracking-widest hover:text-[#C5A059] transition-colors"
+                    onClick={(e) => {
+                      handleAnchorClick(e, item.href);
+                      setIsMenuOpen(false);
+                    }}
+                  >
+                    {item.name}
+                  </a>
+                ) : (
+                  <Link
+                    key={item.href}
+                    to={item.href}
+                    className={`text-2xl font-serif uppercase tracking-widest transition-colors ${location.pathname === item.href ? 'text-[#C5A059]' : 'text-[#121212] hover:text-[#C5A059]'}`}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
+                )
               ))}
+
               <div className="w-full h-px bg-gray-100 my-4"></div>
               <Button
-                className="w-full bg-[#8B0000] text-white rounded-none py-8 text-xs tracking-widest uppercase font-bold"
+                className="w-full bg-transparent border border-[#8B0000] text-[#8B0000] hover:bg-[#8B0000] hover:text-white rounded-none py-6 h-12 text-[10px] tracking-[0.2em] uppercase font-bold transition-all duration-300"
                 onClick={() => {
                   setIsMenuOpen(false);
                   handleQuickDonation();

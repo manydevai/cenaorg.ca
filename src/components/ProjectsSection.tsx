@@ -131,7 +131,7 @@ export function ProjectsSection() {
           <Button
             size="lg"
             className="bg-[#8B0000] hover:bg-[#A30000] text-white px-12 py-8 rounded-none text-[10px] uppercase tracking-[0.3em] font-bold transition-all duration-500 relative z-10 hover:tracking-[0.4em]"
-            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={() => window.open('https://buy.stripe.com/bJe9AU5JO8p764W882eAg00', '_blank', 'noopener,noreferrer')}
           >
             {t('common.donate_now')}
           </Button>

@@ -1,9 +1,8 @@
 import { useState } from 'react';
-import { Loader2, Check, ArrowRight, User, Calendar } from 'lucide-react';
+import { Loader2, Check, ArrowRight, Camera, User, Calendar } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
-import newPartnershipsImage from '../assets/sections/educational-partnerships.jpg';
-import networkingEveningImage from '../assets/sections/networking-evening.jpg';
 import { Button } from './ui/button';
+import { Link } from 'react-router-dom';
 
 export function BlogSection() {
   const { t } = useLanguage();
@@ -17,27 +16,30 @@ export function BlogSection() {
       descriptionKey: 'blog.article1_excerpt',
       authorKey: 'blog.article1_author',
       categoryKey: 'blog.article1_category',
-      date: 'Dec 15, 2025',
-      image: 'https://images.unsplash.com/photo-1709715357519-2a84f9765e57?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlbnRyZXByZW5ldXJzaGlwJTIwYnVzaW5lc3MlMjBzdGFydHVwfGVufDF8fHx8MTc2NTE0MzA3OXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-      id: "01"
+      date: 'Feb 28, 2026',
+      image: '/gallery/heritage-excellence-leaders.webp',
+      id: "01",
+      anchor: "heritage-excellence"
     },
     {
       titleKey: 'blog.article2_title',
       descriptionKey: 'blog.article2_excerpt',
       authorKey: 'blog.article2_author',
       categoryKey: 'blog.article2_category',
-      date: 'Dec 05, 2025',
-      image: networkingEveningImage,
-      id: "02"
+      date: 'Feb 20, 2026',
+      image: '/gallery/Mes-da-consciencianegra-cena-caf/cultura-africana.webp',
+      id: "02",
+      anchor: "black-consciousness"
     },
     {
       titleKey: 'blog.article3_title',
       descriptionKey: 'blog.article3_excerpt',
       authorKey: 'blog.article3_author',
       categoryKey: 'blog.article3_category',
-      date: 'Nov 20, 2025',
-      image: newPartnershipsImage,
-      id: "03"
+      date: 'Jan 2026',
+      image: '/gallery/cena-incubadora.jpg',
+      id: "03",
+      anchor: "cena-incubator"
     }
   ];
 
@@ -64,7 +66,7 @@ export function BlogSection() {
   };
 
   return (
-    <section id="blog" className="py-24 sm:py-32 bg-[#FBFBFB] overflow-hidden">
+    <section id="blog-section" className="py-24 sm:py-32 bg-[#FBFBFB] overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-16">
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 mb-24 items-end">
@@ -86,38 +88,52 @@ export function BlogSection() {
         {/* Editorial Feed */}
         <div className="space-y-0 border-t border-gray-200">
           {articles.map((article, index) => (
-            <div key={index} className="group py-12 lg:py-20 border-b border-gray-100 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center hover:bg-white transition-all duration-700 px-0 hover:px-8">
-              <div className="lg:col-span-1">
+            <Link 
+              key={index} 
+              to={`/blog#${article.anchor}`}
+              className="group py-12 lg:py-20 border-b border-gray-100 grid grid-cols-1 lg:grid-cols-12 gap-y-10 lg:gap-12 items-center hover:bg-white transition-all duration-700 px-0 hover:px-8 block"
+            >
+              {/* 01. ID — Top on mobile, Left on desktop */}
+              <div className="lg:col-span-1 order-1 flex justify-center lg:justify-start">
                 <span className="text-5xl font-serif text-gray-100 group-hover:text-[#C5A059] transition-colors duration-700">{article.id}</span>
               </div>
 
-              <div className="lg:col-span-3">
+              {/* 03. Title & Meta — Top of pictures on mobile, Right-center on desktop */}
+              <div className="lg:col-span-6 order-3 lg:order-3 space-y-4 px-4 lg:px-0 text-center lg:text-left">
+                <div className="flex items-center justify-center lg:justify-start space-x-6 text-[10px] tracking-widest uppercase font-bold text-gray-400">
+                  <span className="text-[#8B0000]">{t(article.categoryKey)}</span>
+                  <span>{article.date}</span>
+                </div>
+                <h3 className="text-2xl lg:text-3xl font-serif text-[#121212] group-hover:text-[#8B0000] transition-colors leading-[1.2]">
+                  {t(article.titleKey)}
+                </h3>
+              </div>
+
+              {/* 04. Featured Image — Below title on mobile, Left-center on desktop */}
+              <div className="lg:col-span-3 order-4 lg:order-2 px-4 lg:px-0">
                 <div className="relative aspect-video lg:aspect-square overflow-hidden border border-gray-100 p-2 bg-white">
                   <img
                     src={article.image}
                     alt={t(article.titleKey)}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-all duration-1000"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-all duration-1000"
                   />
                 </div>
               </div>
 
-              <div className="lg:col-span-6 space-y-4">
-                <div className="flex items-center space-x-6 text-[10px] tracking-widest uppercase font-bold text-gray-400">
-                  <span className="text-[#8B0000]">{t(article.categoryKey)}</span>
-                  <span>{article.date}</span>
-                </div>
-                <h3 className="text-2xl lg:text-3xl font-serif text-[#121212] group-hover:text-[#8B0000] transition-colors">{t(article.titleKey)}</h3>
-                <p className="text-gray-500 font-sans leading-loose text-sm line-clamp-2">
+              {/* 05. Excerpt — Below image on mobile, part of content column on desktop */}
+              <div className="lg:col-span-6 lg:col-start-5 order-5 lg:order-3 px-4 lg:px-0 -mt-4 lg:mt-0 text-center lg:text-left">
+                <p className="text-gray-400 font-sans leading-loose text-xs sm:text-sm line-clamp-3 lg:line-clamp-2 italic">
                   {t(article.descriptionKey)}
                 </p>
               </div>
 
-              <div className="lg:col-span-2 lg:text-right">
-                <Button variant="ghost" className="p-0 h-auto text-[10px] tracking-[0.3em] font-bold uppercase text-[#121212] group-hover:text-[#8B0000] transition-all">
+              {/* 06. Read Button — Bottom on mobile, Right on desktop */}
+              <div className="lg:col-span-2 order-6 lg:order-4 lg:text-right flex justify-center lg:justify-end px-4 lg:px-0">
+                <span className="inline-flex items-center text-[10px] tracking-[0.3em] font-bold uppercase text-[#121212] group-hover:text-[#8B0000] transition-all">
                   {t('blog.read_entry')} <ArrowRight className="ml-3 h-4 w-4 transition-transform group-hover:translate-x-2" />
-                </Button>
+                </span>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 

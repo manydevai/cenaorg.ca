@@ -60,20 +60,38 @@ export function ImpactStatsSection() {
                 </div>
             </div>
 
-            {/* The "Cinematic Transit" Team Photo - Re-optimized Parallax Illustration */}
+            {/* The "Cinematic Transit" Team Photo */}
+            {/* clip-path:inset(0) + position:fixed = cinematic fixed background on mobile */}
             <div
-                className="relative z-0 w-full h-[450px] lg:h-[70vh] border-t border-b border-white/5 overflow-hidden"
+                className="relative z-0 w-full h-[350px] md:h-[400px] lg:h-[70vh] border-t border-b border-white/5 overflow-hidden"
+                style={{ clipPath: 'inset(0)' }}
             >
-                {/* Static Background Layer using bg-fixed for the visual illusion */}
+                {/* Desktop: bg-fixed positions relative to VIEWPORT */}
                 <div
-                    className="absolute inset-0 w-full h-full bg-no-repeat bg-cover bg-fixed"
+                    className="absolute inset-0 w-full h-full bg-no-repeat bg-fixed hidden lg:block"
                     style={{
                         backgroundImage: `url(${TEAM.teamPhoto})`,
-                        backgroundPosition: 'center 20%'
+                        backgroundSize: '95% auto',
+                        backgroundPosition: 'center 8vh',
                     }}
                 />
 
-                {/* Subtle Cinematic Fades at top/bottom for the transition illusion */}
+                {/* Mobile: position:fixed bg-image clipped by clip-path on parent */}
+                {/* backface-visibility: hidden promotes GPU layer without breaking position:fixed */}
+                <div
+                    className="lg:hidden fixed inset-0 w-full h-full"
+                    style={{
+                        backgroundImage: `url(${TEAM.teamPhoto})`,
+                        backgroundSize: '100% auto',
+                        backgroundPosition: '50% 30%',
+                        backgroundRepeat: 'no-repeat',
+                        backgroundColor: 'white',
+                        WebkitBackfaceVisibility: 'hidden',
+                        backfaceVisibility: 'hidden',
+                    }}
+                />
+
+                {/* Subtle Cinematic Fades */}
                 <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-white/10 pointer-events-none"></div>
             </div>
         </section>
