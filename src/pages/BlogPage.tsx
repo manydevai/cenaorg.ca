@@ -174,11 +174,11 @@ export function BlogPage() {
       
       <main className="pt-32 pb-24">
         {/* Hero Section */}
-        <section className="px-6 sm:px-12 lg:px-16 max-w-7xl mx-auto mb-20">
+        <section className="px-6 sm:px-12 lg:px-16 max-w-7xl mx-auto mb-0">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="border-b border-gray-100 pb-16"
+            className="border-b border-gray-100 pb-12"
           >
             <div className="mb-4">
               <span className="text-[10px] tracking-[0.6em] uppercase font-sans font-bold text-gray-400">BLOG</span>
@@ -206,7 +206,9 @@ export function BlogPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="group py-16 lg:py-24 border-b border-gray-100 flex flex-col gap-8 transition-all duration-700 -mx-6 px-6 sm:-mx-12 sm:px-12 lg:-mx-16 lg:px-16 hover:bg-[#FBFBFB]"
+                className={`group border-b border-gray-100 flex flex-col gap-8 transition-all duration-700 -mx-6 px-6 sm:-mx-12 sm:px-12 lg:-mx-16 lg:px-16 hover:bg-[#FBFBFB] ${
+                  index === 0 ? 'pt-12 pb-16 lg:pt-16 lg:pb-24' : 'py-16 lg:py-24'
+                }`}
               >
                 {/* 01. TOP: Title Block (Meta, Title, Sub-headline) */}
                 <div className="space-y-4 max-w-5xl">
