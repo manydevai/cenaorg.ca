@@ -208,43 +208,29 @@ export function BlogPage() {
                 transition={{ delay: index * 0.1 }}
                 className="group py-16 lg:py-24 border-b border-gray-100 flex flex-col gap-8 transition-all duration-700 -mx-6 px-6 sm:-mx-12 sm:px-12 lg:-mx-16 lg:px-16 hover:bg-[#FBFBFB]"
               >
-                {/* 01. TOP: Title Block (Number, Date, Title, Sub-headline) */}
-                <div className="space-y-6">
-                  <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-                    <div className="flex items-end gap-6">
-                      <span className="text-6xl md:text-8xl font-serif text-gray-100 group-hover:text-[#C5A059] transition-colors duration-700 leading-none">
-                        {article.id}
-                      </span>
-                      <div className="space-y-2">
-                        <div className="flex flex-wrap items-center gap-4 text-[10px] tracking-widest uppercase font-bold text-gray-400">
-                          <span className="text-[#8B0000]">{t(article.categoryKey)}</span>
-                          <span className="w-1 h-1 bg-gray-300 rounded-full"></span>
-                          <span>{t(article.dateKey)}</span>
-                        </div>
-                        <h2 className="text-3xl lg:text-5xl font-serif font-bold text-[#121212] group-hover:text-[#8B0000] transition-colors leading-tight">
-                          {t(article.titleKey)}
-                        </h2>
-                      </div>
-                    </div>
+                {/* 01. TOP: Title Block (Meta, Title, Sub-headline) */}
+                <div className="space-y-4 max-w-5xl">
+                  <div className="flex flex-wrap items-center gap-3 text-[9px] tracking-[0.4em] uppercase font-medium text-gray-400">
+                    <span className="text-[#8B0000] font-bold">{t(article.categoryKey)}</span>
+                    <span className="w-1 h-1 bg-gray-200 rounded-full"></span>
+                    <span>{t(article.dateKey)}</span>
                   </div>
                   
-                  {article.subtitleKey && (
-                    <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                      <p className="text-[#C5A059] font-sans text-xs sm:text-sm tracking-[0.2em] uppercase font-bold">
+                  <div className="space-y-3">
+                    <h2 className="text-xl md:text-2xl lg:text-3xl font-serif font-bold text-[#121212] group-hover:text-[#8B0000] transition-colors leading-tight tracking-tight uppercase">
+                      {t(article.titleKey)}
+                    </h2>
+                    
+                    {article.subtitleKey && (
+                      <p className="text-[#C5A059] font-sans text-[10px] sm:text-xs tracking-[0.3em] uppercase font-bold">
                         {t(article.subtitleKey)}
                       </p>
-                      <div className="hidden md:flex items-center gap-3">
-                        <div className="h-px w-6 bg-gray-200" />
-                        <span className="text-[10px] tracking-[0.2em] uppercase font-bold text-gray-400 italic">
-                          {t(article.authorKey)}
-                        </span>
-                      </div>
-                    </div>
-                  )}
+                    )}
+                  </div>
                 </div>
 
                 {/* VISUAL DIVIDER: Red Line */}
-                <div className="h-0.5 w-full bg-[#8B0000]" />
+                <div className="h-px w-full bg-[#8B0000] opacity-80" />
 
                 {/* 02. MIDDLE: Featured Image */}
                 <div className="max-w-5xl">
