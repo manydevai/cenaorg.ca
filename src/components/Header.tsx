@@ -54,6 +54,17 @@ export function Header() {
     { name: t('navigation.contact'), href: '/#contact', isAnchor: true }
   ];
 
+  const mobileNavigationItems = [
+    { name: t('navigation.home'), href: location.pathname === '/' ? '#home' : '/' },
+    { name: t('navigation.about'), href: '/#about', isAnchor: true },
+    { name: t('navigation.programs'), href: '/#programs', isAnchor: true },
+    { name: t('navigation.gallery'), href: '/gallery/black-consciousness-day' },
+    { name: t('navigation.events'), href: '/#events', isAnchor: true },
+    { name: t('navigation.recent_events'), href: '/events/black-consciousness-day' },
+    { name: t('navigation.blog'), href: '/blog' },
+    { name: t('navigation.contact'), href: '/#contact', isAnchor: true }
+  ];
+
   const getLinkClass = (href: string) => {
     const isActive = location.pathname === href || (href === '/' && location.pathname === '/');
     return `px-5 h-12 text-[10px] tracking-[0.3em] uppercase font-bold transition-all duration-300 relative group flex items-center ${
@@ -76,7 +87,7 @@ export function Header() {
   };
 
   return (
-    <header className={`fixed top-0 w-full z-50 transition-all duration-500 ${isScrolled ? 'bg-white pt-2 pb-4 border-b border-gray-100 shadow-sm' : 'bg-transparent pt-2 pb-8'}`}>
+    <header className={`fixed top-0 w-full transition-all duration-500 ${isMenuOpen ? 'z-[10000] bg-white pt-2 pb-4 shadow-sm' : `z-50 ${isScrolled ? 'bg-white pt-2 pb-4 border-b border-gray-100 shadow-sm' : 'bg-transparent pt-2 pb-8'}`}`}>
       <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-16">
         <div className="flex justify-between items-center h-12">
 
@@ -86,7 +97,7 @@ export function Header() {
               <img
                 src={BRAND.logo}
                 alt="CENA Logo"
-                className={`h-12 w-auto object-contain transition-all duration-500 ${isScrolled ? 'scale-90' : 'scale-110'}`}
+                className={`h-12 w-auto object-contain transition-all duration-500 ${isScrolled || isMenuOpen ? 'scale-90' : 'scale-110'}`}
               />
               <div className="absolute inset-x-0 -bottom-2 h-0.5 bg-[#C5A059] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
             </Link>
@@ -192,11 +203,11 @@ export function Header() {
           </div>
 
           {/* Toggle (Mobile) */}
-          <div className="lg:hidden flex items-center space-x-4">
-            <LanguageSwitcher isScrolled={isScrolled} />
+          <div className="lg:hidden flex items-center space-x-4 relative z-[10001]">
+            <LanguageSwitcher isScrolled={isScrolled || isMenuOpen} />
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className={`p-2 ${isScrolled ? 'text-[#121212]' : 'text-white'}`}
+              className={`p-2 ${isScrolled || isMenuOpen ? 'text-[#121212]' : 'text-white'}`}
             >
               {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
@@ -205,9 +216,20 @@ export function Header() {
 
         {/* Mobile Navigation Panel */}
         {isMenuOpen && (
-          <div className={`fixed inset-0 bg-white lg:hidden animate-fade-in-down z-[60] transition-all duration-500 ${isScrolled ? 'top-[64px]' : 'top-[80px]'}`}>
-            <nav className="flex flex-col items-center justify-center h-full space-y-8 px-6 overflow-y-auto pt-20 pb-10">
-              {navigationItems.map((item) => (
+          <div 
+            className="fixed lg:hidden animate-fade-in-down z-[9999] transition-all duration-500"
+            style={{ 
+              backgroundColor: '#FFFFFF', 
+              position: 'fixed', 
+              top: 0, 
+              left: 0, 
+              width: '100%', 
+              height: '100vh',
+              overflowY: 'auto'
+            }}
+          >
+            <nav className="flex flex-col items-center justify-center min-h-full space-y-8 px-6 pt-24 pb-12">
+              {mobileNavigationItems.map((item) => (
                 item.isAnchor ? (
                   <a
                     key={item.href}
