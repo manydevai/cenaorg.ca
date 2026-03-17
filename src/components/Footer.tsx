@@ -300,9 +300,9 @@ export function Footer() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="w-full md:w-auto grid grid-cols-1 sm:grid-cols-2 gap-12 sm:gap-16 lg:gap-32"
             >
-              <div className="flex flex-col items-start">
+              <div className="flex flex-col items-center md:items-start">
                 <span className="block text-[10px] tracking-[0.3em] font-extrabold text-[#121212] uppercase mb-8">{t('footer.quick_links')}</span>
-                <ul className="space-y-4">
+                <ul className="space-y-4 text-center md:text-left">
                   {quickLinks.map((link: any, idx) => (
                     <li key={idx}>
                       {link.isInternal ? (
@@ -319,9 +319,9 @@ export function Footer() {
                 </ul>
               </div>
 
-              <div className="flex flex-col items-start space-y-8">
+              <div className="flex flex-col items-center md:items-start space-y-8">
                 <span className="block text-[10px] tracking-[0.3em] font-extrabold text-[#121212] uppercase mb-0">{t('footer.follow_us')}</span>
-                <div className="flex justify-start space-x-6">
+                <div className="flex justify-center md:justify-start space-x-6">
                   {socialLinks.map((link, idx) => (
                     <a
                       key={idx}
