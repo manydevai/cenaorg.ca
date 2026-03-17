@@ -340,20 +340,20 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="w-full bg-[#121212] border-t border-white/5">
-        <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-16 py-8 flex items-center justify-between gap-4">
-          {/* Left spacer for balance */}
-          <div className="hidden sm:block w-[180px]" />
-
-          {/* Centered Copyright */}
-          <p className="flex-1 text-center text-[9px] tracking-[0.25em] text-white/40 uppercase font-bold whitespace-nowrap overflow-hidden text-ellipsis">
-            {t('footer.copyright')}
+      <div className="w-full bg-[#121212] border-t border-white/5 py-12">
+        <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-16 flex flex-col items-center justify-center gap-2 text-center">
+          <p className="text-[10px] md:text-[11px] tracking-[0.3em] text-white/40 uppercase font-bold">
+            © 2026 CENA
           </p>
-
-          {/* Right Signature */}
-          <span className="text-[9px] tracking-[0.25em] font-bold uppercase text-white/60 hover:text-white transition-colors cursor-default whitespace-nowrap w-[180px] text-right hidden sm:block">
-            {t('footer.built_with_love')}
-          </span>
+          <p className="text-[10px] md:text-[11px] tracking-[0.2em] text-white/40 uppercase font-bold">
+            Comunidade de Educação e Networking Angolana.
+          </p>
+          <p className="text-[10px] md:text-[11px] tracking-[0.3em] text-white/40 uppercase font-bold">
+            Tous droits réservés.
+          </p>
+          <p className="text-[10px] md:text-[11px] tracking-[0.3em] text-white/60 uppercase font-bold mt-2">
+            Powered by ProjectionAI
+          </p>
         </div>
       </div>
     </footer>
