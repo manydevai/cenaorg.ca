@@ -206,20 +206,51 @@ export function BlogPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="group py-12 lg:py-20 border-b border-gray-100 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start hover:bg-[#FBFBFB] transition-all duration-700 -mx-6 px-6 sm:-mx-12 sm:px-12 lg:-mx-16 lg:px-16"
+                className="group py-16 lg:py-24 border-b border-gray-100 flex flex-col gap-8 transition-all duration-700 -mx-6 px-6 sm:-mx-12 sm:px-12 lg:-mx-16 lg:px-16 hover:bg-[#FBFBFB]"
               >
-                {/* Number */}
-                <div className="lg:col-span-1">
-                  <span className="text-5xl font-serif text-gray-100 group-hover:text-[#C5A059] transition-colors duration-700">
-                    {article.id}
-                  </span>
+                {/* 01. TOP: Title Block (Number, Date, Title, Sub-headline) */}
+                <div className="space-y-6">
+                  <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+                    <div className="flex items-end gap-6">
+                      <span className="text-6xl md:text-8xl font-serif text-gray-100 group-hover:text-[#C5A059] transition-colors duration-700 leading-none">
+                        {article.id}
+                      </span>
+                      <div className="space-y-2">
+                        <div className="flex flex-wrap items-center gap-4 text-[10px] tracking-widest uppercase font-bold text-gray-400">
+                          <span className="text-[#8B0000]">{t(article.categoryKey)}</span>
+                          <span className="w-1 h-1 bg-gray-300 rounded-full"></span>
+                          <span>{t(article.dateKey)}</span>
+                        </div>
+                        <h2 className="text-3xl lg:text-5xl font-serif font-bold text-[#121212] group-hover:text-[#8B0000] transition-colors leading-tight">
+                          {t(article.titleKey)}
+                        </h2>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {article.subtitleKey && (
+                    <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                      <p className="text-[#C5A059] font-sans text-xs sm:text-sm tracking-[0.2em] uppercase font-bold">
+                        {t(article.subtitleKey)}
+                      </p>
+                      <div className="hidden md:flex items-center gap-3">
+                        <div className="h-px w-6 bg-gray-200" />
+                        <span className="text-[10px] tracking-[0.2em] uppercase font-bold text-gray-400 italic">
+                          {t(article.authorKey)}
+                        </span>
+                      </div>
+                    </div>
+                  )}
                 </div>
 
-                {/* Image */}
-                <div className="lg:col-span-3">
+                {/* VISUAL DIVIDER: Red Line */}
+                <div className="h-0.5 w-full bg-[#8B0000]" />
+
+                {/* 02. MIDDLE: Featured Image */}
+                <div className="max-w-5xl">
                   <a 
                     href={article.image}
-                    className="block relative aspect-[4/3] overflow-hidden border border-gray-100 p-2 bg-white cursor-zoom-in group/img"
+                    className="block relative aspect-video md:aspect-[21/9] overflow-hidden border border-gray-100 p-2 bg-white cursor-zoom-in group/img"
                     onClick={(e) => {
                         e.preventDefault();
                         setLightboxImage(article.image);
@@ -230,38 +261,22 @@ export function BlogPage() {
                       alt={t(article.titleKey)}
                       className="w-full h-full object-cover group-hover:scale-105 transition-all duration-1000"
                     />
-                    <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
-                        <Camera className="w-3 h-3 text-[#C5A059]" />
+                    <div className="absolute top-6 right-6 bg-white/90 backdrop-blur-sm p-3 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
+                        <Camera className="w-4 h-4 text-[#C5A059]" />
                     </div>
                   </a>
                 </div>
 
-                {/* Content */}
+                {/* 03. BOTTOM: Article Narrative/Text */}
                 <div 
-                  className="lg:col-span-6 space-y-4 cursor-pointer group/content"
+                  className="max-w-4xl space-y-6 cursor-pointer group/content"
                   onClick={() => setExpandedArticle(expandedArticle === article.id ? null : article.id)}
                 >
-                  <div className="flex flex-wrap items-center gap-6 text-[10px] tracking-widest uppercase font-bold text-gray-400">
-                    <span className="text-[#8B0000]">{t(article.categoryKey)}</span>
-                    <span className="w-1 h-1 bg-gray-300 rounded-full"></span>
-                    <span>{t(article.dateKey)}</span>
-                  </div>
-                  
-                  <div className="group/title">
-                    <h2 className="text-3xl lg:text-4xl font-serif font-bold text-[#121212] group-hover/content:text-[#8B0000] transition-colors leading-tight">
-                        {t(article.titleKey)}
-                    </h2>
-                    {article.subtitleKey && (
-                        <p className="text-[#C5A059] font-sans text-xs tracking-widest uppercase mt-2 font-bold">
-                            {t(article.subtitleKey)}
-                        </p>
-                    )}
-                    <div className="mt-4 flex items-center gap-3">
-                        <div className="h-px w-6 bg-gray-200" />
-                        <span className="text-[10px] tracking-[0.2em] uppercase font-bold text-gray-400 italic">
-                            {t(article.authorKey)}
-                        </span>
-                    </div>
+                  <div className="md:hidden flex items-center gap-3 mb-4">
+                    <div className="h-px w-6 bg-gray-200" />
+                    <span className="text-[10px] tracking-[0.2em] uppercase font-bold text-gray-400 italic">
+                      {t(article.authorKey)}
+                    </span>
                   </div>
 
                   <AnimatePresence mode="wait">
@@ -271,10 +286,10 @@ export function BlogPage() {
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: 'auto', opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                         className="overflow-hidden"
                       >
-                        <div className="text-gray-600 font-sans leading-relaxed text-base pt-6 border-t border-gray-100 mt-6 whitespace-pre-wrap">
+                        <div className="text-gray-700 font-sans leading-relaxed text-lg whitespace-pre-wrap">
                           {t(article.excerptKey)}
                         </div>
                       </motion.div>
@@ -285,7 +300,7 @@ export function BlogPage() {
                         animate={{ opacity: 1 }}
                         className="relative"
                       >
-                        <p className="text-gray-500 font-sans leading-relaxed text-sm line-clamp-3 group-hover/content:text-gray-800 transition-colors">
+                        <p className="text-gray-500 font-sans leading-relaxed text-base line-clamp-4 group-hover/content:text-gray-800 transition-colors">
                           {t(article.excerptKey)}
                         </p>
                       </motion.div>
@@ -293,19 +308,16 @@ export function BlogPage() {
                   </AnimatePresence>
 
                   <div className="pt-4 flex items-center">
-                    <span className="inline-flex items-center text-[10px] tracking-[0.3em] font-bold uppercase text-[#121212] group-hover/content:text-[#8B0000] transition-all">
+                    <span className="inline-flex items-center text-[11px] tracking-[0.4em] font-bold uppercase text-[#121212] group-hover/content:text-[#8B0000] transition-all">
                       {expandedArticle === article.id ? t('common.show_less') : (
                         <>
                           {t('blog.read_entry')} 
-                          <ArrowRight className="ml-3 h-4 w-4 transition-transform duration-500 group-hover/content:translate-x-2" />
+                          <ArrowRight className="ml-4 h-4 w-4 transition-transform duration-500 group-hover/content:translate-x-3" />
                         </>
                       )} 
                     </span>
                   </div>
                 </div>
-
-                {/* Empty Action spacer for grid alignment */}
-                <div className="lg:col-span-2" />
               </motion.div>
             ))}
           </div>
