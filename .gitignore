@@ -8,7 +8,7 @@ node_modules
 dist/
 build/
 
-# Raw asset folders (originals, not used by the app)
+# Raw asset folders (originals, not used by the app directly)
 BLACK CONSCIOUSNESS DAY/
 Mes-da-consciencianegra-cena-caf/
 christmas-campaingn/
@@ -18,6 +18,11 @@ logos-partners/
 # Deployment scripts for other platforms
 deploy-surge.bat
 copyImg.js
+
+# Documentation / notes (not needed for deployment)
+DEPLOYMENT.md
+DESIGN.md
+sizes.txt
 
 # Environment
 .env
