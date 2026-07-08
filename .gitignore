@@ -1,12 +1,23 @@
 node_modules
 
-# AI Agent scripts (local development tools only - not needed for deployment)
+# AI Agent scripts (local development tools only)
 .agent/
 .agents/
 
-# Build outputs
+# Build outputs (Hostinger builds on their server)
 dist/
 build/
+
+# Raw asset folders (originals, not used by the app)
+BLACK CONSCIOUSNESS DAY/
+Mes-da-consciencianegra-cena-caf/
+christmas-campaingn/
+image-asset/
+logos-partners/
+
+# Deployment scripts for other platforms
+deploy-surge.bat
+copyImg.js
 
 # Environment
 .env
