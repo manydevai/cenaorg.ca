@@ -15,11 +15,13 @@ christmas-campaingn/
 image-asset/
 logos-partners/
 
-# Deployment scripts for other platforms
+# Deployment configs for other platforms (not used - Hostinger only)
+firebase.json
+netlify.toml
 deploy-surge.bat
 copyImg.js
 
-# Documentation / notes (not needed for deployment)
+# Documentation / notes
 DEPLOYMENT.md
 DESIGN.md
 sizes.txt
