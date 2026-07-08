@@ -1,0 +1,11 @@
+# Tell GitHub Linguist to ignore AI agent scripts for language detection
+.agent/** linguist-vendored
+.agents/** linguist-vendored
+
+# Mark build outputs as generated
+build/** linguist-generated
+dist/** linguist-generated
+
+# Ensure TypeScript/TSX is recognized as the primary language
+*.ts linguist-detectable=true
+*.tsx linguist-detectable=true
