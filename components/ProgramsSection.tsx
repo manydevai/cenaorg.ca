@@ -20,7 +20,7 @@ export function ProgramsSection() {
     if (intervalRef.current) return;
     intervalRef.current = setInterval(() => {
       setActiveTab(prev => (prev + 1) % TOTAL_PROGRAMS);
-    }, 1000);
+    }, 1200);
   }, []);
 
   const stopCycling = useCallback(() => {

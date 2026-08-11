@@ -52,7 +52,7 @@ export const BackpackCampaignSection: React.FC<BackpackCampaignSectionProps> = (
     window.open('https://buy.stripe.com/bJe9AU5JO8p764W882eAg00', '_blank', 'noopener,noreferrer');
   };
 
-  const campaignUrl = 'https://www.cena-ca.org/#backpack-campaign';
+  const campaignUrl = 'https://www.cena-ca.org/';
   const shareText = language === 'fr'
     ? 'Aidez un enfant à commencer l\'année scolaire avec dignité. Programme de sacs à dos CENA 🎒'
     : language === 'en'
