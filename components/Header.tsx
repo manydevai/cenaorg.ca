@@ -49,6 +49,7 @@ export function Header() {
     { name: t('navigation.home'), href: location.pathname === '/' ? '#home' : '/' },
     { name: t('navigation.about'), href: '/#about', isAnchor: true },
     { name: t('navigation.programs'), href: '/#programs', isAnchor: true },
+    { name: t('navigation.testimonials'), href: '/#testimonials', isAnchor: true },
     { name: t('navigation.gallery'), href: '/gallery/black-consciousness-day' },
     { name: t('navigation.blog'), href: '/blog' },
     { name: t('navigation.contact'), href: '/#contact', isAnchor: true }
@@ -58,6 +59,7 @@ export function Header() {
     { name: t('navigation.home'), href: location.pathname === '/' ? '#home' : '/' },
     { name: t('navigation.about'), href: '/#about', isAnchor: true },
     { name: t('navigation.programs'), href: '/#programs', isAnchor: true },
+    { name: t('navigation.testimonials'), href: '/#testimonials', isAnchor: true },
     { name: t('navigation.gallery'), href: '/gallery/black-consciousness-day' },
     { name: t('navigation.events'), href: '/#events', isAnchor: true },
     { name: t('navigation.recent_events'), href: '/events/black-consciousness-day' },
@@ -67,7 +69,7 @@ export function Header() {
 
   const getLinkClass = (href: string) => {
     const isActive = location.pathname === href || (href === '/' && location.pathname === '/');
-    return `px-5 h-12 text-[10px] tracking-[0.3em] uppercase font-bold transition-all duration-300 relative group flex items-center ${
+    return `px-2 xl:px-3.5 h-12 text-[10px] xl:text-[11px] tracking-[0.12em] xl:tracking-[0.18em] uppercase font-bold transition-all duration-300 relative group flex items-center whitespace-nowrap ${
       isScrolled 
         ? (isActive ? 'text-[#C5A059]' : 'text-gray-600 hover:text-[#121212]') 
         : (isActive ? 'text-[#C5A059]' : 'text-gray-400 hover:text-white')
@@ -88,23 +90,23 @@ export function Header() {
 
   return (
     <header className={`fixed top-0 w-full transition-all duration-500 ${isMenuOpen ? 'z-[10000] bg-white pt-2 pb-4 shadow-sm' : `z-50 ${isScrolled ? 'bg-white pt-2 pb-4 border-b border-gray-100 shadow-sm' : 'bg-transparent pt-2 pb-8'}`}`}>
-      <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
         <div className="flex justify-between items-center h-12">
 
           {/* Logo Section */}
-          <div className="flex items-center flex-shrink-0">
+          <div className="flex items-center flex-shrink-0 mr-2 xl:mr-4">
             <Link to="/" className="block relative group">
               <img
                 src={BRAND.logo}
                 alt="CENA Logo"
-                className={`h-12 w-auto object-contain transition-all duration-500 ${isScrolled || isMenuOpen ? 'scale-90' : 'scale-110'}`}
+                className={`h-10 sm:h-12 w-auto object-contain transition-all duration-500 ${isScrolled || isMenuOpen ? 'scale-90' : 'scale-100 xl:scale-110'}`}
               />
               <div className="absolute inset-x-0 -bottom-2 h-0.5 bg-[#C5A059] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
             </Link>
           </div>
 
           {/* Center Navigation: Built for Focus */}
-          <nav className="hidden lg:flex items-center space-x-1">
+          <nav className="hidden lg:flex items-center space-x-0.5 xl:space-x-1 flex-wrap-nowrap">
             {navigationItems.slice(0, 3).map((item) => (
               item.isAnchor ? (
                 <a
@@ -114,7 +116,7 @@ export function Header() {
                   onClick={(e) => handleAnchorClick(e, item.href)}
                 >
                   {item.name}
-                  <span className={`absolute bottom-0 left-5 right-5 h-px bg-[#C5A059] transition-transform duration-500 ${location.pathname === item.href ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
+                  <span className={`absolute bottom-0 left-2 right-2 xl:left-3.5 xl:right-3.5 h-px bg-[#C5A059] transition-transform duration-500 ${location.pathname === item.href ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
                 </a>
               ) : (
                 <Link
@@ -123,7 +125,7 @@ export function Header() {
                   className={getLinkClass(item.href)}
                 >
                   {item.name}
-                  <span className={`absolute bottom-0 left-5 right-5 h-px bg-[#C5A059] transition-transform duration-500 ${location.pathname === item.href ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
+                  <span className={`absolute bottom-0 left-2 right-2 xl:left-3.5 xl:right-3.5 h-px bg-[#C5A059] transition-transform duration-500 ${location.pathname === item.href ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
                 </Link>
               )
             ))}
@@ -136,7 +138,7 @@ export function Header() {
               >
                 {t('navigation.events')}
                 <ChevronDown className={`w-3 h-3 transition-transform duration-300 ${isEventsOpen ? 'rotate-180' : ''}`} />
-                <span className="absolute bottom-0 left-5 right-5 h-px bg-[#C5A059] scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></span>
+                <span className="absolute bottom-0 left-2 right-2 xl:left-3.5 xl:right-3.5 h-px bg-[#C5A059] scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></span>
               </button>
 
               {isEventsOpen && (
@@ -147,7 +149,7 @@ export function Header() {
                       handleAnchorClick(e, '/#events');
                       setIsEventsOpen(false);
                     }}
-                    className="flex items-center w-full px-5 py-4 text-[10px] tracking-[0.2em] uppercase font-bold text-gray-600 hover:text-[#121212] hover:bg-gray-50 transition-colors"
+                    className="flex items-center w-full px-5 py-4 text-[10px] tracking-[0.2em] uppercase font-bold text-gray-600 hover:text-[#121212] hover:bg-gray-50 transition-colors whitespace-nowrap"
                   >
                     {t('navigation.events')}
                   </a>
@@ -155,7 +157,7 @@ export function Header() {
                   <Link
                     to="/events/black-consciousness-day"
                     onClick={() => setIsEventsOpen(false)}
-                    className="flex items-center w-full px-5 py-4 text-[10px] tracking-[0.2em] uppercase font-bold text-gray-600 hover:text-[#C5A059] hover:bg-gray-50 transition-colors"
+                    className="flex items-center w-full px-5 py-4 text-[10px] tracking-[0.2em] uppercase font-bold text-gray-600 hover:text-[#C5A059] hover:bg-gray-50 transition-colors whitespace-nowrap"
                   >
                     {t('navigation.recent_events')}
                   </Link>
@@ -172,7 +174,7 @@ export function Header() {
                   onClick={(e) => handleAnchorClick(e, item.href)}
                 >
                   {item.name}
-                  <span className={`absolute bottom-0 left-5 right-5 h-px bg-[#C5A059] transition-transform duration-500 ${location.pathname === item.href ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
+                  <span className={`absolute bottom-0 left-2 right-2 xl:left-3.5 xl:right-3.5 h-px bg-[#C5A059] transition-transform duration-500 ${location.pathname === item.href ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
                 </a>
               ) : (
                 <Link
@@ -181,17 +183,17 @@ export function Header() {
                   className={getLinkClass(item.href)}
                 >
                   {item.name}
-                  <span className={`absolute bottom-0 left-5 right-5 h-px bg-[#C5A059] transition-transform duration-500 ${location.pathname === item.href ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
+                  <span className={`absolute bottom-0 left-2 right-2 xl:left-3.5 xl:right-3.5 h-px bg-[#C5A059] transition-transform duration-500 ${location.pathname === item.href ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
                 </Link>
               )
             ))}
           </nav>
 
           {/* Rights Side: Utilities */}
-          <div className="hidden lg:flex items-center space-x-8">
+          <div className="hidden lg:flex items-center space-x-3 xl:space-x-6 flex-shrink-0 ml-2">
             <LanguageSwitcher isScrolled={isScrolled} />
             <Button
-              className={`rounded-none px-6 h-10 text-[10px] tracking-[0.2em] font-bold uppercase transition-all duration-300 border backdrop-blur-sm ${
+              className={`rounded-none px-3 xl:px-5 h-10 text-[10px] tracking-[0.12em] xl:tracking-[0.18em] font-bold uppercase transition-all duration-300 border backdrop-blur-sm whitespace-nowrap ${
                 isScrolled 
                   ? 'bg-transparent border-[#8B0000] text-[#8B0000] hover:bg-[#8B0000] hover:text-white shadow-[2px_2px_0px_0px_#8B000020]' 
                   : 'bg-transparent border-white/50 text-white hover:border-white hover:bg-white/10 shadow-[2px_2px_0px_0px_#ffffff20]'

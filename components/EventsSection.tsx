@@ -1,11 +1,14 @@
+import { useState } from 'react';
 import { Calendar, MapPin, ArrowUpRight } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import culturalCelebrationImage from '../assets/sections/cultural-celebration.png';
 import businessWorkshopImage from '../assets/sections/business-workshop.jpg';
 import { Button } from './ui/button';
+import { EventRegisterModal } from './EventRegisterModal';
 
 export function EventsSection() {
   const { t } = useLanguage();
+  const [selectedEvent, setSelectedEvent] = useState<string | null>(null);
 
   const upcomingEvents = [
     {
@@ -43,7 +46,7 @@ export function EventsSection() {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 mb-24 items-end">
           <div className="lg:col-span-8">
-            <span className="inline-block text-[#8B0000] font-sans text-[10px] tracking-[0.4em] uppercase font-bold mb-6">
+            <span className="inline-block text-[#8B0000] font-sans text-xs tracking-[0.4em] uppercase font-bold mb-6">
               {t('events.badge')}
             </span>
             <h2 className="text-4xl sm:text-6xl font-serif text-[#121212] leading-tight tracking-tight">
@@ -72,7 +75,7 @@ export function EventsSection() {
                   className="w-full h-full object-cover group-hover:scale-105 transition-all duration-1000"
                 />
                 <div className="absolute top-6 left-6 bg-white/90 backdrop-blur-md px-4 py-2 border border-black/5">
-                  <span className="text-[9px] tracking-[0.3em] uppercase font-bold text-[#121212]">
+                  <span className="text-[10px] tracking-[0.3em] uppercase font-bold text-[#121212]">
                     {t(event.typeKey)}
                   </span>
                 </div>
@@ -81,28 +84,28 @@ export function EventsSection() {
               </div>
 
               <div className="flex-grow flex flex-col">
-                <div className="flex items-center space-x-3 mb-4 text-gray-400">
-                  <Calendar className="h-3 w-3" />
-                  <span className="text-[10px] tracking-widest uppercase font-bold">{t(event.dateKey)}</span>
+                <div className="flex items-center space-x-3 mb-4 text-[#8B0000]">
+                  <Calendar className="h-4 w-4 text-[#C5A059]" />
+                  <span className="text-xs tracking-widest uppercase font-bold text-gray-700">{t(event.dateKey)}</span>
                 </div>
 
                 <h3 className="text-2xl font-serif mb-4 text-[#121212] leading-tight group-hover:text-[#8B0000] transition-colors">{t(event.titleKey)}</h3>
 
-                <p className="text-sm text-gray-500 leading-relaxed font-sans mb-8 line-clamp-3">
+                <p className="text-base text-gray-700 leading-relaxed font-sans mb-8 line-clamp-3">
                   {t(event.descriptionKey)}
                 </p>
 
-                <div className="mt-auto pt-8 border-t border-gray-100 flex items-center justify-between">
-                  <span className="text-[9px] tracking-widest uppercase font-bold text-gray-400 flex items-center">
-                    <MapPin className="h-3 w-3 mr-2 text-[#C5A059]" />
+                <div className="mt-auto pt-8 border-t border-gray-200 flex items-center justify-between">
+                  <span className="text-xs tracking-widest uppercase font-bold text-gray-500 flex items-center">
+                    <MapPin className="h-3.5 w-3.5 mr-2 text-[#C5A059]" />
                     {t(event.locationKey)}
                   </span>
                   <Button
                     variant="ghost"
-                    className="p-0 h-auto text-[10px] tracking-widest uppercase font-bold text-[#8B0000] hover:bg-transparent hover:translate-x-1 transition-transform"
-                    onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                    className="p-0 h-auto text-xs tracking-widest uppercase font-bold text-[#8B0000] hover:bg-transparent hover:translate-x-1 transition-transform cursor-pointer"
+                    onClick={() => setSelectedEvent(t(event.titleKey))}
                   >
-                    {t('events.register')} <ArrowUpRight className="ml-1 h-3 w-3" />
+                    {t('events.register')} <ArrowUpRight className="ml-1 h-3.5 w-3.5" />
                   </Button>
                 </div>
               </div>
@@ -113,9 +116,16 @@ export function EventsSection() {
         {/* Global Success Callout */}
         <div className="mt-32 p-12 lg:p-16 border border-[#121212] flex flex-col items-center text-center bg-[#FBFBFB]">
           <h3 className="text-2xl font-serif text-[#121212] mb-4 uppercase tracking-tight">{t('events.past_events')}</h3>
-          <p className="text-sm text-gray-500 italic max-w-xl">{t('events.past_event_success')}</p>
+          <p className="text-base text-gray-700 italic max-w-xl">{t('events.past_event_success')}</p>
         </div>
       </div>
+
+      {/* Modal Dialog */}
+      <EventRegisterModal
+        isOpen={!!selectedEvent}
+        onClose={() => setSelectedEvent(null)}
+        eventTitle={selectedEvent || ''}
+      />
     </section>
   );
 }

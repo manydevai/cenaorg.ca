@@ -81,6 +81,11 @@ export default defineConfig({
       '@': path.resolve(__dirname, '.'),
     },
   },
+  optimizeDeps: {
+    esbuildOptions: {
+      target: 'esnext',
+    },
+  },
   build: {
     target: 'esnext',
     outDir: 'dist',

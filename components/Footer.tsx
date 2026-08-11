@@ -343,13 +343,10 @@ export function Footer() {
       <div className="w-full bg-[#121212] border-t border-white/5 py-12">
         <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-16 flex flex-col items-center justify-center gap-2 text-center">
           <p className="text-[10px] md:text-[11px] tracking-[0.3em] text-white/40 uppercase font-bold">
-            © 2026 CENA
+            © 2026 CENA — Comunidade de Educação e Networking Angolana. Tous droits réservés.
           </p>
-          <p className="text-[10px] md:text-[11px] tracking-[0.2em] text-white/40 uppercase font-bold">
-            Comunidade de Educação e Networking Angolana.
-          </p>
-          <p className="text-[10px] md:text-[11px] tracking-[0.3em] text-white/40 uppercase font-bold">
-            Tous droits réservés.
+          <p className="text-[10px] md:text-[11px] tracking-[0.2em] text-[#C5A059]/90 uppercase font-bold mt-1">
+            Organisme à but non lucratif (OBNL) enregistré au Canada • Reçus d'impôt officiels
           </p>
           <p className="text-[10px] md:text-[11px] tracking-[0.3em] text-white/60 uppercase font-bold mt-2">
             Powered by ProjectionAI

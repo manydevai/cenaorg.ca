@@ -59,7 +59,7 @@ export function MissionSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.7, delay: 0.3, ease: 'easeOut' }}
-              className="text-gray-500 text-lg leading-relaxed italic border-l border-gray-100 pl-8 relative z-10"
+              className="text-gray-700 text-lg leading-relaxed italic border-l border-[#C5A059] pl-8 relative z-10"
             >
               {t('mission.description')}
             </motion.p>
@@ -92,10 +92,10 @@ export function MissionSection() {
                   style={{ color: pillar.color }}
                 />
               </div>
-              <h3 className="text-xl font-serif mb-6 text-[#121212] tracking-widest uppercase">
+              <h3 className="text-xl font-serif mb-6 text-[#121212] tracking-widest uppercase font-bold">
                 {pillar.title}
               </h3>
-              <p className="text-sm text-gray-500 leading-loose font-sans">
+              <p className="text-base text-gray-700 leading-relaxed font-sans">
                 {pillar.description}
               </p>
             </motion.div>

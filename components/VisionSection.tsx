@@ -57,7 +57,7 @@ export function VisionSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.7, delay: 0.4, ease: 'easeOut' }}
-              className="text-gray-500 text-sm leading-loose"
+              className="text-gray-700 text-base sm:text-lg leading-relaxed font-sans"
             >
               {t('vision.description')}
             </motion.p>
@@ -82,20 +82,20 @@ export function VisionSection() {
                 <div className="p-4 border border-gray-100" style={{ color: goal.color }}>
                   <goal.icon className="h-6 w-6 group-hover:scale-110 transition-transform duration-500" />
                 </div>
-                <span className="text-4xl font-serif text-gray-100 group-hover:text-gray-200 transition-colors">
+                <span className="text-4xl font-serif text-gray-200 group-hover:text-[#C5A059] transition-colors">
                   0{index + 1}
                 </span>
               </div>
 
-              <h3 className="text-xl font-serif mb-6 text-[#121212] uppercase tracking-tighter">
+              <h3 className="text-xl font-serif mb-6 text-[#121212] uppercase tracking-tight font-bold">
                 {goal.title}
               </h3>
-              <p className="text-sm text-gray-500 leading-relaxed font-sans mb-10">
+              <p className="text-base text-gray-700 leading-relaxed font-sans mb-10">
                 {goal.description}
               </p>
 
-              <div className="flex items-center text-[10px] tracking-[0.2em] font-bold text-[#8B0000] uppercase opacity-40 group-hover:opacity-100 transition-opacity">
-                {t('vision.read_objective')} <ArrowUpRight className="ml-2 h-3 w-3" />
+              <div className="flex items-center text-xs tracking-[0.2em] font-bold text-[#8B0000] uppercase opacity-70 group-hover:opacity-100 transition-opacity">
+                {t('vision.read_objective')} <ArrowUpRight className="ml-2 h-3.5 w-3.5" />
               </div>
             </motion.div>
           ))}

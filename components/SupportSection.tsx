@@ -75,10 +75,20 @@ export function SupportSection() {
                     >
                       {level.amount}
                     </span>
-                    <p className="text-xs text-gray-500 leading-relaxed uppercase tracking-wider font-bold">{level.impact}</p>
+                    <p className="text-sm text-gray-700 leading-relaxed uppercase tracking-wider font-bold">{level.impact}</p>
                   </motion.div>
                 ))}
               </div>
+            </div>
+
+            {/* Featured Donor/Beneficiary Quote Card */}
+            <div className="mt-12 p-8 bg-gray-50 border-l-4 border-[#8B0000] relative">
+              <p className="text-gray-700 text-base font-sans italic mb-4">
+                "Grâce aux dons reçus par CENA, nous avons pu former 45 jeunes professionnels lusophones et financer 3 bourses d'excellence en 2025."
+              </p>
+              <span className="text-xs font-sans font-bold uppercase tracking-wider text-[#8B0000]">
+                — Impact de la Communauté CENA Canada
+              </span>
             </div>
           </div>
 
@@ -86,30 +96,48 @@ export function SupportSection() {
           <div className="lg:col-span-5 relative">
             <div className="bg-[#121212] p-12 lg:p-16 relative z-10 shadow-2xl">
               <div className="absolute top-0 right-0 w-16 h-1 bg-[#C5A059]"></div>
-              <h3 className="text-3xl font-serif text-white mb-10 leading-tight">{t('support.contribution_center')}</h3>
+              <h3 className="text-3xl font-serif text-white mb-6 leading-tight">{t('support.contribution_center')}</h3>
+              
+              {/* OBNL & Charity Badge */}
+              <div className="mb-8 p-3 bg-white/5 border border-[#C5A059]/40 text-center">
+                <span className="text-xs font-sans text-[#C5A059] font-bold uppercase tracking-wider block mb-1">
+                  Organisme à but non lucratif enregistré
+                </span>
+                <span className="text-[11px] text-gray-300 font-sans block">
+                  Reçus d'impôt officiels pour déduction fiscale disponibles
+                </span>
+              </div>
 
-              <div className="space-y-12">
+              <div className="space-y-8">
                 {supportTypes.map((way, index) => (
                   <div key={index} className="flex items-start space-x-6 group">
                     <way.icon className="h-6 w-6 mt-1 flex-shrink-0 transition-transform duration-500 group-hover:scale-125 group-hover:rotate-12" style={{ color: way.color }} />
-                    <div className="border-l border-white/5 pl-6">
+                    <div className="border-l border-white/10 pl-6">
                       <h4 className="text-sm tracking-widest uppercase font-bold text-white mb-2">{way.title}</h4>
-                      <p className="text-xs text-gray-500 leading-relaxed font-sans">{way.description}</p>
+                      <p className="text-sm text-gray-300 leading-relaxed font-sans">{way.description}</p>
                     </div>
                   </div>
                 ))}
               </div>
 
-              <div className="mt-16 pt-12 border-t border-white/5">
+              <div className="mt-12 pt-8 border-t border-white/10">
                 <Button
-                  className="w-full bg-[#8B0000] hover:bg-[#A30000] text-white rounded-none py-8 text-[11px] tracking-[0.3em] font-bold uppercase transition-all duration-500 shadow-[8px_8px_0px_0px_rgba(197,160,89,0.2)]"
+                  className="w-full bg-[#8B0000] hover:bg-[#C5A059] hover:text-black text-white rounded-none py-8 text-xs tracking-[0.3em] font-bold uppercase transition-all duration-500 shadow-[8px_8px_0px_0px_rgba(197,160,89,0.2)]"
                   onClick={handleDonation}
                 >
                   {t('support.initiate_contribution')} <ArrowRight className="ml-3 h-4 w-4" />
                 </Button>
-                <div className="mt-8 grid grid-cols-2 gap-4 text-[8px] tracking-[0.4em] text-gray-600 uppercase font-bold text-center">
-                  <span className="p-2 border border-white/5">{t('support.tax_notice')}</span>
-                  <span className="p-2 border border-white/5">{t('support.secure_payment')}</span>
+                
+                {/* Trust Seals & Payment Info */}
+                <div className="mt-8 space-y-3 text-center">
+                  <p className="text-xs text-gray-400 font-sans">
+                    {t('support.tax_notice')}
+                  </p>
+                  <div className="flex items-center justify-center space-x-4 text-[10px] tracking-wider text-[#C5A059] uppercase font-bold">
+                    <span>Partenaire CanadaHelps</span>
+                    <span>•</span>
+                    <span>Directorio CharityVillage</span>
+                  </div>
                 </div>
               </div>
             </div>

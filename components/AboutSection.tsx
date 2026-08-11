@@ -73,20 +73,20 @@ export function AboutSection() {
             <div className="space-y-12 border-t border-gray-100 pt-12">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-12">
                 <div className="space-y-4">
-                  <h4 className="text-xs tracking-[0.2em] uppercase font-bold text-[#121212] flex items-center">
-                    <span className="w-2 h-2 bg-[#8B0000] mr-3"></span>
+                  <h4 className="text-sm tracking-[0.2em] uppercase font-bold text-[#121212] flex items-center">
+                    <span className="w-2.5 h-2.5 bg-[#8B0000] mr-3"></span>
                     {t('about.who_we_are')}
                   </h4>
-                  <p className="text-sm text-gray-500 leading-relaxed font-sans">
+                  <p className="text-base text-gray-700 leading-relaxed font-sans">
                     {t('about.who_we_are_text')}
                   </p>
                 </div>
                 <div className="space-y-4">
-                  <h4 className="text-xs tracking-[0.2em] uppercase font-bold text-[#121212] flex items-center">
-                    <span className="w-2 h-2 bg-[#C5A059] mr-3"></span>
+                  <h4 className="text-sm tracking-[0.2em] uppercase font-bold text-[#121212] flex items-center">
+                    <span className="w-2.5 h-2.5 bg-[#C5A059] mr-3"></span>
                     {t('about.our_approach')}
                   </h4>
-                  <p className="text-sm text-gray-500 leading-relaxed font-sans">
+                  <p className="text-base text-gray-700 leading-relaxed font-sans">
                     {t('about.our_approach_text')}
                   </p>
                 </div>

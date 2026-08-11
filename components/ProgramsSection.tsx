@@ -125,12 +125,12 @@ export function ProgramsSection() {
                         <h3 className={`text-xl lg:text-2xl font-serif mb-2 uppercase tracking-tight transition-colors duration-500 ${activeTab === index ? 'text-[#121212]' : 'text-white'}`}>
                           {t(program.titleKey)}
                         </h3>
-                        <p className={`text-xs leading-loose transition-colors duration-500 ${activeTab === index ? 'text-gray-500' : 'text-gray-600'}`}>
+                        <p className={`text-sm leading-relaxed transition-colors duration-500 ${activeTab === index ? 'text-gray-600' : 'text-gray-300'}`}>
                           {t(program.descriptionKey)}
                         </p>
                       </div>
                     </div>
-                    <ArrowUpRight className={`h-6 w-6 transition-all duration-500 transform ${activeTab === index ? 'rotate-45 text-[#8B0000] scale-125' : 'text-gray-800 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0'}`} />
+                    <ArrowUpRight className={`h-6 w-6 transition-all duration-500 transform ${activeTab === index ? 'rotate-45 text-[#8B0000] scale-125' : 'text-[#C5A059] opacity-70 group-hover:opacity-100 group-hover:translate-x-0'}`} />
                   </div>
                 </button>
 
@@ -157,9 +157,9 @@ export function ProgramsSection() {
                         </p>
                         <Button 
                           onClick={() => handleJoinProgram(program.value)}
-                          className="bg-[#8B0000] hover:bg-[#A30000] text-white rounded-none px-10 py-6 text-[9px] uppercase tracking-[0.2em] font-bold transition-all duration-500"
+                          className="bg-[#8B0000] hover:bg-[#A30000] text-white rounded-none px-10 py-6 text-xs uppercase tracking-[0.2em] font-bold transition-all duration-500"
                         >
-                          Join Program
+                          {t('programs.join_program')}
                         </Button>
                       </div>
                     </div>
@@ -185,16 +185,16 @@ export function ProgramsSection() {
               <div className="max-w-xl animate-slide-up">
                 <div className="flex items-center space-x-3 mb-6">
                   <div className="w-10 h-px bg-[#C5A059]"></div>
-                  <span className="text-[#C5A059] font-sans text-[9px] tracking-[0.4em] uppercase font-bold">Initiative Analysis</span>
+                  <span className="text-[#C5A059] font-sans text-xs tracking-[0.4em] uppercase font-bold">Initiative Analysis</span>
                 </div>
                 <p className="text-white text-lg lg:text-xl font-serif leading-relaxed mb-10 italic">
                   "{t(programs[activeTab].detailsKey)}"
                 </p>
                 <Button 
                   onClick={() => handleJoinProgram(programs[activeTab].value)}
-                  className="bg-[#8B0000] hover:bg-[#A30000] text-white rounded-none px-12 py-8 text-[10px] uppercase tracking-[0.2em] font-bold shadow-2xl transition-all duration-500 hover:tracking-[0.3em]"
+                  className="bg-[#8B0000] hover:bg-[#A30000] text-white rounded-none px-12 py-8 text-xs uppercase tracking-[0.2em] font-bold shadow-2xl transition-all duration-500 hover:tracking-[0.3em]"
                 >
-                  Join Program
+                  {t('programs.join_program')}
                 </Button>
               </div>
             </div>

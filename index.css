@@ -1,6 +1,5 @@
-@import "tailwindcss";
-
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import "tailwindcss";
 
 @theme {
   --font-serif: "Playfair Display", serif;
@@ -22,7 +21,8 @@
   }
 
   body {
-    @apply bg-white text-[#121212] font-sans antialiased overflow-x-hidden;
+    @apply bg-white text-[#121212] font-sans antialiased overflow-x-hidden leading-relaxed;
+    font-size: 16px;
     text-rendering: optimizeLegibility;
   }
 

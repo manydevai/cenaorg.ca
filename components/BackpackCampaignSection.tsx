@@ -1,0 +1,163 @@
+import React, { useEffect, useRef } from 'react';
+import { useLanguage } from '../contexts/LanguageContext';
+import { AnimatePresence } from 'framer-motion';
+import { Calendar, Heart, ShieldCheck, ArrowRight, Gift, CheckCircle2, Sparkles, ChevronDown } from 'lucide-react';
+import { BackpackEmbeddedForm } from './BackpackEmbeddedForm';
+
+import horizFr from '../assets/campaigns/backpack/horizontal-fr.jpg';
+import horizPt from '../assets/campaigns/backpack/horizontal-pt.jpg';
+import horizEn from '../assets/campaigns/backpack/horizontal-en.jpg';
+
+interface BackpackCampaignSectionProps {
+  isFormExpanded: boolean;
+  onToggleForm: () => void;
+}
+
+export const BackpackCampaignSection: React.FC<BackpackCampaignSectionProps> = ({
+  isFormExpanded,
+  onToggleForm
+}) => {
+  const { t, language } = useLanguage();
+  const formRef = useRef<HTMLDivElement>(null);
+
+  // Select poster according to active language (FR, EN, PT)
+  const horizontalPoster =
+    language === 'fr' ? horizFr : language === 'en' ? horizEn : horizPt;
+
+  useEffect(() => {
+    if (isFormExpanded && formRef.current) {
+      setTimeout(() => {
+        formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 150);
+    }
+  }, [isFormExpanded]);
+
+  const handleDonate = () => {
+    window.open('https://buy.stripe.com/bJe9AU5JO8p764W882eAg00', '_blank', 'noopener,noreferrer');
+  };
+
+  return (
+    <section
+      id="backpack-campaign"
+      className="py-20 bg-gradient-to-b from-[#121212] via-black to-[#121212] text-white relative overflow-hidden border-t border-b border-[#C5A059]/30"
+    >
+      {/* Glow Accents */}
+      <div className="absolute top-1/4 left-0 w-96 h-96 bg-[#8B0000]/15 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-[#C5A059]/15 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-12" data-aos="fade-up">
+          <div className="inline-flex items-center space-x-2 bg-[#8B0000]/30 border border-[#8B0000] px-4 py-1.5 mb-4">
+            <Sparkles className="w-4 h-4 text-[#C5A059]" />
+            <span className="text-[#C5A059] font-sans text-xs tracking-[0.25em] uppercase font-bold">
+              {t('backpack_campaign.section_badge')}
+            </span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold tracking-tight text-white mb-4 uppercase">
+            {t('backpack_campaign.section_title')}
+          </h2>
+          <div className="w-24 h-1 bg-[#C5A059] mx-auto mb-6" />
+          <p className="text-gray-300 text-base sm:text-lg leading-relaxed font-sans">
+            {t('backpack_campaign.section_subtitle')}
+          </p>
+        </div>
+
+        {/* Main Content Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          
+          {/* Poster Showcase Column (Left / 7 cols) */}
+          <div className="lg:col-span-7 space-y-4" data-aos="fade-right">
+            {/* Poster Display Box */}
+            <div className="relative group overflow-hidden border-2 border-[#C5A059]/50 shadow-2xl bg-black flex items-center justify-center p-2">
+              <img
+                src={horizontalPoster}
+                alt="Programme de Mochilas CENA"
+                className="w-full object-contain max-h-[500px] transition-transform duration-700 group-hover:scale-[1.02]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
+                <p className="text-[#C5A059] font-serif font-bold text-lg">
+                  "{t('backpack_campaign.slogan')}"
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Details & Registration Column (Right / 5 cols) */}
+          <div className="lg:col-span-5 space-y-6" data-aos="fade-left">
+            <div className="bg-black/60 border border-white/15 p-6 sm:p-8 backdrop-blur-md space-y-6">
+              
+              <div className="flex items-center space-x-3 text-[#C5A059]">
+                <Gift className="w-8 h-8 flex-shrink-0" />
+                <div>
+                  <span className="text-xs uppercase tracking-widest text-gray-400 font-bold block">
+                    {t('backpack_campaign.target_impact_label')}
+                  </span>
+                  <span className="text-2xl sm:text-3xl font-serif font-bold text-white">
+                    {t('backpack_campaign.children_supported_count')}
+                  </span>
+                </div>
+              </div>
+
+              <p className="text-gray-300 text-sm leading-relaxed font-sans">
+                {t('backpack_campaign.section_desc')}
+              </p>
+
+              {/* Key Features Bullet List */}
+              <div className="space-y-3 pt-2 text-xs text-gray-200">
+                <div className="flex items-start space-x-3">
+                  <CheckCircle2 className="w-4 h-4 text-[#C5A059] flex-shrink-0 mt-0.5" />
+                  <span>{t('backpack_campaign.bullet_1')}</span>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <CheckCircle2 className="w-4 h-4 text-[#C5A059] flex-shrink-0 mt-0.5" />
+                  <span>{t('backpack_campaign.bullet_2')}</span>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <Calendar className="w-4 h-4 text-[#C5A059] flex-shrink-0 mt-0.5" />
+                  <span>{t('backpack_campaign.bullet_3')}</span>
+                </div>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="space-y-3 pt-4 border-t border-white/10">
+                <button
+                  onClick={onToggleForm}
+                  className="w-full py-4 bg-[#8B0000] hover:bg-[#A00000] text-white font-bold text-xs uppercase tracking-[0.2em] border border-[#C5A059] transition-all duration-300 shadow-xl flex items-center justify-center space-x-3 group"
+                >
+                  <span>{t('backpack_campaign.btn_register')}</span>
+                  <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${isFormExpanded ? 'rotate-180' : ''}`} />
+                </button>
+
+                <button
+                  onClick={handleDonate}
+                  className="w-full py-3.5 bg-transparent hover:bg-white/10 border border-[#C5A059] text-[#C5A059] font-bold text-xs uppercase tracking-[0.2em] transition-all duration-300 flex items-center justify-center space-x-2"
+                >
+                  <Heart className="w-4 h-4 text-[#C5A059]" />
+                  <span>{t('backpack_campaign.btn_donate')}</span>
+                </button>
+              </div>
+
+              <div className="flex items-center justify-center space-x-2 text-[11px] text-gray-400 pt-2">
+                <ShieldCheck className="w-4 h-4 text-[#C5A059]" />
+                <span>{t('backpack_campaign.confidential_note')}</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        {/* Smooth Expandable Embedded Form Container */}
+        <div ref={formRef}>
+          <AnimatePresence>
+            {isFormExpanded && (
+              <BackpackEmbeddedForm onCollapse={onToggleForm} />
+            )}
+          </AnimatePresence>
+        </div>
+
+      </div>
+    </section>
+  );
+};
