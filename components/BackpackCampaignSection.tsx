@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { AnimatePresence } from 'framer-motion';
 import { Calendar, Heart, ShieldCheck, ArrowRight, Gift, CheckCircle2, Award, ChevronDown, Users } from 'lucide-react';
