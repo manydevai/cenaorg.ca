@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { AnimatePresence } from 'framer-motion';
-import { Calendar, Heart, ShieldCheck, ArrowRight, Gift, CheckCircle2, Award, ChevronDown } from 'lucide-react';
+import { Calendar, Heart, ShieldCheck, ArrowRight, Gift, CheckCircle2, Award, ChevronDown, Users } from 'lucide-react';
 import { BackpackEmbeddedForm } from './BackpackEmbeddedForm';
 
 import horizFr from '../assets/campaigns/backpack/horizontal-fr.jpg';
@@ -65,7 +65,7 @@ export const BackpackCampaignSection: React.FC<BackpackCampaignSectionProps> = (
         </div>
 
         {/* Main Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
           {/* Poster Showcase Column (Left / 7 cols) */}
           <div className="lg:col-span-7 space-y-4" data-aos="fade-right">
@@ -80,6 +80,43 @@ export const BackpackCampaignSection: React.FC<BackpackCampaignSectionProps> = (
                 <p className="text-[#C5A059] font-serif font-bold text-lg">
                   "{t('backpack_campaign.slogan')}"
                 </p>
+              </div>
+            </div>
+
+            {/* Live Campaign Progress Counter Box */}
+            <div className="bg-black/70 border border-[#C5A059]/40 p-4 sm:p-5 backdrop-blur-md space-y-3 shadow-xl">
+              <div className="flex flex-wrap items-center justify-between gap-2 text-xs font-bold uppercase tracking-wider">
+                <div className="flex items-center space-x-2 text-[#C5A059]">
+                  <Users className="w-4 h-4 text-[#C5A059]" />
+                  <span>{t('backpack_campaign.progress.registered_children')}: <span className="text-white text-sm font-serif font-bold">142</span> / 200</span>
+                </div>
+                <div className="text-gray-300 text-[11px]">
+                  {t('backpack_campaign.progress.progress_percentage')}
+                </div>
+              </div>
+
+              {/* Progress Bar */}
+              <div className="w-full h-2.5 bg-white/10 rounded-full overflow-hidden p-0.5 border border-white/10">
+                <div className="h-full bg-gradient-to-r from-[#8B0000] via-[#C5A059] to-[#D4AF37] rounded-full transition-all duration-1000 w-[71%]" />
+              </div>
+
+              <div className="grid grid-cols-2 gap-3 pt-1 text-center border-t border-white/10 text-xs">
+                <div className="bg-white/5 p-2.5 border border-white/10">
+                  <span className="block text-[10px] text-gray-400 font-bold uppercase tracking-wider">
+                    {t('backpack_campaign.progress.donors_count')}
+                  </span>
+                  <span className="block text-base font-serif font-bold text-[#C5A059] mt-0.5">
+                    {t('backpack_campaign.progress.donors_label')}
+                  </span>
+                </div>
+                <div className="bg-white/5 p-2.5 border border-white/10">
+                  <span className="block text-[10px] text-gray-400 font-bold uppercase tracking-wider">
+                    Fonds Collectés / Funds
+                  </span>
+                  <span className="block text-base font-serif font-bold text-white mt-0.5">
+                    {t('backpack_campaign.progress.raised_amount')}
+                  </span>
+                </div>
               </div>
             </div>
           </div>
