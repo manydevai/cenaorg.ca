@@ -492,9 +492,8 @@ const translations = {
         registered_children: 'Enfants inscrits',
         target_goal: 'Objectif : 200 enfants',
         donors_count: 'Donateurs de la communauté',
-        donors_label: '84 Donateurs',
-        raised_amount: '4 850 $ récoltés',
-        progress_percentage: '71% réalisé'
+        donors_label: '0 Donateur',
+        progress_percentage: 'en cours'
       },
       steps: {
         step1: '1. Informations',
@@ -982,9 +981,8 @@ const translations = {
         registered_children: 'Children Registered',
         target_goal: 'Goal: 200 children',
         donors_count: 'Community Donors',
-        donors_label: '84 Donors',
-        raised_amount: '$4,850 Raised',
-        progress_percentage: '71% Reached'
+        donors_label: '0 Donors',
+        progress_percentage: 'in progress'
       },
       steps: {
         step1: '1. Contact Info',
@@ -1473,9 +1471,8 @@ const translations = {
         registered_children: 'Crianças Inscritas',
         target_goal: 'Meta: 200 crianças',
         donors_count: 'Doadores da Comunidade',
-        donors_label: '84 Doadores',
-        raised_amount: '$4.850 Angariados',
-        progress_percentage: '71% Alcançado'
+        donors_label: '0 Doadores',
+        progress_percentage: 'em curso'
       },
       steps: {
         step1: '1. Informações',

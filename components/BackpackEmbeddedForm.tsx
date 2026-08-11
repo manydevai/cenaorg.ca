@@ -152,6 +152,12 @@ export const BackpackEmbeddedForm: React.FC<BackpackEmbeddedFormProps> = ({ onCo
       });
 
       if (response.ok) {
+        // Dynamically increment real registration count
+        const currentCount = parseInt(localStorage.getItem('cena_backpack_registered_count') || '0', 10);
+        const newCount = currentCount + childrenList.length;
+        localStorage.setItem('cena_backpack_registered_count', newCount.toString());
+        window.dispatchEvent(new Event('cena-registration-updated'));
+
         setStep(3);
         toast.success(t('backpack_campaign.success.subtitle'));
       } else {

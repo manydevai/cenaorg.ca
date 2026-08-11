@@ -20,6 +20,22 @@ export const BackpackCampaignSection: React.FC<BackpackCampaignSectionProps> = (
   const { t, language } = useLanguage();
   const formRef = useRef<HTMLDivElement>(null);
 
+  const [registeredCount, setRegisteredCount] = useState<number>(() => {
+    const stored = localStorage.getItem('cena_backpack_registered_count');
+    return stored ? parseInt(stored, 10) : 0;
+  });
+
+  useEffect(() => {
+    const handleUpdate = () => {
+      const stored = localStorage.getItem('cena_backpack_registered_count');
+      setRegisteredCount(stored ? parseInt(stored, 10) : 0);
+    };
+    window.addEventListener('cena-registration-updated', handleUpdate);
+    return () => window.removeEventListener('cena-registration-updated', handleUpdate);
+  }, []);
+
+  const progressPercentage = Math.min(100, Math.round((registeredCount / 200) * 100));
+
   // Select poster according to active language (FR, EN, PT)
   const horizontalPoster =
     language === 'fr' ? horizFr : language === 'en' ? horizEn : horizPt;
@@ -83,38 +99,33 @@ export const BackpackCampaignSection: React.FC<BackpackCampaignSectionProps> = (
               </div>
             </div>
 
-            {/* Live Campaign Progress Counter Box */}
+            {/* Live Campaign Progress Counter Box (Starts at 0, no cash amount) */}
             <div className="bg-black/70 border border-[#C5A059]/40 p-4 sm:p-5 backdrop-blur-md space-y-3 shadow-xl">
               <div className="flex flex-wrap items-center justify-between gap-2 text-xs font-bold uppercase tracking-wider">
                 <div className="flex items-center space-x-2 text-[#C5A059]">
                   <Users className="w-4 h-4 text-[#C5A059]" />
-                  <span>{t('backpack_campaign.progress.registered_children')}: <span className="text-white text-sm font-serif font-bold">142</span> / 200</span>
+                  <span>{t('backpack_campaign.progress.registered_children')}: <span className="text-white text-sm font-serif font-bold">{registeredCount}</span> / 200</span>
                 </div>
                 <div className="text-gray-300 text-[11px]">
-                  {t('backpack_campaign.progress.progress_percentage')}
+                  {progressPercentage}% {t('backpack_campaign.progress.progress_percentage')}
                 </div>
               </div>
 
               {/* Progress Bar */}
               <div className="w-full h-2.5 bg-white/10 rounded-full overflow-hidden p-0.5 border border-white/10">
-                <div className="h-full bg-gradient-to-r from-[#8B0000] via-[#C5A059] to-[#D4AF37] rounded-full transition-all duration-1000 w-[71%]" />
+                <div
+                  className="h-full bg-gradient-to-r from-[#8B0000] via-[#C5A059] to-[#D4AF37] rounded-full transition-all duration-1000"
+                  style={{ width: `${progressPercentage}%` }}
+                />
               </div>
 
-              <div className="grid grid-cols-2 gap-3 pt-1 text-center border-t border-white/10 text-xs">
-                <div className="bg-white/5 p-2.5 border border-white/10">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1 text-center border-t border-white/10 text-xs">
+                <div className="bg-white/5 p-2.5 border border-white/10 sm:col-span-2">
                   <span className="block text-[10px] text-gray-400 font-bold uppercase tracking-wider">
                     {t('backpack_campaign.progress.donors_count')}
                   </span>
                   <span className="block text-base font-serif font-bold text-[#C5A059] mt-0.5">
                     {t('backpack_campaign.progress.donors_label')}
-                  </span>
-                </div>
-                <div className="bg-white/5 p-2.5 border border-white/10">
-                  <span className="block text-[10px] text-gray-400 font-bold uppercase tracking-wider">
-                    Fonds Collectés / Funds
-                  </span>
-                  <span className="block text-base font-serif font-bold text-white mt-0.5">
-                    {t('backpack_campaign.progress.raised_amount')}
                   </span>
                 </div>
               </div>
