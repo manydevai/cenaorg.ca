@@ -46,7 +46,7 @@
             "react-dom": "^18.3.1",
             "react-hook-form": "^7.55.0",
             "react-resizable-panels": "^2.1.7",
-            "react-router-dom": "^7.13.1",
+            "react-router-dom": "^7.18.2",
             "recharts": "^2.15.2",
             "sonner": "^2.0.3",
             "tailwind-merge": "*",
@@ -59,7 +59,7 @@
             "@types/react-dom": "^19.2.3",
             "@vitejs/plugin-react-swc": "^3.10.2",
             "autoprefixer": "^10.4.27",
-            "postcss": "^8.5.10",
+            "postcss": "^8.5.26",
             "tailwindcss": "^4.2.1",
             "vite": "^6.4.3"
       },
@@ -69,6 +69,9 @@
             "preview": "vite preview"
       },
       "overrides": {
-            "esbuild": "^0.28.1"
+            "esbuild": "^0.28.1",
+            "postcss": "^8.5.26",
+            "nanoid": "^5.1.5",
+            "react-router": "^7.18.2"
       }
 }
