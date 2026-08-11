@@ -11,21 +11,21 @@ export const TestimonialsSection: React.FC = () => {
       author: t('testimonials.author1'),
       role: t('testimonials.role1'),
       program: t('testimonials.program1'),
-      image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=400',
+      image: 'https://images.pexels.com/photos/9957550/pexels-photo-9957550.jpeg?auto=compress&cs=tinysrgb&w=400',
     },
     {
       quote: t('testimonials.quote2'),
       author: t('testimonials.author2'),
       role: t('testimonials.role2'),
       program: t('testimonials.program2'),
-      image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400',
+      image: 'https://images.pexels.com/photos/8423069/pexels-photo-8423069.jpeg?auto=compress&cs=tinysrgb&w=400',
     },
     {
       quote: t('testimonials.quote3'),
       author: t('testimonials.author3'),
       role: t('testimonials.role3'),
       program: t('testimonials.program3'),
-      image: 'https://images.unsplash.com/photo-1522529599102-193c0d76b5b6?auto=format&fit=crop&q=80&w=400',
+      image: 'https://images.pexels.com/photos/4989148/pexels-photo-4989148.jpeg?auto=compress&cs=tinysrgb&w=400',
     },
   ];
 
