@@ -87,10 +87,32 @@ export const BackpackCampaignSection: React.FC<BackpackCampaignSectionProps> = (
     }
   };
 
+  useEffect(() => {
+    if (window.location.hash === '#backpack-campaign') {
+      const scrollTarget = () => {
+        const el = document.getElementById('backpack-campaign');
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      };
+
+      scrollTarget();
+      const t1 = setTimeout(scrollTarget, 300);
+      const t2 = setTimeout(scrollTarget, 800);
+      const t3 = setTimeout(scrollTarget, 1500);
+
+      return () => {
+        clearTimeout(t1);
+        clearTimeout(t2);
+        clearTimeout(t3);
+      };
+    }
+  }, []);
+
   return (
     <section
       id="backpack-campaign"
-      className="py-20 bg-gradient-to-b from-[#121212] via-black to-[#121212] text-white relative overflow-hidden border-t border-b border-[#C5A059]/30"
+      className="scroll-mt-20 sm:scroll-mt-24 py-20 bg-gradient-to-b from-[#121212] via-black to-[#121212] text-white relative overflow-hidden border-t border-b border-[#C5A059]/30"
     >
       {/* Glow Accents */}
       <div className="absolute top-1/4 left-0 w-96 h-96 bg-[#8B0000]/15 rounded-full blur-3xl pointer-events-none" />
