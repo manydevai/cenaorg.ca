@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { AnimatePresence } from 'framer-motion';
-import { Calendar, Heart, ShieldCheck, ArrowRight, Gift, CheckCircle2, Award, ChevronDown, Users } from 'lucide-react';
+import { Calendar, Heart, ShieldCheck, ArrowRight, Gift, CheckCircle2, Award, ChevronDown, Users, Share2, Copy, Link, Facebook, MessageCircle } from 'lucide-react';
 import { BackpackEmbeddedForm } from './BackpackEmbeddedForm';
 
 import horizFr from '../assets/campaigns/backpack/horizontal-fr.jpg';
@@ -50,6 +50,41 @@ export const BackpackCampaignSection: React.FC<BackpackCampaignSectionProps> = (
 
   const handleDonate = () => {
     window.open('https://buy.stripe.com/bJe9AU5JO8p764W882eAg00', '_blank', 'noopener,noreferrer');
+  };
+
+  const campaignUrl = 'https://www.cena-ca.org/#backpack-campaign';
+  const shareText = language === 'fr'
+    ? 'Aidez un enfant à commencer l\'année scolaire avec dignité. Programme de sacs à dos CENA 🎒'
+    : language === 'en'
+    ? 'Help a child start the school year with dignity. CENA Backpack Program 🎒'
+    : 'Ajude uma criança a começar o ano letivo com dignidade. Programa de Mochilas CENA 🎒';
+
+  const [linkCopied, setLinkCopied] = useState(false);
+
+  const handleShareWhatsApp = () => {
+    window.open(`https://wa.me/?text=${encodeURIComponent(shareText + ' ' + campaignUrl)}`, '_blank');
+  };
+
+  const handleShareFacebook = () => {
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(campaignUrl)}&quote=${encodeURIComponent(shareText)}`, '_blank');
+  };
+
+  const handleCopyLink = async () => {
+    try {
+      await navigator.clipboard.writeText(campaignUrl);
+      setLinkCopied(true);
+      setTimeout(() => setLinkCopied(false), 2000);
+    } catch {
+      // Fallback
+      const input = document.createElement('input');
+      input.value = campaignUrl;
+      document.body.appendChild(input);
+      input.select();
+      document.execCommand('copy');
+      document.body.removeChild(input);
+      setLinkCopied(true);
+      setTimeout(() => setLinkCopied(false), 2000);
+    }
   };
 
   return (
@@ -190,6 +225,43 @@ export const BackpackCampaignSection: React.FC<BackpackCampaignSectionProps> = (
               <div className="flex items-center justify-center space-x-2 text-[11px] text-gray-400 pt-2">
                 <ShieldCheck className="w-4 h-4 text-[#C5A059]" />
                 <span>{t('backpack_campaign.confidential_note')}</span>
+              </div>
+
+              {/* Share Campaign Buttons */}
+              <div className="pt-4 border-t border-white/10">
+                <p className="text-[10px] uppercase tracking-widest text-gray-500 font-bold text-center mb-3">
+                  {t('backpack_campaign.share.label')}
+                </p>
+                <div className="flex items-center justify-center gap-3">
+                  <button
+                    onClick={handleShareWhatsApp}
+                    className="flex items-center space-x-2 px-4 py-2.5 bg-[#25D366]/15 hover:bg-[#25D366]/30 border border-[#25D366]/40 text-[#25D366] text-xs font-bold uppercase tracking-wider transition-all duration-300 group"
+                    title="WhatsApp"
+                  >
+                    <MessageCircle className="w-4 h-4" />
+                    <span className="hidden sm:inline">WhatsApp</span>
+                  </button>
+                  <button
+                    onClick={handleShareFacebook}
+                    className="flex items-center space-x-2 px-4 py-2.5 bg-[#1877F2]/15 hover:bg-[#1877F2]/30 border border-[#1877F2]/40 text-[#1877F2] text-xs font-bold uppercase tracking-wider transition-all duration-300 group"
+                    title="Facebook"
+                  >
+                    <Facebook className="w-4 h-4" />
+                    <span className="hidden sm:inline">Facebook</span>
+                  </button>
+                  <button
+                    onClick={handleCopyLink}
+                    className={`flex items-center space-x-2 px-4 py-2.5 border text-xs font-bold uppercase tracking-wider transition-all duration-300 ${
+                      linkCopied
+                        ? 'bg-[#C5A059]/20 border-[#C5A059]/60 text-[#C5A059]'
+                        : 'bg-white/5 hover:bg-white/10 border-white/20 text-gray-300'
+                    }`}
+                    title={linkCopied ? '✓' : 'Copy Link'}
+                  >
+                    {linkCopied ? <CheckCircle2 className="w-4 h-4" /> : <Link className="w-4 h-4" />}
+                    <span className="hidden sm:inline">{linkCopied ? t('backpack_campaign.share.copied') : t('backpack_campaign.share.copy_link')}</span>
+                  </button>
+                </div>
               </div>
             </div>
           </div>

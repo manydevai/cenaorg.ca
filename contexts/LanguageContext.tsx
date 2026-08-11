@@ -495,6 +495,11 @@ const translations = {
         donors_label: '0 Donateur',
         progress_percentage: 'en cours'
       },
+      share: {
+        label: 'Partager la campagne',
+        copy_link: 'Copier le lien',
+        copied: 'Lien copié !'
+      },
       steps: {
         step1: '1. Informations',
         step2: '2. Enfants',
@@ -983,6 +988,11 @@ const translations = {
         donors_count: 'Community Donors',
         donors_label: '0 Donors',
         progress_percentage: 'in progress'
+      },
+      share: {
+        label: 'Share this campaign',
+        copy_link: 'Copy Link',
+        copied: 'Link copied!'
       },
       steps: {
         step1: '1. Contact Info',
@@ -1473,6 +1483,11 @@ const translations = {
         donors_count: 'Doadores da Comunidade',
         donors_label: '0 Doadores',
         progress_percentage: 'em curso'
+      },
+      share: {
+        label: 'Partilhar a campanha',
+        copy_link: 'Copiar link',
+        copied: 'Link copiado!'
       },
       steps: {
         step1: '1. Informações',

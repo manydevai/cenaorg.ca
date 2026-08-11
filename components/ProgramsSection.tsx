@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import cenaAcademyImage from '../assets/sections/cena-academy.jpg';
@@ -10,6 +10,56 @@ import { Button } from './ui/button';
 export function ProgramsSection() {
   const { t } = useLanguage();
   const [activeTab, setActiveTab] = useState(0);
+  const [userInteracted, setUserInteracted] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const TOTAL_PROGRAMS = 6;
+
+  // Reset user interaction flag when section leaves viewport
+  const startCycling = useCallback(() => {
+    if (intervalRef.current) return;
+    intervalRef.current = setInterval(() => {
+      setActiveTab(prev => (prev + 1) % TOTAL_PROGRAMS);
+    }, 1000);
+  }, []);
+
+  const stopCycling = useCallback(() => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
+    }
+  }, []);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !userInteracted) {
+          startCycling();
+        } else {
+          stopCycling();
+          if (!entry.isIntersecting) {
+            setUserInteracted(false); // Reset when leaving viewport
+          }
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    observer.observe(section);
+    return () => {
+      observer.disconnect();
+      stopCycling();
+    };
+  }, [userInteracted, startCycling, stopCycling]);
+
+  const handleUserSelect = (index: number) => {
+    setUserInteracted(true);
+    stopCycling();
+    setActiveTab(index);
+  };
 
   const programs = [
     {
@@ -79,7 +129,7 @@ export function ProgramsSection() {
   };
 
   return (
-    <section id="programs" className="py-24 sm:py-32 bg-[#121212] text-white overflow-hidden">
+    <section ref={sectionRef} id="programs" className="py-24 sm:py-32 bg-[#121212] text-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-16">
 
         {/* Section Header: Architectural Asymmetry */}
@@ -111,8 +161,8 @@ export function ProgramsSection() {
               <div key={index} className="flex flex-col border-b border-white/10 last:border-b-0">
                 <button
                   className={`flex-1 text-left p-10 lg:p-12 cursor-pointer transition-all duration-700 group relative overflow-hidden ${activeTab === index ? 'bg-white' : 'hover:bg-white/[0.02]'}`}
-                  onMouseEnter={() => setActiveTab(index)}
-                  onClick={() => setActiveTab(index)}
+                  onMouseEnter={() => handleUserSelect(index)}
+                  onClick={() => handleUserSelect(index)}
                 >
                   {activeTab === index && (
                     <div className="absolute top-0 left-0 w-1 h-full bg-[#8B0000]"></div>
