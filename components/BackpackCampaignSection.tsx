@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { AnimatePresence } from 'framer-motion';
-import { Calendar, Heart, ShieldCheck, ArrowRight, Gift, CheckCircle2, Sparkles, ChevronDown } from 'lucide-react';
+import { Calendar, Heart, ShieldCheck, ArrowRight, Gift, CheckCircle2, Award, ChevronDown } from 'lucide-react';
 import { BackpackEmbeddedForm } from './BackpackEmbeddedForm';
 
 import horizFr from '../assets/campaigns/backpack/horizontal-fr.jpg';
@@ -50,7 +50,7 @@ export const BackpackCampaignSection: React.FC<BackpackCampaignSectionProps> = (
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12" data-aos="fade-up">
           <div className="inline-flex items-center space-x-2 bg-[#8B0000]/30 border border-[#8B0000] px-4 py-1.5 mb-4">
-            <Sparkles className="w-4 h-4 text-[#C5A059]" />
+            <Award className="w-4 h-4 text-[#C5A059]" />
             <span className="text-[#C5A059] font-sans text-xs tracking-[0.25em] uppercase font-bold">
               {t('backpack_campaign.section_badge')}
             </span>
