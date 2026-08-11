@@ -229,17 +229,17 @@ export const BackpackEmbeddedForm: React.FC<BackpackEmbeddedFormProps> = ({ onCo
       <div className="h-2 w-full bg-gradient-to-r from-[#8B0000] via-[#C5A059] to-[#8B0000]" />
 
       {/* Embedded Form Header & Controls */}
-      <div className="p-6 sm:p-8 bg-stone-50 border-b border-stone-200 flex flex-wrap items-center justify-between gap-4">
+      <div className="p-4 sm:p-8 bg-stone-50 border-b border-stone-200 flex flex-wrap items-center justify-between gap-3">
         <div>
-          <div className="flex items-center space-x-3 mb-1">
-            <span className="inline-block px-3 py-1 bg-[#8B0000] text-white text-[10px] tracking-[0.2em] uppercase font-bold">
+          <div className="flex flex-wrap items-center gap-2 mb-1">
+            <span className="inline-block px-2.5 py-0.5 bg-[#8B0000] text-white text-[9px] sm:text-[10px] tracking-[0.15em] sm:tracking-[0.2em] uppercase font-bold">
               {t('backpack_campaign.banner_badge')}
             </span>
-            <span className="text-xs font-bold uppercase tracking-wider text-[#8B0000]">
+            <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-[#8B0000]">
               {t('backpack_campaign.form_official_badge')}
             </span>
           </div>
-          <h3 className="text-2xl sm:text-3xl font-serif font-bold uppercase tracking-wide text-stone-900">
+          <h3 className="text-xl sm:text-3xl font-serif font-bold uppercase tracking-wide text-stone-900">
             {t('backpack_campaign.section_title')}
           </h3>
         </div>
@@ -249,9 +249,9 @@ export const BackpackEmbeddedForm: React.FC<BackpackEmbeddedFormProps> = ({ onCo
           <button
             type="button"
             onClick={onCollapse}
-            className="px-4 py-2.5 bg-[#8B0000] hover:bg-[#A00000] text-white border border-[#C5A059] text-xs font-bold uppercase tracking-wider flex items-center space-x-2 transition-colors shadow-sm"
+            className="px-3 sm:px-4 py-2 sm:py-2.5 bg-[#8B0000] hover:bg-[#A00000] text-white border border-[#C5A059] text-[10px] sm:text-xs font-bold uppercase tracking-wider flex items-center space-x-1.5 transition-colors shadow-sm"
           >
-            <ChevronUp className="w-4 h-4" />
+            <ChevronUp className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             <span>
               {language === 'pt' ? 'Recolher' : language === 'en' ? 'Collapse' : 'Réduire'}
             </span>
@@ -261,15 +261,15 @@ export const BackpackEmbeddedForm: React.FC<BackpackEmbeddedFormProps> = ({ onCo
 
       {/* Progress Steps Header */}
       {step < 4 && (
-        <div className="px-6 py-4 bg-stone-100 border-b border-stone-200">
-          <div className="flex items-center justify-between text-xs font-bold uppercase tracking-wider mb-2">
-            <span className={step >= 1 ? 'text-[#8B0000]' : 'text-stone-400'}>
+        <div className="px-4 sm:px-6 py-3 sm:py-4 bg-stone-100 border-b border-stone-200">
+          <div className="flex items-center justify-between text-[10px] sm:text-xs font-bold uppercase tracking-wider mb-2 gap-1 overflow-x-auto">
+            <span className={`whitespace-nowrap ${step >= 1 ? 'text-[#8B0000]' : 'text-stone-400'}`}>
               1. {t('backpack_campaign.steps.step1')}
             </span>
-            <span className={step >= 2 ? 'text-[#8B0000]' : 'text-stone-400'}>
+            <span className={`whitespace-nowrap ${step >= 2 ? 'text-[#8B0000]' : 'text-stone-400'}`}>
               2. {t('backpack_campaign.steps.step2')}
             </span>
-            <span className={step >= 3 ? 'text-[#8B0000]' : 'text-stone-400'}>
+            <span className={`whitespace-nowrap ${step >= 3 ? 'text-[#8B0000]' : 'text-stone-400'}`}>
               3. {t('backpack_campaign.steps.step3')}
             </span>
           </div>

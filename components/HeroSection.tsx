@@ -63,7 +63,7 @@ export function HeroSection() {
               </span>
             </div>
 
-            <h1 className="text-white font-serif text-4xl sm:text-6xl lg:text-5xl uppercase mb-14 lg:mb-12 leading-[1.1] drop-shadow-2xl">
+            <h1 className="text-white font-serif text-2xl sm:text-4xl md:text-5xl lg:text-5xl uppercase mb-6 sm:mb-10 lg:mb-12 leading-[1.15] drop-shadow-2xl">
               {t('hero.title').split(/[,&]+/).map((part, i) => (
                 <span key={i} className="block">
                   <span className={i === 1 ? "text-[#C5A059]" : "text-white"}>
@@ -74,13 +74,13 @@ export function HeroSection() {
             </h1>
 
             <div className="max-w-xl">
-              <p className="text-gray-100 text-lg sm:text-xl font-sans mb-12 leading-relaxed drop-shadow-md">
+              <p className="text-gray-100 text-sm sm:text-base md:text-lg font-sans mb-8 sm:mb-12 leading-relaxed drop-shadow-md">
                 {t('hero.description')}
               </p>
 
-              <div className="hidden lg:flex flex-wrap gap-6 pt-4">
+              <div className="flex flex-wrap gap-4 pt-2">
                 <button
-                  className="group relative inline-flex items-center gap-3 border border-white/50 hover:border-white bg-white/5 hover:bg-white/15 backdrop-blur-sm text-white px-6 py-2.5 text-[10px] tracking-[0.25em] font-bold uppercase transition-all duration-300"
+                  className="group relative inline-flex items-center gap-3 border border-white/50 hover:border-white bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white px-5 sm:px-6 py-2.5 sm:py-3 text-[10px] tracking-[0.2em] font-bold uppercase transition-all duration-300 shadow-lg"
                   onClick={() => document.getElementById('support')?.scrollIntoView({ behavior: 'smooth' })}
                 >
                   {t('hero.cta_primary')}
@@ -88,17 +88,6 @@ export function HeroSection() {
                 </button>
               </div>
             </div>
-          </div>
-
-          {/* Mobile Centered CTA Button - Pushed further down */}
-          <div className="lg:hidden absolute -bottom-10 left-0 w-full flex justify-center px-6 z-30">
-            <button
-              className="group relative inline-flex items-center justify-center gap-2.5 border border-white/50 hover:border-white bg-white/5 hover:bg-white/15 backdrop-blur-sm text-white w-full max-w-[220px] py-3 text-[9px] tracking-[0.25em] font-bold uppercase transition-all duration-300"
-              onClick={() => document.getElementById('support')?.scrollIntoView({ behavior: 'smooth' })}
-            >
-              {t('hero.cta_primary')}
-              <ArrowRight className="h-3 w-3 transition-transform duration-300 group-hover:translate-x-1" />
-            </button>
           </div>
 
         </div>
