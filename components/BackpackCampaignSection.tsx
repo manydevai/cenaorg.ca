@@ -112,7 +112,7 @@ export const BackpackCampaignSection: React.FC<BackpackCampaignSectionProps> = (
   return (
     <section
       id="backpack-campaign"
-      className="scroll-mt-20 sm:scroll-mt-24 py-20 bg-gradient-to-b from-[#121212] via-black to-[#121212] text-white relative overflow-hidden border-t border-b border-[#C5A059]/30"
+      className="scroll-mt-14 sm:scroll-mt-16 pt-6 sm:pt-10 pb-20 bg-gradient-to-b from-[#121212] via-black to-[#121212] text-white relative overflow-hidden border-t border-b border-[#C5A059]/30"
     >
       {/* Glow Accents */}
       <div className="absolute top-1/4 left-0 w-96 h-96 bg-[#8B0000]/15 rounded-full blur-3xl pointer-events-none" />

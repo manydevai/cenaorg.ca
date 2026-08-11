@@ -11,7 +11,7 @@ export const TestimonialsSection: React.FC = () => {
       author: t('testimonials.author1'),
       role: t('testimonials.role1'),
       program: t('testimonials.program1'),
-      image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=400',
+      image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=400',
     },
     {
       quote: t('testimonials.quote2'),
@@ -25,7 +25,7 @@ export const TestimonialsSection: React.FC = () => {
       author: t('testimonials.author3'),
       role: t('testimonials.role3'),
       program: t('testimonials.program3'),
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400',
+      image: 'https://images.unsplash.com/photo-1522529599102-193c0d76b5b6?auto=format&fit=crop&q=80&w=400',
     },
   ];
 
@@ -81,7 +81,7 @@ export const TestimonialsSection: React.FC = () => {
                   <img
                     src={item.image}
                     alt={item.author}
-                    className="w-14 h-14 object-cover border-2 border-[#C5A059] grayscale group-hover:grayscale-0 transition-all duration-500"
+                    className="w-14 h-14 object-cover border-2 border-[#C5A059] group-hover:scale-105 transition-all duration-500"
                   />
                   <div className="absolute -bottom-1 -right-1 bg-[#8B0000] p-1 border border-[#C5A059]">
                     <CheckCircle2 className="w-3 h-3 text-white" />
