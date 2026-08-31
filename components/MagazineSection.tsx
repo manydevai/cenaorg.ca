@@ -295,21 +295,21 @@ export function MagazineSection() {
           </h3>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {stories.map((item) => (
+            {stories.slice(0, Math.floor(stories.length / 3) * 3).map((item) => (
               <div
                 key={item.id}
                 className="bg-black/60 border border-white/10 hover:border-[#C5A059]/60 rounded-lg transition-all duration-300 group flex flex-col justify-between hover:-translate-y-1 shadow-lg overflow-hidden"
               >
                 {/* Featured Image */}
                 <Link to={`/magazine?page=${item.page}`} className="block">
-                  <div className="relative aspect-[3/2.2] overflow-hidden bg-[#111]">
+                  <div className="relative aspect-[3/2.8] overflow-hidden bg-[#111]">
                     <img
                       src={getPageSrc(item.imagePage)}
                       alt={item.title}
                       className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
                       loading="lazy"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                    <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/70 to-transparent" />
                     <div className="absolute top-3 left-3 bg-black/80 backdrop-blur-md px-2.5 py-1 border border-[#C5A059]/50 text-[10px] font-bold uppercase tracking-wider text-[#C5A059] rounded-sm">
                       Pág. {item.page}
                     </div>
@@ -317,8 +317,8 @@ export function MagazineSection() {
                 </Link>
 
                 {/* Card Content */}
-                <div className="p-5 flex flex-col flex-1">
-                  <div className="space-y-3 flex-1">
+                <div className="p-4 flex flex-col flex-1">
+                  <div className="space-y-2 flex-1">
                     <div className="flex items-center justify-between text-[11px]">
                       <span className="text-[#C5A059] font-bold uppercase tracking-wider">
                         {item.category}
@@ -326,17 +326,17 @@ export function MagazineSection() {
                     </div>
 
                     <Link to={`/magazine?page=${item.page}`}>
-                      <h4 className="font-serif font-bold text-lg text-white group-hover:text-[#C5A059] transition-colors leading-snug">
+                      <h4 className="font-serif font-bold text-base text-white group-hover:text-[#C5A059] transition-colors leading-snug">
                         {item.title}
                       </h4>
                     </Link>
 
-                    <p className="text-gray-400 text-xs font-sans line-clamp-3 leading-relaxed">
+                    <p className="text-gray-400 text-xs font-sans line-clamp-2 leading-relaxed">
                       {item.spoiler}
                     </p>
                   </div>
 
-                  <div className="pt-4 mt-4 border-t border-white/5 flex items-center justify-between text-xs">
+                  <div className="pt-3 mt-3 border-t border-white/5 flex items-center justify-between text-xs">
                     <Link
                       to={`/magazine?page=${item.page}`}
                       className="font-bold text-[#C5A059] group-hover:text-white transition-colors flex items-center space-x-1"
