@@ -83,7 +83,178 @@ const translations = {
       support: 'Soutien',
       blog: 'Blog',
       contact: 'Contact',
-      gallery: 'Galerie'
+      gallery: 'Galerie',
+      magazine: 'Magazine'
+    },
+    magazine: {
+      ticker_label: '🔴 CENA JOURNAL DIGITAL | ÉDITION SPÉCIALE 2026',
+      ticker_text: 'DÉCOUVREZ LES DERNIÈRES ACTUALITÉS ET PORTRAITS INSPIRANTS DE LA DIASPORA LUSOPHONE AU CANADA • FEUILLETEZ LA REVUE COMPLÈTE EN LIGNE •',
+      badge: 'ÉDITION DIGITALE 2026',
+      title: 'CENA Magazine — L\'Excellence Lusophone',
+      subtitle: 'Plongez au cœur de la diaspora angolaise et lusophone au Canada : leadership, culture, éducation, entreprenariat et récits d\'impact.',
+      read_online: 'Feuilleter le Magazine',
+      download_pdf: 'Télécharger le PDF',
+      select_edition: 'Éditions PDF téléchargeables :',
+      french_edition: 'Édition Française (PDF)',
+      portuguese_edition: 'Édition Portugaise (PDF)',
+      english_edition: 'Édition Anglaise (PDF)',
+      total_pages: '40 Pages',
+      zoom: 'Plein écran',
+      prev_page: 'Précédent',
+      next_page: 'Suivant',
+      page_indicator: 'Page {current} sur {total}',
+      home_highlight_badge: 'PRESSE & ACTUALITÉS',
+      home_highlight_title: 'Les Grandes Unes du Magazine CENA',
+      home_highlight_desc: 'Explorez en avant-première nos grands reportages et analyses exclusifs. Cliquez sur n\'importe quelle actualité pour accéder directement à la page correspondante du magazine.',
+      explore_cta: 'Consulter le Magazine Complet',
+      download_cta: 'Télécharger PDF (FR)',
+      read_full_article: 'Lire l\'Article (Pág. {page}) →',
+      stories: [
+        {
+          id: 1,
+          page: 11,
+          category: 'PRESIDENCE & LIDERANÇA',
+          date: 'Édition Spéciale 2026',
+          title: 'Cristina Indira MANUEL — Fondatrice & Présidente CENA',
+          spoiler: '« Ne quittez pas ce monde sans accepter Jésus-Christ comme votre Seigneur et Sauveur. Choisissez l\'unité plutôt que la division et construisons un héritage durable. »',
+          imagePage: 11
+        },
+        {
+          id: 2,
+          page: 10,
+          category: 'VICE-PRÉSIDENCE & CANDOR\'S CAKE',
+          date: 'Édition Spéciale 2026',
+          title: 'Marileny F. ANTONIO — Vice-Présidente CENA',
+          spoiler: '« Le plus grand succès se bâtit sur la Parole de Dieu. Lorsque le Christ est notre fondation, la foi devient plus forte que la peur. »',
+          imagePage: 10
+        },
+        {
+          id: 3,
+          page: 8,
+          category: 'RESSOURCES HUMAINES & ENGAGEMENT',
+          date: 'Édition Spéciale 2026',
+          title: 'Dulce Angelina FIGUEIREDO — Directrice des RH CENA',
+          spoiler: '« Je crois que chaque personne possède un objectif unique. Ayez foi en Dieu, croyez en vous-même et n\'abandonnez jamais vos rêves. »',
+          imagePage: 8
+        },
+        {
+          id: 4,
+          page: 9,
+          category: 'FINANCE & CONSEIL D\'ADMINISTRATION',
+          date: 'Édition Spéciale 2026',
+          title: 'Sebastião Matano Sala — Directeur Financier & Fondateur',
+          spoiler: '« N\'oubliez jamais d\'où vous venez, mais ne laissez jamais vos origines limiter où vous pouvez aller. Le succès se mesure à l\'impact positif que nous créons. »',
+          imagePage: 9
+        },
+        {
+          id: 5,
+          page: 15,
+          category: 'FINANCEMENT COMMERCIAL & IMMOBILIER',
+          date: 'Édition Spéciale 2026',
+          title: 'Samara ARCHANGE, MBA — Co-Fondatrice DGA Commercial',
+          spoiler: '« N\'abandonnez jamais vos rêves avant d\'avoir cherché les meilleurs conseils. Le savoir, la préparation et la détermination concrétisent chaque vision. »',
+          imagePage: 15
+        },
+        {
+          id: 6,
+          page: 13,
+          category: 'IMMOBILIER & ENTREPRENEURIAT',
+          date: 'Édition Spéciale 2026',
+          title: 'Magalie Sabine Jean-Louis — Courtier Immobilier Résidentiel',
+          spoiler: '« Ne laissez jamais la complexité du marché immobilier d\'aujourd\'hui vous décourager. Devenir propriétaire est possible avec une préparation adéquate. »',
+          imagePage: 13
+        },
+        {
+          id: 7,
+          page: 14,
+          category: 'AUTONOMISATION DES FEMMES',
+          date: 'Édition Spéciale 2026',
+          title: 'Neccy LM — Leadership Féminin & Croissance Personnelle',
+          spoiler: '« N\'abandonnez jamais. Les défis auxquels vous faites face aujourd\'hui peuvent devenir le fondement des victoires de demain. »',
+          imagePage: 14
+        },
+        {
+          id: 8,
+          page: 18,
+          category: 'ENTREPRISE DENETTOYAGE & ENTRETIEN',
+          date: 'Édition Spéciale 2026',
+          title: 'Val Nettoyage et Entretien — L\'Excellence du Service',
+          spoiler: '« Croyez toujours en votre potentiel et n\'ayez jamais peur de faire le premier pas. Le succès se bâtit avec travail, persévérance et honnêteté. »',
+          imagePage: 18
+        },
+        {
+          id: 9,
+          page: 19,
+          category: 'ENTREPRENEURIAT & GASTRONOMIE',
+          date: 'Édition Spéciale 2026',
+          title: 'Candor\'s Cake — L\'Art de Célébrer la Vie',
+          spoiler: 'Fondé par Marileny Fernando Antonio, Candor\'s Cake transforme chaque événement marquant en un souvenir inoubliable grâce à la haute pâtisserie.',
+          imagePage: 19
+        },
+        {
+          id: 10,
+          page: 21,
+          category: 'ESTHÉTIQUE & AUTONOMISATION',
+          date: 'Édition Spéciale 2026',
+          title: 'Essential Micro Hair — Confiance & Beauté Naturelle',
+          spoiler: 'Spécialisé dans les micro-locs et les coiffures protectrices sur mesure pour célébrer la beauté naturelle et autonomiser chaque cliente à Montréal.',
+          imagePage: 21
+        },
+        {
+          id: 11,
+          page: 25,
+          category: 'SANTE MENTALE & COMMUNAUTÉ',
+          date: 'Édition Spéciale 2026',
+          title: 'Zen Dans Ma Tête — Promotion de la Santé Mentale',
+          spoiler: 'Organisme dédié à la promotion de la santé mentale et du bien-être émotionnel inclusif au sein des communautés afro-descendantes et des jeunes.',
+          imagePage: 25
+        },
+        {
+          id: 12,
+          page: 27,
+          category: 'PHOTOGRAPHIE & ART',
+          date: 'Édition Spéciale 2026',
+          title: 'Randy Selection — Photographe Professionnel & Entrepreneur',
+          spoiler: 'Capturer les moments les plus précieux de la vie avec élégance et maestria visuelle pour des mariages et des événements inoubliables.',
+          imagePage: 27
+        },
+        {
+          id: 13,
+          page: 30,
+          category: 'LEADERSHIP & IMPACT COMMUNAUTAIRE',
+          date: 'Édition Spéciale 2026',
+          title: 'Randy Larochelle — Vision & Engagement',
+          spoiler: '« Croyez en votre vision, travaillez avec passion et laissez votre travail parler d\'lui-même. Le véritable succès se bâtit sur l\'intégrité. »',
+          imagePage: 30
+        },
+        {
+          id: 14,
+          page: 32,
+          category: 'SANTÉ MENSTRUELLE & EMPODERAMENTO',
+          date: 'Édition Spéciale 2026',
+          title: 'Association Menarca Muhatu — Dignité & Éducation',
+          spoiler: 'Fondée par Divina Ndomateso Ntele, l\'association combat la précarité menstruelle et promeut l\'éducation, la dignité et l\'égalité des filles.',
+          imagePage: 32
+        },
+        {
+          id: 15,
+          page: 7,
+          category: 'JEUNESSE & INNOVATION',
+          date: 'Édition Spéciale 2026',
+          title: 'Daniel Love Fernando ANTÓNIO — Directeur Jeunesse & Innovation CENA',
+          spoiler: '« La vie est comme un arbre. Chaque saison a un but. Restez enraciné, continuez à grandir et n\'abandonnez jamais le voyage. »',
+          imagePage: 7
+        },
+        {
+          id: 16,
+          page: 31,
+          category: 'CONSTRUCTION & DESIGN',
+          date: 'Édition Spéciale 2026',
+          title: 'Black Sable Group Corporation — Design, Gestion & Construction',
+          spoiler: '« Chaque projet est une promesse. Notre mission est de transformer les idées en résultats durables en bâtissant des relations fondées sur la confiance et l\'excellence. »',
+          imagePage: 31
+        }
+      ]
     },
     hero: {
       title: 'CENA | Communauté d\'Éducation et de Networking Angolaise.',
@@ -472,31 +643,33 @@ const translations = {
     backpack_campaign: {
       banner_badge: '🎒 RENTRÉE SCOLAIRE 2026',
       banner_text: 'Programme de sacs à dos & fournitures scolaires — Au soutien de 200 enfants dans la Grande Montréal',
-      btn_register: 'Inscrire un enfant',
-      btn_donate: 'Faire un don (30 $)',
-      section_badge: 'INITIATIVE COMMUNAUTAIRE 2026',
-      section_title: 'Un Sac à Dos. Un Nouveau Départ.',
-      section_subtitle: 'Programme de sacs à dos et fournitures scolaires — Au soutien de 200 enfants dans la grande région de Montréal',
-      section_desc: 'Ce programme a été créé pour soutenir les familles vivant des difficultés financières en offrant aux enfants un sac à dos neuf rempli de fournitures scolaires essentielles.',
-      target_impact_label: 'OBJECTIF D\'IMPACT',
+      btn_register: 'Inscriptions Fermées',
+      btn_donate: 'Soutenir CENA',
+      status_closed: 'INSCRIPTIONS FERMÉES — OBJECTIF ATTEINT (200/200)',
+      success_announcement: 'La campagne 2026 est officiellement terminée avec un franc succès ! Un grand merci à toute la communauté et aux donateurs pour leur soutien exceptionnel.',
+      section_badge: 'ÉVÉNEMENT EN HIGHLIGHT — CAMPAGNE RÉALISÉE',
+      section_title: 'Sacs à Dos 2026 : Mission Accomplie !',
+      section_subtitle: '200 enfants et leurs familles ont été soutenus dans la grande région de Montréal grâce à la solidarité de notre communauté.',
+      section_desc: 'Ce programme a permis d\'offrir à 200 enfants un sac à dos neuf rempli de fournitures scolaires essentielles pour entamer l\'année académique avec dignité et assurance.',
+      target_impact_label: 'IMPACT RÉALISÉ',
       children_supported_count: '200 Enfants Soutenus',
-      bullet_1: 'Sac à dos neuf avec étui, cahiers, crayons de couleur Crayola et fournitures scolaires essentielles.',
-      bullet_2: 'Destiné aux familles vivant des difficultés financières dans la grande région de Montréal.',
-      bullet_3: 'Les dons sont acceptés jusqu\'au 9 septembre. Don à partir de 30 $.',
-      confidential_note: 'Formulaire confidentiel — Organisme CENA (OBNL)',
+      bullet_1: 'Sacs à dos neufs complets distribués aux enfants de la communauté.',
+      bullet_2: 'Destiné aux familles de la grande région de Montréal.',
+      bullet_3: 'Campagne de soutien et d\'inscriptions 2026 complétée avec succès.',
+      confidential_note: 'Organisme CENA (OBNL) — Merci pour votre soutien !',
       poster_format: 'Format de l\'affiche :',
-      deadline_note: 'Les dons sont acceptés jusqu\'au 9 septembre. Don à partir de 30 $.',
+      deadline_note: 'Campagne 2026 complétée.',
       slogan: 'Parce que chaque enfant mérite un bon départ.',
       nav_item: 'Sacs à dos',
       progress: {
-        registered_children: 'Enfants inscrits',
+        registered_children: 'Enfants soutenus',
         target_goal: 'Objectif : 200 enfants',
-        donors_count: 'Donateurs de la communauté',
-        donors_label: '0 Donateur',
-        progress_percentage: 'en cours'
+        donors_count: 'Donateurs & Partenaires',
+        donors_label: 'Campagne Réussie !',
+        progress_percentage: 'complété'
       },
       share: {
-        label: 'Partager la campagne',
+        label: 'Partager le succès de la campagne',
         copy_link: 'Copier le lien',
         copied: 'Lien copié !'
       },
@@ -576,7 +749,178 @@ const translations = {
       support: 'Support',
       blog: 'Blog',
       contact: 'Contact',
-      gallery: 'Gallery'
+      gallery: 'Gallery',
+      magazine: 'Magazine'
+    },
+    magazine: {
+      ticker_label: '🔴 CENA DIGITAL NEWSROOM | SPECIAL EDITION 2026',
+      ticker_text: 'DISCOVER THE LATEST NEWS AND INSPIRING PORTRAITS OF THE LUSOPHONE DIASPORA IN CANADA • READ THE FULL DIGITAL MAGAZINE ONLINE •',
+      badge: '2026 DIGITAL EDITION',
+      title: 'CENA Magazine — Lusophone Excellence',
+      subtitle: 'Explore the heart of the Angolan and Lusophone diaspora in Canada: leadership, culture, education, entrepreneurship, and impact stories.',
+      read_online: 'Read Magazine Online',
+      download_pdf: 'Download PDF',
+      select_edition: 'Downloadable PDF Editions:',
+      french_edition: 'French Edition (PDF)',
+      portuguese_edition: 'Portuguese Edition (PDF)',
+      english_edition: 'English Edition (PDF)',
+      total_pages: '40 Pages',
+      zoom: 'Full Screen',
+      prev_page: 'Previous',
+      next_page: 'Next',
+      page_indicator: 'Page {current} of {total}',
+      home_highlight_badge: 'PRESS & HEADLINES',
+      home_highlight_title: 'Featured Stories from CENA Magazine',
+      home_highlight_desc: 'Explore exclusive investigative features and community updates. Click any news story to jump directly to its exact page in the magazine.',
+      explore_cta: 'Browse Full Magazine',
+      download_cta: 'Download PDF (EN)',
+      read_full_article: 'Read Full Story (Pg. {page}) →',
+      stories: [
+        {
+          id: 1,
+          page: 11,
+          category: 'PRESIDENCY & LEADERSHIP',
+          date: 'Special Edition 2026',
+          title: 'Cristina Indira MANUEL — Founder & President CENA',
+          spoiler: '“Do not take your last breath without accepting Jesus Christ as your Lord and Savior. Choose unity over division, and together we will build a lasting legacy.”',
+          imagePage: 11
+        },
+        {
+          id: 2,
+          page: 10,
+          category: 'VICE-PRESIDENCY & CANDOR’S CAKE',
+          date: 'Special Edition 2026',
+          title: 'Marileny F. ANTONIO — Vice-President CENA',
+          spoiler: '“The greatest success is built on the Word of God. When Christ is our foundation, faith becomes stronger than fear, and our lives become a testimony of His love.”',
+          imagePage: 10
+        },
+        {
+          id: 3,
+          page: 8,
+          category: 'HUMAN RESOURCES & COMMUNITY',
+          date: 'Special Edition 2026',
+          title: 'Dulce Angelina FIGUEIREDO — Director of HR CENA',
+          spoiler: '“I believe every person has a unique purpose. Trust in God, believe in yourself, and never give up on your dreams.”',
+          imagePage: 8
+        },
+        {
+          id: 4,
+          page: 9,
+          category: 'FINANCE & BOARD MEMBER',
+          date: 'Special Edition 2026',
+          title: 'Sebastião Matano Sala — Founder & Finance Director CENA',
+          spoiler: '“Never forget where you came from, but never let your origins limit where you can go. Success is measured by the opportunities we create and lives we impact.”',
+          imagePage: 9
+        },
+        {
+          id: 5,
+          page: 15,
+          category: 'COMMERCIAL FINANCING & REAL ESTATE',
+          date: 'Special Edition 2026',
+          title: 'Samara ARCHANGE, MBA — Co-Founder DGA Commercial',
+          spoiler: '“Never give up on your dreams before seeking the right advice. Knowledge, preparation, and determination can turn every vision into reality.”',
+          imagePage: 15
+        },
+        {
+          id: 6,
+          page: 13,
+          category: 'REAL ESTATE & BUSINESS',
+          date: 'Special Edition 2026',
+          title: 'Magalie Sabine Jean-Louis — Residential Real Estate Broker',
+          spoiler: '“Never allow the complexity of today’s real estate market to discourage you. Homeownership is possible when you are well prepared and well supported.”',
+          imagePage: 13
+        },
+        {
+          id: 7,
+          page: 14,
+          category: 'WOMEN’S EMPOWERMENT',
+          date: 'Special Edition 2026',
+          title: 'Neccy LM — Personal Growth & Women’s Leadership',
+          spoiler: '“Never give up. The challenges you face today may become the foundation of tomorrow’s victories.”',
+          imagePage: 14
+        },
+        {
+          id: 8,
+          page: 18,
+          category: 'CLEANING & MAINTENANCE SERVICES',
+          date: 'Special Edition 2026',
+          title: 'Val Nettoyage et Entretien — Service Excellence',
+          spoiler: '“Always believe in your potential and never be afraid to take the first step. Success is built through hard work, perseverance, honesty, and faith.”',
+          imagePage: 18
+        },
+        {
+          id: 9,
+          page: 19,
+          category: 'ENTREPRENEURSHIP & PATISSERIE',
+          date: 'Special Edition 2026',
+          title: 'Candor’s Cake — The Art of Celebrating Life',
+          spoiler: 'Founded by Marileny Fernando Antonio, Candor’s Cake transforms meaningful celebrations into unforgettable memories with handcrafted edible art.',
+          imagePage: 19
+        },
+        {
+          id: 10,
+          page: 21,
+          category: 'BEAUTY & EMPOWERMENT',
+          date: 'Special Edition 2026',
+          title: 'Essential Micro Hair — Confidence & Natural Beauty',
+          spoiler: 'Specialized in micro-locs and protective hairstyles designed to celebrate natural beauty and empower every client across Longueuil and Montreal.',
+          imagePage: 21
+        },
+        {
+          id: 11,
+          page: 25,
+          category: 'MENTAL HEALTH & COMMUNITY',
+          date: 'Special Edition 2026',
+          title: 'Zen Dans Ma Tête — Mental Health Promotion',
+          spoiler: 'Non-profit organization dedicated to promoting mental health and emotional well-being across Afro-descendant communities, youth, and families.',
+          imagePage: 25
+        },
+        {
+          id: 12,
+          page: 27,
+          category: 'PHOTOGRAPHY & ART',
+          date: 'Special Edition 2026',
+          title: 'Randy Selection — Professional Photographer & Entrepreneur',
+          spoiler: 'Capturing life’s most meaningful moments with artistic precision and prestige photography for weddings and landmark celebrations.',
+          imagePage: 27
+        },
+        {
+          id: 13,
+          page: 30,
+          category: 'LEADERSHIP & COMMUNITY IMPACT',
+          date: 'Special Edition 2026',
+          title: 'Randy Larochelle — Vision & Excellence',
+          spoiler: '“Believe in your vision, work with passion, and let your work speak for itself. True success is built through integrity, perseverance, and positive impact.”',
+          imagePage: 30
+        },
+        {
+          id: 14,
+          page: 32,
+          category: 'MENSTRUAL HEALTH & EMPOWERMENT',
+          date: 'Special Edition 2026',
+          title: 'Association Menarca Muhatu — Dignity & Education',
+          spoiler: 'Founded by Divina Ndomateso Ntele, combating menstrual poverty and promoting dignity, education, and empowerment for girls and women.',
+          imagePage: 32
+        },
+        {
+          id: 15,
+          page: 7,
+          category: 'YOUTH & INNOVATION',
+          date: 'Special Edition 2026',
+          title: 'Daniel Love Fernando ANTÓNIO — Director of Youth & Innovation CENA',
+          spoiler: '"Life is like a tree. Every season has a purpose. Stay rooted, keep growing, and never give up on the journey."',
+          imagePage: 7
+        },
+        {
+          id: 16,
+          page: 31,
+          category: 'CONSTRUCTION & DESIGN',
+          date: 'Special Edition 2026',
+          title: 'Black Sable Group Corporation — Design, Management & Construction',
+          spoiler: '"Every project is a promise. Our mission is to transform ideas into lasting results while building relationships founded on trust, quality, and excellence."',
+          imagePage: 31
+        }
+      ]
     },
     hero: {
       title: 'CENA | Angolan Education & Networking Community.',
@@ -966,31 +1310,33 @@ const translations = {
     backpack_campaign: {
       banner_badge: '🎒 BACKPACK PROGRAM 2026',
       banner_text: 'Backpack & School Supplies Program — Supporting 200 children across Greater Montreal',
-      btn_register: 'Register a Child',
-      btn_donate: 'Donate Today ($30)',
-      section_badge: 'COMMUNITY INITIATIVE 2026',
-      section_title: 'One Backpack. A New Beginning.',
-      section_subtitle: 'Backpack & School Supplies Program — Supporting 200 children across Greater Montreal',
-      section_desc: 'This program is designed to support families experiencing financial difficulties by providing children with a new backpack filled with essential school supplies.',
-      target_impact_label: 'TARGET IMPACT',
+      btn_register: 'Registrations Closed',
+      btn_donate: 'Support CENA',
+      status_closed: 'REGISTRATIONS CLOSED — GOAL ACHIEVED (200/200)',
+      success_announcement: 'The 2026 campaign has officially concluded with great success! A huge thank you to our entire community and donors for their incredible support.',
+      section_badge: 'FEATURED HIGHLIGHT — CAMPAIGN COMPLETED',
+      section_title: '2026 Backpack Program: Mission Accomplished!',
+      section_subtitle: '200 children and their families were supported across Greater Montreal thanks to the generosity of our community.',
+      section_desc: 'This program provided 200 children with brand new backpacks filled with essential school supplies to start the academic year with dignity and confidence.',
+      target_impact_label: 'IMPACT ACHIEVED',
       children_supported_count: '200 Children Supported',
-      bullet_1: 'New backpack with pencil case, notebooks, Crayola colored pencils, and essential school supplies.',
-      bullet_2: 'Intended for families experiencing financial hardship across Greater Montreal.',
-      bullet_3: 'Donations are accepted until September 9. Make a donation starting at $30.',
-      confidential_note: 'Confidential form — CENA Organization (NPO)',
+      bullet_1: 'Brand new backpacks packed with school supplies delivered to children in need.',
+      bullet_2: 'Serving families across the Greater Montreal region.',
+      bullet_3: '2026 registration and donation drive closed with 100% of the goal reached.',
+      confidential_note: 'CENA Organization (NPO) — Thank you for your support!',
       poster_format: 'Poster Format:',
-      deadline_note: 'Donations are accepted until September 9. Make a donation starting at $30.',
+      deadline_note: '2026 Campaign completed.',
       slogan: 'Because every child deserves a great start.',
       nav_item: 'Backpack Program',
       progress: {
-        registered_children: 'Children Registered',
+        registered_children: 'Children supported',
         target_goal: 'Goal: 200 children',
-        donors_count: 'Community Donors',
-        donors_label: '0 Donors',
-        progress_percentage: 'in progress'
+        donors_count: 'Donors & Partners',
+        donors_label: 'Campaign Completed!',
+        progress_percentage: 'completed'
       },
       share: {
-        label: 'Share this campaign',
+        label: 'Share campaign success',
         copy_link: 'Copy Link',
         copied: 'Link copied!'
       },
@@ -1070,7 +1416,178 @@ const translations = {
       support: 'Apoio',
       blog: 'Blog',
       contact: 'Contacto',
-      gallery: 'Galeria'
+      gallery: 'Galeria',
+      magazine: 'Revista'
+    },
+    magazine: {
+      ticker_label: '🔴 JORNAL DIGITAL CENA | EDIÇÃO ESPECIAL 2026',
+      ticker_text: 'DESCUBRA AS ÚLTIMAS NOTÍCIAS E RETRATOS INSPIRADORES DA DIÁSPORA LUSÓFONA NO CANADÁ • LEIA A REVISTA COMPLETA ONLINE •',
+      badge: 'EDIÇÃO DIGITAL 2026',
+      title: 'CENA Magazine — A Excelência Lusófona',
+      subtitle: 'Mergulhe no coração da diáspora angolana e lusófona no Canadá: liderança, cultura, educação, empreendedorismo e histórias de impacto.',
+      read_online: 'Ler Revista Digital',
+      download_pdf: 'Descarregar PDF',
+      select_edition: 'Edições PDF para Download:',
+      french_edition: 'Edição Francesa (PDF)',
+      portuguese_edition: 'Edição Portuguesa (PDF)',
+      english_edition: 'Edição Inglesa (PDF)',
+      total_pages: '40 Páginas',
+      zoom: 'Ecrã Inteiro',
+      prev_page: 'Anterior',
+      next_page: 'Seguinte',
+      page_indicator: 'Página {current} de {total}',
+      home_highlight_badge: 'IMPRENSA & NOTÍCIAS',
+      home_highlight_title: 'Grandes Manchetes da CENA Magazine',
+      home_highlight_desc: 'Explore em primeira mão as nossas reportagens e análises exclusivas. Clique em qualquer notícia para aceder diretamente à página correspondente da revista.',
+      explore_cta: 'Consultar Revista Completa',
+      download_cta: 'Descarregar PDF (PT)',
+      read_full_article: 'Ler Matéria Completa (Pág. {page}) →',
+      stories: [
+        {
+          id: 1,
+          page: 11,
+          category: 'PRESIDÊNCIA & LIDERANÇA',
+          date: 'Edição Especial 2026',
+          title: 'Cristina Indira MANUEL — Fundadora & Presidente CENA',
+          spoiler: '«Não dê o seu último suspiro sem aceitar Jesus Cristo como seu Senhor e Salvador. Escolha a unidade em vez da divisão e, juntos, construiremos um legado que abençoará as gerações vindouras.»',
+          imagePage: 11
+        },
+        {
+          id: 2,
+          page: 10,
+          category: 'VICE-PRESIDÊNCIA & CANDOR\'S CAKE',
+          date: 'Edição Especial 2026',
+          title: 'Marileny F. ANTONIO — Vice-Presidente CENA',
+          spoiler: '«O maior sucesso é construído sobre a Palavra de Deus. Quando Cristo é a nossa base, a fé torna-se mais forte que o medo e as nossas vidas tornam-se um testemunho do Seu amor.»',
+          imagePage: 10
+        },
+        {
+          id: 3,
+          page: 8,
+          category: 'RECURSOS HUMANOS & COMUNIDADE',
+          date: 'Edição Especial 2026',
+          title: 'Dulce Angelina FIGUEIREDO — Diretora de RH CENA',
+          spoiler: '«Acredito que cada pessoa tem um propósito único. Confie em Deus, acredite em si mesmo e nunca desista dos seus sonhos.»',
+          imagePage: 8
+        },
+        {
+          id: 4,
+          page: 9,
+          category: 'FINANÇAS & CONSELHO CENA',
+          date: 'Edição Especial 2026',
+          title: 'Sebastião Matano Sala — Fundador & Diretor Financeiro',
+          spoiler: '«Nunca esqueça de onde veio, mas nunca deixe que as suas origens limitem onde pode ir. O sucesso mede-se pelas oportunidades que criamos e vidas que impactamos.»',
+          imagePage: 9
+        },
+        {
+          id: 5,
+          page: 15,
+          category: 'FINANCIAMENTO COMERCIAL & IMOBILIÁRIO',
+          date: 'Edição Especial 2026',
+          title: 'Samara ARCHANGE, MBA — Co-Fundadora DGA Commercial',
+          spoiler: '«Nunca desista dos seus sonhos antes de procurar o conselho certo. O conhecimento, a preparação e a determinação transformam qualquer visão em realidade.»',
+          imagePage: 15
+        },
+        {
+          id: 6,
+          page: 13,
+          category: 'IMOBILIÁRIO & NEGÓCIOS',
+          date: 'Edição Especial 2026',
+          title: 'Magalie Sabine Jean-Louis — Corretora Imobiliária Residencial',
+          spoiler: '«Nunca permita que a complexidade do mercado imobiliário o desanime. Ser proprietário é possível quando está bem preparado e bem acompanhado.»',
+          imagePage: 13
+        },
+        {
+          id: 7,
+          page: 14,
+          category: 'LIDERANÇA FEMININA',
+          date: 'Edição Especial 2026',
+          title: 'Neccy LM — Plataforma de Crescimento & Liderança',
+          spoiler: '«Nunca desista. Os desafios que enfrenta hoje podem tornar-se o alicerce das vitórias de amanhã.»',
+          imagePage: 14
+        },
+        {
+          id: 8,
+          page: 18,
+          category: 'SERVIÇOS DE LIMPEZA & MANUTENÇÃO',
+          date: 'Edição Especial 2026',
+          title: 'Val Nettoyage et Entretien — Excelência em Serviços',
+          spoiler: '«Acredite sempre no seu potencial e nunca tenha medo de dar o primeiro passo. O sucesso constrói-se com trabalho árduo, perseverança, honestidade e fé.»',
+          imagePage: 18
+        },
+        {
+          id: 9,
+          page: 19,
+          category: 'EMPREENDEDORISMO & PASTERIA',
+          date: 'Edição Especial 2026',
+          title: 'Candor\'s Cake — A Arte de Celebrar a Vida',
+          spoiler: 'Fundado por Marileny Fernando Antonio, Candor\'s Cake transforma cada celebração numa memória inesquecível através da arte de confeitaria artesanal.',
+          imagePage: 19
+        },
+        {
+          id: 10,
+          page: 21,
+          category: 'ESTÉTICA & EMPODERAMENTO',
+          date: 'Edição Especial 2026',
+          title: 'Essential Micro Hair — Confiança & Beleza Natural',
+          spoiler: 'Especializada em micro-locs e penteados de proteção personalizados para celebrar a beleza natural e empoderar cada cliente em Longueuil e Montreal.',
+          imagePage: 21
+        },
+        {
+          id: 8,
+          page: 27,
+          category: 'FOTOGRAFIA & ARTE',
+          date: 'Edição Especial 2026',
+          title: 'Randy Selection — Fotógrafo Profissional & Empreendedor',
+          spoiler: 'Capturar os momentos mais marcantes da vida com precisão artística e fotografia de prestígio para casamentos e momentos inesquecíveis.',
+          imagePage: 27
+        },
+        {
+          id: 9,
+          page: 30,
+          category: 'LIDERANÇA & IMPACTO COMUNITÁRIO',
+          date: 'Edição Especial 2026',
+          title: 'Randy Larochelle — Visão & Excelência',
+          spoiler: '«Acredite na sua visão, trabalhe com paixão e deixe o seu trabalho falar por si. O verdadeiro sucesso constrói-se com integridade, perseverança e impacto positivo.»',
+          imagePage: 30
+        },
+        {
+          id: 11,
+          page: 25,
+          category: 'SAÚDE MENTAL & COMUNIDADE',
+          date: 'Edição Especial 2026',
+          title: 'Zen Dans Ma Tête — Promoção da Saúde Mental',
+          spoiler: 'Organização sem fins lucrativos dedicada a promover a saúde mental e o bem-estar emocional em comunidades afrodescendentes e jovens.',
+          imagePage: 25
+        },
+        {
+          id: 12,
+          page: 32,
+          category: 'SAÚDE MENSTRUAL & EMPODERAMENTO',
+          date: 'Edição Especial 2026',
+          title: 'Associação Menarca Muhatu — Dignidade & Educação',
+          spoiler: 'Fundada por Divina Ndomateso Ntele, combatendo a pobreza menstrual e promovendo dignidade, educação e empoderamento para meninas e mulheres.',
+          imagePage: 32
+        },
+        {
+          id: 13,
+          page: 7,
+          category: 'JUVENTUDE & INOVAÇÃO',
+          date: 'Edição Especial 2026',
+          title: 'Daniel Love Fernando ANTÓNIO — Diretor de Juventude & Inovação CENA',
+          spoiler: '«A vida é como uma árvore. Cada estação tem um propósito. Mantenha-se enraizado, continue a crescer e nunca desista da jornada.»',
+          imagePage: 7
+        },
+        {
+          id: 14,
+          page: 31,
+          category: 'CONSTRUÇÃO & DESIGN',
+          date: 'Edição Especial 2026',
+          title: 'Black Sable Group Corporation — Design, Gestão & Construção',
+          spoiler: '«Cada projeto é uma promessa. A nossa missão é transformar ideias em resultados duradouros com base na confiança, qualidade e excelência.»',
+          imagePage: 31
+        }
+      ]
     },
     hero: {
       title: 'CENA | Comunidade de Educação e Networking Angolana.',
@@ -1461,31 +1978,33 @@ const translations = {
     backpack_campaign: {
       banner_badge: '🎒 REGRESSO ÀS AULAS 2026',
       banner_text: 'Programa de Mochilas e Material Escolar — A apoiar 200 crianças na Grande Montreal',
-      btn_register: 'Inscrever Criança',
-      btn_donate: 'Fazer Doação ($30)',
-      section_badge: 'INICIATIVA COMUNITÁRIA 2026',
-      section_title: 'Uma Mochila. Um Novo Começo.',
-      section_subtitle: 'Programa de Mochilas e Material Escolar — A apoiar 200 crianças na Grande Montreal',
-      section_desc: 'Este programa foi criado para apoiar famílias que enfrentam dificuldades financeiras, oferecendo às crianças uma mochila nova com material escolar essencial.',
-      target_impact_label: 'META DE IMPACTO',
+      btn_register: 'Inscrições Encerradas',
+      btn_donate: 'Apoiar a CENA',
+      status_closed: 'INSCRIÇÕES ENCERRADAS — META ATINGIDA (200/200)',
+      success_announcement: 'A campanha de 2026 foi oficialmente concluída com grande sucesso! Um enorme obrigado a toda a comunidade e doadores pelo apoio excecional.',
+      section_badge: 'DESTAQUE EM EVENTOS — CAMPANHA REALIZADA COM SUCESSO',
+      section_title: 'Programa de Mochilas 2026: Missão Cumprida!',
+      section_subtitle: '200 crianças e respetivas famílias foram apoiadas na Grande Montreal graças à solidariedade da nossa comunidade.',
+      section_desc: 'Este programa permitiu oferecer a 200 crianças uma mochila nova recheada de material escolar essencial para iniciar o ano letivo com dignidade e confiança.',
+      target_impact_label: 'IMPACTO ALCANÇADO',
       children_supported_count: '200 Crianças Apoiadas',
-      bullet_1: 'Mochila nova com estojo, cadernos, lápis de cor Crayola e material escolar essencial.',
-      bullet_2: 'Destinado a famílias com dificuldades financeiras na Grande Montreal.',
-      bullet_3: 'As doações são aceites até 9 de setembro. Faça uma doação a partir de 30 $.',
-      confidential_note: 'Formulário confidencial — Organização CENA (OBNL)',
+      bullet_1: 'Mochilas novas completas com material escolar essencial entregues às crianças.',
+      bullet_2: 'Apoio direto a famílias da região da Grande Montreal.',
+      bullet_3: 'Campanha de apoio e inscrições de 2026 concluída com 100% da meta atingida.',
+      confidential_note: 'Organização CENA (OBNL) — Obrigado pelo seu apoio!',
       poster_format: 'Formato do Cartaz:',
-      deadline_note: 'As doações são aceites até 9 de setembro. Faça uma doação a partir de 30 $.',
+      deadline_note: 'Campanha de 2026 concluída.',
       slogan: 'Porque toda criança merece um bom começo.',
       nav_item: 'Mochilas Escolares',
       progress: {
-        registered_children: 'Crianças Inscritas',
+        registered_children: 'Crianças apoiadas',
         target_goal: 'Meta: 200 crianças',
-        donors_count: 'Doadores da Comunidade',
-        donors_label: '0 Doadores',
-        progress_percentage: 'em curso'
+        donors_count: 'Doadores & Parceiros',
+        donors_label: 'Campanha Concluída!',
+        progress_percentage: 'concluído'
       },
       share: {
-        label: 'Partilhar a campanha',
+        label: 'Partilhar o sucesso da campanha',
         copy_link: 'Copiar link',
         copied: 'Link copiado!'
       },

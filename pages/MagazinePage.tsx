@@ -1,0 +1,389 @@
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Header } from '../components/Header';
+import { Footer } from '../components/Footer';
+import { useLanguage } from '../contexts/LanguageContext';
+import {
+  BookOpen,
+  Download,
+  ChevronLeft,
+  ChevronRight,
+  Maximize2,
+  Minimize2,
+  FileText,
+  Sparkles,
+  Share2,
+  CheckCircle2,
+  Grid,
+  ArrowLeft
+} from 'lucide-react';
+import { Link } from 'react-router-dom';
+
+const TOTAL_PAGES = 40;
+
+export function MagazinePage() {
+  const { t, language } = useLanguage();
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
+  const [showThumbnails, setShowThumbnails] = useState<boolean>(false);
+  const [downloadCopied, setDownloadCopied] = useState<boolean>(false);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    const params = new URLSearchParams(window.location.search);
+    const pageParam = params.get('page');
+    if (pageParam) {
+      const p = parseInt(pageParam, 10);
+      if (!isNaN(p) && p >= 1 && p <= TOTAL_PAGES) {
+        setCurrentPage(p);
+      }
+    }
+  }, []);
+
+  // Format page image path
+  const getPageSrc = (pageNum: number) => {
+    if (pageNum === 1) return '/magazine/pages/MAG_-_ENGLISH_VERSION.webp';
+    return `/magazine/pages/MAG_-_ENGLISH_VERSION${pageNum}.webp`;
+  };
+
+  const handleNext = () => {
+    if (currentPage < TOTAL_PAGES) {
+      setCurrentPage((prev) => prev + 1);
+    }
+  };
+
+  const handlePrev = () => {
+    if (currentPage > 1) {
+      setCurrentPage((prev) => prev - 1);
+    }
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'ArrowRight') handleNext();
+    if (e.key === 'ArrowLeft') handlePrev();
+    if (e.key === 'Escape' && isFullscreen) setIsFullscreen(false);
+  };
+
+  const pdfLinks = {
+    fr: '/magazine/pdf/cena-magazine-fr.pdf',
+    pt: '/magazine/pdf/cena-magazine-pt.pdf',
+    en: '/magazine/pdf/cena-magazine-en.pdf',
+  };
+
+  const currentPdf = pdfLinks[language as keyof typeof pdfLinks] || pdfLinks.fr;
+
+  const handleShare = async () => {
+    const url = window.location.href;
+    try {
+      await navigator.clipboard.writeText(url);
+      setDownloadCopied(true);
+      setTimeout(() => setDownloadCopied(false), 2000);
+    } catch {
+      // Fallback
+    }
+  };
+
+  return (
+    <div
+      className="min-h-screen bg-[#0A0A0A] text-white flex flex-col font-sans select-none"
+      tabIndex={0}
+      onKeyDown={handleKeyDown}
+    >
+      <Header />
+
+      <main className="flex-grow pt-24 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+        {/* Top Breadcrumb & Return */}
+        <div className="mb-6 flex items-center justify-between">
+          <Link
+            to="/"
+            className="inline-flex items-center text-xs uppercase tracking-widest text-[#C5A059] hover:text-white transition-colors"
+          >
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            {t('navigation.home')}
+          </Link>
+
+          <div className="flex items-center space-x-3">
+            <button
+              onClick={handleShare}
+              className="inline-flex items-center space-x-1.5 px-3 py-1.5 bg-white/5 hover:bg-white/10 border border-white/10 text-xs uppercase tracking-wider text-gray-300 rounded transition-colors"
+            >
+              {downloadCopied ? (
+                <>
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#C5A059]" />
+                  <span className="text-[#C5A059]">{t('backpack_campaign.share.copied')}</span>
+                </>
+              ) : (
+                <>
+                  <Share2 className="w-3.5 h-3.5 text-[#C5A059]" />
+                  <span>{t('backpack_campaign.share.label')}</span>
+                </>
+              )}
+            </button>
+          </div>
+        </div>
+
+        {/* Hero Header */}
+        <div className="text-center max-w-3xl mx-auto mb-10">
+          <div className="inline-flex items-center space-x-2 bg-[#8B0000]/30 border border-[#8B0000] px-4 py-1.5 mb-4">
+            <Sparkles className="w-4 h-4 text-[#C5A059]" />
+            <span className="text-[#C5A059] text-xs font-bold uppercase tracking-[0.25em]">
+              {t('magazine.badge')}
+            </span>
+          </div>
+
+          <h1 className="text-3xl sm:text-5xl font-serif font-bold text-white tracking-tight uppercase mb-4 leading-tight">
+            {t('magazine.title')}
+          </h1>
+
+          <p className="text-gray-400 text-sm sm:text-base leading-relaxed font-light">
+            {t('magazine.subtitle')}
+          </p>
+        </div>
+
+        {/* Reader Control Bar */}
+        <div className="bg-[#121212] border border-[#C5A059]/30 rounded-t-xl p-4 flex flex-wrap items-center justify-between gap-4 shadow-xl">
+          {/* Page Counter */}
+          <div className="flex items-center space-x-3 text-xs font-bold tracking-widest uppercase text-[#C5A059]">
+            <BookOpen className="w-4 h-4" />
+            <span>
+              {t('magazine.page_indicator')
+                .replace('{current}', String(currentPage))
+                .replace('{total}', String(TOTAL_PAGES))}
+            </span>
+          </div>
+
+          {/* Quick Page Jump & Thumbnails Toggle */}
+          <div className="flex items-center space-x-2">
+            <button
+              onClick={() => setShowThumbnails((prev) => !prev)}
+              className={`px-3 py-1.5 text-xs uppercase tracking-wider font-bold border transition-colors flex items-center space-x-1.5 rounded ${
+                showThumbnails
+                  ? 'bg-[#C5A059] text-black border-[#C5A059]'
+                  : 'bg-white/5 border-white/10 text-gray-300 hover:bg-white/10'
+              }`}
+            >
+              <Grid className="w-3.5 h-3.5" />
+              <span>Grid</span>
+            </button>
+
+            <button
+              onClick={() => setIsFullscreen((prev) => !prev)}
+              className="p-1.5 bg-white/5 border border-white/10 hover:bg-white/10 text-gray-300 rounded transition-colors"
+              title={t('magazine.zoom')}
+            >
+              {isFullscreen ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
+            </button>
+          </div>
+
+          {/* Download PDF Buttons */}
+          <div className="flex items-center space-x-2">
+            <a
+              href={pdfLinks.fr}
+              download="CENA_Magazine_FR.pdf"
+              className="px-2.5 py-1.5 bg-white/5 hover:bg-white/15 border border-white/15 text-[11px] font-bold uppercase tracking-wider text-gray-200 transition-colors flex items-center space-x-1 rounded"
+              title="Version Française (PDF)"
+            >
+              <Download className="w-3 h-3 text-[#C5A059]" />
+              <span>FR</span>
+            </a>
+            <a
+              href={pdfLinks.pt}
+              download="CENA_Magazine_PT.pdf"
+              className="px-2.5 py-1.5 bg-white/5 hover:bg-white/15 border border-white/15 text-[11px] font-bold uppercase tracking-wider text-gray-200 transition-colors flex items-center space-x-1 rounded"
+              title="Versão Portuguesa (PDF)"
+            >
+              <Download className="w-3 h-3 text-[#C5A059]" />
+              <span>PT</span>
+            </a>
+            <a
+              href={pdfLinks.en}
+              download="CENA_Magazine_EN.pdf"
+              className="px-2.5 py-1.5 bg-[#8B0000] hover:bg-[#A00000] border border-[#C5A059] text-[11px] font-bold uppercase tracking-wider text-white transition-colors flex items-center space-x-1 rounded shadow-md"
+              title="English Edition (PDF)"
+            >
+              <Download className="w-3 h-3 text-[#C5A059]" />
+              <span>EN</span>
+            </a>
+          </div>
+        </div>
+
+        {/* Thumbnail Selector Drawer */}
+        <AnimatePresence>
+          {showThumbnails && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              className="bg-black/90 border-x border-b border-[#C5A059]/30 p-4 max-h-64 overflow-y-auto grid grid-cols-5 sm:grid-cols-8 md:grid-cols-10 gap-2 shadow-inner"
+            >
+              {Array.from({ length: TOTAL_PAGES }, (_, i) => i + 1).map((num) => (
+                <button
+                  key={num}
+                  onClick={() => {
+                    setCurrentPage(num);
+                    setShowThumbnails(false);
+                  }}
+                  className={`relative aspect-[3/4] border overflow-hidden rounded transition-all ${
+                    currentPage === num
+                      ? 'border-[#C5A059] ring-2 ring-[#C5A059]/50 scale-105'
+                      : 'border-white/10 hover:border-white/50 opacity-70 hover:opacity-100'
+                  }`}
+                >
+                  <img
+                    src={getPageSrc(num)}
+                    alt={`Page ${num}`}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                  <span className="absolute bottom-0 inset-x-0 bg-black/80 text-[9px] font-bold text-center py-0.5 text-white">
+                    {num}
+                  </span>
+                </button>
+              ))}
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Main Digital Reader Viewport */}
+        <div className="relative bg-[#000000] border-x border-b border-[#C5A059]/30 min-h-[500px] sm:min-h-[700px] flex items-center justify-center p-2 sm:p-6 shadow-2xl overflow-hidden group">
+          {/* Left / Right Click Nav Overlays */}
+          <button
+            onClick={handlePrev}
+            disabled={currentPage === 1}
+            className={`absolute left-2 sm:left-4 z-20 p-3 sm:p-4 rounded-full bg-black/70 border border-[#C5A059]/50 text-white backdrop-blur-md transition-all ${
+              currentPage === 1
+                ? 'opacity-30 cursor-not-allowed'
+                : 'hover:bg-[#8B0000] hover:scale-110 shadow-lg'
+            }`}
+            aria-label="Previous Page"
+          >
+            <ChevronLeft className="w-6 h-6 sm:w-8 sm:h-8 text-[#C5A059]" />
+          </button>
+
+          <button
+            onClick={handleNext}
+            disabled={currentPage === TOTAL_PAGES}
+            className={`absolute right-2 sm:right-4 z-20 p-3 sm:p-4 rounded-full bg-black/70 border border-[#C5A059]/50 text-white backdrop-blur-md transition-all ${
+              currentPage === TOTAL_PAGES
+                ? 'opacity-30 cursor-not-allowed'
+                : 'hover:bg-[#8B0000] hover:scale-110 shadow-lg'
+            }`}
+            aria-label="Next Page"
+          >
+            <ChevronRight className="w-6 h-6 sm:w-8 sm:h-8 text-[#C5A059]" />
+          </button>
+
+          {/* Active Page Image Display */}
+          <div className="relative max-w-4xl w-full h-full flex items-center justify-center">
+            <AnimatePresence mode="wait">
+              <motion.img
+                key={currentPage}
+                src={getPageSrc(currentPage)}
+                alt={`CENA Magazine Page ${currentPage}`}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.3 }}
+                className="max-h-[80vh] w-auto object-contain rounded shadow-2xl border border-white/5"
+              />
+            </AnimatePresence>
+          </div>
+        </div>
+
+        {/* Reader Footer Controls & PDF Download Bar */}
+        <div className="mt-8 bg-[#121212] border border-white/15 p-6 rounded-xl flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
+          <div className="flex items-center space-x-4">
+            <FileText className="w-10 h-10 text-[#C5A059] flex-shrink-0" />
+            <div>
+              <h3 className="font-serif font-bold text-lg text-white uppercase tracking-wider">
+                {t('magazine.home_highlight_title')}
+              </h3>
+              <p className="text-gray-400 text-xs font-sans">
+                {t('magazine.select_edition')}
+              </p>
+            </div>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-3">
+            <a
+              href={pdfLinks.fr}
+              download="CENA_Magazine_FR.pdf"
+              className="px-4 py-2.5 bg-white/5 hover:bg-white/10 border border-[#C5A059]/40 text-[#C5A059] text-xs font-bold uppercase tracking-widest transition-all duration-300 flex items-center space-x-2 rounded"
+            >
+              <Download className="w-4 h-4" />
+              <span>{t('magazine.french_edition')}</span>
+            </a>
+            <a
+              href={pdfLinks.pt}
+              download="CENA_Magazine_PT.pdf"
+              className="px-4 py-2.5 bg-white/5 hover:bg-white/10 border border-[#C5A059]/40 text-[#C5A059] text-xs font-bold uppercase tracking-widest transition-all duration-300 flex items-center space-x-2 rounded"
+            >
+              <Download className="w-4 h-4" />
+              <span>{t('magazine.portuguese_edition')}</span>
+            </a>
+            <a
+              href={pdfLinks.en}
+              download="CENA_Magazine_EN.pdf"
+              className="px-4 py-2.5 bg-[#8B0000] hover:bg-[#A00000] border border-[#C5A059] text-white text-xs font-bold uppercase tracking-widest transition-all duration-300 flex items-center space-x-2 rounded shadow-lg"
+            >
+              <Download className="w-4 h-4 text-[#C5A059]" />
+              <span>{t('magazine.english_edition')}</span>
+            </a>
+          </div>
+        </div>
+      </main>
+
+      {/* Fullscreen Overlay Mode */}
+      <AnimatePresence>
+        {isFullscreen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100000] bg-black/95 backdrop-blur-md flex flex-col p-4 sm:p-8"
+          >
+            <div className="flex items-center justify-between text-xs text-[#C5A059] font-bold tracking-widest uppercase mb-4">
+              <span>
+                {t('magazine.page_indicator')
+                  .replace('{current}', String(currentPage))
+                  .replace('{total}', String(TOTAL_PAGES))}
+              </span>
+              <button
+                onClick={() => setIsFullscreen(false)}
+                className="px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white rounded uppercase"
+              >
+                ✕ Close Fullscreen
+              </button>
+            </div>
+
+            <div className="flex-grow relative flex items-center justify-center overflow-hidden">
+              <button
+                onClick={handlePrev}
+                disabled={currentPage === 1}
+                className="absolute left-4 z-20 p-4 bg-black/80 border border-[#C5A059] rounded-full text-[#C5A059]"
+              >
+                <ChevronLeft className="w-8 h-8" />
+              </button>
+
+              <img
+                src={getPageSrc(currentPage)}
+                alt={`Page ${currentPage}`}
+                className="max-h-full max-w-full object-contain shadow-2xl"
+              />
+
+              <button
+                onClick={handleNext}
+                disabled={currentPage === TOTAL_PAGES}
+                className="absolute right-4 z-20 p-4 bg-black/80 border border-[#C5A059] rounded-full text-[#C5A059]"
+              >
+                <ChevronRight className="w-8 h-8" />
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <Footer />
+    </div>
+  );
+}

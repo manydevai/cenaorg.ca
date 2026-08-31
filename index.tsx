@@ -8,6 +8,7 @@ import { LanguageProvider } from "./contexts/LanguageContext.tsx";
 import "./index.css";
 
 import { BlogPage } from "./pages/BlogPage.tsx";
+import { MagazinePage } from "./pages/MagazinePage.tsx";
 import { PrivacyPage } from "./pages/PrivacyPage.tsx";
 import { DataProtectionPage } from "./pages/DataProtectionPage.tsx";
 import { TermsPage } from "./pages/TermsPage.tsx";
@@ -17,6 +18,7 @@ createRoot(document.getElementById("root")!).render(
     <LanguageProvider>
       <Routes>
         <Route path="/" element={<App />} />
+        <Route path="/magazine" element={<MagazinePage />} />
         <Route path="/events/black-consciousness-day" element={<PastEventsBlackConsciousness />} />
         <Route path="/events/consciencia-negra-cena-caf" element={<PastEventConscienciaNegra />} />
         <Route path="/gallery/black-consciousness-day" element={<BlackConsciousnessGallery />} />

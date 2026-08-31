@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { Header } from './components/Header';
@@ -13,30 +13,18 @@ import { PartnersSection } from './components/PartnersSection';
 import { MembersSection } from './components/MembersSection';
 import { TestimonialsSection } from './components/TestimonialsSection';
 import { EventsSection } from './components/EventsSection';
+import { BackpackCampaignSection } from './components/BackpackCampaignSection';
 import { FeaturedEventSection } from './components/FeaturedEventSection';
 import { TeamSection } from './components/TeamSection';
 import { SupportSection } from './components/SupportSection';
 import { ChristmasGallerySection } from './components/ChristmasGallerySection';
 import { RecentEventsLinkSection } from './components/RecentEventsLinkSection';
+import { MagazineSection } from './components/MagazineSection';
 import { BlogSection } from './components/BlogSection';
 import { Footer } from './components/Footer';
 import { Toaster } from './components/ui/sonner';
 
-import { BackpackCampaignBanner } from './components/BackpackCampaignBanner';
-import { BackpackCampaignSection } from './components/BackpackCampaignSection';
-import { BackpackFloatingPill } from './components/BackpackFloatingPill';
-
 export default function App() {
-  const [isBackpackFormExpanded, setIsBackpackFormExpanded] = useState(false);
-
-  const handleExpandBackpackForm = () => {
-    setIsBackpackFormExpanded(true);
-    const sectionElement = document.getElementById('backpack-campaign');
-    if (sectionElement) {
-      sectionElement.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   useEffect(() => {
     // Set viewport meta tag for mobile responsiveness
     let viewportMeta = document.querySelector('meta[name="viewport"]');
@@ -103,7 +91,6 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-white overflow-x-hidden relative">
-      <BackpackCampaignBanner onOpenModal={handleExpandBackpackForm} />
       <Header />
       <main>
         <HeroSection />
@@ -113,15 +100,13 @@ export default function App() {
         <MissionSection />
         <VisionSection />
         <ProgramsSection />
-        <BackpackCampaignSection
-          isFormExpanded={isBackpackFormExpanded}
-          onToggleForm={() => setIsBackpackFormExpanded((prev) => !prev)}
-        />
         <PartnersSection />
         <MembersSection />
         <TestimonialsSection />
         <EventsSection />
+        <BackpackCampaignSection />
         <RecentEventsLinkSection />
+        <MagazineSection />
         <TeamSection />
         <SupportSection />
         <FeaturedEventSection />
@@ -129,7 +114,6 @@ export default function App() {
         <BlogSection />
       </main>
       <Footer />
-      <BackpackFloatingPill onOpenModal={handleExpandBackpackForm} />
       <Toaster position="top-right" />
     </div>
   );

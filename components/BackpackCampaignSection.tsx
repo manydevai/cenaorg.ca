@@ -1,52 +1,25 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
-import { AnimatePresence } from 'framer-motion';
-import { Calendar, Heart, ShieldCheck, ArrowRight, Gift, CheckCircle2, Award, ChevronDown, Users, Share2, Copy, Link, Facebook, MessageCircle } from 'lucide-react';
-import { BackpackEmbeddedForm } from './BackpackEmbeddedForm';
+import { Calendar, Heart, ShieldCheck, Gift, CheckCircle2, Award, Users, Link, Facebook, MessageCircle } from 'lucide-react';
 
 import horizFr from '../assets/campaigns/backpack/horizontal-fr.jpg';
 import horizPt from '../assets/campaigns/backpack/horizontal-pt.jpg';
 import horizEn from '../assets/campaigns/backpack/horizontal-en.jpg';
 
 interface BackpackCampaignSectionProps {
-  isFormExpanded: boolean;
-  onToggleForm: () => void;
+  isFormExpanded?: boolean;
+  onToggleForm?: () => void;
 }
 
-export const BackpackCampaignSection: React.FC<BackpackCampaignSectionProps> = ({
-  isFormExpanded,
-  onToggleForm
-}) => {
+export const BackpackCampaignSection: React.FC<BackpackCampaignSectionProps> = () => {
   const { t, language } = useLanguage();
-  const formRef = useRef<HTMLDivElement>(null);
 
-  const [registeredCount, setRegisteredCount] = useState<number>(() => {
-    const stored = localStorage.getItem('cena_backpack_registered_count');
-    return stored ? parseInt(stored, 10) : 0;
-  });
-
-  useEffect(() => {
-    const handleUpdate = () => {
-      const stored = localStorage.getItem('cena_backpack_registered_count');
-      setRegisteredCount(stored ? parseInt(stored, 10) : 0);
-    };
-    window.addEventListener('cena-registration-updated', handleUpdate);
-    return () => window.removeEventListener('cena-registration-updated', handleUpdate);
-  }, []);
-
-  const progressPercentage = Math.min(100, Math.round((registeredCount / 200) * 100));
+  const registeredCount = 200;
+  const progressPercentage = 100;
 
   // Select poster according to active language (FR, EN, PT)
   const horizontalPoster =
     language === 'fr' ? horizFr : language === 'en' ? horizEn : horizPt;
-
-  useEffect(() => {
-    if (isFormExpanded && formRef.current) {
-      setTimeout(() => {
-        formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 150);
-    }
-  }, [isFormExpanded]);
 
   const handleDonate = () => {
     window.open('https://buy.stripe.com/bJe9AU5JO8p764W882eAg00', '_blank', 'noopener,noreferrer');
@@ -54,10 +27,10 @@ export const BackpackCampaignSection: React.FC<BackpackCampaignSectionProps> = (
 
   const campaignUrl = 'https://www.cena-ca.org/#backpack-campaign';
   const shareText = language === 'fr'
-    ? 'Aidez un enfant à commencer l\'année scolaire avec dignité. Programme de sacs à dos CENA 🎒'
+    ? 'Campagne de sacs à dos CENA 2026 terminée avec succès ! 🎒'
     : language === 'en'
-    ? 'Help a child start the school year with dignity. CENA Backpack Program 🎒'
-    : 'Ajude uma criança a começar o ano letivo com dignidade. Programa de Mochilas CENA 🎒';
+    ? 'CENA Backpack Program 2026 successfully completed! 🎒'
+    : 'Campanha de Mochilas CENA 2026 concluída com sucesso! 🎒';
 
   const [linkCopied, setLinkCopied] = useState(false);
 
@@ -75,7 +48,6 @@ export const BackpackCampaignSection: React.FC<BackpackCampaignSectionProps> = (
       setLinkCopied(true);
       setTimeout(() => setLinkCopied(false), 2000);
     } catch {
-      // Fallback
       const input = document.createElement('input');
       input.value = campaignUrl;
       document.body.appendChild(input);
@@ -99,12 +71,10 @@ export const BackpackCampaignSection: React.FC<BackpackCampaignSectionProps> = (
       scrollTarget();
       const t1 = setTimeout(scrollTarget, 300);
       const t2 = setTimeout(scrollTarget, 800);
-      const t3 = setTimeout(scrollTarget, 1500);
 
       return () => {
         clearTimeout(t1);
         clearTimeout(t2);
-        clearTimeout(t3);
       };
     }
   }, []);
@@ -112,7 +82,7 @@ export const BackpackCampaignSection: React.FC<BackpackCampaignSectionProps> = (
   return (
     <section
       id="backpack-campaign"
-      className="scroll-mt-14 sm:scroll-mt-16 pt-0 pb-20 bg-gradient-to-b from-[#121212] via-black to-[#121212] text-white relative overflow-hidden border-b border-[#C5A059]/30"
+      className="scroll-mt-14 sm:scroll-mt-16 pt-16 pb-20 bg-gradient-to-b from-[#121212] via-black to-[#121212] text-white relative overflow-hidden border-b border-[#C5A059]/30"
     >
       {/* Glow Accents */}
       <div className="absolute top-1/4 left-0 w-96 h-96 bg-[#8B0000]/15 rounded-full blur-3xl pointer-events-none" />
@@ -156,15 +126,15 @@ export const BackpackCampaignSection: React.FC<BackpackCampaignSectionProps> = (
               </div>
             </div>
 
-            {/* Live Campaign Progress Counter Box (Starts at 0, no cash amount) */}
+            {/* Campaign Progress Counter Box (100% Complete) */}
             <div className="bg-black/70 border border-[#C5A059]/40 p-4 sm:p-5 backdrop-blur-md space-y-3 shadow-xl">
               <div className="flex flex-wrap items-center justify-between gap-2 text-xs font-bold uppercase tracking-wider">
                 <div className="flex items-center space-x-2 text-[#C5A059]">
                   <Users className="w-4 h-4 text-[#C5A059]" />
                   <span>{t('backpack_campaign.progress.registered_children')}: <span className="text-white text-sm font-serif font-bold">{registeredCount}</span> / 200</span>
                 </div>
-                <div className="text-gray-300 text-[11px]">
-                  {progressPercentage}% {t('backpack_campaign.progress.progress_percentage')}
+                <div className="text-[#C5A059] text-[11px] font-bold">
+                  100% {t('backpack_campaign.progress.progress_percentage')}
                 </div>
               </div>
 
@@ -172,7 +142,7 @@ export const BackpackCampaignSection: React.FC<BackpackCampaignSectionProps> = (
               <div className="w-full h-2.5 bg-white/10 rounded-full overflow-hidden p-0.5 border border-white/10">
                 <div
                   className="h-full bg-gradient-to-r from-[#8B0000] via-[#C5A059] to-[#D4AF37] rounded-full transition-all duration-1000"
-                  style={{ width: `${progressPercentage}%` }}
+                  style={{ width: `100%` }}
                 />
               </div>
 
@@ -189,7 +159,7 @@ export const BackpackCampaignSection: React.FC<BackpackCampaignSectionProps> = (
             </div>
           </div>
 
-          {/* Details & Registration Column (Right / 5 cols) */}
+          {/* Details & Status Column (Right / 5 cols) */}
           <div className="lg:col-span-5 space-y-6" data-aos="fade-left">
             <div className="bg-black/60 border border-white/15 p-6 sm:p-8 backdrop-blur-md space-y-6">
               
@@ -225,15 +195,17 @@ export const BackpackCampaignSection: React.FC<BackpackCampaignSectionProps> = (
                 </div>
               </div>
 
-              {/* Action Buttons */}
+              {/* Status Badge & Success Announcement */}
               <div className="space-y-3 pt-4 border-t border-white/10">
-                <button
-                  onClick={onToggleForm}
-                  className="w-full py-4 bg-[#8B0000] hover:bg-[#A00000] text-white font-bold text-xs uppercase tracking-[0.2em] border border-[#C5A059] transition-all duration-300 shadow-xl flex items-center justify-center space-x-3 group"
-                >
-                  <span>{t('backpack_campaign.btn_register')}</span>
-                  <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${isFormExpanded ? 'rotate-180' : ''}`} />
-                </button>
+                <div className="w-full py-3.5 bg-[#8B0000]/40 border-2 border-[#C5A059] text-[#C5A059] font-bold text-xs uppercase tracking-[0.15em] transition-all duration-300 shadow-xl flex items-center justify-center space-x-2 text-center px-3">
+                  <CheckCircle2 className="w-4 h-4 text-[#C5A059] flex-shrink-0" />
+                  <span>{t('backpack_campaign.status_closed')}</span>
+                </div>
+
+                <div className="bg-[#C5A059]/10 border border-[#C5A059]/30 p-3.5 text-xs text-gray-200 leading-relaxed font-sans flex items-start space-x-2.5">
+                  <Award className="w-5 h-5 text-[#C5A059] flex-shrink-0 mt-0.5" />
+                  <span>{t('backpack_campaign.success_announcement')}</span>
+                </div>
 
                 <button
                   onClick={handleDonate}
@@ -290,16 +262,8 @@ export const BackpackCampaignSection: React.FC<BackpackCampaignSectionProps> = (
 
         </div>
 
-        {/* Smooth Expandable Embedded Form Container */}
-        <div ref={formRef}>
-          <AnimatePresence>
-            {isFormExpanded && (
-              <BackpackEmbeddedForm onCollapse={onToggleForm} />
-            )}
-          </AnimatePresence>
-        </div>
-
       </div>
     </section>
   );
 };
+
