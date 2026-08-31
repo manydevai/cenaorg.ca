@@ -317,26 +317,20 @@ export function MagazineSection() {
                 </Link>
 
                 {/* Card Content */}
-                <div className="p-4 flex flex-col flex-1">
-                  <div className="space-y-2 flex-1">
-                    <div className="flex items-center justify-between text-[11px]">
-                      <span className="text-[#C5A059] font-bold uppercase tracking-wider">
-                        {item.category}
-                      </span>
-                    </div>
+                <div className="px-3 py-2.5 flex flex-col flex-1">
+                  <div className="space-y-1 flex-1">
+                    <span className="text-[#C5A059] font-bold uppercase tracking-wider text-[10px]">
+                      {item.category}
+                    </span>
 
                     <Link to={`/magazine?page=${item.page}`}>
-                      <h4 className="font-serif font-bold text-base text-white group-hover:text-[#C5A059] transition-colors leading-snug">
+                      <h4 className="font-serif font-bold text-sm text-white group-hover:text-[#C5A059] transition-colors leading-snug">
                         {item.title}
                       </h4>
                     </Link>
-
-                    <p className="text-gray-400 text-xs font-sans line-clamp-2 leading-relaxed">
-                      {item.spoiler}
-                    </p>
                   </div>
 
-                  <div className="pt-3 mt-3 border-t border-white/5 flex items-center justify-between text-xs">
+                  <div className="pt-2 mt-2 border-t border-white/5 flex items-center justify-between text-xs">
                     <Link
                       to={`/magazine?page=${item.page}`}
                       className="font-bold text-[#C5A059] group-hover:text-white transition-colors flex items-center space-x-1"
