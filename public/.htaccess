@@ -1,4 +1,8 @@
 RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
+
+# Serve actual files directly (images, PDFs, JS, CSS, fonts, etc.)
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^ - [L]
+
+# Everything else (including /magazine, /gallery SPA routes) -> React Router
 RewriteRule ^ index.html [L]
