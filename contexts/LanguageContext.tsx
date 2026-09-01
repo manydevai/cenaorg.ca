@@ -112,7 +112,7 @@ const translations = {
       stories: [
         {
           id: 1,
-          page: 11,
+          page: 5,
           category: 'PRESIDENCE & LIDERANÇA',
           date: 'Édition Spéciale 2026',
           title: 'Cristina Indira MANUEL — Fondatrice & Présidente CENA',
@@ -121,16 +121,16 @@ const translations = {
         },
         {
           id: 2,
-          page: 10,
-          category: 'VICE-PRÉSIDENCE & CANDOR\'S CAKE',
+          page: 6,
+          category: 'FINANCE & CONSEIL D\'ADMINISTRATION',
           date: 'Édition Spéciale 2026',
-          title: 'Marileny F. ANTONIO — Vice-Présidente CENA',
-          spoiler: '« Le plus grand succès se bâtit sur la Parole de Dieu. Lorsque le Christ est notre fondation, la foi devient plus forte que la peur. »',
-          imagePage: 10
+          title: 'Sebastião Matano Sala — Directeur Financier & Fondateur',
+          spoiler: '« N\'oubliez jamais d\'où vous venez, mais ne laissez jamais vos origines limiter où vous pouvez aller. Le succès se mesure à l\'impact positif que nous créons. »',
+          imagePage: 9
         },
         {
           id: 3,
-          page: 8,
+          page: 7,
           category: 'RESSOURCES HUMAINES & ENGAGEMENT',
           date: 'Édition Spéciale 2026',
           title: 'Dulce Angelina FIGUEIREDO — Directrice des RH CENA',
@@ -139,16 +139,16 @@ const translations = {
         },
         {
           id: 4,
-          page: 9,
-          category: 'FINANCE & CONSEIL D\'ADMINISTRATION',
+          page: 8,
+          category: 'VICE-PRÉSIDENCE CENA',
           date: 'Édition Spéciale 2026',
-          title: 'Sebastião Matano Sala — Directeur Financier & Fondateur',
-          spoiler: '« N\'oubliez jamais d\'où vous venez, mais ne laissez jamais vos origines limiter où vous pouvez aller. Le succès se mesure à l\'impact positif que nous créons. »',
-          imagePage: 9
+          title: 'Marileny F. ANTONIO — Vice-Présidente CENA',
+          spoiler: '« Le plus grand succès se bâtit sur la Parole de Dieu. Lorsque le Christ est notre fondation, la foi devient plus forte que la peur. »',
+          imagePage: 10
         },
         {
           id: 5,
-          page: 7,
+          page: 9,
           category: 'JEUNESSE & INNOVATION',
           date: 'Édition Spéciale 2026',
           title: 'Daniel Love Fernando ANTÓNIO — Directeur Jeunesse & Innovation CENA',
@@ -157,70 +157,7 @@ const translations = {
         },
         {
           id: 6,
-          page: 15,
-          category: 'FINANCEMENT COMMERCIAL & IMMOBILIER',
-          date: 'Édition Spéciale 2026',
-          title: 'Samara ARCHANGE, MBA — Co-Fondatrice DGA Commercial',
-          spoiler: '« N\'abandonnez jamais vos rêves avant d\'avoir cherché les meilleurs conseils. Le savoir, la préparation et la détermination concrétisent chaque vision. »',
-          imagePage: 15
-        },
-        {
-          id: 7,
-          page: 13,
-          category: 'IMMOBILIER & ENTREPRENEURIAT',
-          date: 'Édition Spéciale 2026',
-          title: 'Magalie Sabine Jean-Louis — Courtier Immobilier Résidentiel',
-          spoiler: '« Ne laissez jamais la complexité du marché immobilier d\'aujourd\'hui vous décourager. Devenir propriétaire est possible avec une préparation adéquate. »',
-          imagePage: 13
-        },
-        {
-          id: 8,
-          page: 14,
-          category: 'AUTONOMISATION DES FEMMES',
-          date: 'Édition Spéciale 2026',
-          title: 'Neccy LM — Leadership Féminin & Croissance Personnelle',
-          spoiler: '« N\'abandonnez jamais. Les défis auxquels vous faites face aujourd\'hui peuvent devenir le fondement des victoires de demain. »',
-          imagePage: 14
-        },
-        {
-          id: 9,
-          page: 19,
-          category: 'ENTREPRENEURIAT & GASTRONOMIE',
-          date: 'Édition Spéciale 2026',
-          title: 'Candor\'s Cake — L\'Art de Célébrer la Vie',
-          spoiler: 'Fondé par Marileny Fernando Antonio, Candor\'s Cake transforme chaque événement marquant en un souvenir inoubliable grâce à la haute pâtisserie.',
-          imagePage: 19
-        },
-        {
-          id: 10,
-          page: 21,
-          category: 'ESTHÉTIQUE & AUTONOMISATION',
-          date: 'Édition Spéciale 2026',
-          title: 'Essential Micro Hair — Confiance & Beauté Naturelle',
-          spoiler: 'Spécialisé dans les micro-locs et les coiffures protectrices sur mesure pour célébrer la beauté naturelle et autonomiser chaque cliente à Montréal.',
-          imagePage: 21
-        },
-        {
-          id: 11,
-          page: 25,
-          category: 'SANTE MENTALE & COMMUNAUTÉ',
-          date: 'Édition Spéciale 2026',
-          title: 'Zen Dans Ma Tête — Promotion de la Santé Mentale',
-          spoiler: 'Organisme dédié à la promotion de la santé mentale et du bien-être émotionnel inclusif au sein des communautés afro-descendantes et des jeunes.',
-          imagePage: 25
-        },
-        {
-          id: 12,
-          page: 27,
-          category: 'PHOTOGRAPHIE & ART',
-          date: 'Édition Spéciale 2026',
-          title: 'Randy Selection — Photographe Professionnel & Entrepreneur',
-          spoiler: 'Capturer les moments les plus précieux de la vie avec élégance et maestria visuelle pour des mariages et des événements inoubliables.',
-          imagePage: 27
-        },
-        {
-          id: 13,
-          page: 30,
+          page: 10,
           category: 'LEADERSHIP & IMPACT COMMUNAUTAIRE',
           date: 'Édition Spéciale 2026',
           title: 'Randy Larochelle — Vision & Engagement',
@@ -228,8 +165,35 @@ const translations = {
           imagePage: 30
         },
         {
-          id: 14,
-          page: 32,
+          id: 7,
+          page: 11,
+          category: 'FINANCEMENT COMMERCIAL & IMMOBILIER',
+          date: 'Édition Spéciale 2026',
+          title: 'Samara ARCHANGE, MBA — Co-Fondatrice DGA Commercial',
+          spoiler: '« N\'abandonnez jamais vos rêves avant d\'avoir cherché les meilleurs conseils. Le savoir, la préparation et la détermination concrétisent chaque vision. »',
+          imagePage: 15
+        },
+        {
+          id: 8,
+          page: 12,
+          category: 'IMMOBILIER & ENTREPRENEURIAT',
+          date: 'Édition Spéciale 2026',
+          title: 'Magalie Sabine Jean-Louis — Courtier Immobilier Résidentiel',
+          spoiler: '« Ne laissez jamais la complexité du marché immobilier d\'aujourd\'hui vous décourager. Devenir propriétaire est possible avec une préparation adéquate. »',
+          imagePage: 13
+        },
+        {
+          id: 9,
+          page: 13,
+          category: 'AUTONOMISATION DES FEMMES',
+          date: 'Édition Spéciale 2026',
+          title: 'Neccy LM — Leadership Féminin & Croissance Personnelle',
+          spoiler: '« N\'abandonnez jamais. Les défis auxquels vous faites face aujourd\'hui peuvent devenir le fondement des victoires de demain. »',
+          imagePage: 14
+        },
+        {
+          id: 10,
+          page: 14,
           category: 'SANTÉ MENSTRUELLE & EMPODERAMENTO',
           date: 'Édition Spéciale 2026',
           title: 'Association Menarca Muhatu — Dignité & Éducation',
@@ -237,9 +201,45 @@ const translations = {
           imagePage: 32
         },
         {
-          id: 15,
+          id: 11,
+          page: 15,
+          category: 'ENTREPRENEURIAT & GASTRONOMIE',
+          date: 'Édition Spéciale 2026',
+          title: 'Candor\'s Cake — L\'Art de Célébrer la Vie',
+          spoiler: 'Fondé par Marileny Fernando Antonio, Candor\'s Cake transforme chaque événement marquant en un souvenir inoubliable grâce à la haute pâtisserie.',
+          imagePage: 19
+        },
+        {
+          id: 12,
+          page: 16,
+          category: 'ESTHÉTIQUE & AUTONOMISATION',
+          date: 'Édition Spéciale 2026',
+          title: 'Essential Micro Hair — Confiance & Beauté Naturelle',
+          spoiler: 'Spécialisé dans les micro-locs et les coiffures protectrices sur mesure pour célébrer la beauté naturelle et autonomiser chaque cliente à Montréal.',
+          imagePage: 21
+        },
+        {
+          id: 13,
+          page: 17,
+          category: 'SANTE MENTALE & COMMUNAUTÉ',
+          date: 'Édition Spéciale 2026',
+          title: 'Zen Dans Ma Tête — Promotion de la Santé Mentale',
+          spoiler: 'Organisme dédié à la promotion de la santé mentale et du bien-être émotionnel inclusif au sein des communautés afro-descendantes et des jeunes.',
+          imagePage: 25
+        },
+        {
+          id: 14,
           page: 18,
-          category: 'ENTREPRISE DENETTOYAGE & ENTRETIEN',
+          category: 'PHOTOGRAPHIE & ART',
+          date: 'Édition Spéciale 2026',
+          title: 'Randy Selection — Photographe Professionnel & Entrepreneur',
+          spoiler: 'Capturer les moments les plus précieux de la vie avec élégance et maestria visuelle pour des mariages et des événements inoubliables.',
+          imagePage: 27
+        },
+        {
+          id: 15,
+          page: 19,
+          category: 'ENTREPRISE DE NETTOYAGE & ENTRETIEN',
           date: 'Édition Spéciale 2026',
           title: 'Val Nettoyage et Entretien — L\'Excellence du Service',
           spoiler: '« Croyez toujours en votre potentiel et n\'ayez jamais peur de faire le premier pas. Le succès se bâtit avec travail, persévérance et honnêteté. »',
@@ -769,7 +769,7 @@ const translations = {
       stories: [
         {
           id: 1,
-          page: 11,
+          page: 5,
           category: 'PRESIDENCY & LEADERSHIP',
           date: 'Special Edition 2026',
           title: 'Cristina Indira MANUEL — Founder & President CENA',
@@ -778,16 +778,16 @@ const translations = {
         },
         {
           id: 2,
-          page: 10,
-          category: 'VICE-PRESIDENCY & CANDOR’S CAKE',
+          page: 6,
+          category: 'FINANCE & BOARD MEMBER',
           date: 'Special Edition 2026',
-          title: 'Marileny F. ANTONIO — Vice-President CENA',
-          spoiler: '“The greatest success is built on the Word of God. When Christ is our foundation, faith becomes stronger than fear, and our lives become a testimony of His love.”',
-          imagePage: 10
+          title: 'Sebastião Matano Sala — Founder & Finance Director CENA',
+          spoiler: '“Never forget where you came from, but never let your origins limit where you can go. Success is measured by the opportunities we create and lives we impact.”',
+          imagePage: 9
         },
         {
           id: 3,
-          page: 8,
+          page: 7,
           category: 'HUMAN RESOURCES & COMMUNITY',
           date: 'Special Edition 2026',
           title: 'Dulce Angelina FIGUEIREDO — Director of HR CENA',
@@ -796,16 +796,16 @@ const translations = {
         },
         {
           id: 4,
-          page: 9,
-          category: 'FINANCE & BOARD MEMBER',
+          page: 8,
+          category: 'VICE-PRESIDENCY CENA',
           date: 'Special Edition 2026',
-          title: 'Sebastião Matano Sala — Founder & Finance Director CENA',
-          spoiler: '“Never forget where you came from, but never let your origins limit where you can go. Success is measured by the opportunities we create and lives we impact.”',
-          imagePage: 9
+          title: 'Marileny F. ANTONIO — Vice-President CENA',
+          spoiler: '“The greatest success is built on the Word of God. When Christ is our foundation, faith becomes stronger than fear, and our lives become a testimony of His love.”',
+          imagePage: 10
         },
         {
           id: 5,
-          page: 7,
+          page: 9,
           category: 'YOUTH & INNOVATION',
           date: 'Special Edition 2026',
           title: 'Daniel Love Fernando ANTÓNIO — Director of Youth & Innovation CENA',
@@ -814,70 +814,7 @@ const translations = {
         },
         {
           id: 6,
-          page: 15,
-          category: 'COMMERCIAL FINANCING & REAL ESTATE',
-          date: 'Special Edition 2026',
-          title: 'Samara ARCHANGE, MBA — Co-Founder DGA Commercial',
-          spoiler: '“Never give up on your dreams before seeking the right advice. Knowledge, preparation, and determination can turn every vision into reality.”',
-          imagePage: 15
-        },
-        {
-          id: 7,
-          page: 13,
-          category: 'REAL ESTATE & BUSINESS',
-          date: 'Special Edition 2026',
-          title: 'Magalie Sabine Jean-Louis — Residential Real Estate Broker',
-          spoiler: '“Never allow the complexity of today’s real estate market to discourage you. Homeownership is possible when you are well prepared and well supported.”',
-          imagePage: 13
-        },
-        {
-          id: 8,
-          page: 14,
-          category: 'WOMEN’S EMPOWERMENT',
-          date: 'Special Edition 2026',
-          title: 'Neccy LM — Personal Growth & Women’s Leadership',
-          spoiler: '“Never give up. The challenges you face today may become the foundation of tomorrow’s victories.”',
-          imagePage: 14
-        },
-        {
-          id: 9,
-          page: 19,
-          category: 'ENTREPRENEURSHIP & PATISSERIE',
-          date: 'Special Edition 2026',
-          title: 'Candor’s Cake — The Art of Celebrating Life',
-          spoiler: 'Founded by Marileny Fernando Antonio, Candor’s Cake transforms meaningful celebrations into unforgettable memories with handcrafted edible art.',
-          imagePage: 19
-        },
-        {
-          id: 10,
-          page: 21,
-          category: 'BEAUTY & EMPOWERMENT',
-          date: 'Special Edition 2026',
-          title: 'Essential Micro Hair — Confidence & Natural Beauty',
-          spoiler: 'Specialized in micro-locs and protective hairstyles designed to celebrate natural beauty and empower every client across Longueuil and Montreal.',
-          imagePage: 21
-        },
-        {
-          id: 11,
-          page: 25,
-          category: 'MENTAL HEALTH & COMMUNITY',
-          date: 'Special Edition 2026',
-          title: 'Zen Dans Ma Tête — Mental Health Promotion',
-          spoiler: 'Non-profit organization dedicated to promoting mental health and emotional well-being across Afro-descendant communities, youth, and families.',
-          imagePage: 25
-        },
-        {
-          id: 12,
-          page: 27,
-          category: 'PHOTOGRAPHY & ART',
-          date: 'Special Edition 2026',
-          title: 'Randy Selection — Professional Photographer & Entrepreneur',
-          spoiler: 'Capturing life’s most meaningful moments with artistic precision and prestige photography for weddings and landmark celebrations.',
-          imagePage: 27
-        },
-        {
-          id: 13,
-          page: 30,
+          page: 10,
           category: 'LEADERSHIP & COMMUNITY IMPACT',
           date: 'Special Edition 2026',
           title: 'Randy Larochelle — Vision & Excellence',
@@ -885,8 +822,35 @@ const translations = {
           imagePage: 30
         },
         {
-          id: 14,
-          page: 32,
+          id: 7,
+          page: 11,
+          category: 'COMMERCIAL FINANCING & REAL ESTATE',
+          date: 'Special Edition 2026',
+          title: 'Samara ARCHANGE, MBA — Co-Founder DGA Commercial',
+          spoiler: '“Never give up on your dreams before seeking the right advice. Knowledge, preparation, and determination can turn every vision into reality.”',
+          imagePage: 15
+        },
+        {
+          id: 8,
+          page: 12,
+          category: 'REAL ESTATE & BUSINESS',
+          date: 'Special Edition 2026',
+          title: 'Magalie Sabine Jean-Louis — Residential Real Estate Broker',
+          spoiler: '“Never allow the complexity of today’s real estate market to discourage you. Homeownership is possible when you are well prepared and well supported.”',
+          imagePage: 13
+        },
+        {
+          id: 9,
+          page: 13,
+          category: 'WOMEN’S EMPOWERMENT',
+          date: 'Special Edition 2026',
+          title: 'Neccy LM — Personal Growth & Women’s Leadership',
+          spoiler: '“Never give up. The challenges you face today may become the foundation of tomorrow’s victories.”',
+          imagePage: 14
+        },
+        {
+          id: 10,
+          page: 14,
           category: 'MENSTRUAL HEALTH & EMPOWERMENT',
           date: 'Special Edition 2026',
           title: 'Association Menarca Muhatu — Dignity & Education',
@@ -894,8 +858,44 @@ const translations = {
           imagePage: 32
         },
         {
-          id: 15,
+          id: 11,
+          page: 15,
+          category: 'ENTREPRENEURSHIP & PATISSERIE',
+          date: 'Special Edition 2026',
+          title: 'Candor’s Cake — The Art of Celebrating Life',
+          spoiler: 'Founded by Marileny Fernando Antonio, Candor’s Cake transforms meaningful celebrations into unforgettable memories with handcrafted edible art.',
+          imagePage: 19
+        },
+        {
+          id: 12,
+          page: 16,
+          category: 'BEAUTY & EMPOWERMENT',
+          date: 'Special Edition 2026',
+          title: 'Essential Micro Hair — Confidence & Natural Beauty',
+          spoiler: 'Specialized in micro-locs and protective hairstyles designed to celebrate natural beauty and empower every client across Longueuil and Montreal.',
+          imagePage: 21
+        },
+        {
+          id: 13,
+          page: 17,
+          category: 'MENTAL HEALTH & COMMUNITY',
+          date: 'Special Edition 2026',
+          title: 'Zen Dans Ma Tête — Mental Health Promotion',
+          spoiler: 'Non-profit organization dedicated to promoting mental health and emotional well-being across Afro-descendant communities, youth, and families.',
+          imagePage: 25
+        },
+        {
+          id: 14,
           page: 18,
+          category: 'PHOTOGRAPHY & ART',
+          date: 'Special Edition 2026',
+          title: 'Randy Selection — Professional Photographer & Entrepreneur',
+          spoiler: 'Capturing life’s most meaningful moments with artistic precision and prestige photography for weddings and landmark celebrations.',
+          imagePage: 27
+        },
+        {
+          id: 15,
+          page: 19,
           category: 'CLEANING & MAINTENANCE SERVICES',
           date: 'Special Edition 2026',
           title: 'Val Nettoyage et Entretien — Service Excellence',
@@ -1427,7 +1427,7 @@ const translations = {
       stories: [
         {
           id: 1,
-          page: 11,
+          page: 5,
           category: 'PRESIDÊNCIA & LIDERANÇA',
           date: 'Edição Especial 2026',
           title: 'Cristina Indira MANUEL — Fundadora & Presidente CENA',
@@ -1436,16 +1436,16 @@ const translations = {
         },
         {
           id: 2,
-          page: 10,
-          category: 'VICE-PRESIDÊNCIA & CANDOR\'S CAKE',
+          page: 6,
+          category: 'FINANÇAS & CONSELHO CENA',
           date: 'Edição Especial 2026',
-          title: 'Marileny F. ANTONIO — Vice-Presidente CENA',
-          spoiler: '«O maior sucesso é construído sobre a Palavra de Deus. Quando Cristo é a nossa base, a fé torna-se mais forte que o medo e as nossas vidas tornam-se um testemunho do Seu amor.»',
-          imagePage: 10
+          title: 'Sebastião Matano Sala — Fundador & Diretor Financeiro',
+          spoiler: '«Nunca esqueça de onde veio, mas nunca deixe que as suas origens limitem onde pode ir. O sucesso mede-se pelas oportunidades que criamos e vidas que impactamos.»',
+          imagePage: 9
         },
         {
           id: 3,
-          page: 8,
+          page: 7,
           category: 'RECURSOS HUMANOS & COMUNIDADE',
           date: 'Edição Especial 2026',
           title: 'Dulce Angelina FIGUEIREDO — Diretora de RH CENA',
@@ -1454,16 +1454,16 @@ const translations = {
         },
         {
           id: 4,
-          page: 9,
-          category: 'FINANÇAS & CONSELHO CENA',
+          page: 8,
+          category: 'VICE-PRESIDÊNCIA CENA',
           date: 'Edição Especial 2026',
-          title: 'Sebastião Matano Sala — Fundador & Diretor Financeiro',
-          spoiler: '«Nunca esqueça de onde veio, mas nunca deixe que as suas origens limitem onde pode ir. O sucesso mede-se pelas oportunidades que criamos e vidas que impactamos.»',
-          imagePage: 9
+          title: 'Marileny F. ANTONIO — Vice-Presidente CENA',
+          spoiler: '«O maior sucesso é construído sobre a Palavra de Deus. Quando Cristo é a nossa base, a fé torna-se mais forte que o medo e as nossas vidas tornam-se um testemunho do Seu amor.»',
+          imagePage: 10
         },
         {
           id: 5,
-          page: 7,
+          page: 9,
           category: 'JUVENTUDE & INOVAÇÃO',
           date: 'Edição Especial 2026',
           title: 'Daniel Love Fernando ANTÓNIO — Diretor de Juventude & Inovação CENA',
@@ -1472,61 +1472,7 @@ const translations = {
         },
         {
           id: 6,
-          page: 15,
-          category: 'FINANCIAMENTO COMERCIAL & IMOBILIÁRIO',
-          date: 'Edição Especial 2026',
-          title: 'Samara ARCHANGE, MBA — Co-Fundadora DGA Commercial',
-          spoiler: '«Nunca desista dos seus sonhos antes de procurar o conselho certo. O conhecimento, a preparação e a determinação transformam qualquer visão em realidade.»',
-          imagePage: 15
-        },
-        {
-          id: 7,
-          page: 13,
-          category: 'IMOBILIÁRIO & NEGÓCIOS',
-          date: 'Edição Especial 2026',
-          title: 'Magalie Sabine Jean-Louis — Corretora Imobiliária Residencial',
-          spoiler: '«Nunca permita que a complexidade do mercado imobiliário o desanime. Ser proprietário é possível quando está bem preparado e bem acompanhado.»',
-          imagePage: 13
-        },
-        {
-          id: 8,
-          page: 14,
-          category: 'LIDERANÇA FEMININA',
-          date: 'Edição Especial 2026',
-          title: 'Neccy LM — Plataforma de Crescimento & Liderança',
-          spoiler: '«Nunca desista. Os desafios que enfrenta hoje podem tornar-se o alicerce das vitórias de amanhã.»',
-          imagePage: 14
-        },
-        {
-          id: 9,
-          page: 19,
-          category: 'EMPREENDEDORISMO & PASTERIA',
-          date: 'Edição Especial 2026',
-          title: 'Candor\'s Cake — A Arte de Celebrar a Vida',
-          spoiler: 'Fundado por Marileny Fernando Antonio, Candor\'s Cake transforma cada celebração numa memória inesquecível através da arte de confeitaria artesanal.',
-          imagePage: 19
-        },
-        {
-          id: 10,
-          page: 21,
-          category: 'ESTÉTICA & EMPODERAMENTO',
-          date: 'Edição Especial 2026',
-          title: 'Essential Micro Hair — Confiance & Beleza Natural',
-          spoiler: 'Especializada em micro-locs e penteados de proteção personalizados para celebrar a beleza natural e empoderar cada cliente em Longueuil e Montreal.',
-          imagePage: 21
-        },
-        {
-          id: 11,
-          page: 27,
-          category: 'FOTOGRAFIA & ARTE',
-          date: 'Edição Especial 2026',
-          title: 'Randy Selection — Fotógrafo Profissional & Empreendedor',
-          spoiler: 'Capturar os momentos mais marcantes da vida com precisão artística e fotografia de prestígio para casamentos e momentos inesquecíveis.',
-          imagePage: 27
-        },
-        {
-          id: 12,
-          page: 30,
+          page: 10,
           category: 'LIDERANÇA & IMPACTO COMUNITÁRIO',
           date: 'Edição Especial 2026',
           title: 'Randy Larochelle — Visão & Excelência',
@@ -1534,8 +1480,62 @@ const translations = {
           imagePage: 30
         },
         {
+          id: 7,
+          page: 11,
+          category: 'FINANCIAMENTO COMERCIAL & IMOBILIÁRIO',
+          date: 'Edição Especial 2026',
+          title: 'Samara ARCHANGE, MBA — Co-Fundadora DGA Commercial',
+          spoiler: '«Nunca desista dos seus sonhos antes de procurar o conselho certo. O conhecimento, a preparação e a determinação transformam qualquer visão em realidade.»',
+          imagePage: 15
+        },
+        {
+          id: 8,
+          page: 12,
+          category: 'IMOBILIÁRIO & NEGÓCIOS',
+          date: 'Edição Especial 2026',
+          title: 'Magalie Sabine Jean-Louis — Corretora Imobiliária Residencial',
+          spoiler: '«Nunca permita que a complexidade do mercado imobiliário o desanime. Ser proprietário é possível quando está bem preparado e bem acompanhado.»',
+          imagePage: 13
+        },
+        {
+          id: 9,
+          page: 13,
+          category: 'LIDERANÇA FEMININA',
+          date: 'Edição Especial 2026',
+          title: 'Neccy LM — Plataforma de Crescimento & Liderança',
+          spoiler: '«Nunca desista. Os desafios que enfrenta hoje podem tornar-se o alicerce das vitórias de amanhã.»',
+          imagePage: 14
+        },
+        {
+          id: 10,
+          page: 14,
+          category: 'SAÚDE MENSTRUAL & EMPODERAMENTO',
+          date: 'Edição Especial 2026',
+          title: 'Associação Menarca Muhatu — Dignidade & Educação',
+          spoiler: 'Fundada por Divina Ndomateso Ntele, combatendo a pobreza menstrual e promovendo dignidade, educação e empoderamento para meninas e mulheres.',
+          imagePage: 32
+        },
+        {
+          id: 11,
+          page: 15,
+          category: 'EMPREENDEDORISMO & PASTERIA',
+          date: 'Edição Especial 2026',
+          title: 'Candor\'s Cake — A Arte de Celebrar a Vida',
+          spoiler: 'Fundado por Marileny Fernando Antonio, Candor\'s Cake transforma cada celebração numa memória inesquecível através da arte de confeitaria artesanal.',
+          imagePage: 19
+        },
+        {
+          id: 12,
+          page: 16,
+          category: 'ESTÉTICA & EMPODERAMENTO',
+          date: 'Edição Especial 2026',
+          title: 'Essential Micro Hair — Confiança & Beleza Natural',
+          spoiler: 'Especializada em micro-locs e penteados de proteção personalizados para celebrar a beleza natural e empoderar cada cliente em Longueuil e Montreal.',
+          imagePage: 21
+        },
+        {
           id: 13,
-          page: 25,
+          page: 17,
           category: 'SAÚDE MENTAL & COMUNIDADE',
           date: 'Edição Especial 2026',
           title: 'Zen Dans Ma Tête — Promoção da Saúde Mental',
@@ -1544,16 +1544,16 @@ const translations = {
         },
         {
           id: 14,
-          page: 32,
-          category: 'SAÚDE MENSTRUAL & EMPODERAMENTO',
+          page: 18,
+          category: 'FOTOGRAFIA & ARTE',
           date: 'Edição Especial 2026',
-          title: 'Associação Menarca Muhatu — Dignidade & Educação',
-          spoiler: 'Fundada por Divina Ndomateso Ntele, combatendo a pobreza menstrual e promovendo dignidade, educação e empoderamento para meninas e mulheres.',
-          imagePage: 32
+          title: 'Randy Selection — Fotógrafo Profissional & Empreendedor',
+          spoiler: 'Capturar os momentos mais marcantes da vida com precisão artística e fotografia de prestígio para casamentos e momentos inesquecíveis.',
+          imagePage: 27
         },
         {
           id: 15,
-          page: 18,
+          page: 19,
           category: 'SERVIÇOS DE LIMPEZA & MANUTENÇÃO',
           date: 'Edição Especial 2026',
           title: 'Val Nettoyage et Entretien — Excelência em Serviços',

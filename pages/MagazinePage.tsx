@@ -40,9 +40,32 @@ export function MagazinePage() {
     }
   }, []);
 
-  // Format page image path
+  const PAGE_IMAGE_MAP: Record<number, string> = {
+    1: '/magazine/pages/MAG_-_ENGLISH_VERSION.webp',
+    2: '/magazine/pages/MAG_-_ENGLISH_VERSION2.webp',
+    3: '/magazine/pages/MAG_-_ENGLISH_VERSION3.webp',
+    4: '/magazine/pages/MAG_-_ENGLISH_VERSION5.webp',  // CENA Mission & Philosophy ("MORE THAN A NAME, A MISSION")
+    5: '/magazine/pages/MAG_-_ENGLISH_VERSION11.webp', // Cristina Indira MANUEL (Presidente CENA)
+    6: '/magazine/pages/MAG_-_ENGLISH_VERSION9.webp',  // Sebastião Matano Sala (Finanças)
+    7: '/magazine/pages/MAG_-_ENGLISH_VERSION8.webp',  // Dulce Angelina FIGUEIREDO (RH)
+    8: '/magazine/pages/MAG_-_ENGLISH_VERSION10.webp', // Marileny F. ANTONIO (Vice-Presidente)
+    9: '/magazine/pages/MAG_-_ENGLISH_VERSION7.webp',  // Daniel Love Fernando ANTÓNIO (Juventude)
+    10: '/magazine/pages/MAG_-_ENGLISH_VERSION30.webp',// Randy Larochelle (Visão CENA)
+    11: '/magazine/pages/MAG_-_ENGLISH_VERSION15.webp',// Samara ARCHANGE, MBA (DGA Commercial)
+    12: '/magazine/pages/MAG_-_ENGLISH_VERSION13.webp',// Magalie Sabine Jean-Louis (Imobiliário)
+    13: '/magazine/pages/MAG_-_ENGLISH_VERSION14.webp',// Neccy LM (Liderança Feminina)
+    14: '/magazine/pages/MAG_-_ENGLISH_VERSION32.webp',// Associação Menarca Muhatu (Divina Ndomateso)
+    15: '/magazine/pages/MAG_-_ENGLISH_VERSION19.webp',// Candor's Cake (Pâtisserie)
+    16: '/magazine/pages/MAG_-_ENGLISH_VERSION21.webp',// Essential Micro Hair (Estética)
+    17: '/magazine/pages/MAG_-_ENGLISH_VERSION25.webp',// Zen Dans Ma Tête (Saúde Mental)
+    18: '/magazine/pages/MAG_-_ENGLISH_VERSION27.webp',// Randy Selection (Fotografia)
+    19: '/magazine/pages/MAG_-_ENGLISH_VERSION18.webp',// Val Nettoyage et Entretien (Limpeza)
+  };
+
   const getPageSrc = (pageNum: number) => {
-    if (pageNum === 1) return '/magazine/pages/MAG_-_ENGLISH_VERSION.webp';
+    if (PAGE_IMAGE_MAP[pageNum]) {
+      return PAGE_IMAGE_MAP[pageNum];
+    }
     return `/magazine/pages/MAG_-_ENGLISH_VERSION${pageNum}.webp`;
   };
 
