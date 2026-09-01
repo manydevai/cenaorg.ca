@@ -10,15 +10,18 @@ export function HeroSection() {
   const [currentBg, setCurrentBg] = useState(0);
 
   const backgrounds = [
-    BRAND.teamShot,
-    BRAND.heroBackground
+    '/hero/1.webp',
+    '/hero/2.webp',
+    '/hero/3.webp',
+    '/hero/4.webp',
+    '/hero/5.webp'
   ];
 
   useEffect(() => {
     setIsVisible(true);
     const interval = setInterval(() => {
       setCurrentBg((prev: number) => (prev + 1) % backgrounds.length);
-    }, 8000);
+    }, 1800);
     return () => clearInterval(interval);
   }, [backgrounds.length]);
 
@@ -32,7 +35,7 @@ export function HeroSection() {
         {backgrounds.map((bg, index) => (
           <div
             key={`full-bg-${index}`}
-            className={`absolute inset-0 bg-cover bg-center lg:bg-[right_center] transition-opacity duration-[3000ms] ease-in-out ${index === currentBg ? 'opacity-100' : 'opacity-0'}`}
+            className={`absolute inset-0 bg-cover bg-center lg:bg-[right_center] transition-opacity duration-[800ms] ease-in-out ${index === currentBg ? 'opacity-100' : 'opacity-0'}`}
             style={{
               backgroundImage: `url(${bg})`,
               transform: 'scale(1)'
@@ -40,9 +43,6 @@ export function HeroSection() {
           />
         ))}
       </div>
-
-      {/* Very subtle protection for text legibility - NOT a black band */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-transparent z-10"></div>
 
       {/* Structural Decoration: Architectural Lines */}
       <div className="absolute inset-0 z-10 pointer-events-none opacity-20 hidden lg:block">
