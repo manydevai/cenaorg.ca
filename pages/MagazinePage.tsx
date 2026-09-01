@@ -46,9 +46,9 @@ export function MagazinePage() {
     3: '/magazine/pages/MAG_-_ENGLISH_VERSION3.webp',
     4: '/magazine/pages/MAG_-_ENGLISH_VERSION5.webp',  // CENA Mission & Philosophy ("MORE THAN A NAME, A MISSION")
     5: '/magazine/pages/MAG_-_ENGLISH_VERSION11.webp', // Cristina Indira MANUEL (Presidente CENA)
-    6: '/magazine/pages/MAG_-_ENGLISH_VERSION9.webp',  // Sebastião Matano Sala (Finanças)
-    7: '/magazine/pages/MAG_-_ENGLISH_VERSION8.webp',  // Dulce Angelina FIGUEIREDO (RH)
-    8: '/magazine/pages/MAG_-_ENGLISH_VERSION10.webp', // Marileny F. ANTONIO (Vice-Presidente)
+    6: '/magazine/pages/MAG_-_ENGLISH_VERSION10.webp', // Marileny F. ANTONIO (Vice-Presidente CENA)
+    7: '/magazine/pages/MAG_-_ENGLISH_VERSION9.webp',  // Sebastião Matano Sala (Finanças)
+    8: '/magazine/pages/MAG_-_ENGLISH_VERSION8.webp',  // Dulce Angelina FIGUEIREDO (RH)
     9: '/magazine/pages/MAG_-_ENGLISH_VERSION7.webp',  // Daniel Love Fernando ANTÓNIO (Juventude)
     10: '/magazine/pages/MAG_-_ENGLISH_VERSION30.webp',// Randy Larochelle (Visão CENA)
     11: '/magazine/pages/MAG_-_ENGLISH_VERSION15.webp',// Samara ARCHANGE, MBA (DGA Commercial)

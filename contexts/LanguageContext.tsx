@@ -122,6 +122,15 @@ const translations = {
         {
           id: 2,
           page: 6,
+          category: 'VICE-PRÉSIDENCE CENA',
+          date: 'Édition Spéciale 2026',
+          title: 'Marileny F. ANTONIO — Vice-Présidente CENA',
+          spoiler: '« Le plus grand succès se bâtit sur la Parole de Dieu. Lorsque le Christ est notre fondation, la foi devient plus forte que la peur. »',
+          imagePage: 10
+        },
+        {
+          id: 3,
+          page: 7,
           category: 'FINANCE & CONSEIL D\'ADMINISTRATION',
           date: 'Édition Spéciale 2026',
           title: 'Sebastião Matano Sala — Directeur Financier & Fondateur',
@@ -129,22 +138,13 @@ const translations = {
           imagePage: 9
         },
         {
-          id: 3,
-          page: 7,
+          id: 4,
+          page: 8,
           category: 'RESSOURCES HUMAINES & ENGAGEMENT',
           date: 'Édition Spéciale 2026',
           title: 'Dulce Angelina FIGUEIREDO — Directrice des RH CENA',
           spoiler: '« Je crois que chaque personne possède un objectif unique. Ayez foi en Dieu, croyez en vous-même et n\'abandonnez jamais vos rêves. »',
           imagePage: 8
-        },
-        {
-          id: 4,
-          page: 8,
-          category: 'VICE-PRÉSIDENCE CENA',
-          date: 'Édition Spéciale 2026',
-          title: 'Marileny F. ANTONIO — Vice-Présidente CENA',
-          spoiler: '« Le plus grand succès se bâtit sur la Parole de Dieu. Lorsque le Christ est notre fondation, la foi devient plus forte que la peur. »',
-          imagePage: 10
         },
         {
           id: 5,
@@ -779,6 +779,15 @@ const translations = {
         {
           id: 2,
           page: 6,
+          category: 'VICE-PRESIDENCY CENA',
+          date: 'Special Edition 2026',
+          title: 'Marileny F. ANTONIO — Vice-President CENA',
+          spoiler: '“The greatest success is built on the Word of God. When Christ is our foundation, faith becomes stronger than fear, and our lives become a testimony of His love.”',
+          imagePage: 10
+        },
+        {
+          id: 3,
+          page: 7,
           category: 'FINANCE & BOARD MEMBER',
           date: 'Special Edition 2026',
           title: 'Sebastião Matano Sala — Founder & Finance Director CENA',
@@ -786,22 +795,13 @@ const translations = {
           imagePage: 9
         },
         {
-          id: 3,
-          page: 7,
+          id: 4,
+          page: 8,
           category: 'HUMAN RESOURCES & COMMUNITY',
           date: 'Special Edition 2026',
           title: 'Dulce Angelina FIGUEIREDO — Director of HR CENA',
           spoiler: '“I believe every person has a unique purpose. Trust in God, believe in yourself, and never give up on your dreams.”',
           imagePage: 8
-        },
-        {
-          id: 4,
-          page: 8,
-          category: 'VICE-PRESIDENCY CENA',
-          date: 'Special Edition 2026',
-          title: 'Marileny F. ANTONIO — Vice-President CENA',
-          spoiler: '“The greatest success is built on the Word of God. When Christ is our foundation, faith becomes stronger than fear, and our lives become a testimony of His love.”',
-          imagePage: 10
         },
         {
           id: 5,
@@ -1437,6 +1437,15 @@ const translations = {
         {
           id: 2,
           page: 6,
+          category: 'VICE-PRESIDÊNCIA CENA',
+          date: 'Edição Especial 2026',
+          title: 'Marileny F. ANTONIO — Vice-Presidente CENA',
+          spoiler: '«O maior sucesso é construído sobre a Palavra de Deus. Quando Cristo é a nossa base, a fé torna-se mais forte que o medo e as nossas vidas tornam-se um testemunho do Seu amor.»',
+          imagePage: 10
+        },
+        {
+          id: 3,
+          page: 7,
           category: 'FINANÇAS & CONSELHO CENA',
           date: 'Edição Especial 2026',
           title: 'Sebastião Matano Sala — Fundador & Diretor Financeiro',
@@ -1444,22 +1453,13 @@ const translations = {
           imagePage: 9
         },
         {
-          id: 3,
-          page: 7,
+          id: 4,
+          page: 8,
           category: 'RECURSOS HUMANOS & COMUNIDADE',
           date: 'Edição Especial 2026',
           title: 'Dulce Angelina FIGUEIREDO — Diretora de RH CENA',
           spoiler: '«Acredito que cada pessoa tem um propósito único. Confie em Deus, acredite em si mesmo e nunca desista dos seus sonhos.»',
           imagePage: 8
-        },
-        {
-          id: 4,
-          page: 8,
-          category: 'VICE-PRESIDÊNCIA CENA',
-          date: 'Edição Especial 2026',
-          title: 'Marileny F. ANTONIO — Vice-Presidente CENA',
-          spoiler: '«O maior sucesso é construído sobre a Palavra de Deus. Quando Cristo é a nossa base, a fé torna-se mais forte que o medo e as nossas vidas tornam-se um testemunho do Seu amor.»',
-          imagePage: 10
         },
         {
           id: 5,
