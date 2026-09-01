@@ -175,7 +175,7 @@ const translations = {
         },
         {
           id: 8,
-          page: 12,
+          page: 13,
           category: 'ENTREPRENEURIAT & GASTRONOMIE',
           date: 'Édition Spéciale 2026',
           title: 'Candor\'s Cake — L\'Art de Célébrer la Vie',
@@ -184,7 +184,7 @@ const translations = {
         },
         {
           id: 9,
-          page: 13,
+          page: 15,
           category: 'IMMOBILIER & ENTREPRENEURIAT',
           date: 'Édition Spéciale 2026',
           title: 'Magalie Sabine Jean-Louis — Courtier Immobilier Résidentiel',
@@ -193,7 +193,7 @@ const translations = {
         },
         {
           id: 10,
-          page: 14,
+          page: 16,
           category: 'AUTONOMISATION DES FEMMES',
           date: 'Édition Spéciale 2026',
           title: 'Neccy LM — Leadership Féminin & Croissance Personnelle',
@@ -202,7 +202,7 @@ const translations = {
         },
         {
           id: 11,
-          page: 15,
+          page: 17,
           category: 'SANTÉ MENSTRUELLE & EMPODERAMENTO',
           date: 'Édition Spéciale 2026',
           title: 'Association Menarca Muhatu — Dignité & Éducation',
@@ -211,7 +211,7 @@ const translations = {
         },
         {
           id: 12,
-          page: 16,
+          page: 18,
           category: 'ESTHÉTIQUE & AUTONOMISATION',
           date: 'Édition Spéciale 2026',
           title: 'Essential Micro Hair — Confiance & Beauté Naturelle',
@@ -220,7 +220,7 @@ const translations = {
         },
         {
           id: 13,
-          page: 17,
+          page: 19,
           category: 'SANTE MENTALE & COMMUNAUTÉ',
           date: 'Édition Spéciale 2026',
           title: 'Zen Dans Ma Tête — Promotion de la Santé Mentale',
@@ -229,7 +229,7 @@ const translations = {
         },
         {
           id: 14,
-          page: 18,
+          page: 20,
           category: 'PHOTOGRAPHIE & ART',
           date: 'Édition Spéciale 2026',
           title: 'Randy Selection — Photographe Professionnel & Entrepreneur',
@@ -238,7 +238,7 @@ const translations = {
         },
         {
           id: 15,
-          page: 19,
+          page: 21,
           category: 'ENTREPRISE DE NETTOYAGE & ENTRETIEN',
           date: 'Édition Spéciale 2026',
           title: 'Val Nettoyage et Entretien — L\'Excellence du Service',
@@ -832,7 +832,7 @@ const translations = {
         },
         {
           id: 8,
-          page: 12,
+          page: 13,
           category: 'ENTREPRENEURSHIP & PATISSERIE',
           date: 'Special Edition 2026',
           title: 'Candor’s Cake — The Art of Celebrating Life',
@@ -841,7 +841,7 @@ const translations = {
         },
         {
           id: 9,
-          page: 13,
+          page: 15,
           category: 'REAL ESTATE & BUSINESS',
           date: 'Special Edition 2026',
           title: 'Magalie Sabine Jean-Louis — Residential Real Estate Broker',
@@ -850,7 +850,7 @@ const translations = {
         },
         {
           id: 10,
-          page: 14,
+          page: 16,
           category: 'WOMEN’S EMPOWERMENT',
           date: 'Special Edition 2026',
           title: 'Neccy LM — Personal Growth & Women’s Leadership',
@@ -859,7 +859,7 @@ const translations = {
         },
         {
           id: 11,
-          page: 15,
+          page: 17,
           category: 'MENSTRUAL HEALTH & EMPOWERMENT',
           date: 'Special Edition 2026',
           title: 'Association Menarca Muhatu — Dignity & Education',
@@ -868,7 +868,7 @@ const translations = {
         },
         {
           id: 12,
-          page: 16,
+          page: 18,
           category: 'BEAUTY & EMPOWERMENT',
           date: 'Special Edition 2026',
           title: 'Essential Micro Hair — Confidence & Natural Beauty',
@@ -877,7 +877,7 @@ const translations = {
         },
         {
           id: 13,
-          page: 17,
+          page: 19,
           category: 'MENTAL HEALTH & COMMUNITY',
           date: 'Special Edition 2026',
           title: 'Zen Dans Ma Tête — Mental Health Promotion',
@@ -886,7 +886,7 @@ const translations = {
         },
         {
           id: 14,
-          page: 18,
+          page: 20,
           category: 'PHOTOGRAPHY & ART',
           date: 'Special Edition 2026',
           title: 'Randy Selection — Professional Photographer & Entrepreneur',
@@ -895,7 +895,7 @@ const translations = {
         },
         {
           id: 15,
-          page: 19,
+          page: 21,
           category: 'CLEANING & MAINTENANCE SERVICES',
           date: 'Special Edition 2026',
           title: 'Val Nettoyage et Entretien — Service Excellence',
@@ -1490,7 +1490,7 @@ const translations = {
         },
         {
           id: 8,
-          page: 12,
+          page: 13,
           category: 'EMPREENDEDORISMO & PASTERIA',
           date: 'Edição Especial 2026',
           title: 'Candor\'s Cake — A Arte de Celebrar a Vida',
@@ -1499,7 +1499,7 @@ const translations = {
         },
         {
           id: 9,
-          page: 13,
+          page: 15,
           category: 'IMOBILIÁRIO & NEGÓCIOS',
           date: 'Edição Especial 2026',
           title: 'Magalie Sabine Jean-Louis — Corretora Imobiliária Residencial',
@@ -1508,7 +1508,7 @@ const translations = {
         },
         {
           id: 10,
-          page: 14,
+          page: 16,
           category: 'LIDERANÇA FEMININA',
           date: 'Edição Especial 2026',
           title: 'Neccy LM — Plataforma de Crescimento & Liderança',
@@ -1517,7 +1517,7 @@ const translations = {
         },
         {
           id: 11,
-          page: 15,
+          page: 17,
           category: 'SAÚDE MENSTRUAL & EMPODERAMENTO',
           date: 'Edição Especial 2026',
           title: 'Associação Menarca Muhatu — Dignidade & Educação',
@@ -1526,7 +1526,7 @@ const translations = {
         },
         {
           id: 12,
-          page: 16,
+          page: 18,
           category: 'ESTÉTICA & EMPODERAMENTO',
           date: 'Edição Especial 2026',
           title: 'Essential Micro Hair — Confiança & Beleza Natural',
@@ -1535,7 +1535,7 @@ const translations = {
         },
         {
           id: 13,
-          page: 17,
+          page: 19,
           category: 'SAÚDE MENTAL & COMUNIDADE',
           date: 'Edição Especial 2026',
           title: 'Zen Dans Ma Tête — Promoção da Saúde Mental',
@@ -1544,7 +1544,7 @@ const translations = {
         },
         {
           id: 14,
-          page: 18,
+          page: 20,
           category: 'FOTOGRAFIA & ARTE',
           date: 'Edição Especial 2026',
           title: 'Randy Selection — Fotógrafo Profissional & Empreendedor',
@@ -1553,7 +1553,7 @@ const translations = {
         },
         {
           id: 15,
-          page: 19,
+          page: 21,
           category: 'SERVIÇOS DE LIMPEZA & MANUTENÇÃO',
           date: 'Edição Especial 2026',
           title: 'Val Nettoyage et Entretien — Excelência em Serviços',
