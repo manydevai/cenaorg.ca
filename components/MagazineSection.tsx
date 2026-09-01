@@ -79,7 +79,7 @@ export function MagazineSection() {
       updateOpenGraphMeta({
         title: `${currentStory.title} — CENA Magazine 2026`,
         text: currentStory.spoiler,
-        url: `/magazine?page=${currentStory.page}`,
+        url: `/magazine/page/${currentStory.page}`,
         image: getPageSrc(currentStory.imagePage)
       });
     }
@@ -225,7 +225,7 @@ export function MagazineSection() {
                   <ShareButton
                     title={currentStory.title}
                     text={currentStory.spoiler}
-                    url={`/magazine?page=${currentStory.page}`}
+                    url={`/magazine/page/${currentStory.page}`}
                     image={getPageSrc(currentStory.imagePage)}
                   />
                 </div>
@@ -327,7 +327,7 @@ export function MagazineSection() {
                       variant="icon-only"
                       title={item.title}
                       text={item.spoiler}
-                      url={`/magazine?page=${item.page}`}
+                      url={`/magazine/page/${item.page}`}
                       image={getPageSrc(item.imagePage)}
                     />
                   </div>

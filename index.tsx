@@ -19,6 +19,9 @@ createRoot(document.getElementById("root")!).render(
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/magazine" element={<MagazinePage />} />
+        <Route path="/magazine/page/:pageId" element={<MagazinePage />} />
+        <Route path="/magazine/page:pageId" element={<MagazinePage />} />
+        <Route path="/magazine/p:pageId" element={<MagazinePage />} />
         <Route path="/events/black-consciousness-day" element={<PastEventsBlackConsciousness />} />
         <Route path="/events/consciencia-negra-cena-caf" element={<PastEventConscienciaNegra />} />
         <Route path="/gallery/black-consciousness-day" element={<BlackConsciousnessGallery />} />

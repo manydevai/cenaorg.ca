@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useSearchParams, Link } from 'react-router-dom';
+import { useSearchParams, useParams, Link } from 'react-router-dom';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -24,10 +24,11 @@ const TOTAL_PAGES = 40;
 export function MagazinePage() {
   const { t, language } = useLanguage();
   const [searchParams, setSearchParams] = useSearchParams();
+  const params = useParams<{ pageId?: string }>();
   const [currentPage, setCurrentPage] = useState<number>(() => {
-    const pageParam = searchParams.get('page');
-    if (pageParam) {
-      const p = parseInt(pageParam, 10);
+    const pStr = params.pageId || searchParams.get('page');
+    if (pStr) {
+      const p = parseInt(pStr, 10);
       if (!isNaN(p) && p >= 1 && p <= TOTAL_PAGES) return p;
     }
     return 1;
@@ -35,17 +36,17 @@ export function MagazinePage() {
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
   const [showThumbnails, setShowThumbnails] = useState<boolean>(false);
 
-  // Sync state with URL search param changes
+  // Sync state with URL search param & path param changes
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    const pageParam = searchParams.get('page');
-    if (pageParam) {
-      const p = parseInt(pageParam, 10);
+    const pStr = params.pageId || searchParams.get('page');
+    if (pStr) {
+      const p = parseInt(pStr, 10);
       if (!isNaN(p) && p >= 1 && p <= TOTAL_PAGES) {
         setCurrentPage(p);
       }
     }
-  }, [searchParams]);
+  }, [searchParams, params.pageId]);
 
   const updatePage = (newPage: number) => {
     if (newPage >= 1 && newPage <= TOTAL_PAGES) {
@@ -111,7 +112,7 @@ export function MagazinePage() {
     updateOpenGraphMeta({
       title: `CENA Magazine 2026 — Página ${currentPage}`,
       text: `Descubra a edição 2026 da Revista CENA (Página ${currentPage} de ${TOTAL_PAGES}).`,
-      url: `/magazine?page=${currentPage}`,
+      url: `/magazine/page/${currentPage}`,
       image: pageImage
     });
   }, [currentPage]);
@@ -165,7 +166,7 @@ export function MagazinePage() {
             <ShareButton
               title={`CENA Magazine 2026 — Página ${currentPage}`}
               text={`Confira a página ${currentPage} da Revista CENA Magazine 2026!`}
-              url={`/magazine?page=${currentPage}`}
+              url={`/magazine/page/${currentPage}`}
               image={getPageSrc(currentPage)}
               label="Partilhar"
             />

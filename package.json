@@ -65,7 +65,7 @@
       },
       "scripts": {
             "dev": "vite",
-            "build": "vite build",
+            "build": "vite build && node generate-og-pages.js",
             "preview": "vite preview"
       },
       "overrides": {
