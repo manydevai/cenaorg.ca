@@ -74,16 +74,18 @@ export function updateOpenGraphMeta(options: ShareOptions): void {
 }
 
 /**
- * Directly triggers a WhatsApp Share link formatted with title, text, link, and updated OG image.
+ * Directly triggers a WhatsApp Share link formatted with title, text, edition link, and article image URL.
  */
 export function shareToWhatsApp(options: ShareOptions): void {
   const fullUrl = getAbsoluteUrl(options.url || (typeof window !== 'undefined' ? window.location.href : ''));
+  const imageUrl = options.image ? getAbsoluteUrl(options.image) : '';
   updateOpenGraphMeta(options);
 
   const messageParts: string[] = [];
   if (options.title) messageParts.push(`*${options.title.trim()}*`);
   if (options.text) messageParts.push(options.text.trim());
-  messageParts.push(fullUrl);
+  messageParts.push(`📖 Ver na Revista: ${fullUrl}`);
+  if (imageUrl) messageParts.push(`🖼️ Imagem da Matéria: ${imageUrl}`);
 
   const fullText = messageParts.join('\n\n');
   const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(fullText)}`;
@@ -99,6 +101,7 @@ export function shareToWhatsApp(options: ShareOptions): void {
  */
 export async function shareContent(options: ShareOptions): Promise<{ copied: boolean; shared: boolean }> {
   const fullUrl = getAbsoluteUrl(options.url || (typeof window !== 'undefined' ? window.location.href : ''));
+  const imageUrl = options.image ? getAbsoluteUrl(options.image) : '';
   updateOpenGraphMeta(options);
 
   const shareTitle = options.title;
@@ -108,7 +111,7 @@ export async function shareContent(options: ShareOptions): Promise<{ copied: boo
     try {
       await navigator.share({
         title: shareTitle,
-        text: shareText,
+        text: imageUrl ? `${shareText}\n\n🖼️ Imagem: ${imageUrl}` : shareText,
         url: fullUrl,
       });
       return { copied: false, shared: true };
@@ -120,7 +123,10 @@ export async function shareContent(options: ShareOptions): Promise<{ copied: boo
   // Fallback to Clipboard Copy + WhatsApp Option
   try {
     if (typeof navigator !== 'undefined' && navigator.clipboard) {
-      await navigator.clipboard.writeText(`${shareTitle}\n${fullUrl}`);
+      const copyText = imageUrl 
+        ? `${shareTitle}\n📖 ${fullUrl}\n🖼️ ${imageUrl}`
+        : `${shareTitle}\n📖 ${fullUrl}`;
+      await navigator.clipboard.writeText(copyText);
       return { copied: true, shared: false };
     }
   } catch (_) {
