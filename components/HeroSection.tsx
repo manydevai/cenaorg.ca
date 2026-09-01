@@ -8,11 +8,31 @@ export function HeroSection() {
   const [currentBg, setCurrentBg] = useState(0);
 
   const backgrounds = [
-    '/hero/1.webp',
-    '/hero/2.webp',
-    '/hero/3.webp',
-    '/hero/4.webp',
-    '/hero/5.webp'
+    {
+      url: '/hero/1.webp',
+      mobileSize: '155% auto',
+      mobilePos: 'center top',
+    },
+    {
+      url: '/hero/2.webp',
+      mobileSize: 'cover',
+      mobilePos: 'center top',
+    },
+    {
+      url: '/hero/3.webp', // Photo 03 / 05 — Full screen with slight zoom out to show left & right faces
+      mobileSize: '155% auto',
+      mobilePos: 'center top',
+    },
+    {
+      url: '/hero/4.webp', // Photo 04 / 05 — Full screen with slight zoom out to show left & right faces
+      mobileSize: '155% auto',
+      mobilePos: 'center top',
+    },
+    {
+      url: '/hero/5.webp',
+      mobileSize: '155% auto',
+      mobilePos: 'center top',
+    },
   ];
 
   useEffect(() => {
@@ -29,17 +49,31 @@ export function HeroSection() {
       className="relative min-h-[92vh] sm:min-h-screen flex flex-col justify-end lg:justify-center overflow-hidden border-b border-white/5 bg-[#090909] w-full max-w-full"
     >
       {/* =========================================================
-          FULL-BLEED BACKGROUND — Crisp, HD Photo Cover (Desktop & Mobile)
+          FULL-BLEED BACKGROUND — Single Layer Full Screen (No Mirroring / No Splitting)
          ========================================================= */}
-      <div className="absolute inset-0 z-0">
-        {backgrounds.map((bg, index) => (
+      <div className="absolute inset-0 z-0 bg-[#090909]">
+        {backgrounds.map((bgItem, index) => (
           <div
             key={`hero-bg-${index}`}
-            className={`absolute inset-0 bg-cover bg-[center_top] lg:bg-[right_top] transition-opacity duration-[1000ms] ease-in-out ${index === currentBg ? 'opacity-100' : 'opacity-0'}`}
-            style={{
-              backgroundImage: `url(${bg})`,
-            }}
-          />
+            className={`absolute inset-0 transition-opacity duration-[1000ms] ease-in-out ${index === currentBg ? 'opacity-100' : 'opacity-0'}`}
+          >
+            {/* Mobile View Background (Full screen 155% zoom-out — shows all 3 faces cleanly) */}
+            <div
+              className="block lg:hidden absolute inset-0 bg-no-repeat transition-all duration-700"
+              style={{
+                backgroundImage: `url(${bgItem.url})`,
+                backgroundSize: bgItem.mobileSize,
+                backgroundPosition: bgItem.mobilePos,
+              }}
+            />
+            {/* Desktop View Background */}
+            <div
+              className="hidden lg:block absolute inset-0 bg-cover bg-[right_top] bg-no-repeat"
+              style={{
+                backgroundImage: `url(${bgItem.url})`,
+              }}
+            />
+          </div>
         ))}
       </div>
 
@@ -47,7 +81,7 @@ export function HeroSection() {
       <div className="hidden lg:block absolute inset-y-0 left-0 w-3/5 bg-gradient-to-r from-black/85 via-black/55 to-transparent z-10 pointer-events-none" />
 
       {/* MOBILE GRADIENT MASK — Bottom-anchored dark gradient for high contrast & clean photo top */}
-      <div className="lg:hidden absolute inset-0 bg-gradient-to-t from-black via-black/70 via-50% to-transparent z-10 pointer-events-none" />
+      <div className="lg:hidden absolute inset-0 bg-gradient-to-t from-black via-black/75 via-50% to-transparent z-10 pointer-events-none" />
 
       {/* DESKTOP ARCHITECTURAL DECORATION LINES */}
       <div className="absolute inset-0 z-10 pointer-events-none opacity-20 hidden lg:block">
@@ -61,7 +95,7 @@ export function HeroSection() {
           MOBILE LAYOUT (< lg) — Clean High-End Luxury UI
          ========================================================= */}
       <div className="lg:hidden relative z-20 w-full pt-28 pb-10 px-6 sm:px-8 space-y-3.5">
-        {/* Top Minimal Slide Counter (e.g., 01 / 05) */}
+        {/* Top Minimal Slide Counter (e.g., 04 / 05) */}
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
             <span className="h-px w-6 bg-[#C5A059]"></span>
