@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Share2, Check } from 'lucide-react';
 import { shareContent, ShareOptions } from '../utils/share';
+import { useLanguage } from '../contexts/LanguageContext';
 
 interface ShareButtonProps extends ShareOptions {
   className?: string;
@@ -15,9 +16,12 @@ export function ShareButton({
   image,
   className = '',
   variant = 'standard',
-  label = 'Partilhar'
+  label
 }: ShareButtonProps) {
+  const { t } = useLanguage();
   const [copied, setCopied] = useState(false);
+
+  const displayLabel = label || t('common.share') || 'Partilhar';
 
   const handleShareClick = async (e: React.MouseEvent) => {
     e.preventDefault();
@@ -35,9 +39,9 @@ export function ShareButton({
       <button
         onClick={handleShareClick}
         className={`p-1.5 rounded-full bg-white/5 hover:bg-[#C5A059]/20 text-[#C5A059] border border-white/10 transition-all cursor-pointer shadow-xs ${className}`}
-        title="Partilhar esta notícia"
+        title={displayLabel}
       >
-        {copied ? <Check className="w-3.5 h-3.5 text-green-400" /> : <Share2 className="w-3.5 h-3.5" />}
+        {copied ? <Check className="w-3 h-3 text-green-400" /> : <Share2 className="w-3 h-3" />}
       </button>
     );
   }
@@ -45,18 +49,18 @@ export function ShareButton({
   return (
     <button
       onClick={handleShareClick}
-      className={`inline-flex items-center space-x-1.5 px-3 py-1.5 bg-white/5 hover:bg-[#C5A059]/15 border border-[#C5A059]/30 text-gray-200 hover:text-white text-[11px] font-bold uppercase tracking-wider rounded-xs transition-all cursor-pointer shadow-xs ${className}`}
-      title="Partilhar notícia (WhatsApp, Redes Sociais, Copiar Link)"
+      className={`inline-flex items-center space-x-1 px-2.5 py-1 bg-white/5 hover:bg-[#C5A059]/15 border border-[#C5A059]/30 text-gray-200 hover:text-white text-[10px] sm:text-[11px] font-bold uppercase tracking-wider rounded-xs transition-all cursor-pointer shadow-xs whitespace-nowrap ${className}`}
+      title={displayLabel}
     >
       {copied ? (
         <>
-          <Check className="w-3.5 h-3.5 text-green-400" />
-          <span className="text-green-400">Copiado!</span>
+          <Check className="w-3 h-3 text-green-400" />
+          <span className="text-green-400">{t('backpack_campaign.share.copied') || 'Copiado!'}</span>
         </>
       ) : (
         <>
-          <Share2 className="w-3.5 h-3.5 text-[#C5A059]" />
-          <span>{label}</span>
+          <Share2 className="w-3 h-3 text-[#C5A059]" />
+          <span>{displayLabel}</span>
         </>
       )}
     </button>

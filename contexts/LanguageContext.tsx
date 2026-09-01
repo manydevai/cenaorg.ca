@@ -66,7 +66,8 @@ const translations = {
       view_all: 'Voir tout',
       sign_up: 'S\'inscrire',
       join_us: 'Rejoignez-nous',
-      trusted_by: 'Ils nous font confiance'
+      trusted_by: 'Ils nous font confiance',
+      share: 'Partager'
     },
     navigation: {
       home: 'Accueil',
@@ -108,7 +109,7 @@ const translations = {
       home_highlight_desc: 'Explorez en avant-première nos grands reportages et analyses exclusifs. Cliquez sur n\'importe quelle actualité pour accéder directement à la page correspondante du magazine.',
       explore_cta: 'Consulter le Magazine Complet',
       download_cta: 'Télécharger PDF (FR)',
-      read_full_article: 'Lire l\'Article (Pág. {page}) →',
+      read_full_article: 'Lire (P. {page}) →',
       stories: [
         {
           id: 1,
@@ -723,7 +724,8 @@ const translations = {
       view_all: 'View All',
       sign_up: 'Sign Up',
       join_us: 'Join Us',
-      trusted_by: 'Trusted By'
+      trusted_by: 'Trusted By',
+      share: 'Share'
     },
     navigation: {
       home: 'Home',
@@ -765,7 +767,7 @@ const translations = {
       home_highlight_desc: 'Explore exclusive investigative features and community updates. Click any news story to jump directly to its exact page in the magazine.',
       explore_cta: 'Browse Full Magazine',
       download_cta: 'Download PDF (EN)',
-      read_full_article: 'Read Full Story (Pg. {page}) →',
+      read_full_article: 'Read (P. {page}) →',
       stories: [
         {
           id: 1,
@@ -1381,7 +1383,8 @@ const translations = {
       view_all: 'Ver Tudo',
       sign_up: 'Inscrever-se',
       join_us: 'Junte-se a Nós',
-      trusted_by: 'Eles Confiam em Nós'
+      trusted_by: 'Eles Confiam em Nós',
+      share: 'Partilhar'
     },
     navigation: {
       home: 'Início',
@@ -1423,7 +1426,7 @@ const translations = {
       home_highlight_desc: 'Explore em primeira mão as nossas reportagens e análises exclusivas. Clique em qualquer notícia para aceder diretamente à página correspondente da revista.',
       explore_cta: 'Consultar Revista Completa',
       download_cta: 'Descarregar PDF (PT)',
-      read_full_article: 'Ler Matéria Completa (Pág. {page}) →',
+      read_full_article: 'Ler (Pág. {page}) →',
       stories: [
         {
           id: 1,
