@@ -10,28 +10,28 @@ export function HeroSection() {
   const backgrounds = [
     {
       url: '/hero/1.webp',
-      mobileSize: '135% auto',
-      mobilePos: 'center 12%',
+      mobileSize: '140% auto',
+      mobilePos: 'center 14%',
     },
     {
       url: '/hero/2.webp',
-      mobileSize: 'cover',
-      mobilePos: 'center top',
+      mobileSize: '140% auto',
+      mobilePos: 'center 14%',
     },
     {
-      url: '/hero/3.webp', // Photo 03 / 05 — Zoom out on mobile so left & right faces are fully shown
-      mobileSize: 'contain',
-      mobilePos: 'center 15%',
+      url: '/hero/3.webp', // Photo 03 / 05 — 3 women on red background (Slight zoom in, full body & faces visible)
+      mobileSize: '145% auto',
+      mobilePos: 'center 20%',
     },
     {
-      url: '/hero/4.webp', // Photo 04 / 05 — Zoom out on mobile so left & right faces are fully shown
-      mobileSize: 'contain',
-      mobilePos: 'center 10%',
+      url: '/hero/4.webp', // Photo 04 / 05 — 3 women in black/red dresses (Single centered image, full body & faces, no double image)
+      mobileSize: '145% auto',
+      mobilePos: 'center 20%',
     },
     {
       url: '/hero/5.webp',
-      mobileSize: 'cover',
-      mobilePos: 'center top',
+      mobileSize: '140% auto',
+      mobilePos: 'center 14%',
     },
   ];
 
@@ -49,18 +49,15 @@ export function HeroSection() {
       className="relative min-h-[92vh] sm:min-h-screen flex flex-col justify-end lg:justify-center overflow-hidden border-b border-white/5 bg-[#090909] w-full max-w-full"
     >
       {/* =========================================================
-          FULL-BLEED BACKGROUND — Crisp, HD Photo Cover (Desktop & Mobile)
+          FULL-BLEED BACKGROUND — Single Image Layer (No Double Background / No Mirroring)
          ========================================================= */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 bg-[#090909]">
         {backgrounds.map((bgItem, index) => (
           <div
             key={`hero-bg-${index}`}
-            className={`absolute inset-0 transition-opacity duration-[1000ms] ease-in-out bg-no-repeat ${index === currentBg ? 'opacity-100' : 'opacity-0'}`}
-            style={{
-              backgroundImage: `url(${bgItem.url})`,
-            }}
+            className={`absolute inset-0 transition-opacity duration-[1000ms] ease-in-out ${index === currentBg ? 'opacity-100' : 'opacity-0'}`}
           >
-            {/* Mobile Background Styling (Zoomed out for 03/05 and 04/05) */}
+            {/* Mobile Single Background (Clean Centered Image, No Duplicate / No Mirror) */}
             <div
               className="block lg:hidden absolute inset-0 bg-no-repeat transition-all duration-700"
               style={{
@@ -69,9 +66,9 @@ export function HeroSection() {
                 backgroundPosition: bgItem.mobilePos,
               }}
             />
-            {/* Desktop Background Styling */}
+            {/* Desktop Background */}
             <div
-              className="hidden lg:block absolute inset-0 bg-cover bg-[right_top]"
+              className="hidden lg:block absolute inset-0 bg-cover bg-[right_top] bg-no-repeat"
               style={{
                 backgroundImage: `url(${bgItem.url})`,
               }}
@@ -84,7 +81,7 @@ export function HeroSection() {
       <div className="hidden lg:block absolute inset-y-0 left-0 w-3/5 bg-gradient-to-r from-black/85 via-black/55 to-transparent z-10 pointer-events-none" />
 
       {/* MOBILE GRADIENT MASK — Bottom-anchored dark gradient for high contrast & clean photo top */}
-      <div className="lg:hidden absolute inset-0 bg-gradient-to-t from-black via-black/70 via-50% to-transparent z-10 pointer-events-none" />
+      <div className="lg:hidden absolute inset-0 bg-gradient-to-t from-black via-black/75 via-50% to-transparent z-10 pointer-events-none" />
 
       {/* DESKTOP ARCHITECTURAL DECORATION LINES */}
       <div className="absolute inset-0 z-10 pointer-events-none opacity-20 hidden lg:block">
@@ -98,7 +95,7 @@ export function HeroSection() {
           MOBILE LAYOUT (< lg) — Clean High-End Luxury UI
          ========================================================= */}
       <div className="lg:hidden relative z-20 w-full pt-28 pb-10 px-6 sm:px-8 space-y-3.5">
-        {/* Top Minimal Slide Counter (e.g., 03 / 05) */}
+        {/* Top Minimal Slide Counter (e.g., 04 / 05) */}
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
             <span className="h-px w-6 bg-[#C5A059]"></span>
