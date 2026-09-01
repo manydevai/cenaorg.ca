@@ -8,11 +8,31 @@ export function HeroSection() {
   const [currentBg, setCurrentBg] = useState(0);
 
   const backgrounds = [
-    '/hero/1.webp',
-    '/hero/2.webp',
-    '/hero/3.webp',
-    '/hero/4.webp',
-    '/hero/5.webp'
+    {
+      url: '/hero/1.webp',
+      mobileSize: '135% auto',
+      mobilePos: 'center 12%',
+    },
+    {
+      url: '/hero/2.webp',
+      mobileSize: 'cover',
+      mobilePos: 'center top',
+    },
+    {
+      url: '/hero/3.webp', // Photo 03 / 05 — Zoom out on mobile so left & right faces are fully shown
+      mobileSize: 'contain',
+      mobilePos: 'center 15%',
+    },
+    {
+      url: '/hero/4.webp', // Photo 04 / 05 — Zoom out on mobile so left & right faces are fully shown
+      mobileSize: 'contain',
+      mobilePos: 'center 10%',
+    },
+    {
+      url: '/hero/5.webp',
+      mobileSize: 'cover',
+      mobilePos: 'center top',
+    },
   ];
 
   useEffect(() => {
@@ -32,14 +52,31 @@ export function HeroSection() {
           FULL-BLEED BACKGROUND — Crisp, HD Photo Cover (Desktop & Mobile)
          ========================================================= */}
       <div className="absolute inset-0 z-0">
-        {backgrounds.map((bg, index) => (
+        {backgrounds.map((bgItem, index) => (
           <div
             key={`hero-bg-${index}`}
-            className={`absolute inset-0 bg-cover bg-[center_top] lg:bg-[right_top] transition-opacity duration-[1000ms] ease-in-out ${index === currentBg ? 'opacity-100' : 'opacity-0'}`}
+            className={`absolute inset-0 transition-opacity duration-[1000ms] ease-in-out bg-no-repeat ${index === currentBg ? 'opacity-100' : 'opacity-0'}`}
             style={{
-              backgroundImage: `url(${bg})`,
+              backgroundImage: `url(${bgItem.url})`,
             }}
-          />
+          >
+            {/* Mobile Background Styling (Zoomed out for 03/05 and 04/05) */}
+            <div
+              className="block lg:hidden absolute inset-0 bg-no-repeat transition-all duration-700"
+              style={{
+                backgroundImage: `url(${bgItem.url})`,
+                backgroundSize: bgItem.mobileSize,
+                backgroundPosition: bgItem.mobilePos,
+              }}
+            />
+            {/* Desktop Background Styling */}
+            <div
+              className="hidden lg:block absolute inset-0 bg-cover bg-[right_top]"
+              style={{
+                backgroundImage: `url(${bgItem.url})`,
+              }}
+            />
+          </div>
         ))}
       </div>
 
@@ -61,7 +98,7 @@ export function HeroSection() {
           MOBILE LAYOUT (< lg) — Clean High-End Luxury UI
          ========================================================= */}
       <div className="lg:hidden relative z-20 w-full pt-28 pb-10 px-6 sm:px-8 space-y-3.5">
-        {/* Top Minimal Slide Counter (e.g., 01 / 05) */}
+        {/* Top Minimal Slide Counter (e.g., 03 / 05) */}
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
             <span className="h-px w-6 bg-[#C5A059]"></span>
