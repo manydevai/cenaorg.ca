@@ -366,30 +366,30 @@ export function MagazineSection() {
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center gap-3">
+          <div className="flex flex-nowrap items-center gap-2 sm:gap-3 w-full sm:w-auto overflow-x-auto pb-1 sm:pb-0">
             <a
               href="/magazine/pdf/cena-magazine-fr.pdf"
               download="CENA_Magazine_FR.pdf"
-              className="px-4 py-2.5 bg-white/5 hover:bg-white/10 border border-[#C5A059]/40 text-[#C5A059] text-xs font-bold uppercase tracking-widest transition-colors flex items-center space-x-2 rounded"
+              className="px-3 sm:px-4 py-2.5 bg-white/5 hover:bg-white/10 border border-[#C5A059]/40 text-[#C5A059] text-[10px] sm:text-xs font-bold uppercase tracking-wider transition-colors flex items-center space-x-1.5 rounded whitespace-nowrap flex-shrink-0"
             >
-              <Download className="w-4 h-4" />
-              <span>PDF (FR)</span>
+              <Download className="w-3.5 h-3.5" />
+              <span>{t('magazine.french_edition')}</span>
             </a>
             <a
               href="/magazine/pdf/cena-magazine-pt.pdf"
               download="CENA_Magazine_PT.pdf"
-              className="px-4 py-2.5 bg-white/5 hover:bg-white/10 border border-[#C5A059]/40 text-[#C5A059] text-xs font-bold uppercase tracking-widest transition-colors flex items-center space-x-2 rounded"
+              className="px-3 sm:px-4 py-2.5 bg-white/5 hover:bg-white/10 border border-[#C5A059]/40 text-[#C5A059] text-[10px] sm:text-xs font-bold uppercase tracking-wider transition-colors flex items-center space-x-1.5 rounded whitespace-nowrap flex-shrink-0"
             >
-              <Download className="w-4 h-4" />
-              <span>PDF (PT)</span>
+              <Download className="w-3.5 h-3.5" />
+              <span>{t('magazine.portuguese_edition')}</span>
             </a>
             <a
               href="/magazine/pdf/cena-magazine-en.pdf"
               download="CENA_Magazine_EN.pdf"
-              className="px-4 py-2.5 bg-[#8B0000] hover:bg-[#A00000] border border-[#C5A059] text-white text-xs font-bold uppercase tracking-widest transition-colors flex items-center space-x-2 rounded shadow-lg"
+              className="px-3 sm:px-4 py-2.5 bg-[#8B0000] hover:bg-[#A00000] border border-[#C5A059] text-white text-[10px] sm:text-xs font-bold uppercase tracking-wider transition-colors flex items-center space-x-1.5 rounded shadow-lg whitespace-nowrap flex-shrink-0"
             >
-              <Download className="w-4 h-4 text-[#C5A059]" />
-              <span>PDF (EN)</span>
+              <Download className="w-3.5 h-3.5 text-[#C5A059]" />
+              <span>{t('magazine.english_edition')}</span>
             </a>
           </div>
         </div>
