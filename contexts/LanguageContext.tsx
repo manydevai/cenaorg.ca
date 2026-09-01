@@ -112,7 +112,7 @@ const translations = {
       stories: [
         {
           id: 1,
-          page: 10,
+          page: 5,
           category: 'PRESIDENCE & LIDERANÇA',
           date: 'Édition Spéciale 2026',
           title: 'Cristina Indira MANUEL — Fondatrice & Présidente CENA',
@@ -121,7 +121,7 @@ const translations = {
         },
         {
           id: 2,
-          page: 11,
+          page: 6,
           category: 'VICE-PRÉSIDENCE CENA',
           date: 'Édition Spéciale 2026',
           title: 'Marileny F. ANTONIO — Vice-Présidente CENA',
@@ -130,7 +130,7 @@ const translations = {
         },
         {
           id: 3,
-          page: 9,
+          page: 7,
           category: 'FINANCE & CONSEIL D\'ADMINISTRATION',
           date: 'Édition Spéciale 2026',
           title: 'Sebastião Matano Sala — Directeur Financier & Fondateur',
@@ -148,7 +148,7 @@ const translations = {
         },
         {
           id: 5,
-          page: 7,
+          page: 9,
           category: 'JEUNESSE & INNOVATION',
           date: 'Édition Spéciale 2026',
           title: 'Daniel Love Fernando ANTÓNIO — Directeur Jeunesse & Innovation CENA',
@@ -157,7 +157,7 @@ const translations = {
         },
         {
           id: 6,
-          page: 30,
+          page: 10,
           category: 'LEADERSHIP & IMPACT COMMUNAUTAIRE',
           date: 'Édition Spéciale 2026',
           title: 'Randy Larochelle — Vision & Engagement',
@@ -166,16 +166,7 @@ const translations = {
         },
         {
           id: 7,
-          page: 15,
-          category: 'FINANCEMENT COMMERCIAL & IMMOBILIER',
-          date: 'Édition Spéciale 2026',
-          title: 'Samara ARCHANGE, MBA — Co-Fondatrice DGA Commercial',
-          spoiler: '« N\'abandonnez jamais vos rêves avant d\'avoir cherché les meilleurs conseils. Le savoir, la préparation et la détermination concrétisent chaque vision. »',
-          imagePage: 15
-        },
-        {
-          id: 8,
-          page: 19,
+          page: 11,
           category: 'ENTREPRENEURIAT & GASTRONOMIE',
           date: 'Édition Spéciale 2026',
           title: 'Candor\'s Cake — L\'Art de Célébrer la Vie',
@@ -183,8 +174,17 @@ const translations = {
           imagePage: 19
         },
         {
-          id: 9,
+          id: 8,
           page: 13,
+          category: 'FINANCEMENT COMMERCIAL & IMMOBILIER',
+          date: 'Édition Spéciale 2026',
+          title: 'Samara ARCHANGE, MBA — Co-Fondatrice DGA Commercial',
+          spoiler: '« N\'abandonnez jamais vos rêves avant d\'avoir cherché les meilleurs conseils. Le savoir, la préparation et la détermination concrétisent chaque vision. »',
+          imagePage: 15
+        },
+        {
+          id: 9,
+          page: 15,
           category: 'IMMOBILIER & ENTREPRENEURIAT',
           date: 'Édition Spéciale 2026',
           title: 'Magalie Sabine Jean-Louis — Courtier Immobilier Résidentiel',
@@ -193,7 +193,7 @@ const translations = {
         },
         {
           id: 10,
-          page: 14,
+          page: 16,
           category: 'AUTONOMISATION DES FEMMES',
           date: 'Édition Spéciale 2026',
           title: 'Neccy LM — Leadership Féminin & Croissance Personnelle',
@@ -202,7 +202,7 @@ const translations = {
         },
         {
           id: 11,
-          page: 32,
+          page: 17,
           category: 'SANTÉ MENSTRUELLE & EMPODERAMENTO',
           date: 'Édition Spéciale 2026',
           title: 'Association Menarca Muhatu — Dignité & Éducation',
@@ -211,7 +211,7 @@ const translations = {
         },
         {
           id: 12,
-          page: 21,
+          page: 19,
           category: 'ESTHÉTIQUE & AUTONOMISATION',
           date: 'Édition Spéciale 2026',
           title: 'Essential Micro Hair — Confiance & Beauté Naturelle',
@@ -220,7 +220,7 @@ const translations = {
         },
         {
           id: 13,
-          page: 25,
+          page: 21,
           category: 'SANTE MENTALE & COMMUNAUTÉ',
           date: 'Édition Spéciale 2026',
           title: 'Zen Dans Ma Tête — Promotion de la Santé Mentale',
@@ -229,7 +229,7 @@ const translations = {
         },
         {
           id: 14,
-          page: 27,
+          page: 23,
           category: 'PHOTOGRAPHIE & ART',
           date: 'Édition Spéciale 2026',
           title: 'Randy Selection — Photographe Professionnel & Entrepreneur',
@@ -238,7 +238,7 @@ const translations = {
         },
         {
           id: 15,
-          page: 18,
+          page: 25,
           category: 'ENTREPRISE DE NETTOYAGE & ENTRETIEN',
           date: 'Édition Spéciale 2026',
           title: 'Val Nettoyage et Entretien — L\'Excellence du Service',
@@ -769,7 +769,7 @@ const translations = {
       stories: [
         {
           id: 1,
-          page: 10,
+          page: 5,
           category: 'PRESIDENCY & LEADERSHIP',
           date: 'Special Edition 2026',
           title: 'Cristina Indira MANUEL — Founder & President CENA',
@@ -778,7 +778,7 @@ const translations = {
         },
         {
           id: 2,
-          page: 11,
+          page: 6,
           category: 'VICE-PRESIDENCY CENA',
           date: 'Special Edition 2026',
           title: 'Marileny F. ANTONIO — Vice-President CENA',
@@ -787,7 +787,7 @@ const translations = {
         },
         {
           id: 3,
-          page: 9,
+          page: 7,
           category: 'FINANCE & BOARD MEMBER',
           date: 'Special Edition 2026',
           title: 'Sebastião Matano Sala — Founder & Finance Director CENA',
@@ -805,7 +805,7 @@ const translations = {
         },
         {
           id: 5,
-          page: 7,
+          page: 9,
           category: 'YOUTH & INNOVATION',
           date: 'Special Edition 2026',
           title: 'Daniel Love Fernando ANTÓNIO — Director of Youth & Innovation CENA',
@@ -814,7 +814,7 @@ const translations = {
         },
         {
           id: 6,
-          page: 30,
+          page: 10,
           category: 'LEADERSHIP & COMMUNITY IMPACT',
           date: 'Special Edition 2026',
           title: 'Randy Larochelle — Vision & Excellence',
@@ -823,16 +823,7 @@ const translations = {
         },
         {
           id: 7,
-          page: 15,
-          category: 'COMMERCIAL FINANCING & REAL ESTATE',
-          date: 'Special Edition 2026',
-          title: 'Samara ARCHANGE, MBA — Co-Founder DGA Commercial',
-          spoiler: '“Never give up on your dreams before seeking the right advice. Knowledge, preparation, and determination can turn every vision into reality.”',
-          imagePage: 15
-        },
-        {
-          id: 8,
-          page: 19,
+          page: 11,
           category: 'ENTREPRENEURSHIP & PATISSERIE',
           date: 'Special Edition 2026',
           title: 'Candor’s Cake — The Art of Celebrating Life',
@@ -840,8 +831,17 @@ const translations = {
           imagePage: 19
         },
         {
-          id: 9,
+          id: 8,
           page: 13,
+          category: 'COMMERCIAL FINANCING & REAL ESTATE',
+          date: 'Special Edition 2026',
+          title: 'Samara ARCHANGE, MBA — Co-Founder DGA Commercial',
+          spoiler: '“Never give up on your dreams before seeking the right advice. Knowledge, preparation, and determination can turn every vision into reality.”',
+          imagePage: 15
+        },
+        {
+          id: 9,
+          page: 15,
           category: 'REAL ESTATE & BUSINESS',
           date: 'Special Edition 2026',
           title: 'Magalie Sabine Jean-Louis — Residential Real Estate Broker',
@@ -850,7 +850,7 @@ const translations = {
         },
         {
           id: 10,
-          page: 14,
+          page: 16,
           category: 'WOMEN’S EMPOWERMENT',
           date: 'Special Edition 2026',
           title: 'Neccy LM — Personal Growth & Women’s Leadership',
@@ -859,7 +859,7 @@ const translations = {
         },
         {
           id: 11,
-          page: 32,
+          page: 17,
           category: 'MENSTRUAL HEALTH & EMPOWERMENT',
           date: 'Special Edition 2026',
           title: 'Association Menarca Muhatu — Dignity & Education',
@@ -868,7 +868,7 @@ const translations = {
         },
         {
           id: 12,
-          page: 21,
+          page: 19,
           category: 'BEAUTY & EMPOWERMENT',
           date: 'Special Edition 2026',
           title: 'Essential Micro Hair — Confidence & Natural Beauty',
@@ -877,7 +877,7 @@ const translations = {
         },
         {
           id: 13,
-          page: 25,
+          page: 21,
           category: 'MENTAL HEALTH & COMMUNITY',
           date: 'Special Edition 2026',
           title: 'Zen Dans Ma Tête — Mental Health Promotion',
@@ -886,7 +886,7 @@ const translations = {
         },
         {
           id: 14,
-          page: 27,
+          page: 23,
           category: 'PHOTOGRAPHY & ART',
           date: 'Special Edition 2026',
           title: 'Randy Selection — Professional Photographer & Entrepreneur',
@@ -1427,7 +1427,7 @@ const translations = {
       stories: [
         {
           id: 1,
-          page: 10,
+          page: 5,
           category: 'PRESIDÊNCIA & LIDERANÇA',
           date: 'Edição Especial 2026',
           title: 'Cristina Indira MANUEL — Fundadora & Presidente CENA',
@@ -1436,7 +1436,7 @@ const translations = {
         },
         {
           id: 2,
-          page: 11,
+          page: 6,
           category: 'VICE-PRESIDÊNCIA CENA',
           date: 'Edição Especial 2026',
           title: 'Marileny F. ANTONIO — Vice-Presidente CENA',
@@ -1445,7 +1445,7 @@ const translations = {
         },
         {
           id: 3,
-          page: 9,
+          page: 7,
           category: 'FINANÇAS & CONSELHO CENA',
           date: 'Edição Especial 2026',
           title: 'Sebastião Matano Sala — Fundador & Diretor Financeiro',
@@ -1463,7 +1463,7 @@ const translations = {
         },
         {
           id: 5,
-          page: 7,
+          page: 9,
           category: 'JUVENTUDE & INOVAÇÃO',
           date: 'Edição Especial 2026',
           title: 'Daniel Love Fernando ANTÓNIO — Diretor Juventude & Inovação CENA',
@@ -1472,7 +1472,7 @@ const translations = {
         },
         {
           id: 6,
-          page: 30,
+          page: 10,
           category: 'LIDERANÇA & IMPACTO COMUNITÁRIO',
           date: 'Edição Especial 2026',
           title: 'Randy Larochelle — Visão & Compromisso',
@@ -1481,16 +1481,7 @@ const translations = {
         },
         {
           id: 7,
-          page: 15,
-          category: 'FINANCIAMENTO COMERCIAL & IMOBILIÁRIO',
-          date: 'Edição Especial 2026',
-          title: 'Samara ARCHANGE, MBA — Co-Fundadora DGA Commercial',
-          spoiler: '«Nunca desista dos seus sonhos antes de procurar o conselho certo. O conhecimento, a preparação e a determinação transformam qualquer visão em realidade.»',
-          imagePage: 15
-        },
-        {
-          id: 8,
-          page: 19,
+          page: 11,
           category: 'EMPREENDEDORISMO & PASTERIA',
           date: 'Edição Especial 2026',
           title: 'Candor\'s Cake — A Arte de Celebrar a Vida',
@@ -1498,8 +1489,17 @@ const translations = {
           imagePage: 19
         },
         {
-          id: 9,
+          id: 8,
           page: 13,
+          category: 'FINANCIAMENTO COMERCIAL & IMOBILIÁRIO',
+          date: 'Edição Especial 2026',
+          title: 'Samara ARCHANGE, MBA — Co-Fundadora DGA Commercial',
+          spoiler: '«Nunca desista dos seus sonhos antes de procurar o conselho certo. O conhecimento, a preparação e a determinação transformam qualquer visão em realidade.»',
+          imagePage: 15
+        },
+        {
+          id: 9,
+          page: 15,
           category: 'IMOBILIÁRIO & NEGÓCIOS',
           date: 'Edição Especial 2026',
           title: 'Magalie Sabine Jean-Louis — Corretora Imobiliária Residencial',
@@ -1508,7 +1508,7 @@ const translations = {
         },
         {
           id: 10,
-          page: 14,
+          page: 16,
           category: 'LIDERANÇA FEMININA',
           date: 'Edição Especial 2026',
           title: 'Neccy LM — Plataforma de Crescimento & Liderança',
@@ -1517,7 +1517,7 @@ const translations = {
         },
         {
           id: 11,
-          page: 32,
+          page: 17,
           category: 'SAÚDE MENSTRUAL & EMPODERAMENTO',
           date: 'Edição Especial 2026',
           title: 'Associação Menarca Muhatu — Dignidade & Educação',
@@ -1526,7 +1526,7 @@ const translations = {
         },
         {
           id: 12,
-          page: 21,
+          page: 19,
           category: 'ESTÉTICA & EMPODERAMENTO',
           date: 'Edição Especial 2026',
           title: 'Essential Micro Hair — Confiança & Beleza Natural',
@@ -1535,7 +1535,7 @@ const translations = {
         },
         {
           id: 13,
-          page: 25,
+          page: 21,
           category: 'SAÚDE MENTAL & COMUNIDADE',
           date: 'Edição Especial 2026',
           title: 'Zen Dans Ma Tête — Promoção da Saúde Mental',
@@ -1544,7 +1544,7 @@ const translations = {
         },
         {
           id: 14,
-          page: 21,
+          page: 23,
           category: 'FOTOGRAFIA & ARTE',
           date: 'Edição Especial 2026',
           title: 'Randy Selection — Fotógrafo Profissional & Empreendedor',
@@ -1553,7 +1553,7 @@ const translations = {
         },
         {
           id: 15,
-          page: 22,
+          page: 25,
           category: 'SERVIÇOS DE LIMPEZA & MANUTENÇÃO',
           date: 'Edição Especial 2026',
           title: 'Val Nettoyage et Entretien — Excelência em Serviços',

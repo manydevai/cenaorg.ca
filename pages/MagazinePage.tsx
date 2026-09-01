@@ -41,8 +41,45 @@ export function MagazinePage() {
   }, []);
 
   const PAGE_IMAGE_MAP: Record<number, string> = {
-    10: '/magazine/pages/MAG_-_ENGLISH_VERSION11.webp', // Swapped: Page 10 shows Cristina Indira MANUEL
-    11: '/magazine/pages/MAG_-_ENGLISH_VERSION10.webp', // Swapped: Page 11 shows Marileny F. ANTONIO
+    1: '/magazine/pages/MAG_-_ENGLISH_VERSION.webp',  // Capa
+    2: '/magazine/pages/MAG_-_ENGLISH_VERSION2.webp', // Índice / Sumário
+    3: '/magazine/pages/MAG_-_ENGLISH_VERSION3.webp', // Mensagem de Boas-Vindas
+    4: '/magazine/pages/MAG_-_ENGLISH_VERSION5.webp', // Apresentação & Filosofia CENA ("MORE THAN A NAME, A MISSION")
+    
+    // SEÇÃO 1: Membros Executivos da CENA em Ordem de Hierarquia
+    5: '/magazine/pages/MAG_-_ENGLISH_VERSION11.webp',// 1. Cristina Indira MANUEL (Presidente CENA)
+    6: '/magazine/pages/MAG_-_ENGLISH_VERSION10.webp',// 2. Marileny F. ANTONIO (Vice-Presidente CENA)
+    7: '/magazine/pages/MAG_-_ENGLISH_VERSION9.webp', // 3. Sebastião Matano Sala (Diretor Financeiro)
+    8: '/magazine/pages/MAG_-_ENGLISH_VERSION8.webp', // 4. Dulce Angelina FIGUEIREDO (Diretora RH)
+    9: '/magazine/pages/MAG_-_ENGLISH_VERSION7.webp', // 5. Daniel Love Fernando ANTÓNIO (Diretor Juventude)
+    10: '/magazine/pages/MAG_-_ENGLISH_VERSION30.webp',// 6. Randy Larochelle (Visão CENA)
+
+    // SEÇÃO 2: Biografias Pessoais de Empreendedores (Candor's Cake em Posição Privilegiada no Topo!)
+    11: '/magazine/pages/MAG_-_ENGLISH_VERSION19.webp',// Candor's Cake Parte 1 (Marileny F. Antonio - Pâtisserie)
+    12: '/magazine/pages/MAG_-_ENGLISH_VERSION20.webp',// Candor's Cake Parte 2 (Galeria de Bolos & Citação)
+    13: '/magazine/pages/MAG_-_ENGLISH_VERSION15.webp',// Samara ARCHANGE, MBA Parte 1
+    14: '/magazine/pages/MAG_-_ENGLISH_VERSION16.webp',// Samara ARCHANGE, MBA Parte 2
+    15: '/magazine/pages/MAG_-_ENGLISH_VERSION13.webp',// Magalie Sabine Jean-Louis (Imobiliário)
+    16: '/magazine/pages/MAG_-_ENGLISH_VERSION14.webp',// Neccy LM (Liderança Feminina)
+    17: '/magazine/pages/MAG_-_ENGLISH_VERSION32.webp',// Associação Menarca Muhatu (Divina Ndomateso Ntele)
+    18: '/magazine/pages/MAG_-_ENGLISH_VERSION4.webp', // Mrs. Shirley DORISMOND (Membro da Assembleia Nacional - Fundo das Biografias)
+
+    // SEÇÃO 3: Perfis Empresariais Isolados (Empresas)
+    19: '/magazine/pages/MAG_-_ENGLISH_VERSION21.webp',// Essential Micro Hair Parte 1
+    20: '/magazine/pages/MAG_-_ENGLISH_VERSION22.webp',// Essential Micro Hair Parte 2 (Galeria de Tranças)
+    21: '/magazine/pages/MAG_-_ENGLISH_VERSION25.webp',// Zen Dans Ma Tête Parte 1
+    22: '/magazine/pages/MAG_-_ENGLISH_VERSION26.webp',// Zen Dans Ma Tête Parte 2
+    23: '/magazine/pages/MAG_-_ENGLISH_VERSION27.webp',// Randy Selection Parte 1
+    24: '/magazine/pages/MAG_-_ENGLISH_VERSION28.webp',// Randy Selection Parte 2
+    25: '/magazine/pages/MAG_-_ENGLISH_VERSION18.webp',// Val Nettoyage et Entretien
+    26: '/magazine/pages/MAG_-_ENGLISH_VERSION31.webp',// Black Sable Group
+    27: '/magazine/pages/MAG_-_ENGLISH_VERSION6.webp', // Groupe Multizone (Fundo dos Perfis Empresariais)
+
+    // SEÇÃO 4: Eventos e Actividades no Final
+    28: '/magazine/pages/MAG_-_ENGLISH_VERSION17.webp',// Anúncio DGA Commercial / Real Estate
+    29: '/magazine/pages/MAG_-_ENGLISH_VERSION23.webp',// Gala & Eventos Comunitários
+    30: '/magazine/pages/MAG_-_ENGLISH_VERSION24.webp',// Actividades CENA
+    31: '/magazine/pages/MAG_-_ENGLISH_VERSION29.webp',// Encontros Comunitários
   };
 
   const getPageSrc = (pageNum: number) => {
