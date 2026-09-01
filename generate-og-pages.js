@@ -16,42 +16,6 @@ if (!fs.existsSync(indexPath)) {
 
 const template = fs.readFileSync(indexPath, 'utf-8');
 
-// Page to image file mapping
-const PAGE_IMAGE_MAP = {
-  1: '/magazine/pages/MAG_-_ENGLISH_VERSION.webp',
-  2: '/magazine/pages/MAG_-_ENGLISH_VERSION2.webp',
-  3: '/magazine/pages/MAG_-_ENGLISH_VERSION3.webp',
-  4: '/magazine/pages/MAG_-_ENGLISH_VERSION5.webp',
-  5: '/magazine/pages/MAG_-_ENGLISH_VERSION11.webp',
-  6: '/magazine/pages/MAG_-_ENGLISH_VERSION10.webp',
-  7: '/magazine/pages/MAG_-_ENGLISH_VERSION9.webp',
-  8: '/magazine/pages/MAG_-_ENGLISH_VERSION8.webp',
-  9: '/magazine/pages/MAG_-_ENGLISH_VERSION7.webp',
-  10: '/magazine/pages/MAG_-_ENGLISH_VERSION30.webp',
-  11: '/magazine/pages/MAG_-_ENGLISH_VERSION19.webp', // Candor's Cake
-  12: '/magazine/pages/MAG_-_ENGLISH_VERSION20.webp', // Candor's Cake Pâtisserie
-  13: '/magazine/pages/MAG_-_ENGLISH_VERSION15.webp', // Samara ARCHANGE
-  14: '/magazine/pages/MAG_-_ENGLISH_VERSION16.webp', // Samara ARCHANGE 2
-  15: '/magazine/pages/MAG_-_ENGLISH_VERSION13.webp', // Magalie Sabine Jean-Louis
-  16: '/magazine/pages/MAG_-_ENGLISH_VERSION14.webp', // Neccy LM
-  17: '/magazine/pages/MAG_-_ENGLISH_VERSION32.webp', // Association Menarca Muhatu
-  18: '/magazine/pages/MAG_-_ENGLISH_VERSION4.webp',  // Mrs. Shirley DORISMOND
-  19: '/magazine/pages/MAG_-_ENGLISH_VERSION21.webp', // Essential Micro Hair
-  20: '/magazine/pages/MAG_-_ENGLISH_VERSION22.webp', // Essential Micro Hair 2
-  21: '/magazine/pages/MAG_-_ENGLISH_VERSION25.webp', // Zen Dans Ma Tête
-  22: '/magazine/pages/MAG_-_ENGLISH_VERSION26.webp', // Zen Dans Ma Tête 2
-  23: '/magazine/pages/MAG_-_ENGLISH_VERSION27.webp', // Randy Selection
-  24: '/magazine/pages/MAG_-_ENGLISH_VERSION28.webp', // Randy Selection 2
-  25: '/magazine/pages/MAG_-_ENGLISH_VERSION29.webp', // Randy Selection Portfólio
-  26: '/magazine/pages/MAG_-_ENGLISH_VERSION18.webp', // Val Nettoyage et Entretien
-  27: '/magazine/pages/MAG_-_ENGLISH_VERSION31.webp', // Black Sable Group
-  28: '/magazine/pages/MAG_-_ENGLISH_VERSION6.webp',  // Groupe Multizone
-  29: '/magazine/pages/MAG_-_ENGLISH_VERSION17.webp', // DGA Commercial
-  30: '/magazine/pages/MAG_-_ENGLISH_VERSION23.webp', // Gala CENA
-  31: '/magazine/pages/MAG_-_ENGLISH_VERSION24.webp', // Actividades CENA
-  32: '/magazine/pages/MAG_-_ENGLISH_VERSION33.webp', // Celebração CENA
-};
-
 // Page metadata details for Open Graph tags
 const PAGE_META_MAP = {
   5: {
@@ -153,11 +117,7 @@ const PAGE_META_MAP = {
 };
 
 function getPageSrc(pageNum) {
-  if (PAGE_IMAGE_MAP[pageNum]) {
-    return PAGE_IMAGE_MAP[pageNum];
-  }
-  if (pageNum === 1) return '/magazine/pages/MAG_-_ENGLISH_VERSION.webp';
-  return `/magazine/pages/MAG_-_ENGLISH_VERSION${pageNum}.webp`;
+  return `/magazine/pages/og/page${pageNum}.jpg`;
 }
 
 function createPreRenderedHtml(title, description, imagePath, pageUrlPath) {
@@ -187,6 +147,10 @@ function createPreRenderedHtml(title, description, imagePath, pageUrlPath) {
   html = html.replace(
     /<meta\s+property="og:image"\s+content=".*?"\s*\/?>/gi,
     `<meta property="og:image" content="${fullImageUrl}" />`
+  );
+  html = html.replace(
+    /<meta\s+property="og:image:type"\s+content=".*?"\s*\/?>/gi,
+    `<meta property="og:image:type" content="image/jpeg" />`
   );
   html = html.replace(
     /<meta\s+property="og:url"\s+content=".*?"\s*\/?>/gi,
@@ -224,7 +188,7 @@ function writeHtmlFile(filePath, content) {
   fs.writeFileSync(filePath, content, 'utf-8');
 }
 
-console.log('🚀 Generating static Open Graph pre-rendered pages for WhatsApp link previews...');
+console.log('🚀 Generating static Open Graph pre-rendered pages with WhatsApp JPEG images...');
 
 let count = 0;
 
@@ -279,4 +243,4 @@ for (const blog of BLOG_META_MAP) {
   count += 2;
 }
 
-console.log(`✅ Successfully generated ${count} pre-rendered static HTML pages for Open Graph previews!`);
+console.log(`✅ Successfully generated ${count} pre-rendered static HTML pages with WhatsApp JPEG Open Graph tags!`);
