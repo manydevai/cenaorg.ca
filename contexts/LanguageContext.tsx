@@ -176,6 +176,15 @@ const translations = {
         {
           id: 8,
           page: 12,
+          category: 'ENTREPRENEURIAT & GASTRONOMIE',
+          date: 'Édition Spéciale 2026',
+          title: 'Candor\'s Cake — L\'Art de Célébrer la Vie',
+          spoiler: 'Fondé par Marileny Fernando Antonio, Candor\'s Cake transforme chaque événement marquant en un souvenir inoubliable grâce à la haute pâtisserie.',
+          imagePage: 19
+        },
+        {
+          id: 9,
+          page: 13,
           category: 'IMMOBILIER & ENTREPRENEURIAT',
           date: 'Édition Spéciale 2026',
           title: 'Magalie Sabine Jean-Louis — Courtier Immobilier Résidentiel',
@@ -183,8 +192,8 @@ const translations = {
           imagePage: 13
         },
         {
-          id: 9,
-          page: 13,
+          id: 10,
+          page: 14,
           category: 'AUTONOMISATION DES FEMMES',
           date: 'Édition Spéciale 2026',
           title: 'Neccy LM — Leadership Féminin & Croissance Personnelle',
@@ -192,22 +201,13 @@ const translations = {
           imagePage: 14
         },
         {
-          id: 10,
-          page: 14,
+          id: 11,
+          page: 15,
           category: 'SANTÉ MENSTRUELLE & EMPODERAMENTO',
           date: 'Édition Spéciale 2026',
           title: 'Association Menarca Muhatu — Dignité & Éducation',
           spoiler: 'Fondée par Divina Ndomateso Ntele, l\'association combat la précarité menstruelle et promeut l\'éducation, la dignité et l\'égalité des filles.',
           imagePage: 32
-        },
-        {
-          id: 11,
-          page: 15,
-          category: 'ENTREPRENEURIAT & GASTRONOMIE',
-          date: 'Édition Spéciale 2026',
-          title: 'Candor\'s Cake — L\'Art de Célébrer la Vie',
-          spoiler: 'Fondé par Marileny Fernando Antonio, Candor\'s Cake transforme chaque événement marquant en un souvenir inoubliable grâce à la haute pâtisserie.',
-          imagePage: 19
         },
         {
           id: 12,
@@ -833,6 +833,15 @@ const translations = {
         {
           id: 8,
           page: 12,
+          category: 'ENTREPRENEURSHIP & PATISSERIE',
+          date: 'Special Edition 2026',
+          title: 'Candor’s Cake — The Art of Celebrating Life',
+          spoiler: 'Founded by Marileny Fernando Antonio, Candor’s Cake transforms meaningful celebrations into unforgettable memories with handcrafted edible art.',
+          imagePage: 19
+        },
+        {
+          id: 9,
+          page: 13,
           category: 'REAL ESTATE & BUSINESS',
           date: 'Special Edition 2026',
           title: 'Magalie Sabine Jean-Louis — Residential Real Estate Broker',
@@ -840,8 +849,8 @@ const translations = {
           imagePage: 13
         },
         {
-          id: 9,
-          page: 13,
+          id: 10,
+          page: 14,
           category: 'WOMEN’S EMPOWERMENT',
           date: 'Special Edition 2026',
           title: 'Neccy LM — Personal Growth & Women’s Leadership',
@@ -849,22 +858,13 @@ const translations = {
           imagePage: 14
         },
         {
-          id: 10,
-          page: 14,
+          id: 11,
+          page: 15,
           category: 'MENSTRUAL HEALTH & EMPOWERMENT',
           date: 'Special Edition 2026',
           title: 'Association Menarca Muhatu — Dignity & Education',
           spoiler: 'Founded by Divina Ndomateso Ntele, combating menstrual poverty and promoting dignity, education, and empowerment for girls and women.',
           imagePage: 32
-        },
-        {
-          id: 11,
-          page: 15,
-          category: 'ENTREPRENEURSHIP & PATISSERIE',
-          date: 'Special Edition 2026',
-          title: 'Candor’s Cake — The Art of Celebrating Life',
-          spoiler: 'Founded by Marileny Fernando Antonio, Candor’s Cake transforms meaningful celebrations into unforgettable memories with handcrafted edible art.',
-          imagePage: 19
         },
         {
           id: 12,
@@ -1491,6 +1491,15 @@ const translations = {
         {
           id: 8,
           page: 12,
+          category: 'EMPREENDEDORISMO & PASTERIA',
+          date: 'Edição Especial 2026',
+          title: 'Candor\'s Cake — A Arte de Celebrar a Vida',
+          spoiler: 'Fundado por Marileny Fernando Antonio, Candor\'s Cake transforma cada celebração numa memória inesquecível através da arte de confeitaria artesanal.',
+          imagePage: 19
+        },
+        {
+          id: 9,
+          page: 13,
           category: 'IMOBILIÁRIO & NEGÓCIOS',
           date: 'Edição Especial 2026',
           title: 'Magalie Sabine Jean-Louis — Corretora Imobiliária Residencial',
@@ -1498,8 +1507,8 @@ const translations = {
           imagePage: 13
         },
         {
-          id: 9,
-          page: 13,
+          id: 10,
+          page: 14,
           category: 'LIDERANÇA FEMININA',
           date: 'Edição Especial 2026',
           title: 'Neccy LM — Plataforma de Crescimento & Liderança',
@@ -1507,22 +1516,13 @@ const translations = {
           imagePage: 14
         },
         {
-          id: 10,
-          page: 14,
+          id: 11,
+          page: 15,
           category: 'SAÚDE MENSTRUAL & EMPODERAMENTO',
           date: 'Edição Especial 2026',
           title: 'Associação Menarca Muhatu — Dignidade & Educação',
           spoiler: 'Fundada por Divina Ndomateso Ntele, combatendo a pobreza menstrual e promovendo dignidade, educação e empoderamento para meninas e mulheres.',
           imagePage: 32
-        },
-        {
-          id: 11,
-          page: 15,
-          category: 'EMPREENDEDORISMO & PASTERIA',
-          date: 'Edição Especial 2026',
-          title: 'Candor\'s Cake — A Arte de Celebrar a Vida',
-          spoiler: 'Fundado por Marileny Fernando Antonio, Candor\'s Cake transforma cada celebração numa memória inesquecível através da arte de confeitaria artesanal.',
-          imagePage: 19
         },
         {
           id: 12,
