@@ -15,16 +15,28 @@
 }
 
 @layer base {
+  /* Hide scrollbar for Chrome, Safari, Firefox and Edge */
+  ::-webkit-scrollbar {
+    display: none;
+    width: 0px;
+    height: 0px;
+    background: transparent;
+  }
+
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 64px;
     overflow-x: hidden;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 
   body {
     @apply bg-white text-[#121212] font-sans antialiased overflow-x-hidden leading-relaxed;
     font-size: 16px;
     text-rendering: optimizeLegibility;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 
   h1 {

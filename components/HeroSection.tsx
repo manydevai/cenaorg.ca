@@ -2,7 +2,6 @@ import { Button } from './ui/button';
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useState, useEffect } from 'react';
-import { BRAND } from '../assets/images';
 
 export function HeroSection() {
   const { t } = useLanguage();
@@ -21,7 +20,7 @@ export function HeroSection() {
     setIsVisible(true);
     const interval = setInterval(() => {
       setCurrentBg((prev: number) => (prev + 1) % backgrounds.length);
-    }, 2800);
+    }, 3200);
     return () => clearInterval(interval);
   }, [backgrounds.length]);
 
@@ -36,14 +35,16 @@ export function HeroSection() {
   return (
     <section
       id="home"
-      className="relative min-h-[90vh] lg:min-h-screen flex flex-col justify-center overflow-hidden border-b border-white/5 bg-[#090909]"
+      className="relative min-h-screen lg:min-h-screen flex flex-col justify-end lg:justify-center overflow-hidden border-b border-white/5 bg-[#090909] w-full max-w-full"
     >
-      {/* DESKTOP BACKGROUND — Full-Bleed Cover (lg+) */}
+      {/* =========================================================
+          DESKTOP BACKGROUND & LAYOUT (hidden on mobile, lg:block)
+         ========================================================= */}
       <div className="hidden lg:block absolute inset-0 z-0">
         {backgrounds.map((bg, index) => (
           <div
-            key={`full-bg-${index}`}
-            className={`absolute inset-0 bg-cover bg-[right_top] transition-opacity duration-[700ms] ease-in-out ${index === currentBg ? 'opacity-100' : 'opacity-0'}`}
+            key={`desktop-bg-${index}`}
+            className={`absolute inset-0 bg-cover bg-[right_top] transition-opacity duration-[800ms] ease-in-out ${index === currentBg ? 'opacity-100' : 'opacity-0'}`}
             style={{
               backgroundImage: `url(${bg})`,
             }}
@@ -59,102 +60,6 @@ export function HeroSection() {
         <div className="absolute left-[5%] top-0 w-px h-full bg-white/20"></div>
         <div className="absolute right-[10%] top-0 w-px h-full bg-white/10"></div>
         <div className="absolute top-[30%] left-0 w-full h-px bg-white/10"></div>
-      </div>
-
-      {/* MOBILE HERO LAYOUT (< lg) — Full Photo View, Zero Cropping, All Faces Visible */}
-      <div className="lg:hidden relative z-20 w-full pt-28 pb-12 px-5 sm:px-8 flex flex-col">
-        {/* Mobile Ambient Blurred Backdrop */}
-        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-          {backgrounds.map((bg, index) => (
-            <div
-              key={`mobile-blur-${index}`}
-              className={`absolute inset-0 bg-cover bg-center blur-2xl opacity-30 scale-110 transition-opacity duration-700 ${index === currentBg ? 'opacity-30' : 'opacity-0'}`}
-              style={{ backgroundImage: `url(${bg})` }}
-            />
-          ))}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#090909]/90 via-[#090909]/75 to-[#090909]" />
-        </div>
-
-        <div className="relative z-10 space-y-5">
-          {/* Subtitle Badge */}
-          <div className="flex items-center space-x-2.5">
-            <span className="h-px w-8 bg-[#C5A059]"></span>
-            <span className="text-[#C5A059] font-sans text-[10px] sm:text-xs tracking-[0.35em] uppercase font-bold">
-              {t('hero.subtitle')}
-            </span>
-          </div>
-
-          {/* Main Headline */}
-          <h1 className="text-white font-serif text-2.5xl sm:text-4xl uppercase leading-[1.15] tracking-tight">
-            {t('hero.title').split(/[,&]+/).map((part, i) => (
-              <span key={i} className="block">
-                <span className={i === 1 ? "text-[#C5A059]" : "text-white"}>
-                  {part.trim()}
-                </span>
-              </span>
-            ))}
-          </h1>
-
-          {/* MOBILE HERO PHOTO FRAME — Full 100% Group View (Zero Edge Cropping, All People & Faces Visible) */}
-          <div className="relative w-full aspect-[3/2] rounded-xl overflow-hidden border-2 border-[#C5A059]/40 shadow-2xl bg-black/90 group my-2">
-            {backgrounds.map((bg, index) => (
-              <div
-                key={`mobile-photo-${index}`}
-                className={`absolute inset-0 flex items-center justify-center transition-opacity duration-700 ease-in-out ${index === currentBg ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
-              >
-                <img
-                  src={bg}
-                  alt={`CENA Hero Photo ${index + 1}`}
-                  className="w-full h-full object-contain"
-                />
-              </div>
-            ))}
-
-            {/* Manual Touch Navigation Controls */}
-            <button
-              onClick={handlePrev}
-              className="absolute left-2 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-black/60 border border-[#C5A059]/40 text-[#C5A059] hover:bg-[#8B0000] transition-colors"
-              aria-label="Previous Photo"
-            >
-              <ChevronLeft className="w-4 h-4" />
-            </button>
-            <button
-              onClick={handleNext}
-              className="absolute right-2 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-black/60 border border-[#C5A059]/40 text-[#C5A059] hover:bg-[#8B0000] transition-colors"
-              aria-label="Next Photo"
-            >
-              <ChevronRight className="w-4 h-4" />
-            </button>
-
-            {/* Indicator Dots */}
-            <div className="absolute bottom-2.5 inset-x-0 z-20 flex items-center justify-center space-x-1.5 pointer-events-auto">
-              {backgrounds.map((_, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setCurrentBg(idx)}
-                  className={`h-1.5 rounded-full transition-all duration-300 ${idx === currentBg ? 'w-6 bg-[#C5A059]' : 'w-1.5 bg-white/40'}`}
-                  aria-label={`Go to photo ${idx + 1}`}
-                />
-              ))}
-            </div>
-          </div>
-
-          {/* Description */}
-          <p className="text-gray-200 text-xs sm:text-sm font-sans leading-relaxed font-medium">
-            {t('hero.description')}
-          </p>
-
-          {/* CTA Primary Action */}
-          <div className="pt-2">
-            <button
-              className="w-full group inline-flex items-center justify-center gap-3 border border-[#C5A059] bg-[#8B0000] hover:bg-[#A00000] text-white px-6 py-3.5 text-xs tracking-[0.2em] font-bold uppercase transition-all duration-300 shadow-xl rounded-sm"
-              onClick={() => document.getElementById('support')?.scrollIntoView({ behavior: 'smooth' })}
-            >
-              <span>{t('hero.cta_primary')}</span>
-              <ArrowRight className="h-4 w-4 text-[#C5A059] transition-transform duration-300 group-hover:translate-x-1.5" />
-            </button>
-          </div>
-        </div>
       </div>
 
       {/* DESKTOP TYPOGRAPHIC COLUMN & LAYOUT (lg+) */}
@@ -197,7 +102,100 @@ export function HeroSection() {
         </div>
       </div>
 
-      {/* BRAND WATERMARK */}
+
+      {/* =========================================================
+          MOBILE HERO LAYOUT (< lg) — Full Screen Bleed, Clean Uncropped Photos, Compact Text
+         ========================================================= */}
+      <div className="lg:hidden absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        {/* Layer 1: Ambient Blurred Backdrop to fill screen background */}
+        {backgrounds.map((bg, index) => (
+          <div
+            key={`mobile-ambient-${index}`}
+            className={`absolute inset-0 bg-cover bg-center blur-2xl opacity-40 scale-110 transition-opacity duration-800 ease-in-out ${index === currentBg ? 'opacity-40' : 'opacity-0'}`}
+            style={{ backgroundImage: `url(${bg})` }}
+          />
+        ))}
+      </div>
+
+      {/* Layer 2: Main Full Photo Display Container (Top 70vh on Mobile - 100% Uncropped, All Faces Visible) */}
+      <div className="lg:hidden absolute top-0 inset-x-0 h-[68vh] z-10 pt-20 px-3 sm:px-6 flex items-center justify-center pointer-events-none">
+        {backgrounds.map((bg, index) => (
+          <img
+            key={`mobile-full-photo-${index}`}
+            src={bg}
+            alt={`CENA Hero Photo ${index + 1}`}
+            className={`w-full h-full object-contain drop-shadow-2xl transition-opacity duration-800 ease-in-out ${index === currentBg ? 'opacity-100' : 'opacity-0'}`}
+          />
+        ))}
+
+        {/* Touch Prev / Next Buttons */}
+        <button
+          onClick={handlePrev}
+          className="pointer-events-auto absolute left-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/50 border border-[#C5A059]/40 text-[#C5A059] backdrop-blur-sm"
+          aria-label="Previous Photo"
+        >
+          <ChevronLeft className="w-4 h-4" />
+        </button>
+        <button
+          onClick={handleNext}
+          className="pointer-events-auto absolute right-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/50 border border-[#C5A059]/40 text-[#C5A059] backdrop-blur-sm"
+          aria-label="Next Photo"
+        >
+          <ChevronRight className="w-4 h-4" />
+        </button>
+      </div>
+
+      {/* Layer 3: Sleek & Compact Text Overlay at the Bottom of Mobile View */}
+      <div className="lg:hidden relative z-20 w-full bg-gradient-to-t from-[#090909] via-[#090909]/95 to-transparent pt-16 pb-8 px-5 sm:px-8 space-y-2.5">
+        {/* Slide Indicator Dots */}
+        <div className="flex items-center justify-center space-x-1.5 pb-1">
+          {backgrounds.map((_, idx) => (
+            <button
+              key={`dot-${idx}`}
+              onClick={() => setCurrentBg(idx)}
+              className={`h-1 rounded-full transition-all duration-300 ${idx === currentBg ? 'w-5 bg-[#C5A059]' : 'w-1 bg-white/30'}`}
+              aria-label={`Go to photo ${idx + 1}`}
+            />
+          ))}
+        </div>
+
+        {/* Subtitle */}
+        <div className="flex items-center space-x-2">
+          <span className="h-px w-6 bg-[#C5A059]"></span>
+          <span className="text-[#C5A059] font-sans text-[9px] tracking-[0.3em] uppercase font-bold">
+            {t('hero.subtitle')}
+          </span>
+        </div>
+
+        {/* Compact Title */}
+        <h1 className="text-white font-serif text-lg sm:text-xl uppercase leading-snug tracking-tight">
+          {t('hero.title').split(/[,&]+/).map((part, i) => (
+            <span key={i} className="inline-block mr-1">
+              <span className={i === 1 ? "text-[#C5A059]" : "text-white"}>
+                {part.trim()}
+              </span>
+            </span>
+          ))}
+        </h1>
+
+        {/* Minimal Description */}
+        <p className="text-gray-300 text-[10px] sm:text-xs font-sans leading-relaxed opacity-90 line-clamp-2 max-w-sm">
+          {t('hero.description')}
+        </p>
+
+        {/* Sleek Compact CTA Button */}
+        <div className="pt-1.5">
+          <button
+            className="group inline-flex items-center gap-2 border border-[#C5A059] bg-[#8B0000] hover:bg-[#A00000] text-white px-4 py-2.5 text-[9px] sm:text-[10px] tracking-[0.18em] font-bold uppercase transition-all duration-300 shadow-xl rounded-xs"
+            onClick={() => document.getElementById('support')?.scrollIntoView({ behavior: 'smooth' })}
+          >
+            <span>{t('hero.cta_primary')}</span>
+            <ArrowRight className="h-3 w-3 text-[#C5A059] transition-transform duration-300 group-hover:translate-x-1" />
+          </button>
+        </div>
+      </div>
+
+      {/* BRAND WATERMARK (Desktop only) */}
       <div className="absolute left-[5%] bottom-[5%] text-[8rem] sm:text-[15rem] font-serif text-white/[0.05] select-none pointer-events-none uppercase tracking-tighter hidden lg:block">
         Cena
       </div>
