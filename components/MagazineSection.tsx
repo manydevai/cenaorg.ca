@@ -6,7 +6,6 @@ import { updateOpenGraphMeta } from '../utils/share';
 import {
   BookOpen,
   Download,
-  ArrowRight,
   Sparkles,
   ChevronLeft,
   ChevronRight,
@@ -42,30 +41,26 @@ export function MagazineSection() {
     setActiveSlide((prev) => (prev + 1) % stories.length);
   }, [stories.length]);
 
-  const handlePrev = () => {
+  const handlePrev = useCallback(() => {
     if (stories.length === 0) return;
     setActiveSlide((prev) => (prev - 1 + stories.length) % stories.length);
-  };
+  }, [stories.length]);
 
-  // Auto-slideshow
+  // Auto-slideshow (2s on mobile, 4s on desktop when not hovered)
   useEffect(() => {
     if (isHovered || stories.length === 0) return;
+    const isMobile = window.innerWidth < 1024;
+    const intervalTime = isMobile ? 2200 : 4000;
+
     intervalRef.current = setInterval(() => {
       handleNext();
-    }, 5000);
+    }, intervalTime);
 
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
   }, [isHovered, stories.length, handleNext]);
 
-  const pdfLinks = {
-    fr: '/magazine/pdf/cena-magazine-fr.pdf',
-    pt: '/magazine/pdf/cena-magazine-pt.pdf',
-    en: '/magazine/pdf/cena-magazine-en.pdf',
-  };
-
-  const currentPdf = pdfLinks[language as keyof typeof pdfLinks] || pdfLinks.fr;
   const currentStory = stories[activeSlide] || stories[0];
 
   const getPageSrc = (pageNum: number) => {
@@ -85,143 +80,271 @@ export function MagazineSection() {
     }
   }, [currentStory]);
 
-  return (
-    <section className="py-20 sm:py-28 bg-[#090909] text-white relative overflow-hidden border-y border-[#C5A059]/25 font-sans">
-      {/* Background Decorative Glows */}
-      <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#C5A059]/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-[#8B0000]/15 rounded-full blur-3xl pointer-events-none" />
+  if (stories.length === 0) return null;
 
-      {/* 1. TOP LIVE DIGITAL NEWS TICKER BAR */}
-      <div className="w-full bg-[#121212] border-b border-[#C5A059]/30 py-2.5 px-4 mb-16 overflow-hidden flex items-center shadow-lg">
-        <div className="flex items-center space-x-2 bg-[#8B0000] text-white px-3 py-1 text-[10px] sm:text-xs font-bold uppercase tracking-widest flex-shrink-0 rounded-xs shadow-md">
-          <span className="w-2 h-2 rounded-full bg-red-400 animate-ping mr-1" />
+  // Helpers for mobile Cover Flow (3D Carousel)
+  const prevIndex = (activeSlide - 1 + stories.length) % stories.length;
+  const nextIndex = (activeSlide + 1) % stories.length;
+
+  return (
+    <section className="py-16 sm:py-24 bg-[#080808] text-white relative overflow-hidden border-y border-[#C5A059]/25 font-sans select-none">
+      {/* Premium Background Atmosphere */}
+      <div className="absolute top-0 right-1/4 w-[30rem] h-[30rem] bg-[#C5A059]/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-1/4 w-[30rem] h-[30rem] bg-[#8B0000]/15 rounded-full blur-3xl pointer-events-none" />
+
+      {/* 1. TOP LIVE NEWS TICKER BAR */}
+      <div className="w-full bg-[#111111] border-b border-[#C5A059]/30 py-2 px-4 mb-12 overflow-hidden flex items-center shadow-md">
+        <div className="flex items-center space-x-1.5 bg-[#8B0000] text-white px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-widest flex-shrink-0 rounded-xs">
+          <span className="w-1.5 h-1.5 rounded-full bg-red-400 animate-ping mr-0.5" />
           <span>{t('magazine.ticker_label')}</span>
         </div>
-        <div className="overflow-hidden whitespace-nowrap ml-4 flex-1">
+        <div className="overflow-hidden whitespace-nowrap ml-3 flex-1">
           <p className="inline-block animate-marquee text-xs font-serif italic tracking-wider text-gray-300">
             {t('magazine.ticker_text')}
           </p>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-16 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
-          <div className="inline-flex items-center space-x-2 bg-[#8B0000]/30 border border-[#8B0000] px-4 py-1.5 mb-4">
-            <Newspaper className="w-4 h-4 text-[#C5A059]" />
-            <span className="text-[#C5A059] font-sans text-xs tracking-[0.3em] uppercase font-bold">
+        <div className="text-center max-w-2xl mx-auto mb-10 lg:mb-14" data-aos="fade-up">
+          <div className="inline-flex items-center space-x-2 bg-[#8B0000]/25 border border-[#8B0000]/70 px-3 py-1 mb-3 rounded-xs">
+            <Newspaper className="w-3.5 h-3.5 text-[#C5A059]" />
+            <span className="text-[#C5A059] font-sans text-[10px] tracking-[0.3em] uppercase font-bold">
               {t('magazine.home_highlight_badge')}
             </span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl font-serif font-bold text-white tracking-tight uppercase mb-4 leading-tight">
+          <h2 className="text-2xl sm:text-4xl font-serif font-bold text-white tracking-tight uppercase mb-2 leading-tight">
             {t('magazine.home_highlight_title')}
           </h2>
 
-          <div className="w-24 h-1 bg-[#C5A059] mx-auto mb-6" />
+          <div className="w-16 h-0.5 bg-[#C5A059] mx-auto mb-4" />
 
-          <p className="text-gray-300 text-base sm:text-lg leading-relaxed font-light">
+          <p className="text-gray-300 text-xs sm:text-sm leading-relaxed font-light max-w-lg mx-auto">
             {t('magazine.home_highlight_desc')}
           </p>
         </div>
 
-        {/* 2. AUTO-ROTATING NEWSPAPER FEATURE SLIDER */}
+
+        {/* =========================================================
+            MOBILE VIEW ONLY (< lg): CINEMATIC 3D COVER FLOW DISPLAY
+           ========================================================= */}
+        <div className="lg:hidden mb-12" data-aos="fade-up">
+          <div
+            className="relative bg-[#0d0d0d] border border-[#C5A059]/30 rounded-xl py-6 px-3 shadow-2xl overflow-hidden backdrop-blur-md"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+          >
+            {/* Top Indicator */}
+            <div className="flex items-center justify-between px-2 mb-4">
+              <span className="text-[10px] font-mono tracking-widest text-[#C5A059] uppercase">
+                {currentStory.category}
+              </span>
+              <span className="text-[10px] font-mono text-gray-400 bg-black/60 px-2 py-0.5 border border-[#C5A059]/30 rounded-xs">
+                {activeSlide + 1} / {stories.length}
+              </span>
+            </div>
+
+            {/* 3D Cover Flow Stage */}
+            <div className="relative h-64 sm:h-72 w-full flex items-center justify-center perspective-[1000px] overflow-hidden my-2">
+              
+              {/* Left Cover (Previous) */}
+              <motion.div
+                key={`prev-${prevIndex}`}
+                onClick={handlePrev}
+                className="absolute left-2 sm:left-6 w-36 sm:w-44 aspect-[3/4] z-10 cursor-pointer rounded-lg overflow-hidden border border-white/20 shadow-xl opacity-40 grayscale contrast-125"
+                initial={{ scale: 0.7, x: -30, rotateY: 25 }}
+                animate={{ scale: 0.75, x: -20, rotateY: 20, opacity: 0.45 }}
+                transition={{ duration: 0.4 }}
+              >
+                <img
+                  src={getPageSrc(stories[prevIndex].imagePage)}
+                  alt={stories[prevIndex].title}
+                  className="w-full h-full object-cover pointer-events-none"
+                />
+              </motion.div>
+
+              {/* Center Active Cover */}
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={`active-${currentStory.id}`}
+                  className="relative w-44 sm:w-52 aspect-[3/4] z-30 rounded-lg overflow-hidden border-2 border-[#C5A059] shadow-[0_0_25px_rgba(197,160,89,0.35)] cursor-pointer"
+                  initial={{ scale: 0.85, opacity: 0, y: 10 }}
+                  animate={{ scale: 1, opacity: 1, y: 0 }}
+                  exit={{ scale: 0.85, opacity: 0, y: -10 }}
+                  transition={{ duration: 0.35, ease: 'easeOut' }}
+                >
+                  <img
+                    src={getPageSrc(currentStory.imagePage)}
+                    alt={currentStory.title}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute top-2 left-2 bg-black/80 backdrop-blur-md px-2 py-0.5 border border-[#C5A059]/60 text-[9px] font-bold uppercase tracking-wider text-[#C5A059] rounded-xs">
+                    Pág. {currentStory.page}
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+
+              {/* Right Cover (Next) */}
+              <motion.div
+                key={`next-${nextIndex}`}
+                onClick={handleNext}
+                className="absolute right-2 sm:right-6 w-36 sm:w-44 aspect-[3/4] z-10 cursor-pointer rounded-lg overflow-hidden border border-white/20 shadow-xl opacity-40 grayscale contrast-125"
+                initial={{ scale: 0.7, x: 30, rotateY: -25 }}
+                animate={{ scale: 0.75, x: 20, rotateY: -20, opacity: 0.45 }}
+                transition={{ duration: 0.4 }}
+              >
+                <img
+                  src={getPageSrc(stories[nextIndex].imagePage)}
+                  alt={stories[nextIndex].title}
+                  className="w-full h-full object-cover pointer-events-none"
+                />
+              </motion.div>
+
+            </div>
+
+            {/* Mobile Story Info (Strict Single-Line Title & Description) */}
+            <div className="mt-4 px-2 text-center space-y-2">
+              {/* Single Line Title */}
+              <h3 className="text-sm sm:text-base font-serif font-bold text-white tracking-tight truncate w-full">
+                {currentStory.title}
+              </h3>
+
+              {/* Single Line Spoiler */}
+              <p className="text-[11px] text-gray-300 font-sans italic truncate w-full max-w-sm mx-auto px-2">
+                "{currentStory.spoiler}"
+              </p>
+
+              {/* Compact Mobile Action Buttons */}
+              <div className="pt-2 flex items-center justify-center gap-2">
+                <Link
+                  to={`/magazine?page=${currentStory.page}`}
+                  className="px-3 py-1.5 bg-[#8B0000] hover:bg-[#A00000] text-white font-bold text-[10px] uppercase tracking-wider border border-[#C5A059] rounded-xs transition-all shadow-md flex items-center space-x-1"
+                >
+                  <span>{t('magazine.read_full_article').replace('{page}', String(currentStory.page))}</span>
+                </Link>
+
+                <ShareButton
+                  title={currentStory.title}
+                  text={currentStory.spoiler}
+                  url={`/magazine/page/${currentStory.page}`}
+                  image={getPageSrc(currentStory.imagePage)}
+                />
+              </div>
+            </div>
+
+            {/* Super Thin Progress Line */}
+            <div className="mt-5 w-full bg-white/10 h-0.5 rounded-full overflow-hidden">
+              <div
+                className="h-full bg-[#C5A059] transition-all duration-300 ease-out"
+                style={{ width: `${((activeSlide + 1) / stories.length) * 100}%` }}
+              />
+            </div>
+          </div>
+        </div>
+
+
+        {/* =========================================================
+            DESKTOP VIEW ONLY (lg+): ENLARGED DISPLAY WITH SINGLE LINE CONTROLS
+           ========================================================= */}
         {currentStory && (
           <div
-            className="mb-20 bg-black/70 border-2 border-[#C5A059]/40 rounded-xl p-6 sm:p-10 backdrop-blur-md shadow-2xl relative overflow-hidden"
+            className="hidden lg:block mb-16 bg-[#0c0c0c] border border-[#C5A059]/35 rounded-xl p-8 xl:p-10 backdrop-blur-md shadow-2xl relative overflow-hidden"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
             data-aos="fade-up"
           >
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            <div className="grid grid-cols-12 gap-8 xl:gap-12 items-center">
               
-              {/* Left Column: Magazine Page Image Preview */}
-              <div className="lg:col-span-5 flex justify-center">
-                <div className="relative group max-w-sm w-full">
-                  <div className="absolute -inset-1 bg-gradient-to-tr from-[#8B0000] via-[#C5A059] to-[#8B0000] rounded-lg opacity-60 group-hover:opacity-100 transition duration-700 blur-xs" />
-                  <div className="relative bg-black rounded-lg overflow-hidden border border-[#C5A059]/50 shadow-2xl aspect-[3/4]">
+              {/* Left Column: Enlarged Magazine Page Image Preview */}
+              <div className="col-span-5 xl:col-span-5 flex justify-center">
+                <div className="relative group w-full max-w-md">
+                  <div className="absolute -inset-1.5 bg-gradient-to-tr from-[#8B0000] via-[#C5A059] to-[#8B0000] rounded-xl opacity-60 group-hover:opacity-100 transition duration-700 blur-sm" />
+                  <div className="relative bg-black rounded-lg overflow-hidden border border-[#C5A059]/60 shadow-2xl aspect-[3/4]">
                     <AnimatePresence mode="wait">
                       <motion.img
                         key={currentStory.id}
                         src={getPageSrc(currentStory.imagePage)}
                         alt={currentStory.title}
-                        initial={{ opacity: 0, scale: 0.95 }}
+                        initial={{ opacity: 0, scale: 0.96 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0, scale: 1.05 }}
-                        transition={{ duration: 0.4 }}
+                        exit={{ opacity: 0, scale: 1.04 }}
+                        transition={{ duration: 0.35 }}
                         className="w-full h-full object-cover"
                       />
                     </AnimatePresence>
-                    <div className="absolute top-3 left-3 bg-black/80 backdrop-blur-md px-3 py-1 border border-[#C5A059]/50 text-[10px] font-bold uppercase tracking-wider text-[#C5A059]">
+                    <div className="absolute top-3 left-3 bg-black/85 backdrop-blur-md px-3 py-1 border border-[#C5A059]/60 text-[10px] font-bold uppercase tracking-wider text-[#C5A059] rounded-xs">
                       Pág. {currentStory.page}
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Right Column: Story Details & Teaser Spoiler */}
-              <div className="lg:col-span-7 space-y-6">
+              {/* Right Column: Details & Single-Line Formatting */}
+              <div className="col-span-7 xl:col-span-7 space-y-4">
                 
-                {/* Meta Tag & Date */}
-                <div className="flex flex-wrap items-center gap-3 text-xs">
-                  <span className="inline-flex items-center space-x-1 px-3 py-1 bg-[#8B0000]/40 border border-[#8B0000] text-[#C5A059] font-bold uppercase tracking-widest rounded-xs">
-                    <Tag className="w-3 h-3 mr-1" />
+                {/* Meta Category Tag & Date */}
+                <div className="flex items-center space-x-3 text-xs">
+                  <span className="inline-flex items-center space-x-1 px-2.5 py-0.5 bg-[#8B0000]/40 border border-[#8B0000] text-[#C5A059] font-bold uppercase tracking-widest rounded-xs text-[10px]">
+                    <Tag className="w-3 h-3 mr-1 text-[#C5A059]" />
                     {currentStory.category}
                   </span>
-                  <span className="flex items-center text-gray-400 font-serif italic">
+                  <span className="flex items-center text-gray-400 font-serif italic text-xs">
                     <Calendar className="w-3.5 h-3.5 mr-1 text-[#C5A059]" />
                     {currentStory.date}
                   </span>
                 </div>
 
-                {/* Story Title */}
+                {/* Single-Line Article Title */}
                 <AnimatePresence mode="wait">
                   <motion.h3
                     key={`title-${currentStory.id}`}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.3 }}
-                    className="text-2xl sm:text-4xl font-serif font-bold text-white leading-snug tracking-tight"
+                    initial={{ opacity: 0, x: -5 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: 5 }}
+                    transition={{ duration: 0.25 }}
+                    className="text-xl xl:text-2xl font-serif font-bold text-white tracking-tight truncate w-full"
+                    title={currentStory.title}
                   >
                     {currentStory.title}
                   </motion.h3>
                 </AnimatePresence>
 
-                {/* Teaser Spoiler Paragraph */}
+                {/* Single-Line Teaser Description / Spoiler */}
                 <AnimatePresence mode="wait">
                   <motion.p
                     key={`spoiler-${currentStory.id}`}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.3, delay: 0.1 }}
-                    className="text-gray-300 text-sm sm:text-base leading-relaxed font-sans border-l-2 border-[#C5A059] pl-4 italic bg-white/5 py-3 pr-3"
+                    initial={{ opacity: 0, x: -5 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: 5 }}
+                    transition={{ duration: 0.25, delay: 0.05 }}
+                    className="text-gray-300 text-xs xl:text-sm leading-snug font-sans italic truncate w-full border-l-2 border-[#C5A059] pl-3 py-1 bg-white/5 pr-2"
+                    title={`"${currentStory.spoiler}"`}
                   >
                     "{currentStory.spoiler}"
                   </motion.p>
                 </AnimatePresence>
 
-                {/* Primary Action Button (Backlink directly to magazine page) */}
-                <div className="pt-4 flex flex-wrap items-center gap-4">
+                {/* Compact Refined Action Buttons */}
+                <div className="pt-3 flex flex-wrap items-center gap-2.5">
                   <Link
                     to={`/magazine?page=${currentStory.page}`}
-                    className="px-6 py-3.5 bg-[#8B0000] hover:bg-[#A00000] text-white font-bold text-xs uppercase tracking-[0.18em] border border-[#C5A059] transition-all duration-300 shadow-xl flex items-center space-x-2 group"
+                    className="px-3.5 py-1.5 bg-[#8B0000] hover:bg-[#A00000] text-white font-bold text-[11px] uppercase tracking-wider border border-[#C5A059] rounded-xs transition-all shadow-md flex items-center space-x-1.5"
                   >
-                    <span>
-                      {t('magazine.read_full_article').replace('{page}', String(currentStory.page))}
-                    </span>
+                    <span>{t('magazine.read_full_article').replace('{page}', String(currentStory.page))}</span>
                   </Link>
 
                   <Link
                     to="/magazine"
-                    className="px-5 py-3.5 bg-transparent hover:bg-white/10 border border-white/20 text-gray-300 font-bold text-xs uppercase tracking-wider transition-colors flex items-center space-x-1.5"
+                    className="px-3 py-1.5 bg-transparent hover:bg-white/10 border border-white/20 text-gray-300 font-bold text-[11px] uppercase tracking-wider rounded-xs transition-colors flex items-center space-x-1"
                   >
-                    <BookOpen className="w-4 h-4 text-[#C5A059]" />
+                    <BookOpen className="w-3.5 h-3.5 text-[#C5A059]" />
                     <span>{t('magazine.explore_cta')}</span>
                   </Link>
 
+                  {/* Single Unified Share Button (No Green WhatsApp Button) */}
                   <ShareButton
                     title={currentStory.title}
                     text={currentStory.spoiler}
@@ -229,65 +352,63 @@ export function MagazineSection() {
                     image={getPageSrc(currentStory.imagePage)}
                   />
                 </div>
+
+                {/* Super Thin Golden Progress Bar & Controls */}
+                <div className="pt-4 space-y-2 border-t border-white/10">
+                  <div className="flex items-center justify-between text-[10px] font-mono text-gray-400">
+                    <span>PROGRESSO DE LEITURA</span>
+                    <span className="text-[#C5A059] font-bold">{activeSlide + 1} / {stories.length}</span>
+                  </div>
+
+                  {/* Super Thin Progress Line */}
+                  <div className="w-full bg-white/10 h-0.5 rounded-full overflow-hidden">
+                    <div
+                      className="h-full bg-gradient-to-r from-[#C5A059] to-amber-200 transition-all duration-300 ease-out"
+                      style={{ width: `${((activeSlide + 1) / stories.length) * 100}%` }}
+                    />
+                  </div>
+
+                  {/* Sleek Manual Arrows */}
+                  <div className="flex items-center justify-end space-x-1.5 pt-1">
+                    <button
+                      onClick={handlePrev}
+                      className="p-1.5 bg-white/5 hover:bg-[#8B0000] border border-white/15 text-white rounded-xs transition-colors cursor-pointer"
+                      aria-label="Previous Story"
+                    >
+                      <ChevronLeft className="w-3.5 h-3.5 text-[#C5A059]" />
+                    </button>
+                    <button
+                      onClick={handleNext}
+                      className="p-1.5 bg-white/5 hover:bg-[#8B0000] border border-white/15 text-white rounded-xs transition-colors cursor-pointer"
+                      aria-label="Next Story"
+                    >
+                      <ChevronRight className="w-3.5 h-3.5 text-[#C5A059]" />
+                    </button>
+                  </div>
+                </div>
+
               </div>
 
-            </div>
-
-            {/* Slider Controls Bar */}
-            <div className="mt-8 pt-6 border-t border-white/10 flex items-center justify-between">
-              {/* Slide Indicators Dots */}
-              <div className="flex items-center space-x-2">
-                {stories.map((_, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => setActiveSlide(idx)}
-                    className={`h-2 rounded-full transition-all duration-300 ${
-                      activeSlide === idx
-                        ? 'w-8 bg-[#C5A059]'
-                        : 'w-2 bg-white/20 hover:bg-white/50'
-                    }`}
-                    aria-label={`Go to slide ${idx + 1}`}
-                  />
-                ))}
-              </div>
-
-              {/* Prev / Next Manual Controls */}
-              <div className="flex items-center space-x-2">
-                <button
-                  onClick={handlePrev}
-                  className="p-2.5 bg-white/5 hover:bg-[#8B0000] border border-white/15 text-white rounded-full transition-colors"
-                  aria-label="Previous Story"
-                >
-                  <ChevronLeft className="w-4 h-4 text-[#C5A059]" />
-                </button>
-                <button
-                  onClick={handleNext}
-                  className="p-2.5 bg-white/5 hover:bg-[#8B0000] border border-white/15 text-white rounded-full transition-colors"
-                  aria-label="Next Story"
-                >
-                  <ChevronRight className="w-4 h-4 text-[#C5A059]" />
-                </button>
-              </div>
             </div>
           </div>
         )}
 
         {/* 3. INTERACTIVE BACKLINK NEWS GRID (SECONDARY TOPICS) */}
-        <div className="space-y-6" data-aos="fade-up">
-          <h3 className="text-xl font-serif font-bold text-white uppercase tracking-wider flex items-center space-x-2">
-            <Sparkles className="w-5 h-5 text-[#C5A059]" />
+        <div className="hidden lg:block space-y-6" data-aos="fade-up">
+          <h3 className="text-lg font-serif font-bold text-white uppercase tracking-wider flex items-center space-x-2">
+            <Sparkles className="w-4 h-4 text-[#C5A059]" />
             <span>Notícias & Destaques da Revista</span>
           </h3>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {stories.slice(0, Math.floor(stories.length / 3) * 3).map((item) => (
               <div
                 key={item.id}
                 className="bg-black/60 border border-white/10 hover:border-[#C5A059]/60 rounded-lg transition-all duration-300 group flex flex-col justify-between hover:-translate-y-1 shadow-lg overflow-hidden"
               >
-                {/* Featured Image */}
+                {/* Featured Image Preview */}
                 <Link to={`/magazine?page=${item.page}`} className="block">
-                  <div className="relative aspect-[3/2.8] overflow-hidden bg-[#111]">
+                  <div className="relative aspect-[3/2] overflow-hidden bg-[#111]">
                     <img
                       src={getPageSrc(item.imagePage)}
                       alt={item.title}
@@ -295,7 +416,7 @@ export function MagazineSection() {
                       loading="lazy"
                     />
                     <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/70 to-transparent" />
-                    <div className="absolute top-3 left-3 bg-black/80 backdrop-blur-md px-2.5 py-1 border border-[#C5A059]/50 text-[10px] font-bold uppercase tracking-wider text-[#C5A059] rounded-sm">
+                    <div className="absolute top-2.5 left-2.5 bg-black/80 backdrop-blur-md px-2 py-0.5 border border-[#C5A059]/50 text-[9px] font-bold uppercase tracking-wider text-[#C5A059] rounded-xs">
                       Pág. {item.page}
                     </div>
                   </div>
@@ -304,24 +425,25 @@ export function MagazineSection() {
                 {/* Card Content */}
                 <div className="px-3 py-2.5 flex flex-col flex-1">
                   <div className="space-y-1 flex-1">
-                    <span className="text-[#C5A059] font-bold uppercase tracking-wider text-[10px]">
+                    <span className="text-[#C5A059] font-bold uppercase tracking-wider text-[9px]">
                       {item.category}
                     </span>
 
                     <Link to={`/magazine?page=${item.page}`}>
-                      <h4 className="font-serif font-bold text-sm text-white group-hover:text-[#C5A059] transition-colors leading-snug">
+                      <h4 className="font-serif font-bold text-xs text-white group-hover:text-[#C5A059] transition-colors leading-snug truncate">
                         {item.title}
                       </h4>
                     </Link>
                   </div>
 
+                  {/* Single Unified Share Button (No Green WhatsApp Button) */}
                   <div className="pt-2 mt-2 border-t border-white/5 flex items-center justify-between text-xs">
                     <Link
                       to={`/magazine?page=${item.page}`}
-                      className="font-bold text-[#C5A059] group-hover:text-white transition-colors flex items-center space-x-1"
+                      className="font-bold text-[#C5A059] group-hover:text-white transition-colors flex items-center space-x-1 text-[11px]"
                     >
                       <span>Abrir na Revista</span>
-                      <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                      <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                     </Link>
                     <ShareButton
                       variant="icon-only"
@@ -338,11 +460,11 @@ export function MagazineSection() {
         </div>
 
         {/* 4. FOOTER DOWNLOAD BAR */}
-        <div className="mt-16 bg-[#121212] border border-white/15 p-6 rounded-xl flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
-          <div className="flex items-center space-x-4">
-            <BookOpen className="w-8 h-8 text-[#C5A059] flex-shrink-0" />
+        <div className="mt-12 bg-[#101010] border border-white/15 p-5 rounded-xl flex flex-col md:flex-row items-center justify-between gap-4 shadow-xl">
+          <div className="flex items-center space-x-3">
+            <BookOpen className="w-6 h-6 text-[#C5A059] flex-shrink-0" />
             <div>
-              <h4 className="font-serif font-bold text-base text-white uppercase tracking-wider">
+              <h4 className="font-serif font-bold text-sm text-white uppercase tracking-wider">
                 Descarregar Revista Completa em PDF
               </h4>
               <p className="text-gray-400 text-xs font-sans">
@@ -351,29 +473,29 @@ export function MagazineSection() {
             </div>
           </div>
 
-          <div className="flex flex-nowrap items-center gap-2 sm:gap-3 w-full sm:w-auto overflow-x-auto pb-1 sm:pb-0">
+          <div className="flex flex-nowrap items-center gap-2 w-full sm:w-auto overflow-x-auto pb-1 sm:pb-0">
             <a
               href="/magazine/pdf/cena-magazine-fr.pdf"
               download="CENA_Magazine_FR.pdf"
-              className="px-3 sm:px-4 py-2.5 bg-white/5 hover:bg-white/10 border border-[#C5A059]/40 text-[#C5A059] text-[10px] sm:text-xs font-bold uppercase tracking-wider transition-colors flex items-center space-x-1.5 rounded whitespace-nowrap flex-shrink-0"
+              className="px-3 py-1.5 bg-white/5 hover:bg-white/10 border border-[#C5A059]/40 text-[#C5A059] text-[10px] font-bold uppercase tracking-wider transition-colors flex items-center space-x-1 rounded-xs whitespace-nowrap flex-shrink-0"
             >
-              <Download className="w-3.5 h-3.5" />
+              <Download className="w-3 h-3" />
               <span>{t('magazine.french_edition')}</span>
             </a>
             <a
               href="/magazine/pdf/cena-magazine-pt.pdf"
               download="CENA_Magazine_PT.pdf"
-              className="px-3 sm:px-4 py-2.5 bg-white/5 hover:bg-white/10 border border-[#C5A059]/40 text-[#C5A059] text-[10px] sm:text-xs font-bold uppercase tracking-wider transition-colors flex items-center space-x-1.5 rounded whitespace-nowrap flex-shrink-0"
+              className="px-3 py-1.5 bg-white/5 hover:bg-white/10 border border-[#C5A059]/40 text-[#C5A059] text-[10px] font-bold uppercase tracking-wider transition-colors flex items-center space-x-1 rounded-xs whitespace-nowrap flex-shrink-0"
             >
-              <Download className="w-3.5 h-3.5" />
+              <Download className="w-3 h-3" />
               <span>{t('magazine.portuguese_edition')}</span>
             </a>
             <a
               href="/magazine/pdf/cena-magazine-en.pdf"
               download="CENA_Magazine_EN.pdf"
-              className="px-3 sm:px-4 py-2.5 bg-[#8B0000] hover:bg-[#A00000] border border-[#C5A059] text-white text-[10px] sm:text-xs font-bold uppercase tracking-wider transition-colors flex items-center space-x-1.5 rounded shadow-lg whitespace-nowrap flex-shrink-0"
+              className="px-3 py-1.5 bg-[#8B0000] hover:bg-[#A00000] border border-[#C5A059] text-white text-[10px] font-bold uppercase tracking-wider transition-colors flex items-center space-x-1 rounded-xs shadow-md whitespace-nowrap flex-shrink-0"
             >
-              <Download className="w-3.5 h-3.5 text-[#C5A059]" />
+              <Download className="w-3 h-3 text-[#C5A059]" />
               <span>{t('magazine.english_edition')}</span>
             </a>
           </div>
