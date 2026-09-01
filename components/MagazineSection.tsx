@@ -46,11 +46,10 @@ export function MagazineSection() {
     setActiveSlide((prev) => (prev - 1 + stories.length) % stories.length);
   }, [stories.length]);
 
-  // Auto-slideshow (2s on mobile, 4s on desktop when not hovered)
+  // Auto-slideshow (4 seconds transition time for comfortable reading)
   useEffect(() => {
     if (isHovered || stories.length === 0) return;
-    const isMobile = window.innerWidth < 1024;
-    const intervalTime = isMobile ? 2200 : 4000;
+    const intervalTime = 4000; // 4 seconds (within 3-5s range requested)
 
     intervalRef.current = setInterval(() => {
       handleNext();
