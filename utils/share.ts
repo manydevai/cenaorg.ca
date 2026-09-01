@@ -74,7 +74,9 @@ export function updateOpenGraphMeta(options: ShareOptions): void {
 }
 
 /**
- * Directly triggers a WhatsApp Share link formatted with title, text, edition link, and article image URL.
+ * Directly triggers a WhatsApp Share link formatted with title, text, article photo, and page URL.
+ * Places the specific article's photo URL first so WhatsApp's link preview scraper
+ * captures and displays the exact photo of the specific story/matéria.
  */
 export function shareToWhatsApp(options: ShareOptions): void {
   const fullUrl = getAbsoluteUrl(options.url || (typeof window !== 'undefined' ? window.location.href : ''));
@@ -84,8 +86,13 @@ export function shareToWhatsApp(options: ShareOptions): void {
   const messageParts: string[] = [];
   if (options.title) messageParts.push(`*${options.title.trim()}*`);
   if (options.text) messageParts.push(options.text.trim());
-  messageParts.push(`📖 Ver na Revista: ${fullUrl}`);
-  if (imageUrl) messageParts.push(`🖼️ Imagem da Matéria: ${imageUrl}`);
+
+  if (imageUrl) {
+    messageParts.push(`🖼️ *Foto da Matéria:*\n${imageUrl}`);
+  }
+  if (fullUrl) {
+    messageParts.push(`📖 *Ver na Revista:*\n${fullUrl}`);
+  }
 
   const fullText = messageParts.join('\n\n');
   const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(fullText)}`;
@@ -111,7 +118,7 @@ export async function shareContent(options: ShareOptions): Promise<{ copied: boo
     try {
       await navigator.share({
         title: shareTitle,
-        text: imageUrl ? `${shareText}\n\n🖼️ Imagem: ${imageUrl}` : shareText,
+        text: imageUrl ? `${shareText}\n\n🖼️ Foto: ${imageUrl}` : shareText,
         url: fullUrl,
       });
       return { copied: false, shared: true };
@@ -124,7 +131,7 @@ export async function shareContent(options: ShareOptions): Promise<{ copied: boo
   try {
     if (typeof navigator !== 'undefined' && navigator.clipboard) {
       const copyText = imageUrl 
-        ? `${shareTitle}\n📖 ${fullUrl}\n🖼️ ${imageUrl}`
+        ? `${shareTitle}\n🖼️ ${imageUrl}\n📖 ${fullUrl}`
         : `${shareTitle}\n📖 ${fullUrl}`;
       await navigator.clipboard.writeText(copyText);
       return { copied: true, shared: false };
@@ -136,3 +143,4 @@ export async function shareContent(options: ShareOptions): Promise<{ copied: boo
   shareToWhatsApp(options);
   return { copied: false, shared: true };
 }
+
