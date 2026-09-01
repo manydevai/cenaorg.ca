@@ -11,7 +11,7 @@ export function HeroSection() {
     {
       desktopUrl: '/hero/1.webp',
       mobileUrl: '/hero/1.webp',
-      mobileSize: 'cover', // Zoomed in on the guys as requested in reference photo
+      mobileSize: 'cover',
       mobilePos: 'center top',
     },
     {
@@ -28,14 +28,14 @@ export function HeroSection() {
     },
     {
       desktopUrl: '/hero/4.webp',
-      mobileUrl: '/hero/4-mobile.webp', // 941x1672 Vertical Portrait Photo for 04/05
-      mobileSize: 'cover',
-      mobilePos: 'center top',
+      mobileUrl: '/hero/4-mobile.webp', // 941x1672 Vertical Portrait Photo
+      mobileSize: '120% auto', // Zoom in a little bit on the 3 women in dresses
+      mobilePos: 'center 5%',
     },
     {
       desktopUrl: '/hero/5.webp',
       mobileUrl: '/hero/5.webp',
-      mobileSize: 'cover', // Zoomed in on the guys as requested in reference photo
+      mobileSize: 'cover',
       mobilePos: 'center top',
     },
   ];
@@ -100,7 +100,7 @@ export function HeroSection() {
           MOBILE LAYOUT (< lg) — Clean High-End Luxury UI
          ========================================================= */}
       <div className="lg:hidden relative z-20 w-full pt-28 pb-10 px-6 sm:px-8 space-y-3.5">
-        {/* Top Minimal Slide Counter (e.g., 05 / 05) */}
+        {/* Top Minimal Slide Counter (e.g., 04 / 05) */}
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
             <span className="h-px w-6 bg-[#C5A059]"></span>
