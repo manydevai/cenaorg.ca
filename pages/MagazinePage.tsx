@@ -58,11 +58,12 @@ export function MagazinePage() {
     15: '/magazine/pages/MAG_-_ENGLISH_VERSION13.webp',// Magalie Sabine Jean-Louis (Imobiliário)
     16: '/magazine/pages/MAG_-_ENGLISH_VERSION14.webp',// Neccy LM (Liderança Feminina)
     17: '/magazine/pages/MAG_-_ENGLISH_VERSION32.webp',// Associação Menarca Muhatu (Divina Ndomateso)
-    18: '/magazine/pages/MAG_-_ENGLISH_VERSION21.webp',// Essential Micro Hair (Estética)
-    19: '/magazine/pages/MAG_-_ENGLISH_VERSION25.webp',// Zen Dans Ma Tête (Saúde Mental)
-    20: '/magazine/pages/MAG_-_ENGLISH_VERSION27.webp',// Randy Selection (Fotografia)
-    21: '/magazine/pages/MAG_-_ENGLISH_VERSION18.webp',// Val Nettoyage et Entretien (Limpeza)
-    22: '/magazine/pages/MAG_-_ENGLISH_VERSION31.webp',// Black Sable Group (Construção)
+    18: '/magazine/pages/MAG_-_ENGLISH_VERSION21.webp',// Essential Micro Hair (Parte 1 - História & Apresentação)
+    19: '/magazine/pages/MAG_-_ENGLISH_VERSION22.webp',// Essential Micro Hair (Parte 2 - Galeria de Tranças & Braids)
+    20: '/magazine/pages/MAG_-_ENGLISH_VERSION25.webp',// Zen Dans Ma Tête (Saúde Mental)
+    21: '/magazine/pages/MAG_-_ENGLISH_VERSION27.webp',// Randy Selection (Fotografia)
+    22: '/magazine/pages/MAG_-_ENGLISH_VERSION18.webp',// Val Nettoyage et Entretien (Limpeza)
+    23: '/magazine/pages/MAG_-_ENGLISH_VERSION31.webp',// Black Sable Group (Construção)
   };
 
   const getPageSrc = (pageNum: number) => {

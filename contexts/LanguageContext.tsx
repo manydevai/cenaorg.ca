@@ -220,7 +220,7 @@ const translations = {
         },
         {
           id: 13,
-          page: 19,
+          page: 20,
           category: 'SANTE MENTALE & COMMUNAUTÉ',
           date: 'Édition Spéciale 2026',
           title: 'Zen Dans Ma Tête — Promotion de la Santé Mentale',
@@ -229,7 +229,7 @@ const translations = {
         },
         {
           id: 14,
-          page: 20,
+          page: 21,
           category: 'PHOTOGRAPHIE & ART',
           date: 'Édition Spéciale 2026',
           title: 'Randy Selection — Photographe Professionnel & Entrepreneur',
@@ -238,7 +238,7 @@ const translations = {
         },
         {
           id: 15,
-          page: 21,
+          page: 22,
           category: 'ENTREPRISE DE NETTOYAGE & ENTRETIEN',
           date: 'Édition Spéciale 2026',
           title: 'Val Nettoyage et Entretien — L\'Excellence du Service',
@@ -877,7 +877,7 @@ const translations = {
         },
         {
           id: 13,
-          page: 19,
+          page: 20,
           category: 'MENTAL HEALTH & COMMUNITY',
           date: 'Special Edition 2026',
           title: 'Zen Dans Ma Tête — Mental Health Promotion',
@@ -886,7 +886,7 @@ const translations = {
         },
         {
           id: 14,
-          page: 20,
+          page: 21,
           category: 'PHOTOGRAPHY & ART',
           date: 'Special Edition 2026',
           title: 'Randy Selection — Professional Photographer & Entrepreneur',
@@ -895,7 +895,7 @@ const translations = {
         },
         {
           id: 15,
-          page: 21,
+          page: 22,
           category: 'CLEANING & MAINTENANCE SERVICES',
           date: 'Special Edition 2026',
           title: 'Val Nettoyage et Entretien — Service Excellence',
@@ -1535,7 +1535,7 @@ const translations = {
         },
         {
           id: 13,
-          page: 19,
+          page: 20,
           category: 'SAÚDE MENTAL & COMUNIDADE',
           date: 'Edição Especial 2026',
           title: 'Zen Dans Ma Tête — Promoção da Saúde Mental',
@@ -1544,7 +1544,7 @@ const translations = {
         },
         {
           id: 14,
-          page: 20,
+          page: 21,
           category: 'FOTOGRAFIA & ARTE',
           date: 'Edição Especial 2026',
           title: 'Randy Selection — Fotógrafo Profissional & Empreendedor',
@@ -1553,7 +1553,7 @@ const translations = {
         },
         {
           id: 15,
-          page: 21,
+          page: 22,
           category: 'SERVIÇOS DE LIMPEZA & MANUTENÇÃO',
           date: 'Edição Especial 2026',
           title: 'Val Nettoyage et Entretien — Excelência em Serviços',
