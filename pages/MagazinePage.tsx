@@ -41,35 +41,15 @@ export function MagazinePage() {
   }, []);
 
   const PAGE_IMAGE_MAP: Record<number, string> = {
-    1: '/magazine/pages/MAG_-_ENGLISH_VERSION.webp',
-    2: '/magazine/pages/MAG_-_ENGLISH_VERSION2.webp',
-    3: '/magazine/pages/MAG_-_ENGLISH_VERSION3.webp',
-    4: '/magazine/pages/MAG_-_ENGLISH_VERSION5.webp',  // CENA Mission & Philosophy ("MORE THAN A NAME, A MISSION")
-    5: '/magazine/pages/MAG_-_ENGLISH_VERSION11.webp', // Cristina Indira MANUEL (Presidente CENA)
-    6: '/magazine/pages/MAG_-_ENGLISH_VERSION10.webp', // Marileny F. ANTONIO (Vice-Presidente CENA)
-    7: '/magazine/pages/MAG_-_ENGLISH_VERSION9.webp',  // Sebastião Matano Sala (Finanças)
-    8: '/magazine/pages/MAG_-_ENGLISH_VERSION8.webp',  // Dulce Angelina FIGUEIREDO (RH)
-    9: '/magazine/pages/MAG_-_ENGLISH_VERSION7.webp',  // Daniel Love Fernando ANTÓNIO (Juventude)
-    10: '/magazine/pages/MAG_-_ENGLISH_VERSION30.webp',// Randy Larochelle (Visão CENA)
-    11: '/magazine/pages/MAG_-_ENGLISH_VERSION15.webp',// Samara ARCHANGE, MBA (Parte 1)
-    12: '/magazine/pages/MAG_-_ENGLISH_VERSION16.webp',// Samara ARCHANGE, MBA (Parte 2)
-    13: '/magazine/pages/MAG_-_ENGLISH_VERSION19.webp',// Candor's Cake (Parte 1 - Biografia & Confeitaria)
-    14: '/magazine/pages/MAG_-_ENGLISH_VERSION20.webp',// Candor's Cake (Parte 2 - Galeria de Bolos & Citação)
-    15: '/magazine/pages/MAG_-_ENGLISH_VERSION13.webp',// Magalie Sabine Jean-Louis (Imobiliário)
-    16: '/magazine/pages/MAG_-_ENGLISH_VERSION14.webp',// Neccy LM (Liderança Feminina)
-    17: '/magazine/pages/MAG_-_ENGLISH_VERSION32.webp',// Associação Menarca Muhatu (Divina Ndomateso)
-    18: '/magazine/pages/MAG_-_ENGLISH_VERSION21.webp',// Essential Micro Hair (Parte 1 - História & Apresentação)
-    19: '/magazine/pages/MAG_-_ENGLISH_VERSION22.webp',// Essential Micro Hair (Parte 2 - Galeria de Tranças & Braids)
-    20: '/magazine/pages/MAG_-_ENGLISH_VERSION25.webp',// Zen Dans Ma Tête (Saúde Mental)
-    21: '/magazine/pages/MAG_-_ENGLISH_VERSION27.webp',// Randy Selection (Fotografia)
-    22: '/magazine/pages/MAG_-_ENGLISH_VERSION18.webp',// Val Nettoyage et Entretien (Limpeza)
-    23: '/magazine/pages/MAG_-_ENGLISH_VERSION31.webp',// Black Sable Group (Construção)
+    10: '/magazine/pages/MAG_-_ENGLISH_VERSION11.webp', // Swapped: Page 10 shows Cristina Indira MANUEL
+    11: '/magazine/pages/MAG_-_ENGLISH_VERSION10.webp', // Swapped: Page 11 shows Marileny F. ANTONIO
   };
 
   const getPageSrc = (pageNum: number) => {
     if (PAGE_IMAGE_MAP[pageNum]) {
       return PAGE_IMAGE_MAP[pageNum];
     }
+    if (pageNum === 1) return '/magazine/pages/MAG_-_ENGLISH_VERSION.webp';
     return `/magazine/pages/MAG_-_ENGLISH_VERSION${pageNum}.webp`;
   };
 
