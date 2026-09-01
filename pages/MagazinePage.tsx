@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useSearchParams, Link } from 'react-router-dom';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -17,27 +18,41 @@ import {
   Grid,
   ArrowLeft
 } from 'lucide-react';
-import { Link } from 'react-router-dom';
 
 const TOTAL_PAGES = 40;
 
 export function MagazinePage() {
   const { t, language } = useLanguage();
-  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [currentPage, setCurrentPage] = useState<number>(() => {
+    const pageParam = searchParams.get('page');
+    if (pageParam) {
+      const p = parseInt(pageParam, 10);
+      if (!isNaN(p) && p >= 1 && p <= TOTAL_PAGES) return p;
+    }
+    return 1;
+  });
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
   const [showThumbnails, setShowThumbnails] = useState<boolean>(false);
 
+  // Sync state with URL search param changes
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    const params = new URLSearchParams(window.location.search);
-    const pageParam = params.get('page');
+    const pageParam = searchParams.get('page');
     if (pageParam) {
       const p = parseInt(pageParam, 10);
       if (!isNaN(p) && p >= 1 && p <= TOTAL_PAGES) {
         setCurrentPage(p);
       }
     }
-  }, []);
+  }, [searchParams]);
+
+  const updatePage = (newPage: number) => {
+    if (newPage >= 1 && newPage <= TOTAL_PAGES) {
+      setCurrentPage(newPage);
+      setSearchParams({ page: String(newPage) }, { replace: true });
+    }
+  };
 
   const PAGE_IMAGE_MAP: Record<number, string> = {
     1: '/magazine/pages/MAG_-_ENGLISH_VERSION.webp',  // Capa
@@ -103,13 +118,13 @@ export function MagazinePage() {
 
   const handleNext = () => {
     if (currentPage < TOTAL_PAGES) {
-      setCurrentPage((prev) => prev + 1);
+      updatePage(currentPage + 1);
     }
   };
 
   const handlePrev = () => {
     if (currentPage > 1) {
-      setCurrentPage((prev) => prev - 1);
+      updatePage(currentPage - 1);
     }
   };
 
@@ -255,7 +270,7 @@ export function MagazinePage() {
                 <button
                   key={num}
                   onClick={() => {
-                    setCurrentPage(num);
+                    updatePage(num);
                     setShowThumbnails(false);
                   }}
                   className={`relative aspect-[3/4] border overflow-hidden rounded transition-all ${
