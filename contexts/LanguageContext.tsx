@@ -238,7 +238,7 @@ const translations = {
         },
         {
           id: 15,
-          page: 25,
+          page: 26,
           category: 'ENTREPRISE DE NETTOYAGE & ENTRETIEN',
           date: 'Édition Spéciale 2026',
           title: 'Val Nettoyage et Entretien — L\'Excellence du Service',
@@ -1553,7 +1553,7 @@ const translations = {
         },
         {
           id: 15,
-          page: 25,
+          page: 26,
           category: 'SERVIÇOS DE LIMPEZA & MANUTENÇÃO',
           date: 'Edição Especial 2026',
           title: 'Val Nettoyage et Entretien — Excelência em Serviços',

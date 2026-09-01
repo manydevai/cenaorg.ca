@@ -64,22 +64,23 @@ export function MagazinePage() {
     17: '/magazine/pages/MAG_-_ENGLISH_VERSION32.webp',// Associação Menarca Muhatu (Divina Ndomateso Ntele)
     18: '/magazine/pages/MAG_-_ENGLISH_VERSION4.webp', // Mrs. Shirley DORISMOND (Membro da Assembleia Nacional - Fundo das Biografias)
 
-    // SEÇÃO 3: Perfis Empresariais Isolados (Empresas)
+    // SEÇÃO 3: Perfis Empresariais Isolados (Empresas) & Portfólio
     19: '/magazine/pages/MAG_-_ENGLISH_VERSION21.webp',// Essential Micro Hair Parte 1
     20: '/magazine/pages/MAG_-_ENGLISH_VERSION22.webp',// Essential Micro Hair Parte 2 (Galeria de Tranças)
     21: '/magazine/pages/MAG_-_ENGLISH_VERSION25.webp',// Zen Dans Ma Tête Parte 1
     22: '/magazine/pages/MAG_-_ENGLISH_VERSION26.webp',// Zen Dans Ma Tête Parte 2
-    23: '/magazine/pages/MAG_-_ENGLISH_VERSION27.webp',// Randy Selection Parte 1
-    24: '/magazine/pages/MAG_-_ENGLISH_VERSION28.webp',// Randy Selection Parte 2
-    25: '/magazine/pages/MAG_-_ENGLISH_VERSION18.webp',// Val Nettoyage et Entretien
-    26: '/magazine/pages/MAG_-_ENGLISH_VERSION31.webp',// Black Sable Group
-    27: '/magazine/pages/MAG_-_ENGLISH_VERSION6.webp', // Groupe Multizone (Fundo dos Perfis Empresariais)
+    23: '/magazine/pages/MAG_-_ENGLISH_VERSION27.webp',// Randy Selection Parte 1 (Fotografia Profissional)
+    24: '/magazine/pages/MAG_-_ENGLISH_VERSION28.webp',// Randy Selection Parte 2 (Portfólio de Fotografia)
+    25: '/magazine/pages/MAG_-_ENGLISH_VERSION29.webp',// Randy Selection Portfólio (Retrato de Moda - Menina nas Grades)
+    26: '/magazine/pages/MAG_-_ENGLISH_VERSION18.webp',// Val Nettoyage et Entretien
+    27: '/magazine/pages/MAG_-_ENGLISH_VERSION31.webp',// Black Sable Group
+    28: '/magazine/pages/MAG_-_ENGLISH_VERSION6.webp', // Groupe Multizone (Fundo dos Perfis Empresariais)
 
     // SEÇÃO 4: Eventos e Actividades no Final
-    28: '/magazine/pages/MAG_-_ENGLISH_VERSION17.webp',// Anúncio DGA Commercial / Real Estate
-    29: '/magazine/pages/MAG_-_ENGLISH_VERSION23.webp',// Gala & Eventos Comunitários
-    30: '/magazine/pages/MAG_-_ENGLISH_VERSION24.webp',// Actividades CENA
-    31: '/magazine/pages/MAG_-_ENGLISH_VERSION29.webp',// Encontros Comunitários
+    29: '/magazine/pages/MAG_-_ENGLISH_VERSION17.webp',// Anúncio DGA Commercial / Real Estate
+    30: '/magazine/pages/MAG_-_ENGLISH_VERSION23.webp',// Gala & Eventos Comunitários
+    31: '/magazine/pages/MAG_-_ENGLISH_VERSION24.webp',// Actividades CENA
+    32: '/magazine/pages/MAG_-_ENGLISH_VERSION33.webp',// Celebração CENA
   };
 
   const getPageSrc = (pageNum: number) => {
