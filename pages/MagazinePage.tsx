@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { useLanguage } from '../contexts/LanguageContext';
+import { ShareButton } from '../components/ShareButton';
+import { updateOpenGraphMeta } from '../utils/share';
 import {
   BookOpen,
   Download,
@@ -12,8 +14,6 @@ import {
   Minimize2,
   FileText,
   Sparkles,
-  Share2,
-  CheckCircle2,
   Grid,
   ArrowLeft
 } from 'lucide-react';
@@ -26,7 +26,6 @@ export function MagazinePage() {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
   const [showThumbnails, setShowThumbnails] = useState<boolean>(false);
-  const [downloadCopied, setDownloadCopied] = useState<boolean>(false);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -91,6 +90,17 @@ export function MagazinePage() {
     return `/magazine/pages/MAG_-_ENGLISH_VERSION${pageNum}.webp`;
   };
 
+  // Synchronize document Open Graph tags with the current magazine page image for WhatsApp previews
+  useEffect(() => {
+    const pageImage = getPageSrc(currentPage);
+    updateOpenGraphMeta({
+      title: `CENA Magazine 2026 — Página ${currentPage}`,
+      text: `Descubra a edição 2026 da Revista CENA (Página ${currentPage} de ${TOTAL_PAGES}).`,
+      url: `/magazine?page=${currentPage}`,
+      image: pageImage
+    });
+  }, [currentPage]);
+
   const handleNext = () => {
     if (currentPage < TOTAL_PAGES) {
       setCurrentPage((prev) => prev + 1);
@@ -117,17 +127,6 @@ export function MagazinePage() {
 
   const currentPdf = pdfLinks[language as keyof typeof pdfLinks] || pdfLinks.fr;
 
-  const handleShare = async () => {
-    const url = window.location.href;
-    try {
-      await navigator.clipboard.writeText(url);
-      setDownloadCopied(true);
-      setTimeout(() => setDownloadCopied(false), 2000);
-    } catch {
-      // Fallback
-    }
-  };
-
   return (
     <div
       className="min-h-screen bg-[#0A0A0A] text-white flex flex-col font-sans select-none"
@@ -148,22 +147,13 @@ export function MagazinePage() {
           </Link>
 
           <div className="flex items-center space-x-3">
-            <button
-              onClick={handleShare}
-              className="inline-flex items-center space-x-1.5 px-3 py-1.5 bg-white/5 hover:bg-white/10 border border-white/10 text-xs uppercase tracking-wider text-gray-300 rounded transition-colors"
-            >
-              {downloadCopied ? (
-                <>
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#C5A059]" />
-                  <span className="text-[#C5A059]">{t('backpack_campaign.share.copied')}</span>
-                </>
-              ) : (
-                <>
-                  <Share2 className="w-3.5 h-3.5 text-[#C5A059]" />
-                  <span>{t('backpack_campaign.share.label')}</span>
-                </>
-              )}
-            </button>
+            <ShareButton
+              title={`CENA Magazine 2026 — Página ${currentPage}`}
+              text={`Confira a página ${currentPage} da Revista CENA Magazine 2026!`}
+              url={`/magazine?page=${currentPage}`}
+              image={getPageSrc(currentPage)}
+              label="Partilhar"
+            />
           </div>
         </div>
 

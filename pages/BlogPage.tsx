@@ -6,6 +6,8 @@ import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
 import { Button } from '../components/ui/button';
 import { useLocation } from 'react-router-dom';
+import { ShareButton } from '../components/ShareButton';
+import { updateOpenGraphMeta } from '../utils/share';
 
 // Image imports
 
@@ -295,8 +297,11 @@ export function BlogPage() {
                     )}
                   </AnimatePresence>
 
-                  <div className="pt-4 flex items-center">
-                    <span className="inline-flex items-center text-[11px] tracking-[0.4em] font-bold uppercase text-[#121212] group-hover/content:text-[#8B0000] transition-all">
+                  <div className="pt-4 flex items-center justify-between flex-wrap gap-4" onClick={(e) => e.stopPropagation()}>
+                    <span 
+                      className="inline-flex items-center text-[11px] tracking-[0.4em] font-bold uppercase text-[#121212] group-hover/content:text-[#8B0000] transition-all cursor-pointer"
+                      onClick={() => setExpandedArticle(expandedArticle === article.id ? null : article.id)}
+                    >
                       {expandedArticle === article.id ? t('common.show_less') : (
                         <>
                           {t('blog.read_entry')} 
@@ -304,6 +309,13 @@ export function BlogPage() {
                         </>
                       )} 
                     </span>
+
+                    <ShareButton
+                      title={t(article.titleKey)}
+                      text={t(article.excerptKey)}
+                      url={`/blog#${article.anchor}`}
+                      image={article.image}
+                    />
                   </div>
                 </div>
               </motion.div>

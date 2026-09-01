@@ -5,6 +5,7 @@ import { Button } from './ui/button';
 import { Quote, Calendar, User, ChevronDown, ChevronUp } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import { useLanguage } from '../contexts/LanguageContext';
+import { ShareButton } from './ShareButton';
 import africaEducationImg from '../assets/sections/community-team.jpg';
 import schoolPartnershipImg from '../assets/sections/educational-partnerships.jpg';
 import culturalFestivalNewsImg from '../assets/sections/cultural-celebration.png';
@@ -162,14 +163,23 @@ export function NewsSection() {
                         </div>
                       </CollapsibleContent>
 
-                      <div className="flex items-center justify-between">
-                        <span className="text-sm text-gray-500">{t(article.readTimeKey)}</span>
-                        <CollapsibleTrigger asChild>
-                          <Button variant="ghost" className="text-[#A32020] hover:text-[#8B1B1B] p-0">
-                            {isExpanded ? t('common.show_less') : t('common.read_more')}
-                            {isExpanded ? <ChevronUp className="h-4 w-4 ml-1" /> : <ChevronDown className="h-4 w-4 ml-1" />}
-                          </Button>
-                        </CollapsibleTrigger>
+                      <div className="flex items-center justify-between pt-3 border-t border-gray-100 flex-wrap gap-2">
+                        <div className="flex items-center space-x-3">
+                          <span className="text-sm text-gray-500">{t(article.readTimeKey)}</span>
+                          <CollapsibleTrigger asChild>
+                            <Button variant="ghost" className="text-[#A32020] hover:text-[#8B1B1B] p-0 font-medium">
+                              {isExpanded ? t('common.show_less') : t('common.read_more')}
+                              {isExpanded ? <ChevronUp className="h-4 w-4 ml-1" /> : <ChevronDown className="h-4 w-4 ml-1" />}
+                            </Button>
+                          </CollapsibleTrigger>
+                        </div>
+                        <ShareButton
+                          variant="compact"
+                          title={t(article.titleKey)}
+                          text={t(article.excerptKey)}
+                          url="/#news"
+                          image={article.image}
+                        />
                       </div>
                     </CardContent>
                   </Card>

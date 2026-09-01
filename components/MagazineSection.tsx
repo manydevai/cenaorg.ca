@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '../contexts/LanguageContext';
+import { ShareButton } from './ShareButton';
+import { updateOpenGraphMeta } from '../utils/share';
 import {
   BookOpen,
   Download,
@@ -11,8 +13,7 @@ import {
   Newspaper,
   Calendar,
   Tag,
-  ArrowUpRight,
-  Share2
+  ArrowUpRight
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -72,31 +73,17 @@ export function MagazineSection() {
     return `/magazine/pages/MAG_-_ENGLISH_VERSION${pageNum}.webp`;
   };
 
-  const handleShare = async (story?: Story) => {
-    const shareUrl = story
-      ? `${window.location.origin}/magazine?page=${story.page}`
-      : `${window.location.origin}/magazine`;
-    const shareTitle = story ? story.title : 'CENA Magazine 2026';
-    const shareText = story
-      ? `${story.title} — ${story.spoiler.substring(0, 120)}...`
-      : 'Descubra a CENA Magazine — Edição Especial 2026';
-
-    if (navigator.share) {
-      try {
-        await navigator.share({ title: shareTitle, text: shareText, url: shareUrl });
-      } catch (_) { /* user cancelled */ }
-    } else {
-      try {
-        await navigator.clipboard.writeText(shareUrl);
-        const btn = document.activeElement as HTMLElement;
-        const original = btn?.getAttribute('data-tooltip');
-        btn?.setAttribute('data-tooltip', '✓ Link copiado!');
-        setTimeout(() => btn?.setAttribute('data-tooltip', original || ''), 2000);
-      } catch (_) {
-        window.open(`https://wa.me/?text=${encodeURIComponent(shareText + ' ' + shareUrl)}`, '_blank');
-      }
+  // Update open graph tags when active slide changes
+  useEffect(() => {
+    if (currentStory) {
+      updateOpenGraphMeta({
+        title: `${currentStory.title} — CENA Magazine 2026`,
+        text: currentStory.spoiler,
+        url: `/magazine?page=${currentStory.page}`,
+        image: getPageSrc(currentStory.imagePage)
+      });
     }
-  };
+  }, [currentStory]);
 
   return (
     <section className="py-20 sm:py-28 bg-[#090909] text-white relative overflow-hidden border-y border-[#C5A059]/25 font-sans">
@@ -235,14 +222,12 @@ export function MagazineSection() {
                     <span>{t('magazine.explore_cta')}</span>
                   </Link>
 
-                  <button
-                    onClick={() => handleShare(currentStory)}
-                    className="px-5 py-3.5 bg-transparent hover:bg-[#C5A059]/15 border border-[#C5A059]/30 text-[#C5A059] font-bold text-xs uppercase tracking-wider transition-colors flex items-center space-x-1.5 cursor-pointer"
-                    title="Partilhar esta notícia"
-                  >
-                    <Share2 className="w-4 h-4" />
-                    <span>Partilhar</span>
-                  </button>
+                  <ShareButton
+                    title={currentStory.title}
+                    text={currentStory.spoiler}
+                    url={`/magazine?page=${currentStory.page}`}
+                    image={getPageSrc(currentStory.imagePage)}
+                  />
                 </div>
               </div>
 
@@ -338,13 +323,13 @@ export function MagazineSection() {
                       <span>Abrir na Revista</span>
                       <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                     </Link>
-                    <button
-                      onClick={(e) => { e.preventDefault(); e.stopPropagation(); handleShare(item); }}
-                      className="p-2 rounded-full hover:bg-[#C5A059]/15 text-gray-400 hover:text-[#C5A059] transition-colors cursor-pointer"
-                      title="Partilhar"
-                    >
-                      <Share2 className="w-3.5 h-3.5" />
-                    </button>
+                    <ShareButton
+                      variant="icon-only"
+                      title={item.title}
+                      text={item.spoiler}
+                      url={`/magazine?page=${item.page}`}
+                      image={getPageSrc(item.imagePage)}
+                    />
                   </div>
                 </div>
               </div>

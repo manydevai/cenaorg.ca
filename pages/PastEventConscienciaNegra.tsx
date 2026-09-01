@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../contexts/LanguageContext';
+import { updateOpenGraphMeta } from '../utils/share';
+import { ShareButton } from '../components/ShareButton';
 import { ArrowLeft, ArrowRight, Quote, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { LanguageSwitcher } from '../components/LanguageSwitcher';
@@ -143,7 +145,13 @@ export function PastEventConscienciaNegra() {
 
     useEffect(() => {
         window.scrollTo(0, 0);
-    }, []);
+        updateOpenGraphMeta({
+            title: `${t.heroTitle} — ${t.heroSubtitle}`,
+            text: t.introP1,
+            url: window.location.pathname,
+            image: '/gallery/Mes-da-consciencianegra-cena-caf/album2-001.webp'
+        });
+    }, [t]);
 
     // Prevent scroll when lightbox is open
     useLayoutEffect(() => {

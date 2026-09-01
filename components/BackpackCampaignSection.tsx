@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
+import { updateOpenGraphMeta } from '../utils/share';
 import { Calendar, Heart, ShieldCheck, Gift, CheckCircle2, Award, Users, Link, Facebook, MessageCircle } from 'lucide-react';
 
 import horizFr from '../assets/campaigns/backpack/horizontal-fr.jpg';
@@ -35,7 +36,13 @@ export const BackpackCampaignSection: React.FC<BackpackCampaignSectionProps> = (
   const [linkCopied, setLinkCopied] = useState(false);
 
   const handleShareWhatsApp = () => {
-    window.open(`https://wa.me/?text=${encodeURIComponent(shareText + ' ' + campaignUrl)}`, '_blank');
+    updateOpenGraphMeta({
+      title: shareText,
+      text: t('backpack_campaign.description') || shareText,
+      url: '#backpack-campaign',
+      image: horizontalPoster
+    });
+    window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(shareText + '\n' + campaignUrl)}`, '_blank');
   };
 
   const handleShareFacebook = () => {

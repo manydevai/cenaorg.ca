@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Calendar, MapPin, ArrowUpRight } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
+import { ShareButton } from './ShareButton';
 import culturalCelebrationImage from '../assets/sections/cultural-celebration.png';
 import businessWorkshopImage from '../assets/sections/business-workshop.jpg';
 import { Button } from './ui/button';
@@ -95,18 +96,27 @@ export function EventsSection() {
                   {t(event.descriptionKey)}
                 </p>
 
-                <div className="mt-auto pt-8 border-t border-gray-200 flex items-center justify-between">
+                <div className="mt-auto pt-8 border-t border-gray-200 flex items-center justify-between flex-wrap gap-2">
                   <span className="text-xs tracking-widest uppercase font-bold text-gray-500 flex items-center">
                     <MapPin className="h-3.5 w-3.5 mr-2 text-[#C5A059]" />
                     {t(event.locationKey)}
                   </span>
-                  <Button
-                    variant="ghost"
-                    className="p-0 h-auto text-xs tracking-widest uppercase font-bold text-[#8B0000] hover:bg-transparent hover:translate-x-1 transition-transform cursor-pointer"
-                    onClick={() => setSelectedEvent(t(event.titleKey))}
-                  >
-                    {t('events.register')} <ArrowUpRight className="ml-1 h-3.5 w-3.5" />
-                  </Button>
+                  <div className="flex items-center space-x-2">
+                    <ShareButton
+                      variant="icon-only"
+                      title={t(event.titleKey)}
+                      text={t(event.descriptionKey)}
+                      url="/#events"
+                      image={event.image}
+                    />
+                    <Button
+                      variant="ghost"
+                      className="p-0 h-auto text-xs tracking-widest uppercase font-bold text-[#8B0000] hover:bg-transparent hover:translate-x-1 transition-transform cursor-pointer"
+                      onClick={() => setSelectedEvent(t(event.titleKey))}
+                    >
+                      {t('events.register')} <ArrowUpRight className="ml-1 h-3.5 w-3.5" />
+                    </Button>
+                  </div>
                 </div>
               </div>
             </div>

@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../contexts/LanguageContext';
+import { updateOpenGraphMeta } from '../utils/share';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { LanguageSwitcher } from '../components/LanguageSwitcher';
@@ -200,7 +201,13 @@ export function PastEventsBlackConsciousness() {
 
     useEffect(() => {
         window.scrollTo(0, 0);
-    }, []);
+        updateOpenGraphMeta({
+            title: `${t.heroTitleLine1} ${t.heroTitleLine2}`,
+            text: t.heroSubtitle,
+            url: window.location.pathname,
+            image: '/gallery/heritage-excellence-leaders.webp'
+        });
+    }, [t]);
 
     const sections = [
         { id: 'hero', label: t.sectionTheme },

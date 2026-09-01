@@ -81,8 +81,8 @@ export const BackpackEmbeddedForm: React.FC<BackpackEmbeddedFormProps> = ({ onCo
         language === 'pt'
           ? 'Por favor preencha os seus dados pessoais (Nome, Telefone, Email).'
           : language === 'en'
-          ? 'Please fill in your personal contact details (Name, Phone, Email).'
-          : 'Veuillez remplir vos coordonnées personnelles (Nom, Téléphone, Courriel).'
+            ? 'Please fill in your personal contact details (Name, Phone, Email).'
+            : 'Veuillez remplir vos coordonnées personnelles (Nom, Téléphone, Courriel).'
       );
       return false;
     }
@@ -97,8 +97,8 @@ export const BackpackEmbeddedForm: React.FC<BackpackEmbeddedFormProps> = ({ onCo
           language === 'pt'
             ? `Por favor preencha o nome e idade da Criança #${i + 1}.`
             : language === 'en'
-            ? `Please fill in name and age for Child #${i + 1}.`
-            : `Veuillez remplir le nom et l'âge pour l'Enfant #${i + 1}.`
+              ? `Please fill in name and age for Child #${i + 1}.`
+              : `Veuillez remplir le nom et l'âge pour l'Enfant #${i + 1}.`
         );
         return false;
       }
@@ -109,8 +109,8 @@ export const BackpackEmbeddedForm: React.FC<BackpackEmbeddedFormProps> = ({ onCo
         language === 'pt'
           ? 'Por favor confirme as caixas de consentimento.'
           : language === 'en'
-          ? 'Please check the consent boxes to proceed.'
-          : 'Veuillez cocher les cases de consentement.'
+            ? 'Please check the consent boxes to proceed.'
+            : 'Veuillez cocher les cases de consentement.'
       );
       return false;
     }
@@ -137,7 +137,7 @@ export const BackpackEmbeddedForm: React.FC<BackpackEmbeddedFormProps> = ({ onCo
         postalCode,
         howHeard,
         childrenCount: childrenList.length,
-        childrenList: childrenList.map((c, i) => 
+        childrenList: childrenList.map((c, i) =>
           `Child #${i + 1}: ${c.firstName} ${c.lastName} (Age: ${c.age}, Grade: ${c.grade || 'N/A'})`
         ).join(' | '),
         consentAccurate: consentAccurate ? 'Yes' : 'No',
@@ -165,8 +165,8 @@ export const BackpackEmbeddedForm: React.FC<BackpackEmbeddedFormProps> = ({ onCo
           language === 'pt'
             ? 'Erro ao enviar o pedido. Tente novamente.'
             : language === 'en'
-            ? 'Failed to submit request. Please try again.'
-            : 'Échec de l\'envoi. Veuillez réessayer.'
+              ? 'Failed to submit request. Please try again.'
+              : 'Échec de l\'envoi. Veuillez réessayer.'
         );
       }
     } catch (error) {
@@ -174,8 +174,8 @@ export const BackpackEmbeddedForm: React.FC<BackpackEmbeddedFormProps> = ({ onCo
         language === 'pt'
           ? 'Erro ao enviar o pedido. Tente novamente.'
           : language === 'en'
-          ? 'Failed to submit request. Please try again.'
-          : 'Échec de l\'envoi. Veuillez réessayer.'
+            ? 'Failed to submit request. Please try again.'
+            : 'Échec de l\'envoi. Veuillez réessayer.'
       );
     } finally {
       setIsSubmitting(false);
@@ -262,7 +262,7 @@ export const BackpackEmbeddedForm: React.FC<BackpackEmbeddedFormProps> = ({ onCo
 
       {/* Form Content Area */}
       <div className="p-5 sm:p-10 space-y-6 bg-white">
-        
+
         {/* STEP 1: PARENT CONTACT & ADDRESS */}
         {step === 1 && (
           <div className="space-y-6 animate-fade-in">
@@ -594,11 +594,10 @@ export const BackpackEmbeddedForm: React.FC<BackpackEmbeddedFormProps> = ({ onCo
               type="button"
               onClick={handlePrev}
               disabled={step === 1 || isSubmitting}
-              className={`px-4 py-3 text-xs uppercase font-bold tracking-wider flex items-center space-x-2 transition-colors ${
-                step === 1 || isSubmitting
+              className={`px-4 py-3 text-xs uppercase font-bold tracking-wider flex items-center space-x-2 transition-colors ${step === 1 || isSubmitting
                   ? 'opacity-30 cursor-not-allowed text-stone-400'
                   : 'text-stone-700 hover:text-stone-900'
-              }`}
+                }`}
             >
               <ArrowLeft className="w-4 h-4" />
               <span>{language === 'pt' ? 'Anterior' : language === 'en' ? 'Back' : 'Précédent'}</span>
@@ -623,10 +622,10 @@ export const BackpackEmbeddedForm: React.FC<BackpackEmbeddedFormProps> = ({ onCo
                     {step === 2
                       ? t('backpack_campaign.form.submit_btn')
                       : language === 'pt'
-                      ? 'Seguinte'
-                      : language === 'en'
-                      ? 'Next'
-                      : 'Suivant'}
+                        ? 'Seguinte'
+                        : language === 'en'
+                          ? 'Next'
+                          : 'Suivant'}
                   </span>
                   <ArrowRight className="w-4 h-4" />
                 </>
