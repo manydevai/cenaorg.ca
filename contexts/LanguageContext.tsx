@@ -148,6 +148,15 @@ const translations = {
         },
         {
           id: 5,
+          page: 7,
+          category: 'JEUNESSE & INNOVATION',
+          date: 'Édition Spéciale 2026',
+          title: 'Daniel Love Fernando ANTÓNIO — Directeur Jeunesse & Innovation CENA',
+          spoiler: '« La vie est comme un arbre. Chaque saison a un but. Restez enraciné, continuez à grandir et n\'abandonnez jamais le voyage. »',
+          imagePage: 7
+        },
+        {
+          id: 6,
           page: 15,
           category: 'FINANCEMENT COMMERCIAL & IMMOBILIER',
           date: 'Édition Spéciale 2026',
@@ -156,7 +165,7 @@ const translations = {
           imagePage: 15
         },
         {
-          id: 6,
+          id: 7,
           page: 13,
           category: 'IMMOBILIER & ENTREPRENEURIAT',
           date: 'Édition Spéciale 2026',
@@ -165,22 +174,13 @@ const translations = {
           imagePage: 13
         },
         {
-          id: 7,
+          id: 8,
           page: 14,
           category: 'AUTONOMISATION DES FEMMES',
           date: 'Édition Spéciale 2026',
           title: 'Neccy LM — Leadership Féminin & Croissance Personnelle',
           spoiler: '« N\'abandonnez jamais. Les défis auxquels vous faites face aujourd\'hui peuvent devenir le fondement des victoires de demain. »',
           imagePage: 14
-        },
-        {
-          id: 8,
-          page: 18,
-          category: 'ENTREPRISE DENETTOYAGE & ENTRETIEN',
-          date: 'Édition Spéciale 2026',
-          title: 'Val Nettoyage et Entretien — L\'Excellence du Service',
-          spoiler: '« Croyez toujours en votre potentiel et n\'ayez jamais peur de faire le premier pas. Le succès se bâtit avec travail, persévérance et honnêteté. »',
-          imagePage: 18
         },
         {
           id: 9,
@@ -238,21 +238,12 @@ const translations = {
         },
         {
           id: 15,
-          page: 7,
-          category: 'JEUNESSE & INNOVATION',
+          page: 18,
+          category: 'ENTREPRISE DENETTOYAGE & ENTRETIEN',
           date: 'Édition Spéciale 2026',
-          title: 'Daniel Love Fernando ANTÓNIO — Directeur Jeunesse & Innovation CENA',
-          spoiler: '« La vie est comme un arbre. Chaque saison a un but. Restez enraciné, continuez à grandir et n\'abandonnez jamais le voyage. »',
-          imagePage: 7
-        },
-        {
-          id: 16,
-          page: 31,
-          category: 'CONSTRUCTION & DESIGN',
-          date: 'Édition Spéciale 2026',
-          title: 'Black Sable Group Corporation — Design, Gestion & Construction',
-          spoiler: '« Chaque projet est une promesse. Notre mission est de transformer les idées en résultats durables en bâtissant des relations fondées sur la confiance et l\'excellence. »',
-          imagePage: 31
+          title: 'Val Nettoyage et Entretien — L\'Excellence du Service',
+          spoiler: '« Croyez toujours en votre potentiel et n\'ayez jamais peur de faire le premier pas. Le succès se bâtit avec travail, persévérance et honnêteté. »',
+          imagePage: 18
         }
       ]
     },
@@ -814,6 +805,15 @@ const translations = {
         },
         {
           id: 5,
+          page: 7,
+          category: 'YOUTH & INNOVATION',
+          date: 'Special Edition 2026',
+          title: 'Daniel Love Fernando ANTÓNIO — Director of Youth & Innovation CENA',
+          spoiler: '"Life is like a tree. Every season has a purpose. Stay rooted, keep growing, and never give up on the journey."',
+          imagePage: 7
+        },
+        {
+          id: 6,
           page: 15,
           category: 'COMMERCIAL FINANCING & REAL ESTATE',
           date: 'Special Edition 2026',
@@ -822,7 +822,7 @@ const translations = {
           imagePage: 15
         },
         {
-          id: 6,
+          id: 7,
           page: 13,
           category: 'REAL ESTATE & BUSINESS',
           date: 'Special Edition 2026',
@@ -831,22 +831,13 @@ const translations = {
           imagePage: 13
         },
         {
-          id: 7,
+          id: 8,
           page: 14,
           category: 'WOMEN’S EMPOWERMENT',
           date: 'Special Edition 2026',
           title: 'Neccy LM — Personal Growth & Women’s Leadership',
           spoiler: '“Never give up. The challenges you face today may become the foundation of tomorrow’s victories.”',
           imagePage: 14
-        },
-        {
-          id: 8,
-          page: 18,
-          category: 'CLEANING & MAINTENANCE SERVICES',
-          date: 'Special Edition 2026',
-          title: 'Val Nettoyage et Entretien — Service Excellence',
-          spoiler: '“Always believe in your potential and never be afraid to take the first step. Success is built through hard work, perseverance, honesty, and faith.”',
-          imagePage: 18
         },
         {
           id: 9,
@@ -904,21 +895,12 @@ const translations = {
         },
         {
           id: 15,
-          page: 7,
-          category: 'YOUTH & INNOVATION',
+          page: 18,
+          category: 'CLEANING & MAINTENANCE SERVICES',
           date: 'Special Edition 2026',
-          title: 'Daniel Love Fernando ANTÓNIO — Director of Youth & Innovation CENA',
-          spoiler: '"Life is like a tree. Every season has a purpose. Stay rooted, keep growing, and never give up on the journey."',
-          imagePage: 7
-        },
-        {
-          id: 16,
-          page: 31,
-          category: 'CONSTRUCTION & DESIGN',
-          date: 'Special Edition 2026',
-          title: 'Black Sable Group Corporation — Design, Management & Construction',
-          spoiler: '"Every project is a promise. Our mission is to transform ideas into lasting results while building relationships founded on trust, quality, and excellence."',
-          imagePage: 31
+          title: 'Val Nettoyage et Entretien — Service Excellence',
+          spoiler: '“Always believe in your potential and never be afraid to take the first step. Success is built through hard work, perseverance, honesty, and faith.”',
+          imagePage: 18
         }
       ]
     },
@@ -1481,6 +1463,15 @@ const translations = {
         },
         {
           id: 5,
+          page: 7,
+          category: 'JUVENTUDE & INOVAÇÃO',
+          date: 'Edição Especial 2026',
+          title: 'Daniel Love Fernando ANTÓNIO — Diretor de Juventude & Inovação CENA',
+          spoiler: '«A vida é como uma árvore. Cada estação tem um propósito. Mantenha-se enraizado, continue a crescer e nunca desista da jornada.»',
+          imagePage: 7
+        },
+        {
+          id: 6,
           page: 15,
           category: 'FINANCIAMENTO COMERCIAL & IMOBILIÁRIO',
           date: 'Edição Especial 2026',
@@ -1489,7 +1480,7 @@ const translations = {
           imagePage: 15
         },
         {
-          id: 6,
+          id: 7,
           page: 13,
           category: 'IMOBILIÁRIO & NEGÓCIOS',
           date: 'Edição Especial 2026',
@@ -1498,22 +1489,13 @@ const translations = {
           imagePage: 13
         },
         {
-          id: 7,
+          id: 8,
           page: 14,
           category: 'LIDERANÇA FEMININA',
           date: 'Edição Especial 2026',
           title: 'Neccy LM — Plataforma de Crescimento & Liderança',
           spoiler: '«Nunca desista. Os desafios que enfrenta hoje podem tornar-se o alicerce das vitórias de amanhã.»',
           imagePage: 14
-        },
-        {
-          id: 8,
-          page: 18,
-          category: 'SERVIÇOS DE LIMPEZA & MANUTENÇÃO',
-          date: 'Edição Especial 2026',
-          title: 'Val Nettoyage et Entretien — Excelência em Serviços',
-          spoiler: '«Acredite sempre no seu potencial e nunca tenha medo de dar o primeiro passo. O sucesso constrói-se com trabalho árduo, perseverança, honestidade e fé.»',
-          imagePage: 18
         },
         {
           id: 9,
@@ -1529,12 +1511,12 @@ const translations = {
           page: 21,
           category: 'ESTÉTICA & EMPODERAMENTO',
           date: 'Edição Especial 2026',
-          title: 'Essential Micro Hair — Confiança & Beleza Natural',
+          title: 'Essential Micro Hair — Confiance & Beleza Natural',
           spoiler: 'Especializada em micro-locs e penteados de proteção personalizados para celebrar a beleza natural e empoderar cada cliente em Longueuil e Montreal.',
           imagePage: 21
         },
         {
-          id: 8,
+          id: 11,
           page: 27,
           category: 'FOTOGRAFIA & ARTE',
           date: 'Edição Especial 2026',
@@ -1543,7 +1525,7 @@ const translations = {
           imagePage: 27
         },
         {
-          id: 9,
+          id: 12,
           page: 30,
           category: 'LIDERANÇA & IMPACTO COMUNITÁRIO',
           date: 'Edição Especial 2026',
@@ -1552,7 +1534,7 @@ const translations = {
           imagePage: 30
         },
         {
-          id: 11,
+          id: 13,
           page: 25,
           category: 'SAÚDE MENTAL & COMUNIDADE',
           date: 'Edição Especial 2026',
@@ -1561,7 +1543,7 @@ const translations = {
           imagePage: 25
         },
         {
-          id: 12,
+          id: 14,
           page: 32,
           category: 'SAÚDE MENSTRUAL & EMPODERAMENTO',
           date: 'Edição Especial 2026',
@@ -1570,22 +1552,13 @@ const translations = {
           imagePage: 32
         },
         {
-          id: 13,
-          page: 7,
-          category: 'JUVENTUDE & INOVAÇÃO',
+          id: 15,
+          page: 18,
+          category: 'SERVIÇOS DE LIMPEZA & MANUTENÇÃO',
           date: 'Edição Especial 2026',
-          title: 'Daniel Love Fernando ANTÓNIO — Diretor de Juventude & Inovação CENA',
-          spoiler: '«A vida é como uma árvore. Cada estação tem um propósito. Mantenha-se enraizado, continue a crescer e nunca desista da jornada.»',
-          imagePage: 7
-        },
-        {
-          id: 14,
-          page: 31,
-          category: 'CONSTRUÇÃO & DESIGN',
-          date: 'Edição Especial 2026',
-          title: 'Black Sable Group Corporation — Design, Gestão & Construção',
-          spoiler: '«Cada projeto é uma promessa. A nossa missão é transformar ideias em resultados duradouros com base na confiança, qualidade e excelência.»',
-          imagePage: 31
+          title: 'Val Nettoyage et Entretien — Excelência em Serviços',
+          spoiler: '«Acredite sempre no seu potencial e nunca tenha medo de dar o primeiro passo. O sucesso constrói-se com trabalho árduo, perseverança, honestidade e fé.»',
+          imagePage: 18
         }
       ]
     },
