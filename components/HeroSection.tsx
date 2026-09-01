@@ -28,17 +28,16 @@ export function HeroSection() {
   return (
     <section
       id="home"
-      className="relative min-h-[90vh] lg:min-h-screen flex flex-col justify-center overflow-hidden border-b border-white/5"
+      className="relative min-h-[90vh] lg:min-h-screen flex flex-col justify-center overflow-hidden border-b border-white/5 bg-[#090909] pt-20 lg:pt-0"
     >
-      {/* Dynamic Full-Bleed Background - Entire Section */}
-      <div className="absolute inset-0 z-0">
+      {/* Dynamic Background - Scaled to keep faces 100% visible without cropping */}
+      <div className="absolute inset-0 z-0 pt-16 lg:pt-20">
         {backgrounds.map((bg, index) => (
           <div
             key={`full-bg-${index}`}
-            className={`absolute inset-0 bg-cover bg-center lg:bg-[right_center] transition-opacity duration-[800ms] ease-in-out ${index === currentBg ? 'opacity-100' : 'opacity-0'}`}
+            className={`absolute inset-0 bg-contain bg-no-repeat bg-[center_top] lg:bg-[right_top] transition-opacity duration-[700ms] ease-in-out ${index === currentBg ? 'opacity-100' : 'opacity-0'}`}
             style={{
               backgroundImage: `url(${bg})`,
-              transform: 'scale(1)'
             }}
           />
         ))}
@@ -57,13 +56,13 @@ export function HeroSection() {
           {/* Typographic Column - Pushed Completely Left */}
           <div className={`lg:col-span-10 xl:col-span-8 transition-all duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'}`}>
             <div className="flex items-center space-x-3 mb-3 lg:mb-16 lg:-mt-12 lg:relative lg:-top-44">
-              <span className="h-px w-12 bg-[#C5A059]"></span>
-              <span className="text-[#C5A059] font-sans text-[10px] sm:text-xs tracking-[0.4em] uppercase font-bold">
+              <span className="h-px w-12 bg-[#C5A059] shadow-sm"></span>
+              <span className="text-[#C5A059] font-sans text-[10px] sm:text-xs tracking-[0.4em] uppercase font-bold drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
                 {t('hero.subtitle')}
               </span>
             </div>
 
-            <h1 className="text-white font-serif text-2xl sm:text-4xl md:text-5xl lg:text-5xl uppercase mb-6 sm:mb-10 lg:mb-12 leading-[1.15] drop-shadow-2xl">
+            <h1 className="text-white font-serif text-2xl sm:text-4xl md:text-5xl lg:text-5xl uppercase mb-6 sm:mb-10 lg:mb-12 leading-[1.15] drop-shadow-[0_4px_20px_rgba(0,0,0,0.95)]">
               {t('hero.title').split(/[,&]+/).map((part, i) => (
                 <span key={i} className="block">
                   <span className={i === 1 ? "text-[#C5A059]" : "text-white"}>
@@ -74,7 +73,7 @@ export function HeroSection() {
             </h1>
 
             <div className="max-w-xl">
-              <p className="text-gray-100 text-sm sm:text-base md:text-lg font-sans mb-8 sm:mb-12 leading-relaxed drop-shadow-md">
+              <p className="text-gray-100 text-sm sm:text-base md:text-lg font-sans mb-8 sm:mb-12 leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.95)] font-medium">
                 {t('hero.description')}
               </p>
 
