@@ -1,8 +1,15 @@
 RewriteEngine On
 
-# Serve actual files directly (images, PDFs, JS, CSS, fonts, etc.)
-RewriteCond %{REQUEST_FILENAME} -f
+# 1. Serve actual existing files and directories directly (images, PDFs, JS, CSS, pre-rendered HTML files, etc.)
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule ^ - [L]
 
-# Everything else (including /magazine, /gallery SPA routes) -> React Router
+# 2. Support clean URLs matching pre-rendered .html files if available
+RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+RewriteRule ^(.*)$ $1.html [L]
+
+# 3. Everything else (SPA client-side routes) -> fallback to root index.html
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^ index.html [L]
