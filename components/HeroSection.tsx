@@ -23,14 +23,14 @@ export function HeroSection() {
     {
       desktopUrl: '/hero/3.webp',
       mobileUrl: '/hero/3-mobile.webp', // 941x1672 Vertical Portrait Photo for 03/05
-      mobileSize: '120% auto', // Slight zoom in with all faces 100% visible
-      mobilePos: 'center 5%',
+      mobileSize: '145% auto', // Shifted UP so the 3 women move to the top of screen
+      mobilePos: 'center 40%',
     },
     {
       desktopUrl: '/hero/4.webp',
       mobileUrl: '/hero/4-mobile.webp', // 941x1672 Vertical Portrait Photo for 04/05
-      mobileSize: '120% auto', // Slight zoom in with all faces 100% visible
-      mobilePos: 'center 5%',
+      mobileSize: '125% auto',
+      mobilePos: 'center 15%',
     },
     {
       desktopUrl: '/hero/5.webp',
@@ -62,7 +62,7 @@ export function HeroSection() {
             key={`hero-bg-${index}`}
             className={`absolute inset-0 transition-opacity duration-[1000ms] ease-in-out ${index === currentBg ? 'opacity-100' : 'opacity-0'}`}
           >
-            {/* Mobile View Background (Uses 3-mobile.webp and 4-mobile.webp vertical portraits for 03/05 & 04/05) */}
+            {/* Mobile View Background */}
             <div
               className="block lg:hidden absolute inset-0 bg-no-repeat transition-all duration-700"
               style={{
