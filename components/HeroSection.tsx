@@ -9,27 +9,32 @@ export function HeroSection() {
 
   const backgrounds = [
     {
-      url: '/hero/1.webp',
+      desktopUrl: '/hero/1.webp',
+      mobileUrl: '/hero/1.webp',
       mobileSize: '155% auto',
       mobilePos: 'center top',
     },
     {
-      url: '/hero/2.webp',
+      desktopUrl: '/hero/2.webp',
+      mobileUrl: '/hero/2.webp',
       mobileSize: 'cover',
       mobilePos: 'center top',
     },
     {
-      url: '/hero/3.webp', // Photo 03 / 05 — Full screen with slight zoom out to show left & right faces
+      desktopUrl: '/hero/3.webp',
+      mobileUrl: '/hero/3.webp',
       mobileSize: '155% auto',
       mobilePos: 'center top',
     },
     {
-      url: '/hero/4.webp', // Photo 04 / 05 — Full screen with slight zoom out to show left & right faces
-      mobileSize: '155% auto',
+      desktopUrl: '/hero/4.webp',
+      mobileUrl: '/hero/4-mobile.webp', // 941x1672 Vertical Portrait Photo for 04/05 on Mobile!
+      mobileSize: 'cover',
       mobilePos: 'center top',
     },
     {
-      url: '/hero/5.webp',
+      desktopUrl: '/hero/5.webp',
+      mobileUrl: '/hero/5.webp',
       mobileSize: '155% auto',
       mobilePos: 'center top',
     },
@@ -57,11 +62,11 @@ export function HeroSection() {
             key={`hero-bg-${index}`}
             className={`absolute inset-0 transition-opacity duration-[1000ms] ease-in-out ${index === currentBg ? 'opacity-100' : 'opacity-0'}`}
           >
-            {/* Mobile View Background (Full screen 155% zoom-out — shows all 3 faces cleanly) */}
+            {/* Mobile View Background (Uses 4-mobile.webp vertical portrait for 04/05) */}
             <div
               className="block lg:hidden absolute inset-0 bg-no-repeat transition-all duration-700"
               style={{
-                backgroundImage: `url(${bgItem.url})`,
+                backgroundImage: `url(${bgItem.mobileUrl})`,
                 backgroundSize: bgItem.mobileSize,
                 backgroundPosition: bgItem.mobilePos,
               }}
@@ -70,7 +75,7 @@ export function HeroSection() {
             <div
               className="hidden lg:block absolute inset-0 bg-cover bg-[right_top] bg-no-repeat"
               style={{
-                backgroundImage: `url(${bgItem.url})`,
+                backgroundImage: `url(${bgItem.desktopUrl})`,
               }}
             />
           </div>
