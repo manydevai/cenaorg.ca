@@ -9,29 +9,29 @@ export function HeroSection() {
 
   const backgrounds = [
     {
-      url: '/hero/1.webp',
+      url: '/hero/1.webp', // Reference photo of the guys (Well framed)
       mobileSize: '135% auto',
       mobilePos: 'center 12%',
     },
     {
       url: '/hero/2.webp',
-      mobileSize: 'cover',
-      mobilePos: 'center top',
+      mobileSize: '135% auto',
+      mobilePos: 'center 12%',
     },
     {
-      url: '/hero/3.webp', // Photo 03 / 05 — Zoom out on mobile so left & right faces are fully shown
-      mobileSize: 'contain',
-      mobilePos: 'center 15%',
+      url: '/hero/3.webp', // Photo 03 / 05 — Positioned in same proportion as reference photo
+      mobileSize: '135% auto',
+      mobilePos: 'center 14%',
     },
     {
-      url: '/hero/4.webp', // Photo 04 / 05 — Zoom out on mobile so left & right faces are fully shown
-      mobileSize: 'contain',
+      url: '/hero/4.webp', // Photo 04 / 05 — Positioned in same proportion as reference photo
+      mobileSize: '135% auto',
       mobilePos: 'center 10%',
     },
     {
       url: '/hero/5.webp',
-      mobileSize: 'cover',
-      mobilePos: 'center top',
+      mobileSize: '135% auto',
+      mobilePos: 'center 12%',
     },
   ];
 
@@ -60,7 +60,7 @@ export function HeroSection() {
               backgroundImage: `url(${bgItem.url})`,
             }}
           >
-            {/* Mobile Background Styling (Zoomed out for 03/05 and 04/05) */}
+            {/* Mobile Background Styling (Consistent 135% proportion matching reference photo) */}
             <div
               className="block lg:hidden absolute inset-0 bg-no-repeat transition-all duration-700"
               style={{
