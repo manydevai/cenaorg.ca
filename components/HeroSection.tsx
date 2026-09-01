@@ -28,20 +28,23 @@ export function HeroSection() {
   return (
     <section
       id="home"
-      className="relative min-h-[90vh] lg:min-h-screen flex flex-col justify-center overflow-hidden border-b border-white/5 bg-[#090909] pt-20 lg:pt-0"
+      className="relative min-h-[90vh] lg:min-h-screen flex flex-col justify-center overflow-hidden border-b border-white/5 bg-[#090909]"
     >
-      {/* Dynamic Background - Scaled to keep faces 100% visible without cropping */}
-      <div className="absolute inset-0 z-0 pt-16 lg:pt-20">
+      {/* Dynamic Background - Full-Bleed 100% Screen Cover, Top-Anchored for Visible Faces */}
+      <div className="absolute inset-0 z-0">
         {backgrounds.map((bg, index) => (
           <div
             key={`full-bg-${index}`}
-            className={`absolute inset-0 bg-contain bg-no-repeat bg-[center_top] lg:bg-[right_top] transition-opacity duration-[700ms] ease-in-out ${index === currentBg ? 'opacity-100' : 'opacity-0'}`}
+            className={`absolute inset-0 bg-cover bg-[center_top] lg:bg-[right_top] transition-opacity duration-[700ms] ease-in-out ${index === currentBg ? 'opacity-100' : 'opacity-0'}`}
             style={{
               backgroundImage: `url(${bg})`,
             }}
           />
         ))}
       </div>
+
+      {/* Subtle Gradient Mask on Left Text Column Only - Keeps Right Photo Area Filter-Free */}
+      <div className="absolute inset-y-0 left-0 w-full lg:w-3/5 bg-gradient-to-r from-black/75 via-black/45 to-transparent z-10 pointer-events-none" />
 
       {/* Structural Decoration: Architectural Lines */}
       <div className="absolute inset-0 z-10 pointer-events-none opacity-20 hidden lg:block">
