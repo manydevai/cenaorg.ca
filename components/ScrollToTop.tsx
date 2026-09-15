@@ -5,9 +5,13 @@ export function ScrollToTop() {
     const { pathname, hash } = useLocation();
 
     useEffect(() => {
+        if (pathname.startsWith('/magazine')) {
+            // MagazinePage handles its own dedicated viewport centering on the reader table
+            return;
+        }
+
         if (hash) {
             // If there's a hash, scroll to that element
-            // Delay to allow page to fully render before scrolling
             setTimeout(() => {
                 const id = hash.replace('#', '');
                 const element = document.getElementById(id);
@@ -16,8 +20,8 @@ export function ScrollToTop() {
                 }
             }, 100);
         } else {
-            // Otherwise scroll to top
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            // Otherwise scroll to top immediately
+            window.scrollTo({ top: 0, behavior: 'instant' });
         }
     }, [pathname, hash]);
 

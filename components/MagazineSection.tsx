@@ -27,7 +27,7 @@ interface Story {
 }
 
 export function MagazineSection() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [activeSlide, setActiveSlide] = useState<number>(0);
   const [isHovered, setIsHovered] = useState<boolean>(false);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -63,8 +63,9 @@ export function MagazineSection() {
   const currentStory = stories[activeSlide] || stories[0];
 
   const getPageSrc = (pageNum: number) => {
-    if (pageNum === 1) return '/magazine/pages/MAG_-_ENGLISH_VERSION.webp';
-    return `/magazine/pages/MAG_-_ENGLISH_VERSION${pageNum}.webp`;
+    const lang = ['fr', 'pt', 'en'].includes(language) ? language : 'fr';
+    const safePage = Math.max(1, Math.min(40, pageNum));
+    return `/magazine/pages/${lang}/page-${safePage}.webp`;
   };
 
   // Update open graph tags when active slide changes
@@ -73,11 +74,11 @@ export function MagazineSection() {
       updateOpenGraphMeta({
         title: `${currentStory.title} — CENA Magazine 2026`,
         text: currentStory.spoiler,
-        url: `/magazine/page/${currentStory.page}`,
+        url: `/magazine?lang=${language}&page=${currentStory.page}`,
         image: getPageSrc(currentStory.imagePage)
       });
     }
-  }, [currentStory]);
+  }, [currentStory, language]);
 
   if (stories.length === 0) return null;
 
@@ -219,7 +220,7 @@ export function MagazineSection() {
               {/* Compact Mobile Action Buttons */}
               <div className="pt-1.5 flex items-center justify-center gap-1.5">
                 <Link
-                  to={`/magazine?page=${currentStory.page}`}
+                  to={`/magazine?lang=${language}&page=${currentStory.page}`}
                   className="px-2.5 py-1 bg-[#8B0000] hover:bg-[#A00000] text-white font-bold text-[10px] uppercase tracking-wider border border-[#C5A059] rounded-xs transition-all shadow-xs flex items-center space-x-1 whitespace-nowrap"
                 >
                   <span>{t('magazine.read_full_article').replace('{page}', String(currentStory.page))}</span>
@@ -229,7 +230,7 @@ export function MagazineSection() {
                 <ShareButton
                   title={currentStory.title}
                   text={currentStory.spoiler}
-                  url={`/magazine/page/${currentStory.page}`}
+                  url={`/magazine?lang=${language}&page=${currentStory.page}`}
                   image={getPageSrc(currentStory.imagePage)}
                 />
               </div>
@@ -330,14 +331,14 @@ export function MagazineSection() {
                 {/* Compact Refined Action Buttons */}
                 <div className="pt-3 flex flex-wrap items-center gap-2.5">
                   <Link
-                    to={`/magazine?page=${currentStory.page}`}
+                    to={`/magazine?lang=${language}&page=${currentStory.page}`}
                     className="px-3 py-1.5 bg-[#8B0000] hover:bg-[#A00000] text-white font-bold text-[11px] uppercase tracking-wider border border-[#C5A059] rounded-xs transition-all shadow-md flex items-center space-x-1.5 whitespace-nowrap"
                   >
                     <span>{t('magazine.read_full_article').replace('{page}', String(currentStory.page))}</span>
                   </Link>
 
                   <Link
-                    to="/magazine"
+                    to={`/magazine?lang=${language}`}
                     className="px-3 py-1.5 bg-transparent hover:bg-white/10 border border-white/20 text-gray-300 font-bold text-[11px] uppercase tracking-wider rounded-xs transition-colors flex items-center space-x-1 whitespace-nowrap"
                   >
                     <BookOpen className="w-3.5 h-3.5 text-[#C5A059]" />
@@ -348,7 +349,7 @@ export function MagazineSection() {
                   <ShareButton
                     title={currentStory.title}
                     text={currentStory.spoiler}
-                    url={`/magazine/page/${currentStory.page}`}
+                    url={`/magazine?lang=${language}&page=${currentStory.page}`}
                     image={getPageSrc(currentStory.imagePage)}
                   />
                 </div>
@@ -404,46 +405,45 @@ export function MagazineSection() {
             {stories.slice(0, Math.floor(stories.length / 3) * 3).map((item) => (
               <div
                 key={item.id}
-                className="bg-black/60 border border-white/10 hover:border-[#C5A059]/60 rounded-lg transition-all duration-300 group flex flex-col justify-between hover:-translate-y-1 shadow-lg overflow-hidden"
+                className="bg-[#0b0b0b] border border-white/10 hover:border-[#C5A059]/60 rounded-lg transition-all duration-300 group flex flex-col justify-between hover:-translate-y-1 shadow-lg overflow-hidden"
               >
-                {/* Featured Image Preview */}
+                {/* Featured Image Preview — Expanded Aspect Ratio to fully reveal faces without occluding */}
                 <Link to={`/magazine?page=${item.page}`} className="block">
-                  <div className="relative aspect-[3/2] overflow-hidden bg-[#111]">
+                  <div className="relative aspect-[1/1] overflow-hidden bg-[#111]">
                     <img
                       src={getPageSrc(item.imagePage)}
                       alt={item.title}
                       className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
                       loading="lazy"
                     />
-                    <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/70 to-transparent" />
                     <div className="absolute top-2.5 left-2.5 bg-black/80 backdrop-blur-md px-2 py-0.5 border border-[#C5A059]/50 text-[9px] font-bold uppercase tracking-wider text-[#C5A059] rounded-xs">
                       Pág. {item.page}
                     </div>
                   </div>
                 </Link>
 
-                {/* Card Content */}
-                <div className="px-3 py-2.5 flex flex-col flex-1">
-                  <div className="space-y-1 flex-1">
-                    <span className="text-[#C5A059] font-bold uppercase tracking-wider text-[9px]">
+                {/* Reduced Height Card Content — Compact Text Box */}
+                <div className="px-3 py-2 flex flex-col justify-center bg-[#0d0d0d]">
+                  <div className="flex-1">
+                    <span className="text-[#C5A059] font-bold uppercase tracking-wider text-[8.5px] block mb-0.5">
                       {item.category}
                     </span>
 
                     <Link to={`/magazine?page=${item.page}`}>
-                      <h4 className="font-serif font-bold text-xs text-white group-hover:text-[#C5A059] transition-colors leading-snug truncate">
+                      <h4 className="font-serif font-bold text-xs text-white group-hover:text-[#C5A059] transition-colors leading-tight truncate" title={item.title}>
                         {item.title}
                       </h4>
                     </Link>
                   </div>
 
-                  {/* Multilingual Share Button (Partilhar / Partager / Share) */}
-                  <div className="pt-2 mt-2 border-t border-white/5 flex items-center justify-between text-xs">
+                  {/* Multilingual Share Button (Partilhar / Partager / Share) — Compact Action Bar */}
+                  <div className="pt-1.5 mt-1.5 border-t border-white/10 flex items-center justify-between text-xs">
                     <Link
                       to={`/magazine?page=${item.page}`}
-                      className="font-bold text-[#C5A059] group-hover:text-white transition-colors flex items-center space-x-1 text-[11px]"
+                      className="font-bold text-[#C5A059] group-hover:text-white transition-colors flex items-center space-x-1 text-[10.5px]"
                     >
                       <span>Abrir na Revista</span>
-                      <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                      <ArrowUpRight className="w-3 h-3 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                     </Link>
                     <ShareButton
                       variant="icon-only"

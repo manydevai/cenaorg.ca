@@ -91,7 +91,7 @@ const translations = {
       ticker_label: '🔴 CENA JOURNAL DIGITAL | ÉDITION SPÉCIALE 2026',
       ticker_text: 'DÉCOUVREZ LES DERNIÈRES ACTUALITÉS ET PORTRAITS INSPIRANTS DE LA DIASPORA LUSOPHONE AU CANADA • FEUILLETEZ LA REVUE COMPLÈTE EN LIGNE •',
       badge: 'ÉDITION DIGITALE 2026',
-      title: 'CENA Magazine — L\'Excellence Lusophone',
+      title: 'CENA Magazine L\'Excellence Lusophone',
       subtitle: 'Plongez au cœur de la diaspora angolaise et lusophone au Canada : leadership, culture, éducation, entreprenariat et récits d\'impact.',
       read_online: 'Feuilleter le Magazine',
       download_pdf: 'Télécharger le PDF',
@@ -113,7 +113,7 @@ const translations = {
       stories: [
         {
           id: 1,
-          page: 5,
+          page: 11,
           category: 'PRESIDENCE & LIDERANÇA',
           date: 'Édition Spéciale 2026',
           title: 'Cristina Indira MANUEL — Fondatrice & Présidente CENA',
@@ -122,7 +122,7 @@ const translations = {
         },
         {
           id: 2,
-          page: 6,
+          page: 10,
           category: 'VICE-PRÉSIDENCE CENA',
           date: 'Édition Spéciale 2026',
           title: 'Marileny F. ANTONIO — Vice-Présidente CENA',
@@ -131,7 +131,7 @@ const translations = {
         },
         {
           id: 3,
-          page: 7,
+          page: 9,
           category: 'FINANCE & CONSEIL D\'ADMINISTRATION',
           date: 'Édition Spéciale 2026',
           title: 'Sebastião Matano Sala — Directeur Financier & Fondateur',
@@ -149,7 +149,7 @@ const translations = {
         },
         {
           id: 5,
-          page: 9,
+          page: 7,
           category: 'JEUNESSE & INNOVATION',
           date: 'Édition Spéciale 2026',
           title: 'Daniel Love Fernando ANTÓNIO — Directeur Jeunesse & Innovation CENA',
@@ -158,7 +158,7 @@ const translations = {
         },
         {
           id: 6,
-          page: 10,
+          page: 30,
           category: 'LEADERSHIP & IMPACT COMMUNAUTAIRE',
           date: 'Édition Spéciale 2026',
           title: 'Randy Larochelle — Vision & Engagement',
@@ -167,7 +167,7 @@ const translations = {
         },
         {
           id: 7,
-          page: 11,
+          page: 19,
           category: 'ENTREPRENEURIAT & GASTRONOMIE',
           date: 'Édition Spéciale 2026',
           title: 'Candor\'s Cake — L\'Art de Célébrer la Vie',
@@ -176,7 +176,7 @@ const translations = {
         },
         {
           id: 8,
-          page: 13,
+          page: 15,
           category: 'FINANCEMENT COMMERCIAL & IMMOBILIER',
           date: 'Édition Spéciale 2026',
           title: 'Samara ARCHANGE, MBA — Co-Fondatrice DGA Commercial',
@@ -185,7 +185,7 @@ const translations = {
         },
         {
           id: 9,
-          page: 15,
+          page: 13,
           category: 'IMMOBILIER & ENTREPRENEURIAT',
           date: 'Édition Spéciale 2026',
           title: 'Magalie Sabine Jean-Louis — Courtier Immobilier Résidentiel',
@@ -194,7 +194,7 @@ const translations = {
         },
         {
           id: 10,
-          page: 16,
+          page: 14,
           category: 'AUTONOMISATION DES FEMMES',
           date: 'Édition Spéciale 2026',
           title: 'Neccy LM — Leadership Féminin & Croissance Personnelle',
@@ -203,7 +203,7 @@ const translations = {
         },
         {
           id: 11,
-          page: 17,
+          page: 32,
           category: 'SANTÉ MENSTRUELLE & EMPODERAMENTO',
           date: 'Édition Spéciale 2026',
           title: 'Association Menarca Muhatu — Dignité & Éducation',
@@ -212,7 +212,7 @@ const translations = {
         },
         {
           id: 12,
-          page: 19,
+          page: 21,
           category: 'ESTHÉTIQUE & AUTONOMISATION',
           date: 'Édition Spéciale 2026',
           title: 'Essential Micro Hair — Confiance & Beauté Naturelle',
@@ -221,7 +221,7 @@ const translations = {
         },
         {
           id: 13,
-          page: 21,
+          page: 25,
           category: 'SANTE MENTALE & COMMUNAUTÉ',
           date: 'Édition Spéciale 2026',
           title: 'Zen Dans Ma Tête — Promotion de la Santé Mentale',
@@ -230,7 +230,7 @@ const translations = {
         },
         {
           id: 14,
-          page: 23,
+          page: 27,
           category: 'PHOTOGRAPHIE & ART',
           date: 'Édition Spéciale 2026',
           title: 'Randy Selection — Photographe Professionnel & Entrepreneur',
@@ -239,7 +239,7 @@ const translations = {
         },
         {
           id: 15,
-          page: 26,
+          page: 18,
           category: 'ENTREPRISE DE NETTOYAGE & ENTRETIEN',
           date: 'Édition Spéciale 2026',
           title: 'Val Nettoyage et Entretien — L\'Excellence du Service',
@@ -749,7 +749,7 @@ const translations = {
       ticker_label: '🔴 CENA DIGITAL NEWSROOM | SPECIAL EDITION 2026',
       ticker_text: 'DISCOVER THE LATEST NEWS AND INSPIRING PORTRAITS OF THE LUSOPHONE DIASPORA IN CANADA • READ THE FULL DIGITAL MAGAZINE ONLINE •',
       badge: '2026 DIGITAL EDITION',
-      title: 'CENA Magazine — Lusophone Excellence',
+      title: 'CENA Magazine Lusophone Excellence',
       subtitle: 'Explore the heart of the Angolan and Lusophone diaspora in Canada: leadership, culture, education, entrepreneurship, and impact stories.',
       read_online: 'Read Magazine Online',
       download_pdf: 'Download PDF',
@@ -771,7 +771,7 @@ const translations = {
       stories: [
         {
           id: 1,
-          page: 5,
+          page: 11,
           category: 'PRESIDENCY & LEADERSHIP',
           date: 'Special Edition 2026',
           title: 'Cristina Indira MANUEL — Founder & President CENA',
@@ -780,7 +780,7 @@ const translations = {
         },
         {
           id: 2,
-          page: 6,
+          page: 10,
           category: 'VICE-PRESIDENCY CENA',
           date: 'Special Edition 2026',
           title: 'Marileny F. ANTONIO — Vice-President CENA',
@@ -789,7 +789,7 @@ const translations = {
         },
         {
           id: 3,
-          page: 7,
+          page: 9,
           category: 'FINANCE & BOARD MEMBER',
           date: 'Special Edition 2026',
           title: 'Sebastião Matano Sala — Founder & Finance Director CENA',
@@ -801,13 +801,13 @@ const translations = {
           page: 8,
           category: 'HUMAN RESOURCES & COMMUNITY',
           date: 'Special Edition 2026',
-          title: 'Dulce Angelina FIGUEIREDO — Director of HR CENA',
+          title: 'Dulce Angelina FIGUEIRERED — Director of HR CENA',
           spoiler: '“I believe every person has a unique purpose. Trust in God, believe in yourself, and never give up on your dreams.”',
           imagePage: 8
         },
         {
           id: 5,
-          page: 9,
+          page: 7,
           category: 'YOUTH & INNOVATION',
           date: 'Special Edition 2026',
           title: 'Daniel Love Fernando ANTÓNIO — Director of Youth & Innovation CENA',
@@ -816,7 +816,7 @@ const translations = {
         },
         {
           id: 6,
-          page: 10,
+          page: 30,
           category: 'LEADERSHIP & COMMUNITY IMPACT',
           date: 'Special Edition 2026',
           title: 'Randy Larochelle — Vision & Excellence',
@@ -825,7 +825,7 @@ const translations = {
         },
         {
           id: 7,
-          page: 11,
+          page: 19,
           category: 'ENTREPRENEURSHIP & PATISSERIE',
           date: 'Special Edition 2026',
           title: 'Candor’s Cake — The Art of Celebrating Life',
@@ -834,7 +834,7 @@ const translations = {
         },
         {
           id: 8,
-          page: 13,
+          page: 15,
           category: 'COMMERCIAL FINANCING & REAL ESTATE',
           date: 'Special Edition 2026',
           title: 'Samara ARCHANGE, MBA — Co-Founder DGA Commercial',
@@ -843,7 +843,7 @@ const translations = {
         },
         {
           id: 9,
-          page: 15,
+          page: 13,
           category: 'REAL ESTATE & BUSINESS',
           date: 'Special Edition 2026',
           title: 'Magalie Sabine Jean-Louis — Residential Real Estate Broker',
@@ -852,7 +852,7 @@ const translations = {
         },
         {
           id: 10,
-          page: 16,
+          page: 14,
           category: 'WOMEN’S EMPOWERMENT',
           date: 'Special Edition 2026',
           title: 'Neccy LM — Personal Growth & Women’s Leadership',
@@ -861,7 +861,7 @@ const translations = {
         },
         {
           id: 11,
-          page: 17,
+          page: 32,
           category: 'MENSTRUAL HEALTH & EMPOWERMENT',
           date: 'Special Edition 2026',
           title: 'Association Menarca Muhatu — Dignity & Education',
@@ -870,7 +870,7 @@ const translations = {
         },
         {
           id: 12,
-          page: 19,
+          page: 21,
           category: 'BEAUTY & EMPOWERMENT',
           date: 'Special Edition 2026',
           title: 'Essential Micro Hair — Confidence & Natural Beauty',
@@ -879,7 +879,7 @@ const translations = {
         },
         {
           id: 13,
-          page: 21,
+          page: 25,
           category: 'MENTAL HEALTH & COMMUNITY',
           date: 'Special Edition 2026',
           title: 'Zen Dans Ma Tête — Mental Health Promotion',
@@ -888,7 +888,7 @@ const translations = {
         },
         {
           id: 14,
-          page: 23,
+          page: 27,
           category: 'PHOTOGRAPHY & ART',
           date: 'Special Edition 2026',
           title: 'Randy Selection — Professional Photographer & Entrepreneur',
@@ -1408,7 +1408,7 @@ const translations = {
       ticker_label: '🔴 JORNAL DIGITAL CENA | EDIÇÃO ESPECIAL 2026',
       ticker_text: 'DESCUBRA AS ÚLTIMAS NOTÍCIAS E RETRATOS INSPIRADORES DA DIÁSPORA LUSÓFONA NO CANADÁ • LEIA A REVISTA COMPLETA ONLINE •',
       badge: 'EDIÇÃO DIGITAL 2026',
-      title: 'CENA Magazine — A Excelência Lusófona',
+      title: 'CENA Magazine A Excelência Lusófona',
       subtitle: 'Mergulhe no coração da diáspora angolana e lusófona no Canadá: liderança, cultura, educação, empreendedorismo e histórias de impacto.',
       read_online: 'Ler Revista Digital',
       download_pdf: 'Descarregar PDF',
@@ -1430,7 +1430,7 @@ const translations = {
       stories: [
         {
           id: 1,
-          page: 5,
+          page: 11,
           category: 'PRESIDÊNCIA & LIDERANÇA',
           date: 'Edição Especial 2026',
           title: 'Cristina Indira MANUEL — Fundadora & Presidente CENA',
@@ -1439,7 +1439,7 @@ const translations = {
         },
         {
           id: 2,
-          page: 6,
+          page: 10,
           category: 'VICE-PRESIDÊNCIA CENA',
           date: 'Edição Especial 2026',
           title: 'Marileny F. ANTONIO — Vice-Presidente CENA',
@@ -1448,7 +1448,7 @@ const translations = {
         },
         {
           id: 3,
-          page: 7,
+          page: 9,
           category: 'FINANÇAS & CONSELHO CENA',
           date: 'Edição Especial 2026',
           title: 'Sebastião Matano Sala — Fundador & Diretor Financeiro',
@@ -1466,7 +1466,7 @@ const translations = {
         },
         {
           id: 5,
-          page: 9,
+          page: 7,
           category: 'JUVENTUDE & INOVAÇÃO',
           date: 'Edição Especial 2026',
           title: 'Daniel Love Fernando ANTÓNIO — Diretor Juventude & Inovação CENA',
@@ -1475,7 +1475,7 @@ const translations = {
         },
         {
           id: 6,
-          page: 10,
+          page: 30,
           category: 'LIDERANÇA & IMPACTO COMUNITÁRIO',
           date: 'Edição Especial 2026',
           title: 'Randy Larochelle — Visão & Compromisso',
@@ -1484,7 +1484,7 @@ const translations = {
         },
         {
           id: 7,
-          page: 11,
+          page: 19,
           category: 'EMPREENDEDORISMO & PASTERIA',
           date: 'Edição Especial 2026',
           title: 'Candor\'s Cake — A Arte de Celebrar a Vida',
@@ -1493,7 +1493,7 @@ const translations = {
         },
         {
           id: 8,
-          page: 13,
+          page: 15,
           category: 'FINANCIAMENTO COMERCIAL & IMOBILIÁRIO',
           date: 'Edição Especial 2026',
           title: 'Samara ARCHANGE, MBA — Co-Fundadora DGA Commercial',
@@ -1502,7 +1502,7 @@ const translations = {
         },
         {
           id: 9,
-          page: 15,
+          page: 13,
           category: 'IMOBILIÁRIO & NEGÓCIOS',
           date: 'Edição Especial 2026',
           title: 'Magalie Sabine Jean-Louis — Corretora Imobiliária Residencial',
@@ -1511,7 +1511,7 @@ const translations = {
         },
         {
           id: 10,
-          page: 16,
+          page: 14,
           category: 'LIDERANÇA FEMININA',
           date: 'Edição Especial 2026',
           title: 'Neccy LM — Plataforma de Crescimento & Liderança',
@@ -1520,7 +1520,7 @@ const translations = {
         },
         {
           id: 11,
-          page: 17,
+          page: 32,
           category: 'SAÚDE MENSTRUAL & EMPODERAMENTO',
           date: 'Edição Especial 2026',
           title: 'Associação Menarca Muhatu — Dignidade & Educação',
@@ -1529,7 +1529,7 @@ const translations = {
         },
         {
           id: 12,
-          page: 19,
+          page: 21,
           category: 'ESTÉTICA & EMPODERAMENTO',
           date: 'Edição Especial 2026',
           title: 'Essential Micro Hair — Confiança & Beleza Natural',
@@ -1538,7 +1538,7 @@ const translations = {
         },
         {
           id: 13,
-          page: 21,
+          page: 25,
           category: 'SAÚDE MENTAL & COMUNIDADE',
           date: 'Edição Especial 2026',
           title: 'Zen Dans Ma Tête — Promoção da Saúde Mental',
@@ -1547,7 +1547,7 @@ const translations = {
         },
         {
           id: 14,
-          page: 23,
+          page: 27,
           category: 'FOTOGRAFIA & ARTE',
           date: 'Edição Especial 2026',
           title: 'Randy Selection — Fotógrafo Profissional & Empreendedor',
@@ -1556,7 +1556,7 @@ const translations = {
         },
         {
           id: 15,
-          page: 26,
+          page: 18,
           category: 'SERVIÇOS DE LIMPEZA & MANUTENÇÃO',
           date: 'Edição Especial 2026',
           title: 'Val Nettoyage et Entretien — Excelência em Serviços',
