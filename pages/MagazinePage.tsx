@@ -268,8 +268,8 @@ export function MagazinePage() {
 
           <div className="flex items-center space-x-2">
             <ShareButton
-              title={`CENA Magazine 2026 — Page ${currentPage}`}
-              text={`Découvrez la page ${currentPage} de la Revue CENA Magazine 2026 (${activeLang.toUpperCase()})!`}
+              title={activeLang === 'fr' ? `Revue CENA 2026 — Page ${currentPage}` : activeLang === 'pt' ? `Revista CENA 2026 — Page ${currentPage}` : `CENA Magazine 2026 — Page ${currentPage}`}
+              text={activeLang === 'fr' ? `Découvrez la page ${currentPage} de la Revue CENA 2026 (${activeLang.toUpperCase()})!` : `Découvrez la page ${currentPage} de la CENA Magazine 2026 (${activeLang.toUpperCase()})!`}
               url={`/magazine?lang=${activeLang}&page=${currentPage}`}
               image={getMagazinePageSrc(currentPage, activeLang)}
               label={activeLang === 'fr' ? 'Partager' : activeLang === 'pt' ? 'Partilhar' : 'Share'}
@@ -517,7 +517,7 @@ export function MagazinePage() {
             <FileText className="w-5 h-5 text-[#C5A059] flex-shrink-0" />
             <div>
               <h3 className="font-serif font-bold text-xs sm:text-sm text-white uppercase tracking-wider">
-                CENA Magazine 2026 — {currentPdf.label}
+                {activeLang === 'fr' ? 'Revue CENA 2026' : activeLang === 'pt' ? 'Revista CENA 2026' : 'CENA Magazine 2026'} — {currentPdf.label}
               </h3>
               <p className="text-gray-400 text-[10px] sm:text-xs font-sans">
                 {activeLang === 'fr'

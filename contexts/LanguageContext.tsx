@@ -85,15 +85,15 @@ const translations = {
       blog: 'Blog',
       contact: 'Contact',
       gallery: 'Galerie',
-      magazine: 'Magazine'
+      magazine: 'Revue'
     },
     magazine: {
       ticker_label: '🔴 CENA JOURNAL DIGITAL | ÉDITION SPÉCIALE 2026',
       ticker_text: 'DÉCOUVREZ LES DERNIÈRES ACTUALITÉS ET PORTRAITS INSPIRANTS DE LA DIASPORA LUSOPHONE AU CANADA • FEUILLETEZ LA REVUE COMPLÈTE EN LIGNE •',
       badge: 'ÉDITION DIGITALE 2026',
-      title: 'CENA Magazine L\'Excellence Lusophone',
+      title: 'Revue CENA L\'Excellence Lusophone',
       subtitle: 'Plongez au cœur de la diaspora angolaise et lusophone au Canada : leadership, culture, éducation, entreprenariat et récits d\'impact.',
-      read_online: 'Feuilleter le Magazine',
+      read_online: 'Feuilleter la Revue',
       download_pdf: 'Télécharger le PDF',
       select_edition: 'Éditions PDF téléchargeables :',
       french_edition: 'Édition FR (PDF)',
@@ -105,9 +105,9 @@ const translations = {
       next_page: 'Suivant',
       page_indicator: 'Page {current} sur {total}',
       home_highlight_badge: 'PRESSE & ACTUALITÉS',
-      home_highlight_title: 'Les Grandes Unes du Magazine CENA',
-      home_highlight_desc: 'Explorez en avant-première nos grands reportages et analyses exclusifs. Cliquez sur n\'importe quelle actualité pour accéder directement à la page correspondante du magazine.',
-      explore_cta: 'Consulter le Magazine Complet',
+      home_highlight_title: 'Les Grandes Unes de la Revue CENA',
+      home_highlight_desc: 'Explorez en avant-première nos grands reportages et analyses exclusifs. Cliquez sur n\'importe quelle actualité pour accéder directement à la page correspondante de la revue.',
+      explore_cta: 'Consulter la Revue Complète',
       download_cta: 'Télécharger PDF (FR)',
       read_full_article: 'Lire (P. {page}) →',
       stories: [
