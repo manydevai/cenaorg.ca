@@ -355,7 +355,7 @@ export const ChristmasCampaignSection: React.FC = () => {
             <div className="flex items-center justify-between mb-5">
               <div>
                 <span className="text-[11px] uppercase font-bold tracking-widest text-[#8B0000] bg-red-50 px-2.5 py-0.5 rounded-md border border-red-100 inline-block mb-1">
-                  CENA Solidarité 2026
+                  {t('christmas_campaign.form_badge')}
                 </span>
                 <h3 className="text-xl sm:text-2xl font-serif font-bold text-gray-900">
                   {t('christmas_campaign.form_heading')}
