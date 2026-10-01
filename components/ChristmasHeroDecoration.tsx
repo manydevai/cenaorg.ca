@@ -467,7 +467,7 @@ export const ChristmasHeroDecoration: React.FC = () => {
     <>
       {/* ─── 1. UPPER HANGING STRANDS (Placed exactly like in the web version) ─── */}
       <div 
-        className="absolute top-0 right-1 sm:right-3 md:right-6 lg:right-8 xl:right-10 z-20 pointer-events-none select-none flex items-start space-x-1 sm:space-x-3 md:space-x-4 lg:space-x-5 xl:space-x-6 px-1 overflow-visible scale-[0.62] sm:scale-75 md:scale-90 lg:scale-100 origin-top-right"
+        className="absolute top-0 right-1 sm:right-3 md:right-6 lg:right-8 xl:right-10 z-20 pointer-events-none select-none flex items-start space-x-1 sm:space-x-3 md:space-x-4 lg:space-x-5 xl:space-x-6 px-1 overflow-visible scale-x-[0.66] scale-y-[0.80] sm:scale-75 md:scale-90 lg:scale-100 origin-top-right"
       >
         {/* ═════════════════════════════════════════════════════
             STRAND 1 — Left strand of cluster
@@ -582,7 +582,7 @@ export const ChristmasHeroDecoration: React.FC = () => {
           initial={{ y: -950, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ type: "spring", stiffness: 30, damping: 10, delay: 0.35 }}
-          className="hidden sm:flex flex-col items-center origin-top animate-subtle-sway-1"
+          className="flex flex-col items-center origin-top animate-subtle-sway-1"
           style={{ width: '48px' }}
         >
           <div className="w-[1.5px] bg-gradient-to-b from-amber-400 via-[#C5A059] to-amber-200 h-14 sm:h-20 lg:h-28 flex flex-col items-center justify-around">
