@@ -3,483 +3,443 @@ import React from 'react';
 /**
  * 🎄 ChristmasSectionDecor
  * 
- * Redesigned per user request:
- * 1. REMOVED the long horizontal green carpet/garland spanning across the top.
- * 2. DECORATES ONLY THE 4 CORNERS:
- *    - Top-Left & Top-Right: Inspired by the reference photo (pine wreath + red poinsettia flower
- *      with golden bell + cascading golden ribbons + cluster of glossy red Christmas baubles).
- *    - Bottom-Left & Bottom-Right: Subtle festive corner brackets with frosted pine sprigs,
- *      red poinsettia petals, and golden ribbons.
- * 3. KEEPS & ELEVATES:
- *    - Electric fairy light cables with glowing twinkling LED bulbs running across the top.
- *    - Suspendable 3D golden stars, crystalline snowflakes, and glossy red/gold balloons (baubles)
- *      suspended at staggered lengths and swaying gently.
- * 4. Zero visual pollution — all center headlines and campaign flyers remain 100% visible and unblocked.
+ * Handcrafted vector design inspired directly by the user's reference:
+ * - 4 CORNER ARRANGEMENTS: The handcrafted Christmas Wreath with:
+ *    • Evergreen pine wreath ring with frosted pine needles
+ *    • Grand red velvet bow with gold-trimmed borders and cascading gold ribbon tails
+ *    • Two cute plush skiing Santas (with red suits, fluffy wool beards, skis & ski poles)
+ *    • Gold and ruby glitter butterflies/stars around the wreath
+ *    • Golden strings with suspended cascading red and gold glitter baubles in the center opening
+ * - TOP FESTIVE LIGHTING:
+ *    • Electric fairy light cables with warm glowing, twinkling LED bulbs running across the top
+ *    • Suspendable 3D golden stars, crystalline snowflakes, and glossy red/gold baubles swaying gently
+ * - 100% responsive, zero visual clutter, all headlines and campaign flyers remain crisp and visible.
  */
 
-// ─── 1. 3D Bevelled Golden Star ───
-export const GoldenStar: React.FC<{ size?: number; className?: string }> = ({ size = 28, className = '' }) => (
-  <svg
-    width={size}
-    height={size}
-    viewBox="0 0 100 100"
-    className={`drop-shadow-[0_4px_12px_rgba(255,215,0,0.65)] select-none ${className}`}
-  >
-    <defs>
-      <linearGradient id="starFacetLight" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#FFFFFF" />
-        <stop offset="40%" stopColor="#FFE066" />
-        <stop offset="100%" stopColor="#D4AF37" />
-      </linearGradient>
-      <linearGradient id="starFacetDark" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#E5C158" />
-        <stop offset="50%" stopColor="#C49A33" />
-        <stop offset="100%" stopColor="#7A560C" />
-      </linearGradient>
-    </defs>
-    <g transform="translate(50, 50)">
-      {[0, 72, 144, 216, 288].map((angle, idx) => (
-        <g key={idx} transform={`rotate(${angle})`}>
-          <polygon points="0,-48 0,0 -14,-14" fill="url(#starFacetLight)" />
-          <polygon points="0,-48 14,-14 0,0" fill="url(#starFacetDark)" />
-        </g>
-      ))}
-      <circle cx="0" cy="0" r="4.5" fill="#FFFFFF" opacity="0.9" />
-    </g>
-  </svg>
-);
-
-// ─── 2. Hanging 3D Star Suspended on Gold Cord ───
-export const HangingStar: React.FC<{
-  size?: number;
-  cordLength?: number;
+// ─── 1. Cute Plush Skiing Santa Claus (Vector Illustration) ───
+export const SkiingSantaFigure: React.FC<{
+  facing?: 'left' | 'right';
   className?: string;
-  delay?: number;
-}> = ({ size = 28, cordLength = 55, className = '', delay = 0 }) => (
-  <div
-    className={`flex flex-col items-center pointer-events-none ${className}`}
-    style={{
-      animation: `sway-ornament 5.4s ease-in-out infinite alternate`,
-      animationDelay: `${delay}s`,
-      transformOrigin: 'top center'
-    }}
-  >
-    <div
-      style={{ height: `${cordLength}px`, width: '1px' }}
-      className="bg-gradient-to-b from-[#FFF2A8] via-[#D4AF37] to-[#8C6D15]"
-    />
-    <GoldenStar size={size} className="-mt-1" />
-  </div>
-);
-
-// ─── 3. Hanging 3D Metallic Christmas Bauble (Balloon / Esfera) ───
-export const HangingBauble: React.FC<{
-  type?: 'red' | 'gold';
   size?: number;
-  cordLength?: number;
-  cordType?: 'gold' | 'red';
-  className?: string;
-  delay?: number;
-  id?: string;
-}> = ({
-  type = 'red',
-  size = 30,
-  cordLength = 65,
-  cordType = 'gold',
-  className = '',
-  delay = 0,
-  id = '1'
-}) => {
-  const isRed = type === 'red';
-  const redSphereId = `redSphere-${id}`;
-  const goldSphereId = `goldSphere-${id}`;
-  const capId = `baubleCap-${id}`;
-  const glintId = `baubleGlint-${id}`;
+}> = ({ facing = 'right', className = '', size = 52 }) => {
+  const isLeft = facing === 'left';
 
   return (
-    <div
-      className={`flex flex-col items-center pointer-events-none transition-transform duration-700 ${className}`}
-      style={{
-        animation: `sway-ornament ${4.6 + (parseInt(id.replace(/\D/g, '') || '1', 10) % 3) * 0.8}s ease-in-out infinite alternate`,
-        animationDelay: `${delay}s`,
-        transformOrigin: 'top center'
-      }}
+    <svg
+      width={size}
+      height={size * 1.15}
+      viewBox="0 0 80 92"
+      className={`drop-shadow-[0_5px_10px_rgba(0,0,0,0.6)] select-none ${className}`}
+      style={{ transform: isLeft ? 'scaleX(-1)' : 'none' }}
     >
-      {/* Hanging Cord */}
-      <div
-        style={{ height: `${cordLength}px`, width: cordType === 'red' ? '2px' : '1px' }}
-        className={
-          cordType === 'red'
-            ? 'bg-gradient-to-b from-[#8B0000] via-[#C8102E] to-[#A00014]'
-            : 'bg-gradient-to-b from-[#FFF2A8] via-[#D4AF37] to-[#8C6D15]'
-        }
-      />
+      <defs>
+        {/* Red Suit Gradient */}
+        <linearGradient id="santaRedSuit" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stopColor="#E51926" />
+          <stop offset="60%" stopColor="#BA0C17" />
+          <stop offset="100%" stopColor="#7A0008" />
+        </linearGradient>
 
-      {/* 3D Realistic Bauble SVG */}
-      <svg
-        width={size}
-        height={size * 1.25}
-        viewBox="0 0 40 50"
-        className="drop-shadow-[0_8px_16px_rgba(0,0,0,0.65)] -mt-0.5"
-      >
-        <defs>
-          <linearGradient id={capId} x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor="#7A560C" />
-            <stop offset="25%" stopColor="#FFF2A8" />
-            <stop offset="50%" stopColor="#E5C158" />
-            <stop offset="75%" stopColor="#C49A33" />
-            <stop offset="100%" stopColor="#634505" />
-          </linearGradient>
+        {/* Fluffy Wool / Fur Texture */}
+        <linearGradient id="fluffyWool" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stopColor="#FFFFFF" />
+          <stop offset="80%" stopColor="#F0F0F0" />
+          <stop offset="100%" stopColor="#D9D9D9" />
+        </linearGradient>
 
-          <radialGradient id={redSphereId} cx="32%" cy="28%" r="68%">
-            <stop offset="0%" stopColor="#FFA6AD" />
-            <stop offset="14%" stopColor="#FF3847" />
-            <stop offset="46%" stopColor="#C8102E" />
-            <stop offset="78%" stopColor="#7A000A" />
-            <stop offset="100%" stopColor="#2E0004" />
-          </radialGradient>
+        {/* Wood Skis */}
+        <linearGradient id="skiWood" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="#DEBA88" />
+          <stop offset="50%" stopColor="#C49B66" />
+          <stop offset="100%" stopColor="#8C6230" />
+        </linearGradient>
+      </defs>
 
-          <radialGradient id={goldSphereId} cx="32%" cy="28%" r="68%">
-            <stop offset="0%" stopColor="#FFFFFF" />
-            <stop offset="15%" stopColor="#FFF2B2" />
-            <stop offset="48%" stopColor="#E5C158" />
-            <stop offset="80%" stopColor="#9C731A" />
-            <stop offset="100%" stopColor="#4A3403" />
-          </radialGradient>
+      {/* Skis (Angled downhill glide) */}
+      <g transform="translate(14, 76) rotate(-14)">
+        {/* Left Ski */}
+        <rect x="0" y="2" width="56" height="4" rx="2" fill="url(#skiWood)" stroke="#5E3F17" strokeWidth="0.6" />
+        <path d="M 52,2 Q 58,0 60,-4" stroke="#5E3F17" strokeWidth="1.2" fill="none" />
+        {/* Right Ski */}
+        <rect x="6" y="8" width="56" height="4" rx="2" fill="url(#skiWood)" stroke="#5E3F17" strokeWidth="0.6" />
+        <path d="M 58,8 Q 64,6 66,2" stroke="#5E3F17" strokeWidth="1.2" fill="none" />
+      </g>
 
-          <radialGradient id={glintId} cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.9" />
-            <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0" />
-          </radialGradient>
-        </defs>
+      {/* Ski Poles (Metal shaft + gold grip + basket) */}
+      <line x1="28" y1="46" x2="18" y2="82" stroke="#C5A059" strokeWidth="1.6" strokeLinecap="round" />
+      <circle cx="20" cy="76" r="3.5" fill="none" stroke="#FFFFFF" strokeWidth="1" />
+      
+      <line x1="50" y1="46" x2="62" y2="82" stroke="#C5A059" strokeWidth="1.6" strokeLinecap="round" />
+      <circle cx="60" cy="76" r="3.5" fill="none" stroke="#FFFFFF" strokeWidth="1" />
 
-        {/* Hanging Ring */}
-        <circle cx="20" cy="4.5" r="3" fill="none" stroke={`url(#${capId})`} strokeWidth="1.2" />
+      {/* Legs with Red Pants and White Fur Boot Trim */}
+      <g>
+        {/* Back Leg */}
+        <path d="M 28,52 L 24,70 L 32,71 L 36,54 Z" fill="url(#santaRedSuit)" />
+        <rect x="21" y="68" width="13" height="4.5" rx="2" fill="url(#fluffyWool)" />
+        <ellipse cx="27" cy="73" rx="5" ry="3" fill="#2B2B2B" />
 
-        {/* Ornate Gold Cap */}
-        <path d="M 15,6 L 25,6 L 24,11 L 16,11 Z" fill={`url(#${capId})`} />
-        <line x1="17.5" y1="6" x2="17.5" y2="11" stroke="#573D05" strokeWidth="0.5" />
-        <line x1="20" y1="6" x2="20" y2="11" stroke="#573D05" strokeWidth="0.5" />
-        <line x1="22.5" y1="6" x2="22.5" y2="11" stroke="#573D05" strokeWidth="0.5" />
+        {/* Front Leg */}
+        <path d="M 44,52 L 48,70 L 56,70 L 51,52 Z" fill="url(#santaRedSuit)" />
+        <rect x="46" y="68" width="13" height="4.5" rx="2" fill="url(#fluffyWool)" />
+        <ellipse cx="53" cy="73" rx="5" ry="3" fill="#2B2B2B" />
+      </g>
 
-        {/* 3D Sphere */}
-        <circle cx="20" cy="29" r="19" fill={isRed ? `url(#${redSphereId})` : `url(#${goldSphereId})`} />
+      {/* Body: Red Coat with White Fur Trim & Black Belt */}
+      <path d="M 24,34 Q 38,32 52,34 L 54,54 Q 38,58 22,54 Z" fill="url(#santaRedSuit)" />
+      {/* Black Belt + Golden Buckle */}
+      <rect x="23" y="44" width="30" height="4.5" rx="1" fill="#1C1C1C" />
+      <rect x="35" y="43" width="7" height="6.5" rx="1" fill="none" stroke="#FFD54F" strokeWidth="1.2" />
 
-        {/* Specular Glint */}
-        <ellipse cx="14" cy="20" rx="4.5" ry="2.5" fill={`url(#${glintId})`} transform="rotate(-30 14 20)" />
-      </svg>
-    </div>
+      {/* Arms holding poles */}
+      <path d="M 24,36 Q 18,44 26,48" stroke="#BA0C17" strokeWidth="6.5" strokeLinecap="round" fill="none" />
+      <circle cx="26" cy="48" r="3.5" fill="url(#fluffyWool)" />
+      
+      <path d="M 50,36 Q 58,44 52,48" stroke="#BA0C17" strokeWidth="6.5" strokeLinecap="round" fill="none" />
+      <circle cx="52" cy="48" r="3.5" fill="url(#fluffyWool)" />
+
+      {/* Head & Face */}
+      <circle cx="38" cy="24" r="11" fill="#FFDFC4" />
+      {/* Rosy Cheeks */}
+      <circle cx="32" cy="25" r="3" fill="#FF8A80" opacity="0.65" />
+      <circle cx="44" cy="25" r="3" fill="#FF8A80" opacity="0.65" />
+      {/* Cute Eyes */}
+      <circle cx="34" cy="22" r="1.4" fill="#121212" />
+      <circle cx="42" cy="22" r="1.4" fill="#121212" />
+      <circle cx="33.5" cy="21.5" r="0.5" fill="#FFFFFF" />
+      <circle cx="41.5" cy="21.5" r="0.5" fill="#FFFFFF" />
+      {/* Nose */}
+      <circle cx="38" cy="24" r="2.2" fill="#FFAB91" />
+
+      {/* Fluffy Wool Beard (Layered puffs) */}
+      <g fill="url(#fluffyWool)">
+        <circle cx="30" cy="30" r="5" />
+        <circle cx="38" cy="32" r="6" />
+        <circle cx="46" cy="30" r="5" />
+        <circle cx="34" cy="37" r="5.5" />
+        <circle cx="42" cy="37" r="5.5" />
+        <circle cx="38" cy="43" r="5" />
+        {/* Soft Mustache */}
+        <path d="M 38,26 Q 32,25 28,29 Q 34,31 38,28 Q 42,31 48,29 Q 44,25 38,26 Z" fill="#FFFFFF" />
+      </g>
+
+      {/* Santa Hat */}
+      <g>
+        {/* White Fur Brim */}
+        <rect x="25" y="14" width="26" height="5.5" rx="2.5" fill="url(#fluffyWool)" />
+        {/* Red Cone pointing backwards */}
+        <path d="M 27,15 Q 38,3 54,9 Q 58,16 54,20" fill="url(#santaRedSuit)" />
+        {/* White Pom-pom */}
+        <circle cx="56" cy="20" r="4" fill="url(#fluffyWool)" />
+      </g>
+    </svg>
   );
 };
 
-// ─── 4. Hanging Crystal Snowflake ───
-export const HangingSnowflake: React.FC<{
+// ─── 2. Glitter Filigree Butterfly (Gold or Ruby Red) ───
+export const GlitterButterfly: React.FC<{
+  color?: 'gold' | 'red';
   size?: number;
-  cordLength?: number;
-  className?: string;
-  delay?: number;
-}> = ({ size = 30, cordLength = 65, className = '', delay = 0 }) => (
-  <div
-    className={`flex flex-col items-center pointer-events-none ${className}`}
-    style={{
-      animation: `sway-ornament 5.2s ease-in-out infinite alternate`,
-      animationDelay: `${delay}s`,
-      transformOrigin: 'top center'
-    }}
-  >
-    <div
-      style={{ height: `${cordLength}px`, width: '1px' }}
-      className="bg-gradient-to-b from-[#FFF2A8] via-[#D4AF37] to-[#8C6D15]"
-    />
+  rotation?: number;
+}> = ({ color = 'gold', size = 26, rotation = 0 }) => {
+  const isGold = color === 'gold';
+  const mainColor = isGold ? '#F5D061' : '#FF3847';
+  const shadowColor = isGold ? 'rgba(212,175,55,0.7)' : 'rgba(229,57,53,0.7)';
+
+  return (
     <svg
       width={size}
       height={size}
       viewBox="0 0 50 50"
-      fill="none"
-      className="text-[#F3D375] drop-shadow-[0_4px_10px_rgba(212,175,55,0.65)] -mt-1"
+      className="drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)] select-none"
+      style={{ transform: `rotate(${rotation}deg)` }}
     >
-      <g transform="translate(25, 25)" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round">
-        <circle cx="0" cy="0" r="2.2" fill="currentColor" />
-        {[0, 60, 120, 180, 240, 300].map((angle, idx) => (
-          <g key={idx} transform={`rotate(${angle})`}>
-            <line x1="0" y1="0" x2="0" y2="-22" />
-            <line x1="0" y1="-8" x2="-4" y2="-12" />
-            <line x1="0" y1="-8" x2="4" y2="-12" />
-            <line x1="0" y1="-15" x2="-5" y2="-19" />
-            <line x1="0" y1="-15" x2="5" y2="-19" />
-            <polygon points="0,-22 -2.5,-19 0,-16 2.5,-19" fill="currentColor" stroke="none" />
-          </g>
-        ))}
-      </g>
-    </svg>
-  </div>
-);
-
-// ─── 5. Velvet Red Poinsettia Blossom (Used on Corner Arrangements) ───
-export const PoinsettiaFlower: React.FC<{ size?: number; className?: string; rotation?: number }> = ({
-  size = 56,
-  className = '',
-  rotation = 0
-}) => (
-  <svg
-    width={size}
-    height={size}
-    viewBox="0 0 100 100"
-    className={`drop-shadow-[0_6px_14px_rgba(0,0,0,0.6)] pointer-events-none select-none ${className}`}
-    style={{ transform: `rotate(${rotation}deg)` }}
-  >
-    <defs>
-      <linearGradient id="poinsettiaDarkGrad" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stopColor="#B30018" />
-        <stop offset="100%" stopColor="#5E000B" />
-      </linearGradient>
-      <linearGradient id="poinsettiaBrightGrad" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stopColor="#E60021" />
-        <stop offset="100%" stopColor="#8A0010" />
-      </linearGradient>
-      <radialGradient id="poinsettiaCenterGrad" cx="40%" cy="40%" r="60%">
-        <stop offset="0%" stopColor="#FFF275" />
-        <stop offset="60%" stopColor="#E5A600" />
-        <stop offset="100%" stopColor="#8C5800" />
-      </radialGradient>
-    </defs>
-    <g transform="translate(50, 50)">
-      {/* Outer 8 Velvet Petals */}
-      {[0, 45, 90, 135, 180, 225, 270, 315].map((angle, idx) => (
-        <path
-          key={`out-${idx}`}
-          d="M 0,0 C -12,-20 -8,-38 0,-46 C 8,-38 12,-20 0,0"
-          fill="url(#poinsettiaDarkGrad)"
-          transform={`rotate(${angle})`}
-        />
-      ))}
-      {/* Inner 8 Bright Petals */}
-      {[22.5, 67.5, 112.5, 157.5, 202.5, 247.5, 292.5, 337.5].map((angle, idx) => (
-        <path
-          key={`in-${idx}`}
-          d="M 0,0 C -9,-15 -6,-28 0,-34 C 6,-28 9,-15 0,0"
-          fill="url(#poinsettiaBrightGrad)"
-          transform={`rotate(${angle})`}
-        />
-      ))}
-      {/* Center Golden Stamens */}
-      <circle cx="0" cy="0" r="3.2" fill="url(#poinsettiaCenterGrad)" />
-      <circle cx="-4" cy="-3" r="2.2" fill="url(#poinsettiaCenterGrad)" />
-      <circle cx="4" cy="-3" r="2.2" fill="url(#poinsettiaCenterGrad)" />
-      <circle cx="-3" cy="4" r="2.2" fill="url(#poinsettiaCenterGrad)" />
-      <circle cx="3" cy="4" r="2.2" fill="url(#poinsettiaCenterGrad)" />
-    </g>
-  </svg>
-);
-
-// ─── 6. Realistic Red Bauble for the Corner Cluster (from Reference Image) ───
-const ClusterBauble: React.FC<{ size?: number; id: string }> = ({ size = 32, id }) => {
-  const sphereId = `clusterSphere-${id}`;
-  const capId = `clusterCap-${id}`;
-  const glintId = `clusterGlint-${id}`;
-
-  return (
-    <svg width={size} height={size * 1.2} viewBox="0 0 40 48" className="drop-shadow-[0_6px_14px_rgba(0,0,0,0.7)] select-none">
       <defs>
-        <linearGradient id={capId} x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stopColor="#7A560C" />
-          <stop offset="35%" stopColor="#FFF2A8" />
-          <stop offset="70%" stopColor="#E5C158" />
-          <stop offset="100%" stopColor="#634505" />
-        </linearGradient>
-        <radialGradient id={sphereId} cx="34%" cy="28%" r="68%">
-          <stop offset="0%" stopColor="#FF9EA5" />
-          <stop offset="16%" stopColor="#FF2E3E" />
-          <stop offset="48%" stopColor="#C40D1D" />
-          <stop offset="82%" stopColor="#7A000A" />
-          <stop offset="100%" stopColor="#2E0004" />
-        </radialGradient>
-        <radialGradient id={glintId} cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.9" />
-          <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0" />
+        <radialGradient id={`bfGlow-${color}`} cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.8" />
+          <stop offset="100%" stopColor={mainColor} stopOpacity="0" />
         </radialGradient>
       </defs>
-      <circle cx="20" cy="4.5" r="3" fill="none" stroke={`url(#${capId})`} strokeWidth="1.2" />
-      <path d="M 15,6 L 25,6 L 24,10 L 16,10 Z" fill={`url(#${capId})`} />
-      <circle cx="20" cy="27" r="18" fill={`url(#${sphereId})`} />
-      <ellipse cx="14" cy="19" rx="4" ry="2.2" fill={`url(#${glintId})`} transform="rotate(-30 14 19)" />
+      <g transform="translate(25, 25)" stroke={mainColor} strokeWidth="1.2" fill={mainColor} fillOpacity="0.2">
+        {/* Upper Wings */}
+        <path d="M 0,-2 C -10,-18 -22,-14 -18,-2 C -14,2 -4,0 0,-2 Z" />
+        <path d="M 0,-2 C 10,-18 22,-14 18,-2 C 14,2 4,0 0,-2 Z" />
+        {/* Lower Wings */}
+        <path d="M 0,2 C -12,10 -16,18 -8,18 C -2,16 -1,6 0,2 Z" />
+        <path d="M 0,2 C 12,10 16,18 8,18 C 2,16 1,6 0,2 Z" />
+        {/* Body and Antennae */}
+        <line x1="0" y1="-6" x2="0" y2="12" stroke={mainColor} strokeWidth="2" strokeLinecap="round" />
+        <path d="M 0,-6 Q -5,-12 -8,-10" stroke={mainColor} strokeWidth="0.8" fill="none" />
+        <path d="M 0,-6 Q 5,-12 8,-10" stroke={mainColor} strokeWidth="0.8" fill="none" />
+      </g>
     </svg>
   );
 };
 
-// ─── 7. Corner Cascading Ornament Cluster (Directly inspired by Reference Photo 1) ───
-export const CornerOrnamentCluster: React.FC<{
-  position?: 'top-left' | 'top-right';
+// ─── 3. Grand Red Velvet & Gold Ribbon Bow ───
+export const VelvetGoldBow: React.FC<{ size?: number }> = ({ size = 96 }) => (
+  <svg
+    width={size}
+    height={size * 0.75}
+    viewBox="0 0 140 105"
+    className="drop-shadow-[0_8px_16px_rgba(0,0,0,0.65)] select-none"
+  >
+    <defs>
+      {/* Red Velvet Bow Gradient */}
+      <linearGradient id="bowVelvet" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stopColor="#D91424" />
+        <stop offset="50%" stopColor="#A80D18" />
+        <stop offset="100%" stopColor="#5E0008" />
+      </linearGradient>
+
+      {/* Gold Trim & Lattice Pattern */}
+      <linearGradient id="bowGoldTrim" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#FFF2A8" />
+        <stop offset="40%" stopColor="#E5C158" />
+        <stop offset="100%" stopColor="#8C6D15" />
+      </linearGradient>
+    </defs>
+
+    {/* Back Velvet Loops */}
+    <g fill="url(#bowVelvet)" stroke="url(#bowGoldTrim)" strokeWidth="1.6">
+      {/* Left Large Loop */}
+      <path d="M 70,36 C 42,6 12,24 38,54 C 54,64 66,46 70,36 Z" />
+      {/* Right Large Loop */}
+      <path d="M 70,36 C 98,6 128,24 102,54 C 86,64 74,46 70,36 Z" />
+    </g>
+
+    {/* Gold Lattice Striping on Loops */}
+    <g stroke="url(#bowGoldTrim)" strokeWidth="1.2" opacity="0.85">
+      <line x1="30" y1="26" x2="52" y2="48" />
+      <line x1="42" y1="20" x2="62" y2="42" />
+      <line x1="110" y1="26" x2="88" y2="48" />
+      <line x1="98" y1="20" x2="78" y2="42" />
+    </g>
+
+    {/* Cascading Ribbon Tails with Gold Trim */}
+    <g fill="url(#bowVelvet)" stroke="url(#bowGoldTrim)" strokeWidth="1.4">
+      {/* Left Tail */}
+      <path d="M 64,44 L 40,96 L 50,88 L 60,94 L 68,44 Z" />
+      {/* Right Tail */}
+      <path d="M 76,44 L 100,96 L 90,88 L 80,94 L 72,44 Z" />
+    </g>
+
+    {/* Shimmering Center Gold Streamers */}
+    <path
+      d="M 67,42 Q 62,68 64,88 L 68,88 Q 69,68 71,42 Z"
+      fill="url(#bowGoldTrim)"
+      opacity="0.9"
+    />
+    <path
+      d="M 73,42 Q 78,68 76,88 L 72,88 Q 71,68 69,42 Z"
+      fill="url(#bowGoldTrim)"
+      opacity="0.9"
+    />
+
+    {/* Center Knot with Gold Crisscross Band */}
+    <ellipse cx="70" cy="38" rx="10" ry="8" fill="url(#bowVelvet)" stroke="url(#bowGoldTrim)" strokeWidth="2" />
+    <line x1="64" y1="34" x2="76" y2="42" stroke="url(#bowGoldTrim)" strokeWidth="1.4" />
+    <line x1="64" y1="42" x2="76" y2="34" stroke="url(#bowGoldTrim)" strokeWidth="1.4" />
+  </svg>
+);
+
+// ─── 4. Glitter Texture Sphere (Gold or Red Sequined Bauble) ───
+export const GlitterSphere: React.FC<{
+  type?: 'gold' | 'red';
+  size?: number;
+  id: string;
+}> = ({ type = 'gold', size = 32, id }) => {
+  const isGold = type === 'gold';
+  const sphereId = `glitterSph-${id}`;
+  const capId = `glitterCap-${id}`;
+
+  return (
+    <svg width={size} height={size * 1.22} viewBox="0 0 40 48" className="drop-shadow-[0_6px_14px_rgba(0,0,0,0.65)] select-none">
+      <defs>
+        <linearGradient id={capId} x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stopColor="#7A560C" />
+          <stop offset="30%" stopColor="#FFF2A8" />
+          <stop offset="70%" stopColor="#E5C158" />
+          <stop offset="100%" stopColor="#634505" />
+        </linearGradient>
+
+        {isGold ? (
+          <radialGradient id={sphereId} cx="34%" cy="28%" r="68%">
+            <stop offset="0%" stopColor="#FFFFFF" />
+            <stop offset="20%" stopColor="#FFE066" />
+            <stop offset="55%" stopColor="#D4AF37" />
+            <stop offset="85%" stopColor="#8C6812" />
+            <stop offset="100%" stopColor="#4A3403" />
+          </radialGradient>
+        ) : (
+          <radialGradient id={sphereId} cx="34%" cy="28%" r="68%">
+            <stop offset="0%" stopColor="#FF9AA2" />
+            <stop offset="18%" stopColor="#FF2E3E" />
+            <stop offset="52%" stopColor="#C40D1D" />
+            <stop offset="85%" stopColor="#7A000A" />
+            <stop offset="100%" stopColor="#2E0004" />
+          </radialGradient>
+        )}
+
+        {/* Sequined / Glitter Texture Pattern */}
+        <pattern id={`sequin-${id}`} width="4" height="4" patternUnits="userSpaceOnUse">
+          <circle cx="2" cy="2" r="1.1" fill={isGold ? '#FFF9C4' : '#FFCDD2'} opacity="0.65" />
+        </pattern>
+      </defs>
+
+      {/* Hanging Ring & Cap */}
+      <circle cx="20" cy="4.5" r="3" fill="none" stroke={`url(#${capId})`} strokeWidth="1.2" />
+      <path d="M 15,6 L 25,6 L 24,10 L 16,10 Z" fill={`url(#${capId})`} />
+
+      {/* Sphere Body with Radial Light */}
+      <circle cx="20" cy="27" r="18" fill={`url(#${sphereId})`} />
+      {/* Sequined Glitter Overlay */}
+      <circle cx="20" cy="27" r="18" fill={`url(#sequin-${id})`} />
+
+      {/* Specular Glint */}
+      <ellipse cx="14" cy="19" rx="4" ry="2.2" fill="#FFFFFF" opacity="0.8" transform="rotate(-30 14 19)" />
+    </svg>
+  );
+};
+
+// ─── 5. THE COMPLETE CORNER WREATH (Exact match to Reference Photo) ───
+export const SantaSkiingWreath: React.FC<{
+  position?: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
   className?: string;
 }> = ({ position = 'top-left', className = '' }) => {
-  const isRight = position === 'top-right';
+  const isRight = position.includes('right');
+  const isBottom = position.includes('bottom');
 
   return (
     <div
-      className={`absolute z-30 pointer-events-none select-none ${
-        isRight ? '-top-2 -right-1 sm:right-2' : '-top-2 -left-1 sm:left-2'
+      className={`absolute z-30 pointer-events-none select-none transition-transform duration-700 ${
+        isBottom ? 'bottom-0' : '-top-3'
+      } ${
+        isRight ? '-right-2 sm:right-2 lg:right-4' : '-left-2 sm:left-2 lg:left-4'
       } ${className}`}
     >
-      <div className="relative flex flex-col items-center">
-        {/* Pine Wreath / Ring with Needles & Frost */}
-        <div className="relative w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center">
-          <svg width="100%" height="100%" viewBox="0 0 100 100" className="drop-shadow-[0_6px_14px_rgba(0,0,0,0.65)]">
+      <div className="relative flex flex-col items-center w-36 sm:w-44 md:w-48">
+        
+        {/* 1. LUSH EVERGREEN PINE WREATH RING */}
+        <div className="relative w-32 h-32 sm:w-40 sm:h-40 flex items-center justify-center">
+          <svg width="100%" height="100%" viewBox="0 0 160 160" className="drop-shadow-[0_10px_20px_rgba(0,0,0,0.7)]">
             <defs>
-              <linearGradient id={`wreathGrad-${position}`} x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stopColor="#0B2412" />
-                <stop offset="50%" stopColor="#1B4D25" />
-                <stop offset="100%" stopColor="#2D6B3C" />
+              <linearGradient id={`wreathPineGrad-${position}`} x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stopColor="#0B2612" />
+                <stop offset="45%" stopColor="#1B4D25" />
+                <stop offset="80%" stopColor="#2A6635" />
+                <stop offset="100%" stopColor="#0D2D15" />
               </linearGradient>
             </defs>
-            <circle cx="50" cy="50" r="30" stroke={`url(#wreathGrad-${position})`} strokeWidth="22" fill="none" strokeDasharray="6 3" />
-            {Array.from({ length: 20 }).map((_, i) => {
-              const angle = (i * 360) / 20;
+
+            {/* Dense Pine Ring Arc */}
+            <circle
+              cx="80"
+              cy="80"
+              r="52"
+              stroke={`url(#wreathPineGrad-${position})`}
+              strokeWidth="42"
+              fill="none"
+              strokeDasharray="8 4"
+            />
+
+            {/* Natural Pine Needle Clusters around the ring */}
+            {Array.from({ length: 36 }).map((_, i) => {
+              const angle = (i * 360) / 36;
               const rad = (angle * Math.PI) / 180;
-              const x = 50 + Math.cos(rad) * 30;
-              const y = 50 + Math.sin(rad) * 30;
+              const x = 80 + Math.cos(rad) * 52;
+              const y = 80 + Math.sin(rad) * 52;
               return (
-                <g key={i} transform={`translate(${x}, ${y}) rotate(${angle + 40})`}>
-                  <line x1="-5" y1="0" x2="11" y2="0" stroke="#2D6A3B" strokeWidth="2" strokeLinecap="round" />
-                  <line x1="-3" y1="2" x2="8" y2="2" stroke="#A3D9B1" strokeWidth="0.9" opacity="0.6" strokeLinecap="round" />
+                <g key={i} transform={`translate(${x}, ${y}) rotate(${angle + 45})`}>
+                  {/* Dark pine needles */}
+                  <line x1="-8" y1="0" x2="16" y2="0" stroke="#1F4D27" strokeWidth="2.4" strokeLinecap="round" />
+                  <line x1="-6" y1="-4" x2="14" y2="4" stroke="#2D6A3B" strokeWidth="2" strokeLinecap="round" />
+                  {/* Frosted snowy tips */}
+                  <line x1="-3" y1="3" x2="12" y2="-3" stroke="#A7D8B6" strokeWidth="1.2" opacity="0.65" strokeLinecap="round" />
                 </g>
               );
             })}
           </svg>
 
-          {/* Velvet Red Poinsettia Flower crowned on top of wreath with small gold bell */}
-          <div className="absolute inset-0 flex items-center justify-center">
-            <PoinsettiaFlower size={52} rotation={isRight ? -12 : 12} />
-            <div className="absolute w-3.5 h-3.5 rounded-full bg-gradient-to-br from-[#FFF59D] via-[#D4AF37] to-[#8C6D15] shadow-md border border-amber-200 flex items-center justify-center">
-              <div className="w-1 h-1 rounded-full bg-[#573D05]" />
-            </div>
+          {/* 2. GRAND RED VELVET BOW AT TOP CENTER */}
+          <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-30">
+            <VelvetGoldBow size={84} />
           </div>
+
+          {/* 3. TWO CUTE SKIING SANTAS ON THE SIDES */}
+          {/* Left Skiing Santa */}
+          <div className="absolute left-0 top-1/2 -translate-y-1/2 -ml-2 z-20">
+            <SkiingSantaFigure facing="right" size={44} />
+          </div>
+          {/* Right Skiing Santa */}
+          <div className="absolute right-0 top-1/2 -translate-y-1/2 -mr-2 z-20">
+            <SkiingSantaFigure facing="left" size={44} />
+          </div>
+
+          {/* 4. GLITTER BUTTERFLIES NESTLED ON WREATH */}
+          <div className="absolute top-8 left-4 z-15">
+            <GlitterButterfly color="gold" size={24} rotation={-20} />
+          </div>
+          <div className="absolute top-8 right-4 z-15">
+            <GlitterButterfly color="red" size={24} rotation={25} />
+          </div>
+          <div className="absolute bottom-6 left-6 z-15">
+            <GlitterButterfly color="red" size={22} rotation={15} />
+          </div>
+          <div className="absolute bottom-6 right-6 z-15">
+            <GlitterButterfly color="gold" size={22} rotation={-15} />
+          </div>
+
+          {/* 5. CASCADING GLITTER BAUBLES IN THE CENTER HOLE */}
+          {/* Suspended on golden threads cascading downwards */}
+          <div className="absolute inset-0 flex justify-center items-start pt-14 pointer-events-none">
+            
+            {/* Strand 1: Higher Gold Sphere */}
+            <div className="absolute top-14 left-1/2 -translate-x-1/2 -ml-4 flex flex-col items-center animate-sway-ornament" style={{ animationDuration: '4.8s' }}>
+              <div className="w-[1px] h-6 bg-gradient-to-b from-[#FFE066] to-[#D4AF37]" />
+              <GlitterSphere type="gold" size={26} id={`${position}-c1`} />
+            </div>
+
+            {/* Strand 2: Mid Left Red Sphere */}
+            <div className="absolute top-14 left-1/2 -translate-x-1/2 -ml-8 flex flex-col items-center animate-sway-ornament" style={{ animationDuration: '5.2s', animationDelay: '0.4s' }}>
+              <div className="w-[1px] h-14 bg-gradient-to-b from-[#FFE066] to-[#D4AF37]" />
+              <GlitterSphere type="red" size={24} id={`${position}-c2`} />
+            </div>
+
+            {/* Strand 3: Mid Right Gold Sphere */}
+            <div className="absolute top-14 left-1/2 -translate-x-1/2 ml-5 flex flex-col items-center animate-sway-ornament" style={{ animationDuration: '4.4s', animationDelay: '0.8s' }}>
+              <div className="w-[1px] h-18 bg-gradient-to-b from-[#FFE066] to-[#D4AF37]" />
+              <GlitterSphere type="gold" size={26} id={`${position}-c3`} />
+            </div>
+
+            {/* Strand 4: Lower Center Gold Sphere */}
+            <div className="absolute top-14 left-1/2 -translate-x-1/2 -ml-2 flex flex-col items-center animate-sway-ornament" style={{ animationDuration: '5.6s', animationDelay: '1.2s' }}>
+              <div className="w-[1px] h-26 bg-gradient-to-b from-[#FFE066] to-[#D4AF37]" />
+              <GlitterSphere type="gold" size={28} id={`${position}-c4`} />
+            </div>
+
+            {/* Strand 5: Lower Right Red Sphere */}
+            <div className="absolute top-14 left-1/2 -translate-x-1/2 ml-7 flex flex-col items-center animate-sway-ornament" style={{ animationDuration: '5s', animationDelay: '0.6s' }}>
+              <div className="w-[1px] h-32 bg-gradient-to-b from-[#FFE066] to-[#D4AF37]" />
+              <GlitterSphere type="red" size={24} id={`${position}-c5`} />
+            </div>
+
+            {/* Strand 6: Lowest Hanging Gold Tip Sphere */}
+            <div className="absolute top-14 left-1/2 -translate-x-1/2 -ml-7 flex flex-col items-center animate-sway-ornament" style={{ animationDuration: '6s', animationDelay: '1.5s' }}>
+              <div className="w-[1px] h-38 bg-gradient-to-b from-[#FFE066] to-[#D4AF37]" />
+              <GlitterSphere type="gold" size={26} id={`${position}-c6`} />
+            </div>
+
+          </div>
+
         </div>
 
-        {/* Shimmering Golden Ribbon Bow */}
-        <div className="relative -mt-2 w-full flex justify-center">
-          <svg width="60" height="22" viewBox="0 0 100 35" className="drop-shadow-[0_4px_8px_rgba(0,0,0,0.5)]">
-            <defs>
-              <linearGradient id={`goldBowGrad-${position}`} x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0%" stopColor="#C49A33" />
-                <stop offset="30%" stopColor="#FFE066" />
-                <stop offset="70%" stopColor="#D4AF37" />
-                <stop offset="100%" stopColor="#8C6D15" />
-              </linearGradient>
-            </defs>
-            <path d="M 50,15 C 28,4 18,25 45,20 Z" fill={`url(#goldBowGrad-${position})`} stroke="#7A560C" strokeWidth="0.8" />
-            <path d="M 50,15 C 72,4 82,25 55,20 Z" fill={`url(#goldBowGrad-${position})`} stroke="#7A560C" strokeWidth="0.8" />
-            <circle cx="50" cy="16" r="4.2" fill="#FFE066" stroke="#7A560C" strokeWidth="0.8" />
-          </svg>
-        </div>
-
-        {/* Cascading Cluster of Glossy Red Baubles (Directly matching Image 1) */}
-        <div className="relative -mt-1 w-20 flex flex-col items-center">
-          {/* Shimmering Gold Ribbon Tails */}
-          <div className="absolute top-0 left-4 w-[2px] h-32 bg-gradient-to-b from-[#FFE066] via-[#D4AF37] to-transparent opacity-85" />
-          <div className="absolute top-0 right-4 w-[2px] h-36 bg-gradient-to-b from-[#FFE066] via-[#D4AF37] to-transparent opacity-85" />
-          <div className="absolute top-0 left-9 w-[2px] h-44 bg-gradient-to-b from-[#FFE066] via-[#D4AF37] to-transparent opacity-85" />
-
-          {/* Tier 1: Two upper baubles */}
-          <div className="flex justify-between w-full px-1">
-            <div className="animate-sway-ornament" style={{ animationDuration: '4.8s' }}>
-              <ClusterBauble size={26} id={`${position}-1`} />
-            </div>
-            <div className="animate-sway-ornament" style={{ animationDuration: '5.2s', animationDelay: '0.4s' }}>
-              <ClusterBauble size={28} id={`${position}-2`} />
-            </div>
-          </div>
-
-          {/* Tier 2: Two mid baubles */}
-          <div className="flex justify-around w-full -mt-2 px-1">
-            <div className="animate-sway-ornament" style={{ animationDuration: '4.4s', animationDelay: '0.8s' }}>
-              <ClusterBauble size={30} id={`${position}-3`} />
-            </div>
-            <div className="animate-sway-ornament" style={{ animationDuration: '5.6s', animationDelay: '0.2s' }}>
-              <ClusterBauble size={28} id={`${position}-4`} />
-            </div>
-          </div>
-
-          {/* Tier 3: Center lower bauble */}
-          <div className="-mt-2 animate-sway-ornament" style={{ animationDuration: '5s', animationDelay: '0.6s' }}>
-            <ClusterBauble size={32} id={`${position}-5`} />
-          </div>
-
-          {/* Tier 4: Bottom hanging tip bauble */}
-          <div className="-mt-1.5 animate-sway-ornament" style={{ animationDuration: '6s', animationDelay: '1s' }}>
-            <ClusterBauble size={28} id={`${position}-6`} />
-          </div>
-        </div>
       </div>
     </div>
   );
 };
 
-// ─── 8. Bottom Corner Festive Sprigs (Bottom-Left & Bottom-Right) ───
-export const BottomCornerAccent: React.FC<{ position?: 'left' | 'right' }> = ({ position = 'left' }) => {
-  const isRight = position === 'right';
-
-  return (
-    <div
-      className={`absolute bottom-0 z-20 pointer-events-none select-none ${
-        isRight ? 'right-0' : 'left-0'
-      }`}
-    >
-      <svg
-        width="110"
-        height="85"
-        viewBox="0 0 110 85"
-        className={`filter drop-shadow-[0_4px_10px_rgba(0,0,0,0.6)] ${isRight ? '-scale-x-100' : ''}`}
-        fill="none"
-      >
-        <defs>
-          <radialGradient id={`bottomBaubleRed-${position}`} cx="35%" cy="30%" r="65%">
-            <stop offset="0%" stopColor="#FF7A85" />
-            <stop offset="35%" stopColor="#C8102E" />
-            <stop offset="85%" stopColor="#7A000A" />
-            <stop offset="100%" stopColor="#2E0004" />
-          </radialGradient>
-          <radialGradient id={`bottomBaubleGold-${position}`} cx="35%" cy="30%" r="65%">
-            <stop offset="0%" stopColor="#FFFFFF" />
-            <stop offset="30%" stopColor="#FFE066" />
-            <stop offset="75%" stopColor="#D4AF37" />
-            <stop offset="100%" stopColor="#634505" />
-          </radialGradient>
-        </defs>
-
-        {/* Pine needles spreading from corner */}
-        <g stroke="#1F4D2B" strokeWidth="2.2" strokeLinecap="round">
-          <line x1="0" y1="85" x2="35" y2="45" />
-          <line x1="0" y1="85" x2="55" y2="58" />
-          <line x1="0" y1="85" x2="70" y2="75" />
-          <line x1="15" y1="65" x2="25" y2="48" />
-          <line x1="28" y1="72" x2="42" y2="52" />
-        </g>
-        <g stroke="#A3D9B1" strokeWidth="1" strokeLinecap="round" opacity="0.65">
-          <line x1="3" y1="83" x2="33" y2="47" />
-          <line x1="3" y1="83" x2="52" y2="60" />
-        </g>
-
-        {/* Small Red Poinsettia Leaf Cluster in corner */}
-        <path d="M 0,85 C 15,70 12,50 30,55 C 20,72 10,80 0,85 Z" fill="#B30018" />
-        <path d="M 0,85 C 8,62 25,60 22,78 Z" fill="#E60021" />
-
-        {/* Golden Ribbon Loop */}
-        <path d="M 22,65 Q 32,58 38,68 Q 30,76 22,65" fill="#E5C158" stroke="#7A560C" strokeWidth="0.8" />
-
-        {/* Two Glossy Ornaments Nestled in the foliage */}
-        {/* Gold Bauble */}
-        <circle cx="36" cy="62" r="11" fill={`url(#bottomBaubleGold-${position})`} />
-        <ellipse cx="33" cy="58" rx="2.5" ry="1.4" fill="white" opacity="0.75" />
-
-        {/* Red Bauble in front */}
-        <circle cx="24" cy="70" r="13" fill={`url(#bottomBaubleRed-${position})`} />
-        <ellipse cx="20" cy="65" rx="3" ry="1.6" fill="white" opacity="0.8" />
-      </svg>
-    </div>
-  );
-};
-
-// ─── 9. Electric Fairy Light Cable Across the Top ───
+// ─── 6. Electric Fairy Light Cable Across the Top ───
 export const ElectricFairyLightCable: React.FC = () => (
   <div className="absolute top-0 left-0 right-0 z-20 pointer-events-none overflow-hidden h-14">
     <svg className="w-full h-full" viewBox="0 0 1200 48" preserveAspectRatio="none" fill="none">
@@ -538,7 +498,7 @@ export const ElectricFairyLightCable: React.FC = () => (
   </div>
 );
 
-// ─── 10. Complete Christmas Section Decor (Master Component) ───
+// ─── 7. Complete Christmas Section Decor (Master Component) ───
 export const ChristmasSectionDecor: React.FC = () => {
   return (
     <>
@@ -557,24 +517,24 @@ export const ChristmasSectionDecor: React.FC = () => {
         className="absolute -top-16 left-1/2 -translate-x-1/2 w-[720px] h-[260px] bg-[#C5A059]/15 rounded-full blur-3xl pointer-events-none" 
       />
 
-      {/* 1. Electric Fairy Light Cable across Top Border (No Green Carpet!) */}
+      {/* 1. Electric Fairy Light Cable across Top Border */}
       <ElectricFairyLightCable />
 
-      {/* 2. THE 4 CORNERS DECORATION */}
-      {/* Top-Left Corner Cluster (Pine Wreath + Poinsettia with Bell + Gold Bow + Cascading Baubles) */}
-      <CornerOrnamentCluster position="top-left" />
+      {/* 2. THE 4 CORNERS: HANDCRAFTED SANTA CHRISTMAS WREATHS */}
+      {/* Top-Left Corner Wreath */}
+      <SantaSkiingWreath position="top-left" />
 
-      {/* Top-Right Corner Cluster (Pine Wreath + Poinsettia with Bell + Gold Bow + Cascading Baubles) */}
-      <CornerOrnamentCluster position="top-right" />
+      {/* Top-Right Corner Wreath */}
+      <SantaSkiingWreath position="top-right" />
 
-      {/* Bottom-Left Corner Accent */}
-      <BottomCornerAccent position="left" />
+      {/* Bottom-Left Corner Wreath */}
+      <SantaSkiingWreath position="bottom-left" />
 
-      {/* Bottom-Right Corner Accent */}
-      <BottomCornerAccent position="right" />
+      {/* Bottom-Right Corner Wreath */}
+      <SantaSkiingWreath position="bottom-right" />
 
-      {/* 3. SUSPENDABLE STARS, BALLONS & SNOWFLAKES (Hanging from Electric Light Cable) */}
-      <div className="absolute top-0 left-0 right-0 z-20 pointer-events-none px-20 sm:px-28 lg:px-36 flex justify-between">
+      {/* 3. SUSPENDABLE STARS, BALLOONS & SNOWFLAKES (Hanging from Electric Light Cable) */}
+      <div className="absolute top-0 left-0 right-0 z-20 pointer-events-none px-28 sm:px-36 lg:px-48 flex justify-between">
         
         {/* Left Side Strands */}
         <div className="flex items-start space-x-6 sm:space-x-10">
