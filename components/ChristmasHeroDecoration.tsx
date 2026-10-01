@@ -467,7 +467,7 @@ export const ChristmasHeroDecoration: React.FC = () => {
     <>
       {/* ─── 1. UPPER HANGING STRANDS (Gracefully extended down close to NOËL without crossing CTA) ─── */}
       <div 
-        className="absolute top-0 right-1 sm:right-4 md:right-6 lg:right-8 xl:right-10 z-20 pointer-events-none select-none flex items-start space-x-2.5 sm:space-x-4 lg:space-x-5 xl:space-x-6 px-1 overflow-visible"
+        className="absolute top-0 right-1 sm:right-4 md:right-6 lg:right-8 xl:right-10 z-20 pointer-events-none select-none hidden md:flex items-start space-x-2.5 sm:space-x-4 lg:space-x-5 xl:space-x-6 px-1 overflow-visible"
       >
         {/* ═════════════════════════════════════════════════════
             STRAND 1 — Left strand of cluster
@@ -650,9 +650,9 @@ export const ChristmasHeroDecoration: React.FC = () => {
       </div>
 
 
-      {/* ─── 2. SANTA CLAUS & FREE-FLOATING TYPOGRAPHIC CTA (Securely anchored at bottom right) ─── */}
+      {/* ─── 2. SANTA CLAUS & FREE-FLOATING TYPOGRAPHIC CTA ─── */}
       <div 
-        className="absolute bottom-2 sm:bottom-4 md:bottom-6 right-1 sm:right-4 md:right-6 lg:right-8 xl:right-10 z-30 pointer-events-auto flex flex-col items-center select-none"
+        className="absolute top-20 sm:top-24 right-2 sm:right-4 lg:top-auto lg:bottom-6 lg:right-8 xl:right-10 z-30 pointer-events-auto flex flex-col items-end lg:items-center select-none scale-[0.58] sm:scale-75 lg:scale-100 origin-top-right lg:origin-bottom-right"
       >
         {/* Floating Festive Free-Form Typography CTA (No card, no box) */}
         <motion.div

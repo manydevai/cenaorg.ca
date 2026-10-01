@@ -12,7 +12,7 @@ export function Header() {
   const [isEventsOpen, setIsEventsOpen] = useState(false);
   const [isMobileEventsOpen, setIsMobileEventsOpen] = useState(false);
   const eventsRef = useRef<HTMLDivElement>(null);
-  const { t } = useLanguage();
+  const { t, language, setLanguage } = useLanguage();
   const location = useLocation();
 
   useEffect(() => {
@@ -232,13 +232,13 @@ export function Header() {
               overflowY: 'auto'
             }}
           >
-            <nav className="flex flex-col items-center justify-center min-h-full space-y-8 px-6 pt-24 pb-12">
+            <nav className="flex flex-col items-center justify-center min-h-full space-y-3.5 sm:space-y-5 px-6 pt-20 pb-8">
               {mobileNavigationItems.map((item) => (
                 item.isAnchor ? (
                   <a
                     key={item.href}
                     href={item.href}
-                    className="text-2xl font-serif text-[#121212] uppercase tracking-widest hover:text-[#C5A059] transition-colors"
+                    className="text-base sm:text-lg font-serif text-[#121212] uppercase tracking-widest hover:text-[#C5A059] transition-colors py-1"
                     onClick={(e) => {
                       handleAnchorClick(e, item.href);
                       setIsMenuOpen(false);
@@ -250,7 +250,7 @@ export function Header() {
                   <Link
                     key={item.href}
                     to={item.href}
-                    className={`text-2xl font-serif uppercase tracking-widest transition-colors ${location.pathname === item.href ? 'text-[#C5A059]' : 'text-[#121212] hover:text-[#C5A059]'}`}
+                    className={`text-base sm:text-lg font-serif uppercase tracking-widest transition-colors py-1 ${location.pathname === item.href ? 'text-[#C5A059]' : 'text-[#121212] hover:text-[#C5A059]'}`}
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {item.name}
@@ -258,7 +258,31 @@ export function Header() {
                 )
               ))}
 
-              <div className="w-full h-px bg-gray-100 my-4"></div>
+              <div className="w-full h-px bg-gray-100 my-2"></div>
+
+              {/* Mobile Drawer Language Selector */}
+              <div className="w-full flex items-center justify-center gap-2.5 py-1">
+                {[
+                  { code: 'fr', label: 'FR', flag: '🇫🇷' },
+                  { code: 'en', label: 'EN', flag: '🇨🇦' },
+                  { code: 'pt', label: 'PT', flag: '🇦🇴' }
+                ].map((item) => (
+                  <button
+                    key={item.code}
+                    type="button"
+                    onClick={() => setLanguage(item.code as 'fr' | 'en' | 'pt')}
+                    className={`flex items-center space-x-1.5 px-3 py-2 text-xs font-bold uppercase tracking-wider transition-all rounded-xs border min-h-[44px] ${
+                      language === item.code
+                        ? 'border-[#C5A059] bg-[#C5A059]/10 text-[#C5A059] font-extrabold shadow-xs'
+                        : 'border-gray-200 text-gray-500 hover:text-gray-900 hover:border-gray-400'
+                    }`}
+                  >
+                    <span className="text-sm">{item.flag}</span>
+                    <span>{item.label}</span>
+                  </button>
+                ))}
+              </div>
+
               <Button
                 className="w-full bg-transparent border border-[#8B0000] text-[#8B0000] hover:bg-[#8B0000] hover:text-white rounded-none py-6 h-12 text-[10px] tracking-[0.2em] uppercase font-bold transition-all duration-300"
                 onClick={() => {

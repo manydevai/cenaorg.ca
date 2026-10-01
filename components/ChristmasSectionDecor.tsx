@@ -516,7 +516,7 @@ export const SantaSkiingWreath: React.FC<{
         isRight ? '-right-2 sm:right-2 lg:right-4' : '-left-2 sm:left-2 lg:left-4'
       } ${className}`}
     >
-      <div className="relative flex flex-col items-center w-36 sm:w-44 md:w-48">
+      <div className="relative flex flex-col items-center scale-[0.7] sm:scale-85 md:scale-100 origin-top">
         
         {/* 1. LUSH EVERGREEN PINE WREATH RING */}
         <div className="relative w-32 h-32 sm:w-40 sm:h-40 flex items-center justify-center">
@@ -709,7 +709,7 @@ export const QuiltedPoinsettiaFlower: React.FC<{
 
   return (
     <div
-      className={`absolute z-20 pointer-events-none select-none transition-transform duration-700 ${
+      className={`absolute z-20 pointer-events-none select-none transition-transform duration-700 scale-[0.7] sm:scale-85 md:scale-100 ${
         isRight
           ? 'bottom-0 right-0'
           : 'bottom-0 left-0'
@@ -1109,7 +1109,7 @@ export const ChristmasSectionDecor: React.FC = () => {
       <QuiltedPoinsettiaFlower position="bottom-right" />
 
       {/* 3. SUSPENDABLE STARS, BALLOONS & SNOWFLAKES (Hanging from Electric Light Cable) */}
-      <div className="absolute top-0 left-0 right-0 z-20 pointer-events-none px-28 sm:px-36 lg:px-48 flex justify-between">
+      <div className="absolute top-0 left-0 right-0 z-20 pointer-events-none px-20 sm:px-32 lg:px-48 flex justify-between">
         
         {/* Left Side Strands */}
         <div className="flex items-start space-x-6 sm:space-x-10">

@@ -273,7 +273,7 @@ export const ChristmasCampaignSection: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-12 items-center">
             
             {/* Left Side: Headline & Slogan — Pushed down cleanly below hanging decor */}
-            <div className="lg:col-span-5 space-y-6 pt-16 sm:pt-24 lg:pt-28" data-aos="fade-right">
+            <div className="lg:col-span-5 space-y-6 pt-24 sm:pt-24 lg:pt-28" data-aos="fade-right">
               
               <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md border border-[#C5A059]/60 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-[0.25em] text-[#C5A059] shadow-md">
                 <Gift className="w-3.5 h-3.5 text-[#C5A059]" />
@@ -601,17 +601,19 @@ export const ChristmasCampaignSection: React.FC = () => {
 
           {/* PART C: Compact Social Share Buttons (Integrated seamlessly into the main card) */}
           <div className="mt-6 pt-5 border-t border-gray-100 flex flex-col md:flex-row items-start md:items-center justify-between gap-3">
-            <div className="flex items-center gap-2 text-gray-700 min-w-0">
-              <Share2 className="w-4 h-4 text-[#8B0000] shrink-0" />
-              <span className="font-bold text-xs sm:text-sm font-serif text-gray-900 whitespace-nowrap shrink-0">
-                {t('christmas_campaign.share_title')}&nbsp;:
-              </span>
-              <span className="text-gray-500 text-[11px] sm:text-xs whitespace-nowrap">
+            <div className="flex flex-wrap md:flex-nowrap items-center gap-x-2 gap-y-1 text-gray-700 min-w-0">
+              <div className="flex items-center gap-1.5 shrink-0">
+                <Share2 className="w-4 h-4 text-[#8B0000] shrink-0" />
+                <span className="font-bold text-xs sm:text-sm font-serif text-gray-900 whitespace-nowrap">
+                  {t('christmas_campaign.share_title')}&nbsp;:
+                </span>
+              </div>
+              <span className="text-gray-500 text-[11px] sm:text-xs md:whitespace-nowrap">
                 {t('christmas_campaign.share_desc')}
               </span>
             </div>
 
-            <div className="flex items-center gap-1.5 shrink-0 w-full sm:w-auto justify-end">
+            <div className="flex items-center gap-1.5 shrink-0 w-full sm:w-auto justify-start sm:justify-end overflow-x-auto pb-0.5 sm:pb-0">
               <button
                 onClick={handleCopyLink}
                 className="flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 px-2.5 py-1.5 bg-gray-100 hover:bg-gray-200 text-gray-800 rounded-md text-xs font-medium transition-all border border-gray-300 shadow-2xs whitespace-nowrap"

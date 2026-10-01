@@ -22,9 +22,10 @@ export function LanguageSwitcher({ isScrolled }: LanguageSwitcherProps) {
     <div className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className={`flex items-center space-x-2 transition-colors py-2 group ${isScrolled ? 'text-gray-600 hover:text-[#121212]' : 'text-gray-400 hover:text-white'}`}
+        aria-label="Change language"
+        className={`flex items-center space-x-1.5 transition-colors py-2 px-2.5 min-h-[44px] min-w-[44px] justify-center group cursor-pointer select-none ${isScrolled ? 'text-gray-700 hover:text-[#121212]' : 'text-gray-300 hover:text-white'}`}
       >
-        <Globe className="h-3 w-3 text-[#C5A059]" />
+        <Globe className="h-3.5 w-3.5 text-[#C5A059] flex-shrink-0" />
         <span className="text-[10px] tracking-[0.2em] font-bold uppercase">{currentLanguage?.code}</span>
       </button>
 
