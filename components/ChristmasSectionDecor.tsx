@@ -16,6 +16,204 @@ import React from 'react';
  * - 100% responsive, zero visual clutter, all headlines and campaign flyers remain crisp and visible.
  */
 
+// ─── Golden Star (Used in HangingStar) ───
+export const GoldenStar: React.FC<{ size?: number; className?: string }> = ({ size = 28, className = '' }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 100 100"
+    className={`drop-shadow-[0_4px_12px_rgba(255,215,0,0.65)] select-none ${className}`}
+  >
+    <defs>
+      <linearGradient id="starFacetLight" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#FFFFFF" />
+        <stop offset="40%" stopColor="#FFE066" />
+        <stop offset="100%" stopColor="#D4AF37" />
+      </linearGradient>
+      <linearGradient id="starFacetDark" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#E5C158" />
+        <stop offset="50%" stopColor="#C49A33" />
+        <stop offset="100%" stopColor="#7A560C" />
+      </linearGradient>
+    </defs>
+    <g transform="translate(50, 50)">
+      {[0, 72, 144, 216, 288].map((angle, idx) => (
+        <g key={idx} transform={`rotate(${angle})`}>
+          <polygon points="0,-48 0,0 -14,-14" fill="url(#starFacetLight)" />
+          <polygon points="0,-48 14,-14 0,0" fill="url(#starFacetDark)" />
+        </g>
+      ))}
+      <circle cx="0" cy="0" r="4.5" fill="#FFFFFF" opacity="0.9" />
+    </g>
+  </svg>
+);
+
+// ─── Hanging 3D Star Suspended on Gold Cord ───
+export const HangingStar: React.FC<{
+  size?: number;
+  cordLength?: number;
+  className?: string;
+  delay?: number;
+}> = ({ size = 28, cordLength = 55, className = '', delay = 0 }) => (
+  <div
+    className={`flex flex-col items-center pointer-events-none ${className}`}
+    style={{
+      animation: `sway-ornament 5.4s ease-in-out infinite alternate`,
+      animationDelay: `${delay}s`,
+      transformOrigin: 'top center'
+    }}
+  >
+    <div
+      style={{ height: `${cordLength}px`, width: '1px' }}
+      className="bg-gradient-to-b from-[#FFF2A8] via-[#D4AF37] to-[#8C6D15]"
+    />
+    <GoldenStar size={size} className="-mt-1" />
+  </div>
+);
+
+// ─── Hanging 3D Metallic Christmas Bauble (Balloon / Esfera) ───
+export const HangingBauble: React.FC<{
+  type?: 'red' | 'gold';
+  size?: number;
+  cordLength?: number;
+  cordType?: 'gold' | 'red';
+  className?: string;
+  delay?: number;
+  id?: string;
+}> = ({
+  type = 'red',
+  size = 30,
+  cordLength = 65,
+  cordType = 'gold',
+  className = '',
+  delay = 0,
+  id = '1'
+}) => {
+  const isRed = type === 'red';
+  const redSphereId = `redSphere-${id}`;
+  const goldSphereId = `goldSphere-${id}`;
+  const capId = `baubleCap-${id}`;
+  const glintId = `baubleGlint-${id}`;
+
+  return (
+    <div
+      className={`flex flex-col items-center pointer-events-none transition-transform duration-700 ${className}`}
+      style={{
+        animation: `sway-ornament ${4.6 + (parseInt(String(id || '1').replace(/\D/g, '') || '1', 10) % 3) * 0.8}s ease-in-out infinite alternate`,
+        animationDelay: `${delay}s`,
+        transformOrigin: 'top center'
+      }}
+    >
+      {/* Hanging Cord */}
+      <div
+        style={{ height: `${cordLength}px`, width: cordType === 'red' ? '2px' : '1px' }}
+        className={
+          cordType === 'red'
+            ? 'bg-gradient-to-b from-[#8B0000] via-[#C8102E] to-[#A00014]'
+            : 'bg-gradient-to-b from-[#FFF2A8] via-[#D4AF37] to-[#8C6D15]'
+        }
+      />
+
+      {/* 3D Realistic Bauble SVG */}
+      <svg
+        width={size}
+        height={size * 1.25}
+        viewBox="0 0 40 50"
+        className="drop-shadow-[0_8px_16px_rgba(0,0,0,0.65)] -mt-0.5"
+      >
+        <defs>
+          <linearGradient id={capId} x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stopColor="#7A560C" />
+            <stop offset="25%" stopColor="#FFF2A8" />
+            <stop offset="50%" stopColor="#E5C158" />
+            <stop offset="75%" stopColor="#C49A33" />
+            <stop offset="100%" stopColor="#634505" />
+          </linearGradient>
+
+          <radialGradient id={redSphereId} cx="32%" cy="28%" r="68%">
+            <stop offset="0%" stopColor="#FFA6AD" />
+            <stop offset="14%" stopColor="#FF3847" />
+            <stop offset="46%" stopColor="#C8102E" />
+            <stop offset="78%" stopColor="#7A000A" />
+            <stop offset="100%" stopColor="#2E0004" />
+          </radialGradient>
+
+          <radialGradient id={goldSphereId} cx="32%" cy="28%" r="68%">
+            <stop offset="0%" stopColor="#FFFFFF" />
+            <stop offset="15%" stopColor="#FFF2B2" />
+            <stop offset="48%" stopColor="#E5C158" />
+            <stop offset="80%" stopColor="#9C731A" />
+            <stop offset="100%" stopColor="#4A3403" />
+          </radialGradient>
+
+          <radialGradient id={glintId} cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.9" />
+            <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0" />
+          </radialGradient>
+        </defs>
+
+        {/* Hanging Ring */}
+        <circle cx="20" cy="4.5" r="3" fill="none" stroke={`url(#${capId})`} strokeWidth="1.2" />
+
+        {/* Ornate Gold Cap */}
+        <path d="M 15,6 L 25,6 L 24,11 L 16,11 Z" fill={`url(#${capId})`} />
+        <line x1="17.5" y1="6" x2="17.5" y2="11" stroke="#573D05" strokeWidth="0.5" />
+        <line x1="20" y1="6" x2="20" y2="11" stroke="#573D05" strokeWidth="0.5" />
+        <line x1="22.5" y1="6" x2="22.5" y2="11" stroke="#573D05" strokeWidth="0.5" />
+
+        {/* 3D Sphere */}
+        <circle cx="20" cy="29" r="19" fill={isRed ? `url(#${redSphereId})` : `url(#${goldSphereId})`} />
+
+        {/* Specular Glint */}
+        <ellipse cx="14" cy="20" rx="4.5" ry="2.5" fill={`url(#${glintId})`} transform="rotate(-30 14 20)" />
+      </svg>
+    </div>
+  );
+};
+
+// ─── Hanging Crystal Snowflake ───
+export const HangingSnowflake: React.FC<{
+  size?: number;
+  cordLength?: number;
+  className?: string;
+  delay?: number;
+}> = ({ size = 30, cordLength = 65, className = '', delay = 0 }) => (
+  <div
+    className={`flex flex-col items-center pointer-events-none ${className}`}
+    style={{
+      animation: `sway-ornament 5.2s ease-in-out infinite alternate`,
+      animationDelay: `${delay}s`,
+      transformOrigin: 'top center'
+    }}
+  >
+    <div
+      style={{ height: `${cordLength}px`, width: '1px' }}
+      className="bg-gradient-to-b from-[#FFF2A8] via-[#D4AF37] to-[#8C6D15]"
+    />
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 50 50"
+      fill="none"
+      className="text-[#F3D375] drop-shadow-[0_4px_10px_rgba(212,175,55,0.65)] -mt-1"
+    >
+      <g transform="translate(25, 25)" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round">
+        <circle cx="0" cy="0" r="2.2" fill="currentColor" />
+        {[0, 60, 120, 180, 240, 300].map((angle, idx) => (
+          <g key={idx} transform={`rotate(${angle})`}>
+            <line x1="0" y1="0" x2="0" y2="-22" />
+            <line x1="0" y1="-8" x2="-4" y2="-12" />
+            <line x1="0" y1="-8" x2="4" y2="-12" />
+            <line x1="0" y1="-15" x2="-5" y2="-19" />
+            <line x1="0" y1="-15" x2="5" y2="-19" />
+            <polygon points="0,-22 -2.5,-19 0,-16 2.5,-19" fill="currentColor" stroke="none" />
+          </g>
+        ))}
+      </g>
+    </svg>
+  </div>
+);
+
 // ─── 1. Cute Plush Skiing Santa Claus (Vector Illustration) ───
 export const SkiingSantaFigure: React.FC<{
   facing?: 'left' | 'right';
