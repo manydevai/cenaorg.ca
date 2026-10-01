@@ -703,7 +703,7 @@ export const QuiltedPoinsettiaFlower: React.FC<{
   position?: 'bottom-left' | 'bottom-right';
   className?: string;
   size?: number;
-}> = ({ position = 'bottom-left', className = '', size = 320 }) => {
+}> = ({ position = 'bottom-left', className = '', size = 165 }) => {
   const isRight = position === 'bottom-right';
   const idPrefix = `quiltedPoinsettia-${position}`;
 
@@ -711,21 +711,19 @@ export const QuiltedPoinsettiaFlower: React.FC<{
     <div
       className={`absolute z-20 pointer-events-none select-none transition-transform duration-700 ${
         isRight
-          ? '-bottom-16 -right-16 sm:-bottom-20 sm:-right-20 lg:-bottom-24 lg:-right-24'
-          : '-bottom-16 -left-16 sm:-bottom-20 sm:-left-20 lg:-bottom-24 lg:-left-24'
+          ? '-bottom-2 -right-[82px]'
+          : '-bottom-2 -left-[82px]'
       } ${className}`}
       style={{
-        transform: isRight
-          ? 'scale(0.85) sm:scale(1) rotate(-35deg) scaleX(-1)'
-          : 'scale(0.85) sm:scale(1) rotate(-35deg)',
-        transformOrigin: isRight ? 'bottom right' : 'bottom left'
+        transform: isRight ? 'scaleX(-1)' : 'none',
+        transformOrigin: isRight ? 'center right' : 'center left'
       }}
     >
       <svg
         width={size}
         height={size * 1.15}
         viewBox="0 0 340 390"
-        className="drop-shadow-[0_16px_32px_rgba(0,0,0,0.85)]"
+        className="drop-shadow-[0_8px_20px_rgba(0,0,0,0.75)]"
         fill="none"
       >
         <defs>
