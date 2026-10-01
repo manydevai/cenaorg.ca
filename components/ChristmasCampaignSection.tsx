@@ -600,42 +600,42 @@ export const ChristmasCampaignSection: React.FC = () => {
           </div>
 
           {/* PART C: Compact Social Share Buttons (Integrated seamlessly into the main card) */}
-          <div className="mt-6 pt-5 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-3">
-            <div className="flex items-center space-x-2 text-gray-700">
-              <Share2 className="w-4 h-4 text-[#8B0000]" />
-              <span className="font-bold text-xs sm:text-sm font-serif text-gray-900">
-                {t('christmas_campaign.share_title')} :
+          <div className="mt-6 pt-5 border-t border-gray-100 flex flex-col md:flex-row items-start md:items-center justify-between gap-3">
+            <div className="flex items-center gap-2 text-gray-700 min-w-0">
+              <Share2 className="w-4 h-4 text-[#8B0000] shrink-0" />
+              <span className="font-bold text-xs sm:text-sm font-serif text-gray-900 whitespace-nowrap shrink-0">
+                {t('christmas_campaign.share_title')}&nbsp;:
               </span>
-              <span className="text-gray-500 text-[11px] hidden md:inline">
+              <span className="text-gray-500 text-[11px] sm:text-xs whitespace-nowrap">
                 {t('christmas_campaign.share_desc')}
               </span>
             </div>
 
-            <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
+            <div className="flex items-center gap-1.5 shrink-0 w-full sm:w-auto justify-end">
               <button
                 onClick={handleCopyLink}
-                className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-3.5 py-2 bg-gray-100 hover:bg-gray-200 text-gray-800 rounded-lg text-xs font-semibold transition-all border border-gray-300 shadow-2xs hover:shadow-xs"
+                className="flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 px-2.5 py-1.5 bg-gray-100 hover:bg-gray-200 text-gray-800 rounded-md text-xs font-medium transition-all border border-gray-300 shadow-2xs whitespace-nowrap"
                 title={t('christmas_campaign.copy_link')}
               >
-                {copied ? <Check className="w-4 h-4 text-emerald-600" /> : <Link2 className="w-4 h-4 text-gray-700" />}
+                {copied ? <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0" /> : <Link2 className="w-3.5 h-3.5 text-gray-700 shrink-0" />}
                 <span>{copied ? t('christmas_campaign.copied_toast') : t('christmas_campaign.copy_link')}</span>
               </button>
 
               <button
                 onClick={handleWhatsAppShare}
-                className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-3.5 py-2 bg-[#25D366]/10 hover:bg-[#25D366]/20 text-[#128C7E] hover:text-[#075E54] rounded-lg text-xs font-bold transition-all border border-[#25D366]/30 shadow-2xs hover:border-[#25D366]/60"
+                className="flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 px-2.5 py-1.5 bg-[#25D366]/10 hover:bg-[#25D366]/20 text-[#128C7E] hover:text-[#075E54] rounded-md text-xs font-semibold transition-all border border-[#25D366]/30 shadow-2xs hover:border-[#25D366]/60 whitespace-nowrap"
                 title={t('christmas_campaign.whatsapp')}
               >
-                <OfficialWhatsAppIcon className="w-4 h-4 text-[#25D366]" />
+                <OfficialWhatsAppIcon className="w-3.5 h-3.5 text-[#25D366] shrink-0" />
                 <span>WhatsApp</span>
               </button>
 
               <button
                 onClick={handleFacebookShare}
-                className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-3.5 py-2 bg-[#1877F2]/10 hover:bg-[#1877F2]/20 text-[#1877F2] hover:text-[#0d65d9] rounded-lg text-xs font-bold transition-all border border-[#1877F2]/30 shadow-2xs hover:border-[#1877F2]/60"
+                className="flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 px-2.5 py-1.5 bg-[#1877F2]/10 hover:bg-[#1877F2]/20 text-[#1877F2] hover:text-[#0d65d9] rounded-md text-xs font-semibold transition-all border border-[#1877F2]/30 shadow-2xs hover:border-[#1877F2]/60 whitespace-nowrap"
                 title={t('christmas_campaign.facebook')}
               >
-                <OfficialFacebookIcon className="w-4 h-4 text-[#1877F2]" />
+                <OfficialFacebookIcon className="w-3.5 h-3.5 text-[#1877F2] shrink-0" />
                 <span>Facebook</span>
               </button>
             </div>
