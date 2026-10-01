@@ -23,12 +23,36 @@ interface LanguageProviderProps {
 }
 
 export function LanguageProvider({ children }: LanguageProviderProps) {
-  const [language, setLanguage] = useState<Language>('fr');
+  const getInitialLanguage = (): Language => {
+    if (typeof window !== 'undefined') {
+      const path = window.location.pathname.toLowerCase();
+      if (path.includes('natal-solidario') || path.includes('/pt') || path.endsWith('-pt')) {
+        return 'pt';
+      }
+      if (path.includes('christmas-campaign-en') || path.includes('/en') || path.endsWith('-en')) {
+        return 'en';
+      }
+      if (path.includes('campagne-noel') || path.includes('noel-solidaire')) {
+        return 'fr';
+      }
+      const savedLanguage = localStorage.getItem('cena-language') as Language;
+      if (savedLanguage && ['fr', 'en', 'pt'].includes(savedLanguage)) {
+        return savedLanguage;
+      }
+    }
+    return 'fr';
+  };
+
+  const [language, setLanguage] = useState<Language>(getInitialLanguage);
 
   useEffect(() => {
-    const savedLanguage = localStorage.getItem('cena-language') as Language;
-    if (savedLanguage && ['fr', 'en', 'pt'].includes(savedLanguage)) {
-      setLanguage(savedLanguage);
+    const path = window.location.pathname.toLowerCase();
+    if (path.includes('natal-solidario') || path.includes('/pt') || path.endsWith('-pt')) {
+      setLanguage('pt');
+    } else if (path.includes('christmas-campaign-en') || path.includes('/en') || path.endsWith('-en')) {
+      setLanguage('en');
+    } else if (path.includes('campagne-noel') || path.includes('noel-solidaire')) {
+      setLanguage('fr');
     }
   }, []);
 

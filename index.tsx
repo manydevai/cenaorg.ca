@@ -21,6 +21,18 @@ createRoot(document.getElementById("root")!).render(
     <LanguageProvider>
       <Routes>
         <Route path="/" element={<App />} />
+        {/* Christmas Solidarity Campaign dedicated landing routes */}
+        <Route path="/christmas-campaign" element={<App />} />
+        <Route path="/christmas-campaign/*" element={<App />} />
+        <Route path="/christmas-campaign-en" element={<App />} />
+        <Route path="/christmas-campaign-en/*" element={<App />} />
+        <Route path="/campagne-noel" element={<App />} />
+        <Route path="/campagne-noel/*" element={<App />} />
+        <Route path="/noel-solidaire" element={<App />} />
+        <Route path="/noel-solidaire/*" element={<App />} />
+        <Route path="/natal-solidario" element={<App />} />
+        <Route path="/natal-solidario/*" element={<App />} />
+
         <Route path="/magazine" element={<MagazinePage />} />
         <Route path="/magazine/page/:pageId" element={<MagazinePage />} />
         <Route path="/magazine/page:pageId" element={<MagazinePage />} />
@@ -32,6 +44,8 @@ createRoot(document.getElementById("root")!).render(
         <Route path="/privacy" element={<PrivacyPage />} />
         <Route path="/data-protection" element={<DataProtectionPage />} />
         <Route path="/terms" element={<TermsPage />} />
+        {/* Universal Fallback */}
+        <Route path="*" element={<App />} />
       </Routes>
     </LanguageProvider>
   </BrowserRouter>
