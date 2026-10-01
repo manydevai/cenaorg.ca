@@ -789,8 +789,8 @@ const translations = {
       flyer_en_btn: 'Flyer EN',
       hero_tagline: 'Des cadeaux, des repas, de la joie et de l’espoir pour chaque famille.',
       badge_baskets: 'Paniers Alimentaires',
-      badge_giftcards: 'Cartes-Cadeaux d’Épicerie',
-      badge_meal: 'Repas Complet de Noël'
+      badge_giftcards: 'Cartes-Cadeaux',
+      badge_meal: 'Repas de Noël'
     }
   },
   en: {
@@ -1528,8 +1528,8 @@ const translations = {
       flyer_en_btn: 'EN Flyer',
       hero_tagline: 'Gifts, holiday meals, warmth and hope for every family in need.',
       badge_baskets: 'Food Baskets',
-      badge_giftcards: 'Grocery Gift Cards',
-      badge_meal: 'Complete Christmas Meal'
+      badge_giftcards: 'Gift Cards',
+      badge_meal: 'Christmas Meals'
     }
   },
   pt: {
@@ -2268,8 +2268,8 @@ const translations = {
       flyer_en_btn: 'Flyer EN',
       hero_tagline: 'Presentes, ceia de Natal, carinho e esperança para cada família.',
       badge_baskets: 'Cabazes Alimentares',
-      badge_giftcards: 'Cartões-Presente de Supermercado',
-      badge_meal: 'Refeição Completa de Natal'
+      badge_giftcards: 'Cartões-Presente',
+      badge_meal: 'Ceia de Natal'
     }
   }
 };

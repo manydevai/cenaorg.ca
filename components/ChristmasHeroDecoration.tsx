@@ -453,7 +453,13 @@ export const ChristmasHeroDecoration: React.FC = () => {
     setTimeout(() => {
       const section = document.getElementById('christmas-campaign');
       if (section) {
-        section.scrollIntoView({ behavior: 'smooth' });
+        const isMobile = window.innerWidth < 640;
+        const headerHeight = isMobile ? 64 : 70;
+        const targetY = section.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+        window.scrollTo({
+          top: Math.max(0, targetY),
+          behavior: 'smooth'
+        });
       }
     }, 450);
 
@@ -467,7 +473,8 @@ export const ChristmasHeroDecoration: React.FC = () => {
     <>
       {/* ─── 1. UPPER HANGING STRANDS (4 lines on mobile, 5 lines on desktop) ─── */}
       <div 
-        className="absolute top-0 right-1 sm:right-3 md:right-6 lg:right-8 xl:right-10 z-20 pointer-events-none select-none flex items-start space-x-1 sm:space-x-3 md:space-x-4 lg:space-x-5 xl:space-x-6 px-1 overflow-visible scale-x-[0.65] scale-y-[1.08] sm:scale-75 md:scale-90 lg:scale-100 origin-top-right"
+        id="christmas-hero-strands"
+        className="absolute top-0 right-1 sm:right-3 md:right-6 lg:right-8 xl:right-10 z-20 pointer-events-none select-none flex items-start space-x-1 sm:space-x-3 md:space-x-4 lg:space-x-5 xl:space-x-6 px-1 overflow-visible scale-x-[0.65] scale-y-[0.78] sm:scale-75 md:scale-90 lg:scale-100 origin-top-right"
       >
         {/* ═════════════════════════════════════════════════════
             STRAND 1 — Left strand of cluster
@@ -539,36 +546,36 @@ export const ChristmasHeroDecoration: React.FC = () => {
 
 
         {/* ═════════════════════════════════════════════════════
-            STRAND 3 — Center Balance Strand
-           ═════════════════════════════════════════════════ */}
+            STRAND 3 — Center Balance Strand (Extended a little bit)
+           ═════════════════════════════════════════════════════ */}
         <motion.div
-          initial={{ y: -800, opacity: 0 }}
+          initial={{ y: -850, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ type: "spring", stiffness: 38, damping: 12, delay: 0.18 }}
           className="flex flex-col items-center origin-top animate-subtle-sway-3"
           style={{ width: '44px' }}
         >
-          <div className="w-[1.5px] bg-gradient-to-b from-[#C5A059] via-amber-300 to-[#C5A059] h-14 sm:h-20 lg:h-28 flex flex-col items-center justify-around">
+          <div className="w-[1.5px] bg-gradient-to-b from-[#C5A059] via-amber-300 to-[#C5A059] h-16 sm:h-22 lg:h-30 flex flex-col items-center justify-around">
             <FairyLed delay={0.6} />
           </div>
           <KraftGiftBox size={36} rotation={7} />
 
-          <div className="w-[1.5px] bg-gradient-to-b from-[#C5A059] via-white to-[#C5A059] h-16 sm:h-24 lg:h-32 flex flex-col items-center justify-around">
+          <div className="w-[1.5px] bg-gradient-to-b from-[#C5A059] via-white to-[#C5A059] h-18 sm:h-26 lg:h-34 flex flex-col items-center justify-around">
             <FairyLed delay={1.7} />
           </div>
           <GoldStar size={24} rotation={-5} />
 
-          <div className="w-[1.5px] bg-gradient-to-b from-[#C5A059] via-[#8B0000] to-[#C5A059] h-16 sm:h-24 lg:h-32 flex flex-col items-center justify-around">
+          <div className="w-[1.5px] bg-gradient-to-b from-[#C5A059] via-[#8B0000] to-[#C5A059] h-20 sm:h-26 lg:h-34 flex flex-col items-center justify-around">
             <FairyLed delay={1.0} />
           </div>
           <RedGiftBox size={38} rotation={-9} />
 
-          <div className="w-[1.5px] bg-gradient-to-b from-[#C5A059] via-white to-[#C5A059] h-16 sm:h-24 lg:h-32 flex flex-col items-center justify-around">
+          <div className="w-[1.5px] bg-gradient-to-b from-[#C5A059] via-white to-[#C5A059] h-20 sm:h-26 lg:h-34 flex flex-col items-center justify-around">
             <FairyLed delay={1.8} />
           </div>
           <WhiteStar size={20} rotation={10} />
 
-          <div className="w-[1.5px] bg-gradient-to-b from-[#C5A059] to-amber-300 h-14 sm:h-20 lg:h-28 flex flex-col items-center justify-center">
+          <div className="w-[1.5px] bg-gradient-to-b from-[#C5A059] to-amber-300 h-18 sm:h-24 lg:h-30 flex flex-col items-center justify-center">
             <FairyLed delay={2.5} />
           </div>
           <Bauble size={16} color="gold" />
@@ -613,39 +620,44 @@ export const ChristmasHeroDecoration: React.FC = () => {
 
 
         {/* ═════════════════════════════════════════════════════
-            STRAND 5 — Outer Right Edge Strand
+            STRAND 5 — Outer Right Edge Strand (Last cable, extended more to be longer than all others)
            ═════════════════════════════════════════════════ */}
         <motion.div
-          initial={{ y: -750, opacity: 0 }}
+          initial={{ y: -950, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ type: "spring", stiffness: 40, damping: 12, delay: 0.28 }}
           className="flex flex-col items-center origin-top animate-subtle-sway-3"
           style={{ width: '40px' }}
         >
-          <div className="w-[1.5px] bg-gradient-to-b from-[#C5A059] via-amber-300 to-[#C5A059] h-14 sm:h-20 lg:h-28 flex flex-col items-center justify-around">
+          <div className="w-[1.5px] bg-gradient-to-b from-[#C5A059] via-amber-300 to-[#C5A059] h-16 sm:h-24 lg:h-32 flex flex-col items-center justify-around">
             <FairyLed delay={0.3} />
           </div>
           <GoldStar size={20} rotation={8} />
 
-          <div className="w-[1.5px] bg-gradient-to-b from-[#C5A059] via-[#8B0000] to-[#C5A059] h-16 sm:h-24 lg:h-32 flex flex-col items-center justify-around">
+          <div className="w-[1.5px] bg-gradient-to-b from-[#C5A059] via-[#8B0000] to-[#C5A059] h-20 sm:h-28 lg:h-36 flex flex-col items-center justify-around">
             <FairyLed delay={1.6} />
           </div>
           <KraftGiftBox size={34} rotation={-5} />
 
-          <div className="w-[1.5px] bg-gradient-to-b from-[#C5A059] via-white to-[#C5A059] h-16 sm:h-24 lg:h-32 flex flex-col items-center justify-around">
+          <div className="w-[1.5px] bg-gradient-to-b from-[#C5A059] via-white to-[#C5A059] h-22 sm:h-30 lg:h-38 flex flex-col items-center justify-around">
             <FairyLed delay={0.9} />
           </div>
           <WhiteStar size={20} rotation={-14} />
 
-          <div className="w-[1.5px] bg-gradient-to-b from-[#C5A059] via-[#8B0000] to-[#C5A059] h-16 sm:h-24 lg:h-32 flex flex-col items-center justify-around">
+          <div className="w-[1.5px] bg-gradient-to-b from-[#C5A059] via-[#8B0000] to-[#C5A059] h-24 sm:h-32 lg:h-42 flex flex-col items-center justify-around">
             <FairyLed delay={1.8} />
           </div>
-          <RedGiftBox size={34} rotation={7} />
+          <RedGiftBox size={36} rotation={7} />
 
-          <div className="w-[1.5px] bg-gradient-to-b from-[#C5A059] to-amber-300 h-14 sm:h-20 lg:h-28 flex flex-col items-center justify-center">
+          <div className="w-[1.5px] bg-gradient-to-b from-[#C5A059] via-amber-200 to-[#C5A059] h-24 sm:h-32 lg:h-42 flex flex-col items-center justify-around">
+            <FairyLed delay={1.2} />
+          </div>
+          <GoldStar size={22} rotation={10} />
+
+          <div className="w-[1.5px] bg-gradient-to-b from-[#C5A059] to-amber-300 h-22 sm:h-28 lg:h-36 flex flex-col items-center justify-center">
             <FairyLed delay={2.5} />
           </div>
-          <Bauble size={16} color="gold" />
+          <Bauble size={18} color="gold" />
         </motion.div>
       </div>
 

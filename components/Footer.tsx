@@ -282,11 +282,25 @@ export function Footer() {
               transition={{ duration: 0.8 }}
               className="max-w-xs transition-opacity duration-500 opacity-90 mx-auto md:mx-0 flex flex-col items-center md:items-start text-center md:text-left"
             >
-              <img
-                src={BRAND.logo}
-                alt="CENA Logo"
-                className="h-16 w-auto mb-8"
-              />
+              <a
+                href="/"
+                onClick={(e) => {
+                  e.preventDefault();
+                  if (window.location.pathname === '/' && !window.location.hash && !window.location.search) {
+                    window.location.reload();
+                  } else {
+                    window.location.href = '/';
+                  }
+                }}
+                className="cursor-pointer block"
+                title="CENA"
+              >
+                <img
+                  src={BRAND.logo}
+                  alt="CENA Logo"
+                  className="h-16 w-auto mb-8 hover:opacity-85 transition-opacity"
+                />
+              </a>
               <p className="text-[10px] leading-relaxed tracking-widest text-[#121212]/70 uppercase font-bold">
                 {t('footer.description')}
               </p>

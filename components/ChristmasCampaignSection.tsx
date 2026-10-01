@@ -146,7 +146,13 @@ export const ChristmasCampaignSection: React.FC = () => {
       const scrollTarget = () => {
         const el = document.getElementById('christmas-campaign');
         if (el) {
-          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          const isMobile = window.innerWidth < 640;
+          const headerHeight = isMobile ? 64 : 70;
+          const targetY = el.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+          window.scrollTo({
+            top: Math.max(0, targetY),
+            behavior: 'smooth'
+          });
         }
       };
 
@@ -260,7 +266,7 @@ export const ChristmasCampaignSection: React.FC = () => {
   return (
     <section 
       id="christmas-campaign" 
-      className="py-12 sm:py-20 bg-gray-50 text-gray-900 relative overflow-hidden"
+      className="pt-0 pb-12 sm:pb-20 bg-gray-50 text-gray-900 relative overflow-hidden scroll-mt-16 sm:scroll-mt-[70px]"
     >
       {/* 1. HERO HEADER BANNER (Rich Christmas Velvet + Frosted Pine Garland & Hanging Ornaments) */}
       {/* ========================================================================= */}
@@ -293,17 +299,26 @@ export const ChristmasCampaignSection: React.FC = () => {
                 {t('christmas_campaign.hero_tagline')}
               </p>
 
-              {/* Feature Highlights Badges */}
-              <div className="flex flex-wrap gap-2.5 pt-2">
-                <span className="bg-black/30 backdrop-blur-md border border-white/20 text-white text-xs px-3.5 py-1.5 rounded-full font-medium flex items-center gap-1.5">
-                  🍱 {t('christmas_campaign.badge_baskets')}
-                </span>
-                <span className="bg-black/30 backdrop-blur-md border border-white/20 text-white text-xs px-3.5 py-1.5 rounded-full font-medium flex items-center gap-1.5">
-                  💳 {t('christmas_campaign.badge_giftcards')}
-                </span>
-                <span className="bg-black/30 backdrop-blur-md border border-white/20 text-white text-xs px-3.5 py-1.5 rounded-full font-medium flex items-center gap-1.5">
-                  🎄 {t('christmas_campaign.badge_meal')}
-                </span>
+              {/* Feature Highlights Badges — Placed on the same horizontal line */}
+              <div className="grid grid-cols-3 gap-1.5 sm:gap-2.5 pt-2 w-full max-w-xl">
+                <div className="bg-black/30 backdrop-blur-md border border-white/20 text-white rounded-lg sm:rounded-full px-1.5 sm:px-3 py-1.5 sm:py-2 flex items-center justify-center gap-1 sm:gap-1.5 text-center min-h-[38px] sm:min-h-0">
+                  <span className="text-xs sm:text-sm flex-shrink-0">🍱</span>
+                  <span className="text-[9.5px] sm:text-xs font-medium sm:font-semibold leading-tight line-clamp-2 sm:line-clamp-none">
+                    {t('christmas_campaign.badge_baskets')}
+                  </span>
+                </div>
+                <div className="bg-black/30 backdrop-blur-md border border-white/20 text-white rounded-lg sm:rounded-full px-1.5 sm:px-3 py-1.5 sm:py-2 flex items-center justify-center gap-1 sm:gap-1.5 text-center min-h-[38px] sm:min-h-0">
+                  <span className="text-xs sm:text-sm flex-shrink-0">💳</span>
+                  <span className="text-[9.5px] sm:text-xs font-medium sm:font-semibold leading-tight line-clamp-2 sm:line-clamp-none">
+                    {t('christmas_campaign.badge_giftcards')}
+                  </span>
+                </div>
+                <div className="bg-black/30 backdrop-blur-md border border-white/20 text-white rounded-lg sm:rounded-full px-1.5 sm:px-3 py-1.5 sm:py-2 flex items-center justify-center gap-1 sm:gap-1.5 text-center min-h-[38px] sm:min-h-0">
+                  <span className="text-xs sm:text-sm flex-shrink-0">🎄</span>
+                  <span className="text-[9.5px] sm:text-xs font-medium sm:font-semibold leading-tight line-clamp-2 sm:line-clamp-none">
+                    {t('christmas_campaign.badge_meal')}
+                  </span>
+                </div>
               </div>
 
             </div>

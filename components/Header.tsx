@@ -90,6 +90,16 @@ export function Header() {
     }
   };
 
+  const handleLogoClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setIsMenuOpen(false);
+    if (window.location.pathname === '/' && !window.location.hash && !window.location.search) {
+      window.location.reload();
+    } else {
+      window.location.href = '/';
+    }
+  };
+
   return (
     <header className={`fixed top-0 w-full transition-all duration-500 ${isMenuOpen ? 'z-[10000] bg-white pt-2 pb-4 shadow-sm' : `z-50 ${isScrolled ? 'bg-white pt-2 pb-4 border-b border-gray-100 shadow-sm' : 'bg-transparent pt-2 pb-8'}`}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
@@ -97,14 +107,19 @@ export function Header() {
 
           {/* Logo Section */}
           <div className="flex items-center flex-shrink-0 mr-2 xl:mr-4">
-            <Link to="/" className="block relative group">
+            <a 
+              href="/" 
+              onClick={handleLogoClick}
+              className="block relative group cursor-pointer"
+              title="CENA"
+            >
               <img
                 src={BRAND.logo}
                 alt="CENA Logo"
                 className={`h-10 sm:h-12 w-auto object-contain transition-all duration-500 ${isScrolled || isMenuOpen ? 'scale-90' : 'scale-100 xl:scale-110'}`}
               />
               <div className="absolute inset-x-0 -bottom-2 h-0.5 bg-[#C5A059] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
-            </Link>
+            </a>
           </div>
 
           {/* Center Navigation: Built for Focus */}
