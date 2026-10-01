@@ -317,4 +317,18 @@
 .animate-subtle-sway-3 {
   animation: subtle-sway-3 5.4s ease-in-out infinite;
   transform-origin: top center;
+}
+
+@keyframes sway-ornament {
+  0% {
+    transform: rotate(-1.5deg);
+  }
+  100% {
+    transform: rotate(1.5deg);
+  }
+}
+
+.animate-sway-ornament {
+  animation: sway-ornament 4.8s ease-in-out infinite alternate;
+  transform-origin: top center;
 }

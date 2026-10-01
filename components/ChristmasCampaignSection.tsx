@@ -31,6 +31,7 @@ import flyerEN from '../assets/christmas/flyer-en.jpg';
 import photo1 from '../assets/christmas/1.jpeg';
 import photo2 from '../assets/christmas/2.jpeg';
 import photo3 from '../assets/christmas/3.jpeg';
+import { ChristmasSectionDecor } from './ChristmasSectionDecor';
 
 // Official WhatsApp Brand SVG Icon
 const OfficialWhatsAppIcon: React.FC<{ className?: string }> = ({ className = "w-4 h-4" }) => (
@@ -261,38 +262,12 @@ export const ChristmasCampaignSection: React.FC = () => {
       id="christmas-campaign" 
       className="py-12 sm:py-20 bg-gray-50 text-gray-900 relative overflow-hidden"
     >
+      {/* 1. HERO HEADER BANNER (Rich Christmas Velvet + Frosted Pine Garland & Hanging Ornaments) */}
       {/* ========================================================================= */}
-      {/* 1. HERO HEADER BANNER (Deep Red Gradient + Bokeh + Hanging Baubles) */}
-      {/* ========================================================================= */}
-      <div className="relative bg-gradient-to-r from-[#B71C1C] via-[#8B0000] to-[#5A0000] text-white pt-16 pb-28 sm:pb-36 lg:pb-44 overflow-hidden">
+      <div className="relative bg-gradient-to-br from-[#85050C] via-[#8B0000] to-[#450206] text-white pt-16 pb-28 sm:pb-36 lg:pb-44 overflow-hidden">
         
-        {/* Bokeh Lights Overlay */}
-        <div className="absolute inset-0 opacity-30 pointer-events-none bg-[radial-gradient(#FFF_1px,transparent_1px)] [background-size:24px_24px]" />
-        <div className="absolute -top-24 -left-24 w-96 h-96 bg-red-400/20 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute top-10 right-10 w-96 h-96 bg-[#C5A059]/20 rounded-full blur-3xl pointer-events-none" />
-
-        {/* Hanging Christmas Baubles (Top Left Decoration inspired by Reference Template) */}
-        <div className="absolute top-0 left-6 sm:left-12 lg:left-16 z-20 flex space-x-6 pointer-events-none">
-          {/* Bauble 1 */}
-          <div className="flex flex-col items-center animate-bounce-subtle" style={{ animationDuration: '4s' }}>
-            <div className="w-[1.5px] h-12 sm:h-16 bg-gradient-to-b from-amber-200 to-[#C5A059]" />
-            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gradient-to-br from-amber-100 via-[#C5A059] to-amber-700 shadow-lg border border-amber-200/50 flex items-center justify-center">
-              <Sparkles className="w-3.5 h-3.5 text-black/70" />
-            </div>
-          </div>
-          {/* Bauble 2 */}
-          <div className="flex flex-col items-center animate-bounce-subtle" style={{ animationDuration: '3.2s', animationDelay: '0.5s' }}>
-            <div className="w-[1.5px] h-16 sm:h-20 bg-gradient-to-b from-amber-200 to-white/70" />
-            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-gradient-to-br from-white via-slate-200 to-slate-400 shadow-lg border border-white/60 flex items-center justify-center">
-              <span className="text-xs">❄️</span>
-            </div>
-          </div>
-          {/* Star Bauble 3 */}
-          <div className="hidden xs:flex flex-col items-center animate-bounce-subtle" style={{ animationDuration: '4.5s', animationDelay: '1s' }}>
-            <div className="w-[1.5px] h-10 sm:h-14 bg-gradient-to-b from-amber-200 to-[#C5A059]" />
-            <div className="text-xl sm:text-2xl text-[#C5A059] filter drop-shadow">⭐</div>
-          </div>
-        </div>
+        {/* Luxury Minimalist Christmas Stage Decor inspired by Reference Design */}
+        <ChristmasSectionDecor />
 
         <div className="max-w-[1540px] 2xl:max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-12 items-center">
