@@ -262,3 +262,59 @@
     transform: none;
   }
 }
+
+/* 🎄 Christmas Hero Hanging Sway & Fairy Light Animations */
+@keyframes subtle-sway-1 {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(1.2deg);
+  }
+}
+
+@keyframes subtle-sway-2 {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-1.4deg);
+  }
+}
+
+@keyframes subtle-sway-3 {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(0.9deg);
+  }
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+    filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.9));
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(0.85);
+    filter: drop-shadow(0 0 1px rgba(255, 215, 0, 0.2));
+  }
+}
+
+.animate-subtle-sway-1 {
+  animation: subtle-sway-1 6s ease-in-out infinite;
+  transform-origin: top center;
+}
+
+.animate-subtle-sway-2 {
+  animation: subtle-sway-2 7.2s ease-in-out infinite;
+  transform-origin: top center;
+}
+
+.animate-subtle-sway-3 {
+  animation: subtle-sway-3 5.4s ease-in-out infinite;
+  transform-origin: top center;
+}

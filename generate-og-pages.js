@@ -112,7 +112,7 @@ function getPageSrc(pageNum) {
   return `/magazine/pages/og/page${pageNum}.jpg`;
 }
 
-function createPreRenderedHtml(title, description, imagePath, pageUrlPath) {
+function createPreRenderedHtml(title, description, imagePath, pageUrlPath, options = {}) {
   const fullImageUrl = `${domain}${imagePath}`;
   const fullPageUrl = `${domain}${pageUrlPath}`;
 
@@ -141,9 +141,23 @@ function createPreRenderedHtml(title, description, imagePath, pageUrlPath) {
     `<meta property="og:image" content="${fullImageUrl}" />`
   );
   html = html.replace(
+    /<meta\s+property="og:image:secure_url"\s+content=".*?"\s*\/?>/gi,
+    `<meta property="og:image:secure_url" content="${fullImageUrl}" />`
+  );
+  html = html.replace(
     /<meta\s+property="og:image:type"\s+content=".*?"\s*\/?>/gi,
     `<meta property="og:image:type" content="image/jpeg" />`
   );
+  if (options.width && options.height) {
+    html = html.replace(
+      /<meta\s+property="og:image:width"\s+content=".*?"\s*\/?>/gi,
+      `<meta property="og:image:width" content="${options.width}" />`
+    );
+    html = html.replace(
+      /<meta\s+property="og:image:height"\s+content=".*?"\s*\/?>/gi,
+      `<meta property="og:image:height" content="${options.height}" />`
+    );
+  }
   html = html.replace(
     /<meta\s+property="og:url"\s+content=".*?"\s*\/?>/gi,
     `<meta property="og:url" content="${fullPageUrl}" />`
@@ -233,6 +247,62 @@ for (const blog of BLOG_META_MAP) {
   writeHtmlFile(path.join(distDir, 'blog', blog.slug, 'index.html'), htmlContent);
   writeHtmlFile(path.join(distDir, 'blog', `${blog.slug}.html`), htmlContent);
   count += 2;
+}
+
+// 3. Generate Christmas Campaign Dedicated Pre-rendered Pages (for WhatsApp & Facebook Open Graph preview cards)
+const CHRISTMAS_CAMPAIGN_PAGES = [
+  {
+    urls: ['/christmas-campaign', '/campagne-noel', '/noel-solidaire'],
+    title: "CENA — Campagne Noël Solidaire 2026 | Ensemble, offrons un Noël d'espoir",
+    description: "Rejoignez la Campagne Noël Solidaire 2026 de CENA ! Ensemble, offrons des paniers festifs, cartes d'épicerie et repas chaleureux aux familles dans le besoin.",
+    image: "/christmas/flyer-fr.jpg",
+    width: 1024,
+    height: 769
+  },
+  {
+    urls: ['/christmas-campaign-en', '/christmas-campaign/en'],
+    title: "CENA — Christmas Solidarity 2026 Campaign | Bringing Hope & Joy",
+    description: "Join CENA's Christmas Solidarity 2026 Campaign! Together, let's bring comfort, festive food baskets, and holiday meals to families in need.",
+    image: "/christmas/flyer-en.jpg",
+    width: 1024,
+    height: 769
+  },
+  {
+    urls: ['/natal-solidario', '/christmas-campaign/pt'],
+    title: "CENA — Campanha Natal Solidário 2026 | Ofereçamos um Natal de Esperança",
+    description: "Junte-se à Campanha de Natal Solidário 2026 do CENA! Juntos, vamos levar conforto, cestas festivas e refeições de Natal a famílias necessitadas.",
+    image: "/christmas/flyer-pt.jpg",
+    width: 1024,
+    height: 769
+  }
+];
+
+for (const camp of CHRISTMAS_CAMPAIGN_PAGES) {
+  for (const urlPath of camp.urls) {
+    const cleanPath = urlPath.replace(/^\//, '');
+    const htmlContent = createPreRenderedHtml(camp.title, camp.description, camp.image, urlPath, {
+      width: camp.width,
+      height: camp.height
+    });
+    
+    // Write both as clean directory index.html and as flat .html file for Apache rewrite
+    writeHtmlFile(path.join(distDir, cleanPath, 'index.html'), htmlContent);
+    writeHtmlFile(path.join(distDir, `${cleanPath}.html`), htmlContent);
+    count += 2;
+  }
+}
+
+// 4. Ensure public/christmas images are guaranteed copied to dist/christmas
+const publicChristmasDir = path.join(__dirname, 'public', 'christmas');
+const distChristmasDir = path.join(distDir, 'christmas');
+if (fs.existsSync(publicChristmasDir)) {
+  if (!fs.existsSync(distChristmasDir)) {
+    fs.mkdirSync(distChristmasDir, { recursive: true });
+  }
+  const files = fs.readdirSync(publicChristmasDir);
+  for (const file of files) {
+    fs.copyFileSync(path.join(publicChristmasDir, file), path.join(distChristmasDir, file));
+  }
 }
 
 console.log(`✅ Successfully generated ${count} pre-rendered static HTML pages with WhatsApp JPEG Open Graph tags!`);

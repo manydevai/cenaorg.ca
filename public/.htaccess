@@ -1,5 +1,9 @@
 RewriteEngine On
 
+# 0. API Endpoints for Stripe and Donation Tracker
+RewriteRule ^api/donation-stats/?$ api/donation-stats.php [L,QSA]
+RewriteRule ^api/stripe-webhook/?$ api/stripe-webhook.php [L,QSA]
+
 # 1. Serve actual existing files and directories directly (images, PDFs, JS, CSS, pre-rendered HTML files, etc.)
 RewriteCond %{REQUEST_FILENAME} -f [OR]
 RewriteCond %{REQUEST_FILENAME} -d

@@ -1,6 +1,7 @@
 import { ArrowRight } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useState, useEffect } from 'react';
+import { ChristmasHeroDecoration } from './ChristmasHeroDecoration';
 
 export function HeroSection() {
   const { t } = useLanguage();
@@ -189,6 +190,9 @@ export function HeroSection() {
       <div className="absolute left-[5%] bottom-[5%] text-[8rem] sm:text-[15rem] font-serif text-white/[0.05] select-none pointer-events-none uppercase tracking-tighter hidden lg:block">
         Cena
       </div>
+
+      {/* 🎄 CHRISTMAS HERO SUSPENDED DECORATION (Right side, drops down with spring & sway) */}
+      <ChristmasHeroDecoration />
     </section>
   );
 }

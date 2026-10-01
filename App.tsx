@@ -18,6 +18,7 @@ import { FeaturedEventSection } from './components/FeaturedEventSection';
 import { TeamSection } from './components/TeamSection';
 import { SupportSection } from './components/SupportSection';
 import { ChristmasGallerySection } from './components/ChristmasGallerySection';
+import { ChristmasCampaignSection } from './components/ChristmasCampaignSection';
 import { RecentEventsLinkSection } from './components/RecentEventsLinkSection';
 import { MagazineSection } from './components/MagazineSection';
 import { BlogSection } from './components/BlogSection';
@@ -110,6 +111,7 @@ export default function App() {
         <TeamSection />
         <SupportSection />
         <FeaturedEventSection />
+        <ChristmasCampaignSection />
         <ChristmasGallerySection />
         <BlogSection />
       </main>

@@ -73,6 +73,9 @@ export function ChristmasGallerySection() {
             <h2 className="text-4xl sm:text-6xl font-serif text-[#121212] leading-tight tracking-tight">
               {t('gallery.title')}
             </h2>
+            <p className="mt-2 text-xs sm:text-sm font-sans tracking-[0.25em] text-[#8B0000] font-bold uppercase">
+              {t('gallery.year')}
+            </p>
           </div>
           <div className="lg:col-span-4 lg:text-right">
             <p className="text-gray-400 text-sm leading-relaxed italic border-l lg:border-l-0 lg:border-r border-gray-100 lg:pr-8 pl-8 lg:pl-0">
