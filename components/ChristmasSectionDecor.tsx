@@ -696,7 +696,384 @@ export const ElectricFairyLightCable: React.FC = () => (
   </div>
 );
 
-// ─── 7. Complete Christmas Section Decor (Master Component) ───
+// ─── 7. Handcrafted Quilted Poinsettia Flower (For Inferior / Bottom Corners) ───
+// Inspired directly by the user's reference image: Quilted artisan Poinsettia with biscuit-quilted padded button,
+// layered crimson velvet, emerald green & cream quilted petals with gold piped edge binding and cascading pendant tails.
+export const QuiltedPoinsettiaFlower: React.FC<{
+  position?: 'bottom-left' | 'bottom-right';
+  className?: string;
+  size?: number;
+}> = ({ position = 'bottom-left', className = '', size = 320 }) => {
+  const isRight = position === 'bottom-right';
+  const idPrefix = `quiltedPoinsettia-${position}`;
+
+  return (
+    <div
+      className={`absolute z-20 pointer-events-none select-none transition-transform duration-700 ${
+        isRight
+          ? '-bottom-16 -right-16 sm:-bottom-20 sm:-right-20 lg:-bottom-24 lg:-right-24'
+          : '-bottom-16 -left-16 sm:-bottom-20 sm:-left-20 lg:-bottom-24 lg:-left-24'
+      } ${className}`}
+      style={{
+        transform: isRight
+          ? 'scale(0.85) sm:scale(1) rotate(-35deg) scaleX(-1)'
+          : 'scale(0.85) sm:scale(1) rotate(-35deg)',
+        transformOrigin: isRight ? 'bottom right' : 'bottom left'
+      }}
+    >
+      <svg
+        width={size}
+        height={size * 1.15}
+        viewBox="0 0 340 390"
+        className="drop-shadow-[0_16px_32px_rgba(0,0,0,0.85)]"
+        fill="none"
+      >
+        <defs>
+          {/* Gold Piped Edge Binding Gradient */}
+          <linearGradient id={`${idPrefix}-goldPiping`} x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stopColor="#FFF2A8" />
+            <stop offset="35%" stopColor="#E5C158" />
+            <stop offset="70%" stopColor="#C5A059" />
+            <stop offset="100%" stopColor="#7A560C" />
+          </linearGradient>
+
+          {/* Crimson Velvet Quilted Gradient */}
+          <linearGradient id={`${idPrefix}-quiltRed`} x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#E51B27" />
+            <stop offset="30%" stopColor="#BA0D18" />
+            <stop offset="75%" stopColor="#80030B" />
+            <stop offset="100%" stopColor="#4A0005" />
+          </linearGradient>
+
+          {/* Deep Crimson Velvet (Under layer) */}
+          <linearGradient id={`${idPrefix}-quiltRedDeep`} x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#BA0D18" />
+            <stop offset="60%" stopColor="#6E0008" />
+            <stop offset="100%" stopColor="#3B0004" />
+          </linearGradient>
+
+          {/* Forest Green Quilted Gradient */}
+          <linearGradient id={`${idPrefix}-quiltGreen`} x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#2A6635" />
+            <stop offset="45%" stopColor="#1B4D25" />
+            <stop offset="80%" stopColor="#0E3016" />
+            <stop offset="100%" stopColor="#061A0B" />
+          </linearGradient>
+
+          {/* Cream / Ivory Quilted Fabric Gradient */}
+          <linearGradient id={`${idPrefix}-quiltCream`} x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#FFFDF2" />
+            <stop offset="40%" stopColor="#F7EED8" />
+            <stop offset="75%" stopColor="#E4D2B3" />
+            <stop offset="100%" stopColor="#C4B08F" />
+          </linearGradient>
+
+          {/* Padded Center Button Gradient */}
+          <radialGradient id={`${idPrefix}-buttonPuff`} cx="38%" cy="32%" r="65%">
+            <stop offset="0%" stopColor="#FFFFFF" />
+            <stop offset="35%" stopColor="#F9F1E2" />
+            <stop offset="75%" stopColor="#DFCBB0" />
+            <stop offset="100%" stopColor="#8C7350" />
+          </radialGradient>
+
+          {/* Drop shadow filter for petals */}
+          <filter id={`${idPrefix}-petalShadow`} x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="0" dy="4" stdDeviation="4" floodColor="#000000" floodOpacity="0.5" />
+          </filter>
+        </defs>
+
+        <g transform="translate(170, 160)">
+          {/* ─── LAYER 1: CASCADING QUILTED PENDANTS / FAN (Bottom Ribbon Tails) ─── */}
+          {[
+            { angle: 124, length: 140, type: 'green', width: 26 },
+            { angle: 138, length: 165, type: 'cream', width: 28 },
+            { angle: 152, length: 185, type: 'green', width: 28 },
+            { angle: 166, length: 200, type: 'red', width: 30 },
+            { angle: 180, length: 215, type: 'cream', width: 32 }, // Longest center ribbon
+            { angle: 194, length: 200, type: 'red', width: 30 },
+            { angle: 208, length: 185, type: 'green', width: 28 },
+            { angle: 222, length: 165, type: 'cream', width: 28 },
+            { angle: 236, length: 140, type: 'green', width: 26 }
+          ].map((ribbon, i) => {
+            const isCream = ribbon.type === 'cream';
+            const isRed = ribbon.type === 'red';
+            const isGreen = ribbon.type === 'green';
+            const fillUrl = isCream
+              ? `url(#${idPrefix}-quiltCream)`
+              : isRed
+              ? `url(#${idPrefix}-quiltRed)`
+              : `url(#${idPrefix}-quiltGreen)`;
+            const w = ribbon.width / 2;
+            const len = ribbon.length;
+
+            return (
+              <g key={`pendant-${i}`} transform={`rotate(${ribbon.angle})`} filter={`url(#${idPrefix}-petalShadow)`}>
+                {/* Quilted Pennant Ribbon Body with Pointed Chevron Tip */}
+                <path
+                  d={`M -${w * 0.7},0 L -${w},${len - 24} L 0,${len} L ${w},${len - 24} L ${w * 0.7},0 Z`}
+                  fill={fillUrl}
+                  stroke={`url(#${idPrefix}-goldPiping)`}
+                  strokeWidth="2.2"
+                />
+                
+                {/* Inner Dashed Quilt Stitching */}
+                <path
+                  d={`M -${w - 3},${len - 25} L 0,${len - 4} L ${w - 3},${len - 25}`}
+                  stroke="#FFF2A8"
+                  strokeWidth="1"
+                  strokeDasharray="2.5 1.5"
+                  fill="none"
+                />
+
+                {/* Center Quilted Spine Crease */}
+                <line
+                  x1="0"
+                  y1="10"
+                  x2="0"
+                  y2={len - 6}
+                  stroke={isCream ? '#C5A059' : '#FFE082'}
+                  strokeWidth="1.2"
+                  strokeDasharray="3 1.5"
+                />
+
+                {/* Decorative Quilted Motifs based on type */}
+                {isCream && (
+                  <g>
+                    {/* Quilted Candy Cane */}
+                    <path
+                      d="M -3,55 C -3,48 5,48 5,55 L 5,85"
+                      stroke="#C8102E"
+                      strokeWidth="2.6"
+                      strokeLinecap="round"
+                      fill="none"
+                    />
+                    <path
+                      d="M -3,55 C -3,48 5,48 5,55 L 5,85"
+                      stroke="#FFFFFF"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeDasharray="2 3"
+                      fill="none"
+                    />
+                    {/* Gold Star */}
+                    <circle cx="0" cy="115" r="2.2" fill="#E5C158" />
+                    <line x1="-5" y1="115" x2="5" y2="115" stroke="#E5C158" strokeWidth="1" />
+                    <line x1="0" y1="110" x2="0" y2="120" stroke="#E5C158" strokeWidth="1" />
+                  </g>
+                )}
+
+                {isGreen && (
+                  <g>
+                    <circle cx="-3" cy="70" r="2.5" fill="#E51926" />
+                    <circle cx="3" cy="72" r="2.2" fill="#FF5252" />
+                    <circle cx="0" cy="75" r="2.4" fill="#C40D1D" />
+                    <circle cx="-3" cy="120" r="2.5" fill="#E51926" />
+                    <circle cx="3" cy="122" r="2.2" fill="#FF5252" />
+                    <circle cx="0" cy="125" r="2.4" fill="#C40D1D" />
+                  </g>
+                )}
+
+                {isRed && (
+                  <g>
+                    {[65, 110, 150].map((y, sIdx) => (
+                      <g key={sIdx} transform={`translate(0, ${y})`}>
+                        <circle cx="0" cy="0" r="1.6" fill="#FFF2A8" />
+                        <line x1="-5" y1="0" x2="5" y2="0" stroke="#FFE082" strokeWidth="1" />
+                        <line x1="0" y1="-5" x2="0" y2="5" stroke="#FFE082" strokeWidth="1" />
+                        <line x1="-3.5" y1="-3.5" x2="3.5" y2="3.5" stroke="#FFE082" strokeWidth="0.8" />
+                        <line x1="-3.5" y1="3.5" x2="3.5" y2="-3.5" stroke="#FFE082" strokeWidth="0.8" />
+                      </g>
+                    ))}
+                  </g>
+                )}
+              </g>
+            );
+          })}
+
+          {/* ─── LAYER 2: OUTER QUILTED PETALS (Alternating Green & Cream) ─── */}
+          {Array.from({ length: 12 }).map((_, i) => {
+            const angle = (i * 360) / 12;
+            const isCream = i % 2 === 1;
+            const fillUrl = isCream ? `url(#${idPrefix}-quiltCream)` : `url(#${idPrefix}-quiltGreen)`;
+            const length = 135;
+            const width = 36;
+
+            return (
+              <g key={`outer-petal-${i}`} transform={`rotate(${angle})`} filter={`url(#${idPrefix}-petalShadow)`}>
+                {/* Petal Outer Body */}
+                <path
+                  d={`M 0,0 C -${width * 0.7},-${length * 0.25} -${width},-${length * 0.65} 0,-${length} C ${width},-${length * 0.65} ${width * 0.7},-${length * 0.25} 0,0 Z`}
+                  fill={fillUrl}
+                  stroke={`url(#${idPrefix}-goldPiping)`}
+                  strokeWidth="2.2"
+                />
+
+                {/* Stitched Vein Down Center */}
+                <line
+                  x1="0"
+                  y1="-10"
+                  x2="0"
+                  y2={-length + 10}
+                  stroke={isCream ? '#C5A059' : '#FFE082'}
+                  strokeWidth="1.4"
+                  strokeDasharray="3 1.5"
+                />
+
+                {/* Herringbone Quilt Rib Stitches */}
+                {[-30, -55, -80, -105].map((y, idx) => (
+                  <g key={idx}>
+                    <line x1="0" y1={y} x2={-width * 0.55} y2={y - 12} stroke={isCream ? '#C5A059' : '#FFE082'} strokeWidth="1" strokeDasharray="2 1.2" />
+                    <line x1="0" y1={y} x2={width * 0.55} y2={y - 12} stroke={isCream ? '#C5A059' : '#FFE082'} strokeWidth="1" strokeDasharray="2 1.2" />
+                  </g>
+                ))}
+
+                {/* Holly Leaves on Green Petals */}
+                {!isCream && (
+                  <g transform={`translate(0, -${length * 0.5})`}>
+                    <circle cx="-4" cy="-2" r="2.2" fill="#E51926" />
+                    <circle cx="4" cy="-3" r="2" fill="#FF5252" />
+                    <circle cx="0" cy="2" r="2.2" fill="#C40D1D" />
+                  </g>
+                )}
+              </g>
+            );
+          })}
+
+          {/* ─── LAYER 3: MIDDLE QUILTED CRIMSON VELVET PETALS (With Embroidered Stars) ─── */}
+          {Array.from({ length: 10 }).map((_, i) => {
+            const angle = (i * 360) / 10 + 18;
+            const length = 110;
+            const width = 32;
+
+            return (
+              <g key={`mid-petal-${i}`} transform={`rotate(${angle})`} filter={`url(#${idPrefix}-petalShadow)`}>
+                {/* Velvet Red Petal */}
+                <path
+                  d={`M 0,0 C -${width * 0.7},-${length * 0.25} -${width},-${length * 0.65} 0,-${length} C ${width},-${length * 0.65} ${width * 0.7},-${length * 0.25} 0,0 Z`}
+                  fill={`url(#${idPrefix}-quiltRedDeep)`}
+                  stroke={`url(#${idPrefix}-goldPiping)`}
+                  strokeWidth="2"
+                />
+
+                {/* Center Gold Stitched Spine */}
+                <line
+                  x1="0"
+                  y1="-10"
+                  x2="0"
+                  y2={-length + 8}
+                  stroke="#FFD54F"
+                  strokeWidth="1.3"
+                  strokeDasharray="3 1.5"
+                />
+
+                {/* Gold Embroidered Starburst Stitches */}
+                {[-40, -75].map((y, sIdx) => (
+                  <g key={sIdx} transform={`translate(0, ${y})`}>
+                    <circle cx="0" cy="0" r="1.5" fill="#FFF2A8" />
+                    <line x1="-4" y1="0" x2="4" y2="0" stroke="#FFE082" strokeWidth="0.9" />
+                    <line x1="0" y1="-4" x2="0" y2="4" stroke="#FFE082" strokeWidth="0.9" />
+                    <line x1="-3" y1="-3" x2="3" y2="3" stroke="#FFE082" strokeWidth="0.7" />
+                    <line x1="-3" y1="3" x2="3" y2="-3" stroke="#FFE082" strokeWidth="0.7" />
+                  </g>
+                ))}
+              </g>
+            );
+          })}
+
+          {/* ─── LAYER 4: INNER QUILTED CRIMSON VELVET PETALS (Primary Bloom) ─── */}
+          {Array.from({ length: 8 }).map((_, i) => {
+            const angle = (i * 360) / 8;
+            const length = 88;
+            const width = 28;
+
+            return (
+              <g key={`inner-petal-${i}`} transform={`rotate(${angle})`} filter={`url(#${idPrefix}-petalShadow)`}>
+                {/* Puffy Red Velvet Petal */}
+                <path
+                  d={`M 0,0 C -${width * 0.7},-${length * 0.25} -${width},-${length * 0.65} 0,-${length} C ${width},-${length * 0.65} ${width * 0.7},-${length * 0.25} 0,0 Z`}
+                  fill={`url(#${idPrefix}-quiltRed)`}
+                  stroke={`url(#${idPrefix}-goldPiping)`}
+                  strokeWidth="2"
+                />
+
+                {/* Prominent Gold Quilted Spine */}
+                <line
+                  x1="0"
+                  y1="-8"
+                  x2="0"
+                  y2={-length + 6}
+                  stroke="#FFF2A8"
+                  strokeWidth="1.6"
+                  strokeDasharray="3 1.5"
+                />
+
+                {/* Herringbone Quilted Veins */}
+                {[-22, -42, -62].map((y, vIdx) => (
+                  <g key={vIdx}>
+                    <line x1="0" y1={y} x2={-width * 0.6} y2={y - 10} stroke="#FFE57F" strokeWidth="1" strokeDasharray="2 1.2" />
+                    <line x1="0" y1={y} x2={width * 0.6} y2={y - 10} stroke="#FFE57F" strokeWidth="1" strokeDasharray="2 1.2" />
+                  </g>
+                ))}
+              </g>
+            );
+          })}
+
+          {/* ─── LAYER 5: CENTER BISCUIT-QUILTED BUTTON (The Padded Tufted Core) ─── */}
+          {/* Base Button Shadow */}
+          <circle cx="0" cy="0" r="28" fill="rgba(0,0,0,0.5)" />
+
+          {/* 3D Padded Cushion Button */}
+          <circle
+            cx="0"
+            cy="0"
+            r="26"
+            fill={`url(#${idPrefix}-buttonPuff)`}
+            stroke={`url(#${idPrefix}-goldPiping)`}
+            strokeWidth="2.2"
+          />
+
+          {/* Quilted Diamond Grid Lines */}
+          <g stroke="#9C7844" strokeWidth="1" strokeDasharray="2 1.2" opacity="0.85">
+            {/* Diagonal Grid / */}
+            <line x1="-18" y1="-8" x2="8" y2="18" />
+            <line x1="-22" y1="2" x2="2" y2="22" />
+            <line x1="-12" y1="-18" x2="18" y2="12" />
+            <line x1="-2" y1="-22" x2="22" y2="2" />
+            
+            {/* Diagonal Grid \ */}
+            <line x1="-8" y1="18" x2="18" y2="-8" />
+            <line x1="-2" y1="22" x2="22" y2="-2" />
+            <line x1="-18" y1="12" x2="12" y2="-18" />
+            <line x1="-22" y1="2" x2="2" y2="-22" />
+          </g>
+
+          {/* Quilted Tuft Button Stitches at Intersections */}
+          {[
+            { x: 0, y: 0 },
+            { x: -10, y: 0 },
+            { x: 10, y: 0 },
+            { x: 0, y: -10 },
+            { x: 0, y: 10 },
+            { x: -7, y: -7 },
+            { x: 7, y: -7 },
+            { x: -7, y: 7 },
+            { x: 7, y: 7 }
+          ].map((pt, pIdx) => (
+            <g key={pIdx}>
+              <circle cx={pt.x} cy={pt.y} r="1.6" fill="#805B27" />
+              <circle cx={pt.x - 0.4} cy={pt.y - 0.4} r="1" fill="#FFF9C4" />
+            </g>
+          ))}
+
+          {/* Central Highlight Glint on Dome */}
+          <ellipse cx="-7" cy="-7" rx="5" ry="3" fill="#FFFFFF" opacity="0.65" transform="rotate(-30 -7 -7)" />
+        </g>
+      </svg>
+    </div>
+  );
+};
+
+// ─── 8. Complete Christmas Section Decor (Master Component) ───
 export const ChristmasSectionDecor: React.FC = () => {
   return (
     <>
@@ -718,18 +1095,18 @@ export const ChristmasSectionDecor: React.FC = () => {
       {/* 1. Electric Fairy Light Cable across Top Border */}
       <ElectricFairyLightCable />
 
-      {/* 2. THE 4 CORNERS: HANDCRAFTED SANTA CHRISTMAS WREATHS */}
-      {/* Top-Left Corner Wreath */}
+      {/* 2. THE 4 CORNERS DECORATION */}
+      {/* Top-Left Corner: Handcrafted Santa Skiing Christmas Wreath */}
       <SantaSkiingWreath position="top-left" />
 
-      {/* Top-Right Corner Wreath */}
+      {/* Top-Right Corner: Handcrafted Santa Skiing Christmas Wreath */}
       <SantaSkiingWreath position="top-right" />
 
-      {/* Bottom-Left Corner Wreath */}
-      <SantaSkiingWreath position="bottom-left" />
+      {/* Bottom-Left Corner: Handcrafted Quilted Poinsettia Flower (deep corner and half) */}
+      <QuiltedPoinsettiaFlower position="bottom-left" />
 
-      {/* Bottom-Right Corner Wreath */}
-      <SantaSkiingWreath position="bottom-right" />
+      {/* Bottom-Right Corner: Handcrafted Quilted Poinsettia Flower (deep corner and half) */}
+      <QuiltedPoinsettiaFlower position="bottom-right" />
 
       {/* 3. SUSPENDABLE STARS, BALLOONS & SNOWFLAKES (Hanging from Electric Light Cable) */}
       <div className="absolute top-0 left-0 right-0 z-20 pointer-events-none px-28 sm:px-36 lg:px-48 flex justify-between">
