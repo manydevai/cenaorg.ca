@@ -31,6 +31,15 @@ export const getMagazinePageSrc = (pageNum: number, lang: SupportedLanguage) => 
   return `/magazine/pages/${safeLang}/page-${safePage}.webp`;
 };
 
+export const getMagazineShareImage = (pageNum: number, lang: SupportedLanguage) => {
+  const safeLang = ['fr', 'pt', 'en'].includes(lang) ? lang : 'fr';
+  const safePage = Math.max(1, Math.min(TOTAL_PAGES, pageNum));
+  if (safePage === 1) {
+    return `/magazine/pages/og/cover-${safeLang}.jpg`;
+  }
+  return `/magazine/pages/og/page${safePage}.jpg`;
+};
+
 export function MagazinePage() {
   const { t, language, setLanguage } = useLanguage();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -170,12 +179,24 @@ export function MagazinePage() {
 
   // Synchronize Open Graph tags with current page and active language
   useEffect(() => {
-    const pageImage = getMagazinePageSrc(currentPage, activeLang);
+    const shareImg = getMagazineShareImage(currentPage, activeLang);
+    const title = activeLang === 'pt'
+      ? (currentPage === 1 ? 'Revista Oficial CENA Magazine 2026 — Edição Especial' : `Revista CENA 2026 — Página ${currentPage}`)
+      : activeLang === 'en'
+      ? (currentPage === 1 ? 'Official CENA Magazine 2026 — Special Edition' : `CENA Magazine 2026 — Page ${currentPage}`)
+      : (currentPage === 1 ? 'Revue Officielle CENA Magazine 2026 — Édition Spéciale' : `Revue CENA 2026 — Page ${currentPage}`);
+
+    const desc = activeLang === 'pt'
+      ? (currentPage === 1 ? 'Descubra a Revista Oficial CENA Magazine 2026: liderança, empreendedorismo, cultura e histórias de sucesso da comunidade lusófona no Canadá.' : `Descubra a página ${currentPage} da Revista CENA 2026.`)
+      : activeLang === 'en'
+      ? (currentPage === 1 ? 'Discover the Official CENA Magazine 2026: leadership, entrepreneurship, culture, and success stories of the lusophone community in Canada.' : `Discover page ${currentPage} of CENA Magazine 2026.`)
+      : (currentPage === 1 ? 'Découvrez la Revue Officielle CENA Magazine 2026 : leadership, entrepreneuriat, culture et réussites de la communauté lusophone au Canada.' : `Découvrez la page ${currentPage} de la Revue CENA 2026.`);
+
     updateOpenGraphMeta({
-      title: `CENA Magazine 2026 — Page ${currentPage}`,
-      text: `Édition 2026 de la Revue CENA (${activeLang.toUpperCase()} - Page ${currentPage} de ${TOTAL_PAGES}).`,
-      url: `/magazine?lang=${activeLang}&page=${currentPage}`,
-      image: pageImage
+      title,
+      text: desc,
+      url: `/magazine?lang=${activeLang}${currentPage > 1 ? `&page=${currentPage}` : ''}`,
+      image: shareImg
     });
   }, [currentPage, activeLang]);
 
@@ -268,10 +289,22 @@ export function MagazinePage() {
 
           <div className="flex items-center space-x-2">
             <ShareButton
-              title={activeLang === 'fr' ? `Revue CENA 2026 — Page ${currentPage}` : activeLang === 'pt' ? `Revista CENA 2026 — Page ${currentPage}` : `CENA Magazine 2026 — Page ${currentPage}`}
-              text={activeLang === 'fr' ? `Découvrez la page ${currentPage} de la Revue CENA 2026 (${activeLang.toUpperCase()})!` : `Découvrez la page ${currentPage} de la CENA Magazine 2026 (${activeLang.toUpperCase()})!`}
-              url={`/magazine?lang=${activeLang}&page=${currentPage}`}
-              image={getMagazinePageSrc(currentPage, activeLang)}
+              title={
+                activeLang === 'pt'
+                  ? (currentPage === 1 ? 'Revista Oficial CENA Magazine 2026 — Edição Especial' : `Revista CENA 2026 — Página ${currentPage}`)
+                  : activeLang === 'en'
+                  ? (currentPage === 1 ? 'Official CENA Magazine 2026 — Special Edition' : `CENA Magazine 2026 — Page ${currentPage}`)
+                  : (currentPage === 1 ? 'Revue Officielle CENA Magazine 2026 — Édition Spéciale' : `Revue CENA 2026 — Page ${currentPage}`)
+              }
+              text={
+                activeLang === 'pt'
+                  ? (currentPage === 1 ? 'Descubra a Revista Oficial CENA Magazine 2026: liderança, empreendedorismo, cultura e histórias de sucesso da comunidade lusófona no Canadá.' : `Descubra a página ${currentPage} da Revista CENA 2026.`)
+                  : activeLang === 'en'
+                  ? (currentPage === 1 ? 'Discover the Official CENA Magazine 2026: leadership, entrepreneurship, culture, and success stories of the lusophone community in Canada.' : `Discover page ${currentPage} of CENA Magazine 2026.`)
+                  : (currentPage === 1 ? 'Découvrez la Revue Officielle CENA Magazine 2026 : leadership, entrepreneuriat, culture et réussites de la communauté lusophone au Canada.' : `Découvrez la page ${currentPage} de la Revue CENA 2026.`)
+              }
+              url={`/magazine?lang=${activeLang}${currentPage > 1 ? `&page=${currentPage}` : ''}`}
+              image={getMagazineShareImage(currentPage, activeLang)}
               label={activeLang === 'fr' ? 'Partager' : activeLang === 'pt' ? 'Partilhar' : 'Share'}
             />
           </div>

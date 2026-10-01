@@ -68,6 +68,15 @@ export function MagazineSection() {
     return `/magazine/pages/${lang}/page-${safePage}.webp`;
   };
 
+  const getShareImage = (pageNum: number) => {
+    const lang = ['fr', 'pt', 'en'].includes(language) ? language : 'fr';
+    const safePage = Math.max(1, Math.min(40, pageNum));
+    if (safePage === 1) {
+      return `/magazine/pages/og/cover-${lang}.jpg`;
+    }
+    return `/magazine/pages/og/page${safePage}.jpg`;
+  };
+
   // Update open graph tags when active slide changes
   useEffect(() => {
     if (currentStory) {
@@ -75,7 +84,7 @@ export function MagazineSection() {
         title: `${currentStory.title} — CENA Magazine 2026`,
         text: currentStory.spoiler,
         url: `/magazine?lang=${language}&page=${currentStory.page}`,
-        image: getPageSrc(currentStory.imagePage)
+        image: getShareImage(currentStory.imagePage)
       });
     }
   }, [currentStory, language]);
@@ -231,7 +240,7 @@ export function MagazineSection() {
                   title={currentStory.title}
                   text={currentStory.spoiler}
                   url={`/magazine?lang=${language}&page=${currentStory.page}`}
-                  image={getPageSrc(currentStory.imagePage)}
+                  image={getShareImage(currentStory.imagePage)}
                 />
               </div>
             </div>
@@ -350,7 +359,7 @@ export function MagazineSection() {
                     title={currentStory.title}
                     text={currentStory.spoiler}
                     url={`/magazine?lang=${language}&page=${currentStory.page}`}
-                    image={getPageSrc(currentStory.imagePage)}
+                    image={getShareImage(currentStory.imagePage)}
                   />
                 </div>
 
@@ -450,7 +459,7 @@ export function MagazineSection() {
                       title={item.title}
                       text={item.spoiler}
                       url={`/magazine/page/${item.page}`}
-                      image={getPageSrc(item.imagePage)}
+                      image={getShareImage(item.imagePage)}
                     />
                   </div>
                 </div>

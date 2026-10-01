@@ -4,6 +4,23 @@ RewriteEngine On
 RewriteRule ^api/donation-stats/?$ api/donation-stats.php [L,QSA]
 RewriteRule ^api/stripe-webhook/?$ api/stripe-webhook.php [L,QSA]
 
+# 0b. Social Crawler Query-String Handling for Magazine (WhatsApp, Facebook, Twitter, iMessage)
+RewriteCond %{QUERY_STRING} (?:^|&)lang=pt(?:&|$) [NC]
+RewriteCond %{DOCUMENT_ROOT}/magazine/pt.html -f
+RewriteRule ^magazine/?$ magazine/pt.html [L]
+
+RewriteCond %{QUERY_STRING} (?:^|&)lang=en(?:&|$) [NC]
+RewriteCond %{DOCUMENT_ROOT}/magazine/en.html -f
+RewriteRule ^magazine/?$ magazine/en.html [L]
+
+RewriteCond %{QUERY_STRING} (?:^|&)lang=fr(?:&|$) [NC]
+RewriteCond %{DOCUMENT_ROOT}/magazine/fr.html -f
+RewriteRule ^magazine/?$ magazine/fr.html [L]
+
+RewriteCond %{QUERY_STRING} (?:^|&)page=([0-9]+)(?:&|$) [NC]
+RewriteCond %{DOCUMENT_ROOT}/magazine/page%1.html -f
+RewriteRule ^magazine/?$ magazine/page%1.html [L]
+
 # 1. Serve actual existing files and directories directly (images, PDFs, JS, CSS, pre-rendered HTML files, etc.)
 RewriteCond %{REQUEST_FILENAME} -f [OR]
 RewriteCond %{REQUEST_FILENAME} -d

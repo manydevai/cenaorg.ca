@@ -18,6 +18,10 @@ const template = fs.readFileSync(indexPath, 'utf-8');
 
 // Page metadata details for Open Graph tags
 const PAGE_META_MAP = {
+  1: {
+    title: "CENA Magazine 2026 — Couverture & Édition Spéciale",
+    description: "Revue Officielle CENA Magazine 2026 — Couverture d'honneur avec l'équipe et les leaders de la communauté."
+  },
   4: {
     title: "Mrs. Shirley DORISMOND — Membre de l'Assemblée Nationale | CENA Magazine 2026",
     description: "Parcours inspirant de Mme Shirley Dorismond, députée et figure d'engagement communautaire au Québec."
@@ -198,13 +202,51 @@ console.log('🚀 Generating static Open Graph pre-rendered pages with WhatsApp 
 
 let count = 0;
 
-// 1. Generate Magazine Pages (1 to 40)
+// 1. Generate Magazine Root & Language Landing Pages (PT, FR, EN)
+const MAGAZINE_LANG_PAGES = [
+  {
+    urls: ['/magazine', '/magazine/fr'],
+    title: "CENA Magazine 2026 — Édition Spéciale | Revue Officielle",
+    description: "Découvrez la Revue Officielle CENA Magazine 2026 : leadership, entrepreneuriat, culture et réussites de la communauté lusophone au Canada.",
+    image: "/magazine/pages/og/cover-fr.jpg"
+  },
+  {
+    urls: ['/magazine/pt'],
+    title: "CENA Magazine 2026 — Edição Especial | Revista Oficial",
+    description: "Descubra a Revista Oficial CENA Magazine 2026: liderança, empreendedorismo, cultura e histórias de sucesso da comunidade lusófona no Canadá.",
+    image: "/magazine/pages/og/cover-pt.jpg"
+  },
+  {
+    urls: ['/magazine/en'],
+    title: "CENA Magazine 2026 — Special Edition | Official Magazine",
+    description: "Discover the Official CENA Magazine 2026: leadership, entrepreneurship, culture, and success stories of the lusophone community in Canada.",
+    image: "/magazine/pages/og/cover-en.jpg"
+  }
+];
+
+for (const mag of MAGAZINE_LANG_PAGES) {
+  for (const urlPath of mag.urls) {
+    const cleanPath = urlPath.replace(/^\//, '');
+    const htmlContent = createPreRenderedHtml(mag.title, mag.description, mag.image, urlPath, {
+      width: 1200,
+      height: 1600
+    });
+    writeHtmlFile(path.join(distDir, cleanPath, 'index.html'), htmlContent);
+    writeHtmlFile(path.join(distDir, `${cleanPath}.html`), htmlContent);
+    count += 2;
+  }
+}
+
+// 2. Generate Magazine Individual Pages (1 to 40)
 for (let num = 1; num <= 40; num++) {
-  const imagePath = getPageSrc(num);
-  const meta = PAGE_META_MAP[num] || {
+  const imagePath = num === 1 ? '/magazine/pages/og/cover.jpg' : getPageSrc(num);
+  const meta = PAGE_META_MAP[num] || (num === 1 ? {
+    title: "CENA Magazine 2026 — Couverture & Édition Spéciale",
+    description: "Revue Officielle CENA Magazine 2026 — Couverture d'honneur avec l'équipe et les leaders de la communauté."
+  } : {
     title: `CENA Magazine 2026 — Página ${num}`,
     description: `Découvrez la página ${num} de la revista CENA Magazine 2026 (Édition Spéciale).`
-  };
+  });
 
   const htmlContent = createPreRenderedHtml(meta.title, meta.description, imagePath, `/magazine/page/${num}`);
 
@@ -220,7 +262,7 @@ for (let num = 1; num <= 40; num++) {
   count += 4;
 }
 
-// 2. Generate Blog Pages
+// 3. Generate Blog Pages
 const BLOG_META_MAP = [
   {
     slug: 'heritage-excellence',
@@ -245,14 +287,14 @@ const BLOG_META_MAP = [
 for (const blog of BLOG_META_MAP) {
   const htmlContent = createPreRenderedHtml(blog.title, blog.description, blog.image, `/blog/${blog.slug}`);
   writeHtmlFile(path.join(distDir, 'blog', blog.slug, 'index.html'), htmlContent);
-  writeHtmlFile(path.join(distDir, 'blog', `${blog.slug}.html`), htmlContent);
+  writeHtmlFile(path.join(distDir, `${blog.slug}.html`), htmlContent);
   count += 2;
 }
 
-// 3. Generate Christmas Campaign Dedicated Pre-rendered Pages (for WhatsApp & Facebook Open Graph preview cards)
+// 4. Generate Christmas Campaign Dedicated Pre-rendered Pages (for WhatsApp & Facebook Open Graph preview cards)
 const CHRISTMAS_CAMPAIGN_PAGES = [
   {
-    urls: ['/christmas-campaign', '/campagne-noel', '/noel-solidaire'],
+    urls: ['/campagne-noel', '/noel-solidaire', '/campagne-de-noel'],
     title: "CENA — Campagne Noël Solidaire 2026 | Ensemble, offrons un Noël d'espoir",
     description: "Rejoignez la Campagne Noël Solidaire 2026 de CENA ! Ensemble, offrons des paniers festifs, cartes d'épicerie et repas chaleureux aux familles dans le besoin.",
     image: "/christmas/flyer-fr.jpg",
@@ -260,7 +302,7 @@ const CHRISTMAS_CAMPAIGN_PAGES = [
     height: 769
   },
   {
-    urls: ['/christmas-campaign-en', '/christmas-campaign/en'],
+    urls: ['/christmas-campaign', '/christmas-campaign-en', '/christmas-campaign/en'],
     title: "CENA — Christmas Solidarity 2026 Campaign | Bringing Hope & Joy",
     description: "Join CENA's Christmas Solidarity 2026 Campaign! Together, let's bring comfort, festive food baskets, and holiday meals to families in need.",
     image: "/christmas/flyer-en.jpg",
@@ -268,7 +310,7 @@ const CHRISTMAS_CAMPAIGN_PAGES = [
     height: 769
   },
   {
-    urls: ['/natal-solidario', '/christmas-campaign/pt'],
+    urls: ['/natal-solidario', '/christmas-campaign/pt', '/campanha-natal'],
     title: "CENA — Campanha Natal Solidário 2026 | Ofereçamos um Natal de Esperança",
     description: "Junte-se à Campanha de Natal Solidário 2026 do CENA! Juntos, vamos levar conforto, cestas festivas e refeições de Natal a famílias necessitadas.",
     image: "/christmas/flyer-pt.jpg",
@@ -292,17 +334,25 @@ for (const camp of CHRISTMAS_CAMPAIGN_PAGES) {
   }
 }
 
-// 4. Ensure public/christmas images are guaranteed copied to dist/christmas
-const publicChristmasDir = path.join(__dirname, 'public', 'christmas');
-const distChristmasDir = path.join(distDir, 'christmas');
-if (fs.existsSync(publicChristmasDir)) {
-  if (!fs.existsSync(distChristmasDir)) {
-    fs.mkdirSync(distChristmasDir, { recursive: true });
+// 5. Ensure public/christmas and public/magazine/pages/og images are guaranteed copied to dist
+function copyDirRecursive(srcDir, destDir) {
+  if (!fs.existsSync(srcDir)) return;
+  if (!fs.existsSync(destDir)) {
+    fs.mkdirSync(destDir, { recursive: true });
   }
-  const files = fs.readdirSync(publicChristmasDir);
-  for (const file of files) {
-    fs.copyFileSync(path.join(publicChristmasDir, file), path.join(distChristmasDir, file));
+  const entries = fs.readdirSync(srcDir, { withFileTypes: true });
+  for (const entry of entries) {
+    const src = path.join(srcDir, entry.name);
+    const dest = path.join(destDir, entry.name);
+    if (entry.isDirectory()) {
+      copyDirRecursive(src, dest);
+    } else {
+      fs.copyFileSync(src, dest);
+    }
   }
 }
+
+copyDirRecursive(path.join(__dirname, 'public', 'christmas'), path.join(distDir, 'christmas'));
+copyDirRecursive(path.join(__dirname, 'public', 'magazine', 'pages', 'og'), path.join(distDir, 'magazine', 'pages', 'og'));
 
 console.log(`✅ Successfully generated ${count} pre-rendered static HTML pages with WhatsApp JPEG Open Graph tags!`);

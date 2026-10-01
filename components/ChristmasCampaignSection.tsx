@@ -32,6 +32,7 @@ import photo1 from '../assets/christmas/1.jpeg';
 import photo2 from '../assets/christmas/2.jpeg';
 import photo3 from '../assets/christmas/3.jpeg';
 import { ChristmasSectionDecor } from './ChristmasSectionDecor';
+import { updateOpenGraphMeta } from '../utils/share';
 
 // Official WhatsApp Brand SVG Icon
 const OfficialWhatsAppIcon: React.FC<{ className?: string }> = ({ className = "w-4 h-4" }) => (
@@ -166,7 +167,7 @@ export const ChristmasCampaignSection: React.FC = () => {
     }
   }, []);
 
-  // Canonical share URLs for Social Media Link Previews (WhatsApp, Facebook, Twitter, iMessage)
+  // Canonical share URLs and language-specific flyers for Social Media Link Previews (WhatsApp, Facebook, Twitter, iMessage)
   const getCampaignShareInfo = () => {
     const isLocal = typeof window !== 'undefined' && (
       window.location.hostname === 'localhost' ||
@@ -177,17 +178,52 @@ export const ChristmasCampaignSection: React.FC = () => {
     const domain = isLocal ? 'https://cena-ca.org' : window.location.origin;
 
     let campaignPath = '/christmas-campaign';
+    let campaignImage = '/christmas/flyer-en.jpg';
+    let campaignTitle = "CENA — Christmas Solidarity 2026 Campaign | Bringing Hope & Joy";
+    let campaignDesc = "Join CENA's Christmas Solidarity 2026 Campaign! Together, let's bring comfort, festive food baskets, and holiday meals to families in need.";
+
     if (language === 'pt') {
       campaignPath = '/natal-solidario';
+      campaignImage = '/christmas/flyer-pt.jpg';
+      campaignTitle = "CENA — Campanha Natal Solidário 2026 | Ofereçamos um Natal de Esperança";
+      campaignDesc = "Junte-se à Campanha de Natal Solidário 2026 do CENA! Juntos, vamos levar conforto, cestas festivas e refeições de Natal a famílias necessitadas.";
     } else if (language === 'en') {
       campaignPath = '/christmas-campaign';
+      campaignImage = '/christmas/flyer-en.jpg';
+      campaignTitle = "CENA — Christmas Solidarity 2026 Campaign | Bringing Hope & Joy";
+      campaignDesc = "Join CENA's Christmas Solidarity 2026 Campaign! Together, let's bring comfort, festive food baskets, and holiday meals to families in need.";
     } else {
       campaignPath = '/campagne-noel';
+      campaignImage = '/christmas/flyer-fr.jpg';
+      campaignTitle = "CENA — Campagne Noël Solidaire 2026 | Ensemble, offrons un Noël d'espoir";
+      campaignDesc = "Rejoignez la Campagne Noël Solidaire 2026 de CENA ! Ensemble, offrons des paniers festifs, cartes d'épicerie et repas chaleureux aux familles dans le besoin.";
     }
 
     const shareUrl = `${domain}${campaignPath}`;
-    return { shareUrl };
+    const fullImageUrl = `${domain}${campaignImage}`;
+    return { shareUrl, campaignPath, campaignImage, fullImageUrl, campaignTitle, campaignDesc };
   };
+
+  // Synchronize Open Graph tags dynamically when language changes or campaign is shown
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const path = window.location.pathname.toLowerCase();
+    const isCampaignRoute =
+      path.includes('christmas') ||
+      path.includes('campagne-noel') ||
+      path.includes('noel-solidaire') ||
+      path.includes('natal-solidario');
+
+    if (isCampaignRoute) {
+      const info = getCampaignShareInfo();
+      updateOpenGraphMeta({
+        title: info.campaignTitle,
+        text: info.campaignDesc,
+        url: info.campaignPath,
+        image: info.campaignImage
+      });
+    }
+  }, [language]);
 
   const handleCopyLink = () => {
     const { shareUrl } = getCampaignShareInfo();
@@ -198,9 +234,15 @@ export const ChristmasCampaignSection: React.FC = () => {
   };
 
   const handleWhatsAppShare = () => {
-    const { shareUrl } = getCampaignShareInfo();
+    const { shareUrl, campaignTitle, campaignDesc, campaignImage } = getCampaignShareInfo();
+    updateOpenGraphMeta({
+      title: campaignTitle,
+      text: campaignDesc,
+      url: shareUrl,
+      image: campaignImage
+    });
     const shareText = t('christmas_campaign.share_whatsapp_text').trim();
-    const fullText = `${shareText} ${shareUrl}`;
+    const fullText = `${shareText}\n\n${shareUrl}`;
     window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(fullText)}`, '_blank', 'noopener,noreferrer');
   };
 

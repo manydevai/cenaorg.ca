@@ -26,13 +26,21 @@ export function LanguageProvider({ children }: LanguageProviderProps) {
   const getInitialLanguage = (): Language => {
     if (typeof window !== 'undefined') {
       const path = window.location.pathname.toLowerCase();
+      const search = window.location.search.toLowerCase();
+
+      // Priority 1: Query parameter ?lang=...
+      if (search.includes('lang=pt')) return 'pt';
+      if (search.includes('lang=en')) return 'en';
+      if (search.includes('lang=fr')) return 'fr';
+
+      // Priority 2: Explicit campaign and language path routes
       if (path.includes('natal-solidario') || path.includes('/pt') || path.endsWith('-pt')) {
         return 'pt';
       }
-      if (path.includes('christmas-campaign-en') || path.includes('/en') || path.endsWith('-en')) {
+      if (path.includes('christmas-campaign-en') || path.includes('/en') || path.endsWith('-en') || path.includes('christmas-campaign')) {
         return 'en';
       }
-      if (path.includes('campagne-noel') || path.includes('noel-solidaire')) {
+      if (path.includes('campagne-noel') || path.includes('noel-solidaire') || path.includes('/fr')) {
         return 'fr';
       }
       const savedLanguage = localStorage.getItem('cena-language') as Language;
@@ -47,11 +55,13 @@ export function LanguageProvider({ children }: LanguageProviderProps) {
 
   useEffect(() => {
     const path = window.location.pathname.toLowerCase();
-    if (path.includes('natal-solidario') || path.includes('/pt') || path.endsWith('-pt')) {
+    const search = window.location.search.toLowerCase();
+
+    if (search.includes('lang=pt') || path.includes('natal-solidario') || path.includes('/pt') || path.endsWith('-pt')) {
       setLanguage('pt');
-    } else if (path.includes('christmas-campaign-en') || path.includes('/en') || path.endsWith('-en')) {
+    } else if (search.includes('lang=en') || path.includes('christmas-campaign-en') || path.includes('/en') || path.endsWith('-en') || path.includes('christmas-campaign')) {
       setLanguage('en');
-    } else if (path.includes('campagne-noel') || path.includes('noel-solidaire')) {
+    } else if (search.includes('lang=fr') || path.includes('campagne-noel') || path.includes('noel-solidaire') || path.includes('/fr')) {
       setLanguage('fr');
     }
   }, []);

@@ -40,8 +40,8 @@ export function updateOpenGraphMeta(options: ShareOptions): void {
   const title = options.title || "CENA — Communauté d'Éducation et de Networking Angolaise";
   const description = options.text || "Autonomiser la diaspora angolaise et lusophone au Canada par l'éducation, le mentorat et le réseautage d'affaires.";
   
-  // Default to magazine cover if no image is specified
-  const imageUrl = getAbsoluteUrl(options.image || '/magazine/pages/MAG_-_ENGLISH_VERSION.webp');
+  // Default to CENA logo if no image is specified
+  const imageUrl = getAbsoluteUrl(options.image || '/cena-logo-slogan.png');
 
   // Update Page Title
   document.title = title;

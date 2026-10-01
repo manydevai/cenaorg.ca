@@ -33,10 +33,16 @@ createRoot(document.getElementById("root")!).render(
         <Route path="/natal-solidario" element={<App />} />
         <Route path="/natal-solidario/*" element={<App />} />
 
+        {/* Magazine Routes (General, Language variants, and Page routes) */}
         <Route path="/magazine" element={<MagazinePage />} />
+        <Route path="/magazine/fr" element={<MagazinePage />} />
+        <Route path="/magazine/pt" element={<MagazinePage />} />
+        <Route path="/magazine/en" element={<MagazinePage />} />
         <Route path="/magazine/page/:pageId" element={<MagazinePage />} />
         <Route path="/magazine/page:pageId" element={<MagazinePage />} />
+        <Route path="/magazine/p/:pageId" element={<MagazinePage />} />
         <Route path="/magazine/p:pageId" element={<MagazinePage />} />
+
         <Route path="/events/black-consciousness-day" element={<PastEventsBlackConsciousness />} />
         <Route path="/events/consciencia-negra-cena-caf" element={<PastEventConscienciaNegra />} />
         <Route path="/gallery/black-consciousness-day" element={<BlackConsciousnessGallery />} />
@@ -49,4 +55,4 @@ createRoot(document.getElementById("root")!).render(
       </Routes>
     </LanguageProvider>
   </BrowserRouter>
-);
+);
