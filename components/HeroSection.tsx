@@ -126,8 +126,8 @@ export function HeroSection() {
           ))}
         </h1>
 
-        {/* Minimal Description */}
-        <p className="text-gray-200 text-xs font-sans leading-relaxed font-normal opacity-95 line-clamp-2 max-w-sm drop-shadow-sm">
+        {/* Minimal Description — Constrained width on mobile to give inferior zone Santa decor dedicated space */}
+        <p className="text-gray-200 text-xs font-sans leading-relaxed font-normal opacity-95 line-clamp-2 max-w-[64%] sm:max-w-[70%] lg:max-w-sm drop-shadow-sm">
           {t('hero.description')}
         </p>
 

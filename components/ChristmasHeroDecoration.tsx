@@ -465,9 +465,9 @@ export const ChristmasHeroDecoration: React.FC = () => {
 
   return (
     <>
-      {/* ─── 1. UPPER HANGING STRANDS (Gracefully extended down close to NOËL without crossing CTA) ─── */}
+      {/* ─── 1. UPPER HANGING STRANDS (Placed exactly like in the web version) ─── */}
       <div 
-        className="absolute top-0 right-1 sm:right-4 md:right-6 lg:right-8 xl:right-10 z-20 pointer-events-none select-none hidden md:flex items-start space-x-2.5 sm:space-x-4 lg:space-x-5 xl:space-x-6 px-1 overflow-visible"
+        className="absolute top-0 right-1 sm:right-3 md:right-6 lg:right-8 xl:right-10 z-20 pointer-events-none select-none flex items-start space-x-1 sm:space-x-3 md:space-x-4 lg:space-x-5 xl:space-x-6 px-1 overflow-visible scale-[0.62] sm:scale-75 md:scale-90 lg:scale-100 origin-top-right"
       >
         {/* ═════════════════════════════════════════════════════
             STRAND 1 — Left strand of cluster
@@ -619,7 +619,7 @@ export const ChristmasHeroDecoration: React.FC = () => {
           initial={{ y: -750, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ type: "spring", stiffness: 40, damping: 12, delay: 0.28 }}
-          className="hidden md:flex flex-col items-center origin-top animate-subtle-sway-3"
+          className="flex flex-col items-center origin-top animate-subtle-sway-3"
           style={{ width: '40px' }}
         >
           <div className="w-[1.5px] bg-gradient-to-b from-[#C5A059] via-amber-300 to-[#C5A059] h-14 sm:h-20 lg:h-28 flex flex-col items-center justify-around">
@@ -650,9 +650,9 @@ export const ChristmasHeroDecoration: React.FC = () => {
       </div>
 
 
-      {/* ─── 2. SANTA CLAUS & FREE-FLOATING TYPOGRAPHIC CTA ─── */}
+      {/* ─── 2. SANTA CLAUS & FREE-FLOATING TYPOGRAPHIC CTA (Inferior zone without crossing hero boundary) ─── */}
       <div 
-        className="absolute top-20 sm:top-24 right-2 sm:right-4 lg:top-auto lg:bottom-6 lg:right-8 xl:right-10 z-30 pointer-events-auto flex flex-col items-end lg:items-center select-none scale-[0.58] sm:scale-75 lg:scale-100 origin-top-right lg:origin-bottom-right"
+        className="absolute bottom-3 sm:bottom-4 md:bottom-6 lg:bottom-8 right-1 sm:right-3 md:right-6 lg:right-8 xl:right-10 z-30 pointer-events-auto flex flex-col items-center select-none scale-[0.62] sm:scale-75 md:scale-90 lg:scale-100 origin-bottom-right"
       >
         {/* Floating Festive Free-Form Typography CTA (No card, no box) */}
         <motion.div
